@@ -42,7 +42,7 @@
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-Ba-k8m">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-Ba-k8m">
                             <rect key="frame" x="300" y="57" width="12" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="12" id="c87-YB-wuM"/>
@@ -124,6 +124,7 @@
         </view>
     </objects>
     <resources>
+        <image name="down-arrow.png" width="15" height="15"/>
         <image name="sign-in.png" width="260" height="46"/>
     </resources>
 </document>

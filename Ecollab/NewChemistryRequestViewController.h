@@ -49,10 +49,6 @@
 @property (weak, nonatomic) IBOutlet UIView *vwRemarksTxtFldBg;
 
 
-- (IBAction)ZoomCloseButtonAction:(id)sender;
-- (IBAction)IMGSubmitAction:(id)sender;
-- (IBAction)IMGCancelAction:(id)sender;
-- (IBAction)ButtonTableSubviewAction:(id)sender;
 - (IBAction)SaveForLaterBtnAction:(id)sender;
 - (IBAction)SubmitBtnAction:(id)sender;
 - (IBAction)PuritybtnAction:(id)sender;

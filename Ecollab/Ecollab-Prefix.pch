@@ -1,0 +1,18 @@
+//
+//  Ecollab-Prefix.pch
+//  Ecollab
+//
+//  Created by NIKHILESH on 19/08/16.
+//  Copyright © 2016 TayaTech. All rights reserved.
+//
+
+#ifndef Ecollab_Prefix_pch
+#define Ecollab_Prefix_pch
+#import "AppDelegate.h"
+
+#define App_Delegate (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Ecollab_Prefix_pch */
