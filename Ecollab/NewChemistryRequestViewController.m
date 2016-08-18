@@ -7,6 +7,7 @@
 //
 
 #import "NewChemistryRequestViewController.h"
+#import "CompundDBCustomView.h"
 @interface NewChemistryRequestViewController (){
     UIDatePicker *myPicker;
     UITableView *purityTableView, *imageTabelview;
@@ -18,52 +19,47 @@
     NSData *ImageData;
     NSMutableString *base64StringForReq;
     NSMutableString *ProductType,*ProductID;
+    CompundDBCustomView *vwCompundDBCustomView;
+    NSInteger selCell;
+    
 }
 
 @end
 
 @implementation NewChemistryRequestViewController
-@synthesize BackgrounScrollview,TakeOrChoosePhotoBtnOutlet,NewOrEditChemistryReqHeaderLabel,GetAProposalLabel,TakeOrChoosePhotoImageview,ChoseFromReferenceCompounDBBtnOutlet,ChoseFromReferenceCompounDBImageview,CASTextField,MDLTextField,JournalReferenceTextField,ExpectedDeleveryDateBtnOutlet,ExpectedDeleveryDateImageview,QuantityTextField,MGBtnOutlet,MGImageview,MGLabelOutlet,GBtnOutlet,GImageview,GLabelOutlet,KGBtnOutlet,KGImageview,KGLabelOutlet,PuritybtnOutlet,CharitybtnOutlet,RemarksTextField,SubmitBtnOutlet,SaveForLaterBtnOutlet;
-@synthesize SubScrollview,ManagingSubview,managingInActiveView,Therapeutic,TherapeuticRedHeader,ButtonTableSubview,ZoomCloseButton,ZoomManagingView,ZoomImageContentView,mycollectionView;
+@synthesize BackgrounScrollview,TakeOrChoosePhotoBtnOutlet,NewOrEditChemistryReqHeaderLabel,GetAProposalLabel,ChoseFromReferenceCompounDBBtnOutlet,CASTextField,MDLTextField,JournalReferenceTextField,ExpectedDeleveryDateBtnOutlet,ExpectedDeleveryDateImageview,QuantityTextField,MGBtnOutlet,GBtnOutlet,KGBtnOutlet,PuritybtnOutlet,CharitybtnOutlet,RemarksTextField,SubmitBtnOutlet,SaveForLaterBtnOutlet;
 @synthesize OtherViewsDataDictionary;
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
+    selCell = -1;
     [BackgrounScrollview setDelegate:self];
-    
-    //TakeOrChoosePhotoBtnOutlet
-    [TakeOrChoosePhotoBtnOutlet.layer setBorderWidth: 1.0];
-    [TakeOrChoosePhotoBtnOutlet.layer setCornerRadius:50.0f];
-    [TakeOrChoosePhotoBtnOutlet.layer setMasksToBounds:YES];
-    [TakeOrChoosePhotoBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
-    
-    //ChoseFromReferenceCompounDBBtnOutlet
-    [ChoseFromReferenceCompounDBBtnOutlet.layer setBorderWidth: 1.0];
-    [ChoseFromReferenceCompounDBBtnOutlet.layer setCornerRadius:50.0f];
-    [ChoseFromReferenceCompounDBBtnOutlet.layer setMasksToBounds:YES];
-    [ChoseFromReferenceCompounDBBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
-    //TakeOrChoosePhotoImageview
-    [TakeOrChoosePhotoImageview.layer setBorderWidth: 1.0];
-    [TakeOrChoosePhotoImageview.layer setCornerRadius:10.0f];
-    [TakeOrChoosePhotoImageview.layer setMasksToBounds:YES];
-    [TakeOrChoosePhotoImageview.layer setBorderColor:[[UIColor redColor] CGColor]];
-    
-    //ChoseFromReferenceCompounDBImageview
-    [ChoseFromReferenceCompounDBImageview.layer setBorderWidth: 1.0];
-    [ChoseFromReferenceCompounDBImageview.layer setCornerRadius:10.0f];
-    [ChoseFromReferenceCompounDBImageview.layer setMasksToBounds:YES];
-    [ChoseFromReferenceCompounDBImageview.layer setBorderColor:[[UIColor redColor] CGColor]];
 
-    [TakeOrChoosePhotoBtnOutlet setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"chemistryserveimg.png"]]];
-    [ChoseFromReferenceCompounDBBtnOutlet setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"chelocalimg.png"]]];
+    [self.vwCasTxtFldBg.layer setBorderWidth: 1.0];
+    [self.vwCasTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
+
+    [self.vwMdlTxtFldBg.layer setBorderWidth: 1.0];
+    [self.vwMdlTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
+
+    [self.vwJournalTxtFldBg.layer setBorderWidth: 1.0];
+    [self.vwJournalTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
     
-    [ManagingSubview setHidden:YES];
-    [managingInActiveView setHidden:YES];
-    [TherapeuticRedHeader setHidden:YES];
-    [Therapeutic setHidden:YES];
-    [ZoomManagingView setHidden:YES];
+    [self.vwExpDelDate.layer setBorderWidth: 1.0];
+    [self.vwExpDelDate.layer setBorderColor:[[UIColor redColor] CGColor]];
+    
+    [self.vwQtyBg.layer setBorderWidth: 1.0];
+    [self.vwQtyBg.layer setBorderColor:[[UIColor redColor] CGColor]];
+    
+    [self.vwChiralityTxtFldBg.layer setBorderWidth: 1.0];
+    [self.vwChiralityTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
+    
+    [self.vwRemarksTxtFldBg.layer setBorderWidth: 1.0];
+    [self.vwRemarksTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
+    
+
+
+    [self.imgVwTakeOrChoose setImage:[UIImage imageNamed:@"chemistryserveimg.png"]];
+    [self.imgVwReferenceComp setImage:[UIImage imageNamed:@"chelocalimg.png"]];
+    
     //purityArray = [[NSArray alloc] initWithObjects:@">=99",@">=98",@">=95",@">=90",@">=85",@">=80",nil];
     
     UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc]initWithTarget:self     action:@selector(tapped)];
@@ -77,24 +73,19 @@
     request =  nil;
     ProductType = [NSMutableString stringWithFormat:@"0"];
     ProductID = [NSMutableString stringWithFormat:@"0"];
+    
+    QuantityID= @"1";
+
+}
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 950)];
 }
 - (void) tapped
 {
     [self.view endEditing:YES];
 }
-// this is useful for moving navigationbar top
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGPoint scrollOffset = scrollView.contentOffset;
-//    if (scrollOffset.y >= 40) {
-//        if (![self.navigationController isNavigationBarHidden]) {
-//            [self.navigationController setNavigationBarHidden:YES animated:YES];
-//        }
-//    } else {
-//        if ([self.navigationController isNavigationBarHidden]) {
-//            [self.navigationController setNavigationBarHidden:NO animated:YES];
-//        }
-//    }
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -102,36 +93,28 @@
 
 - (IBAction)WeightBtnAction:(id)sender {
     UIButton *button = (UIButton *)sender;
-    //radio_btn.png
-    //radio-off.png
-    NSInteger bTag = button.tag;
-    if (bTag == 10) {
-        MGImageview.image = [UIImage imageNamed:@"radio_btn.png"];
-        GImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        KGImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        QuantityID= @"1";
+
+    self.MGBtnOutlet.selected = false;
+    self.GBtnOutlet.selected = false;
+    self.KGBtnOutlet.selected = false;
+    button.selected = true;
+    if (button.tag == 10) {
         //mg
-    }else if (bTag == 20){
+        QuantityID= @"1";
+    }else if (button.tag == 20){
         //g
-        MGImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        GImageview.image = [UIImage imageNamed:@"radio_btn.png"];
-        KGImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        QuantityID= @"2";
+       QuantityID= @"2";
 
     }else{
         //kg
-        MGImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        GImageview.image = [UIImage imageNamed:@"radio-off.png"];
-        KGImageview.image = [UIImage imageNamed:@"radio_btn.png"];
         QuantityID= @"3";
-
     }
 }
 
 - (IBAction)ExpectedDeleveryDateBtnAction:(id)sender {
             [[self.view viewWithTag:123] removeFromSuperview];
     myPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(ExpectedDeleveryDateBtnOutlet.frame.origin.x, ExpectedDeleveryDateBtnOutlet.frame.origin.y + ExpectedDeleveryDateBtnOutlet.frame.size.height,ExpectedDeleveryDateBtnOutlet.frame.size.width , 200.0f)];
-    [myPicker addTarget:self action:@selector(pickerChanged:)               forControlEvents:UIControlEventValueChanged];
+    [myPicker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     [myPicker setBackgroundColor:[UIColor whiteColor]];
     [myPicker setTag:123456];
     [self.BackgrounScrollview addSubview:myPicker];
@@ -147,18 +130,8 @@
     [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
 }
 - (IBAction)ChoseFromReferenceCompounDBBtnAction:(id)sender {
-    //radio_btn.png
-    //radio-off.png
-    TakeOrChoosePhotoImageview.image = [UIImage imageNamed:@"radio-off.png"];
-    ChoseFromReferenceCompounDBImageview.image =  [UIImage imageNamed:@"radio_btn.png"];
 
-    [managingInActiveView setHidden:NO];
-    [ManagingSubview setHidden:NO];
-    [TherapeuticRedHeader setHidden:NO];
-    [Therapeutic setHidden:NO];
-//        [managingInActiveView setHidden:YES];
-//        [ManagingSubview setHidden:YES];
-
+    [self showCompoundDBCustomView];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopLoadMasterService];
@@ -172,13 +145,9 @@
     {
         purityArray =  [aregistrationDict objectForKey:@"PurityMaster"];
         CategoryMasterArray = [aregistrationDict objectForKey:@"CategoryMaster"];
-        [mycollectionView setBackgroundColor:[UIColor whiteColor]];
-        [mycollectionView setDelegate:self];
-        [mycollectionView setDataSource:self];
-        
-        [imageTabelview reloadData];
-        [ButtonTableSubview setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:0] objectForKey:@"Category"]] forState:UIControlStateNormal];
         [self ImagesDisplay:@"0"];
+        
+        [self performSelectorOnMainThread:@selector(bindCompundDBData) withObject:nil waitUntilDone:true];
     }else{
         //show some alert
 
@@ -187,13 +156,13 @@
 -(void)ImagesDisplay:(NSString *)indexString{
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
-    [request requestForopImagesOnTherapiticAreaService:[NSMutableString stringWithFormat:[NSString stringWithFormat:@"%d",[indexString intValue]+1]]];
+    [request requestForopImagesOnTherapiticAreaService:[NSString stringWithFormat:@"%d",[indexString intValue]+1]];
     request =  nil;
 }
 -(void)requestReceivedopImagesOnTherapiticAreaResponce:(NSMutableDictionary *)aregistrationDict{
     
     collectionImageDataArray =[aregistrationDict objectForKey:@"ImageTherapiticAreaResult"];
-    [mycollectionView reloadData];
+    [vwCompundDBCustomView.clVwCompoundDb reloadData];
 
 }
 
@@ -218,23 +187,29 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ImageCollectionViewCell *myCell = [collectionView
-                                    dequeueReusableCellWithReuseIdentifier:@"ImageCollectionViewCellID"
-                                    forIndexPath:indexPath];
     
-    //UIImage *image;
-    long row = [indexPath row];
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCollectionViewCellID" forIndexPath:indexPath];
     
-    
+    if (cell == nil)
+    {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"ImageCollectionViewCell" owner:self options:nil]firstObject];
+    }
     NSMutableDictionary *tempDic = [collectionImageDataArray objectAtIndex:indexPath.row];
     NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[tempDic objectForKey:@"Base64Image"]];
     NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    
-    myCell.CollectionImageView.image = [UIImage imageWithData:data];
-    
-    //myCell.CollectionImageView.image = image;
-    
-    return myCell;
+    cell.CollectionImageView.image = [UIImage imageWithData:data];
+    if (selCell == indexPath.row)
+    {
+        cell.layer.borderWidth = 1.0;
+        cell.layer.borderColor = [UIColor redColor].CGColor;
+    }
+    else
+    {
+        cell.layer.borderWidth = 1.0;
+        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
+    }
+    return cell;
 }
 #pragma mark -
 #pragma mark UICollectionViewDelegate
@@ -242,22 +217,10 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageData = nil;
-    [ZoomManagingView setHidden:NO];
-    NSMutableDictionary *tempDic = [collectionImageDataArray objectAtIndex:indexPath.row];
-    base64StringForReq = [NSMutableString stringWithFormat:@"%@",[tempDic objectForKey:@"Base64Image"]];
-    ImageData = [[NSData alloc]initWithBase64EncodedString:base64StringForReq options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    ZoomImageContentView.image = [UIImage imageWithData:ImageData];
-    [ChoseFromReferenceCompounDBBtnOutlet setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithData:ImageData]]];
-    b64EncStr = nil;
-    ProductID = [tempDic objectForKey:@"RID"];//RID
-    ProductType = [NSMutableString stringWithFormat:@"2"];
-    //[ZoomImageContentView setImage:[UIImage imageNamed:@"sampleprofile.jpeg"]];
+    selCell = indexPath.row;
+    [collectionView reloadData];
 }
 - (IBAction)TakeOrChoosePhotoBtnAction:(id)sender {
-    //radio_btn.png
-    //radio-off.png
-    TakeOrChoosePhotoImageview.image = [UIImage imageNamed:@"radio_btn.png"];
-    ChoseFromReferenceCompounDBImageview.image =  [UIImage imageNamed:@"radio-off.png"];
     
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Photo"
                                                                        message:@"Please select photo"
@@ -300,10 +263,15 @@
 
                                                               
                                                           }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+                                                                   handler:^(UIAlertAction * action) {
+                                                                   }];
+
     
         [alert addAction:PhotoFromGalleryAction];
         [alert addAction:TakeAPhotoAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        [alert addAction:cancel];
+       [self presentViewController:alert animated:YES completion:nil];
     
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -311,8 +279,9 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     //self.imageView.image = chosenImage;
     
-    [TakeOrChoosePhotoBtnOutlet setBackgroundColor:[UIColor colorWithPatternImage:chosenImage]];
-    
+    [self.imgVwTakeOrChoose setImage:chosenImage];
+    _imgVwReferenceComp.image = [UIImage imageNamed:@"chelocalimg.png"];
+
     NSData *imgData=UIImagePNGRepresentation(chosenImage);
     if ([imgData length]>2000) {
         CGSize newSize = CGSizeMake(100.0f, 100.0f);
@@ -329,6 +298,10 @@
     ProductType =[NSMutableString stringWithFormat:@"1"];
     ProductID = [NSMutableString stringWithFormat:@"0"];
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    TakeOrChoosePhotoBtnOutlet.selected= YES;
+    ChoseFromReferenceCompounDBBtnOutlet.selected= NO;
+
     
 }
 //for image encode and decode
@@ -355,36 +328,36 @@
 }
 
 
-- (IBAction)ZoomCloseButtonAction:(id)sender {
-    [ZoomManagingView setHidden:YES];
-    
 
+- (void)IMGSubmitAction:(id)sender {
     
-}
+    NSMutableDictionary *tempDic = [collectionImageDataArray objectAtIndex:selCell];
+    base64StringForReq = [NSMutableString stringWithFormat:@"%@",[tempDic objectForKey:@"Base64Image"]];
+    ImageData = [[NSData alloc]initWithBase64EncodedString:base64StringForReq options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    [self.imgVwReferenceComp setImage:[UIImage imageWithData:ImageData]];
+    b64EncStr = nil;
+    ProductID = [tempDic objectForKey:@"RID"];//RID
+    ProductType = [NSMutableString stringWithFormat:@"2"];
 
-- (IBAction)IMGSubmitAction:(id)sender {
-    [managingInActiveView setHidden:YES];
-    [ManagingSubview setHidden:YES];
-    [TherapeuticRedHeader setHidden:YES];
-    [Therapeutic setHidden:YES];
     b64EncStr = base64StringForReq;
-    ProductType =[NSMutableString stringWithFormat:@"2"];;
+    ProductType =[NSMutableString stringWithFormat:@"2"];
+    [vwCompundDBCustomView removeFromSuperview];
+    ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
+    TakeOrChoosePhotoBtnOutlet.selected = NO;
+    _imgVwTakeOrChoose.image = [UIImage imageNamed:@"chemistryserveimg.png"];
 
 
 }
 
-- (IBAction)IMGCancelAction:(id)sender {
-    [managingInActiveView setHidden:YES];
-    [ManagingSubview setHidden:YES];
-    [TherapeuticRedHeader setHidden:YES];
-    [Therapeutic setHidden:YES];
+- (void)IMGCancelAction:(id)sender {
+    [vwCompundDBCustomView removeFromSuperview];
 }
 
-- (IBAction)ButtonTableSubviewAction:(id)sender {
-    imageTabelview = [[UITableView alloc] initWithFrame:CGRectMake(ButtonTableSubview.frame.origin.x, ButtonTableSubview.frame.origin.y + ButtonTableSubview.frame.size.height,ButtonTableSubview.frame.size.width ,312) style:UITableViewStylePlain] ;
+- (void)ButtonTableSubviewAction:(id)sender {
+    imageTabelview = [[UITableView alloc] initWithFrame:CGRectMake(vwCompundDBCustomView.btnSelectType.frame.origin.x, vwCompundDBCustomView.btnSelectType.frame.origin.y + vwCompundDBCustomView.btnSelectType.frame.size.height,vwCompundDBCustomView.btnSelectType.frame.size.width ,312) style:UITableViewStylePlain] ;
     imageTabelview.dataSource = self;
     imageTabelview.delegate = self;
-    [ManagingSubview addSubview:imageTabelview];
+    [vwCompundDBCustomView addSubview:imageTabelview];
 }
 
 
@@ -481,8 +454,8 @@
     [[self.view viewWithTag:123] removeFromSuperview];
     }else{
         
-        [ButtonTableSubview setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:indexPath.row] objectForKey:@"Category"]] forState:UIControlStateNormal];
-        [ButtonTableSubview setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [vwCompundDBCustomView.btnSelectType setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:indexPath.row] objectForKey:@"Category"]] forState:UIControlStateNormal];
+        [vwCompundDBCustomView.btnSelectType setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [imageTabelview setHidden:YES];
         [self ImagesDisplay:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
 
@@ -537,5 +510,25 @@
         self.view.frame = f;
     }];
 }
+-(void)showCompoundDBCustomView
+{
+    
+    vwCompundDBCustomView = [[CompundDBCustomView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    vwCompundDBCustomView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [vwCompundDBCustomView.btnSubmit addTarget:self action:@selector(IMGSubmitAction:) forControlEvents:UIControlEventTouchUpInside];
+    [vwCompundDBCustomView.btnCancel addTarget:self action:@selector(IMGCancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:vwCompundDBCustomView];
 
+}
+-(void)bindCompundDBData
+{
+    [vwCompundDBCustomView.clVwCompoundDb setDelegate:self];
+    [vwCompundDBCustomView.clVwCompoundDb setDataSource:self];
+    UINib *myNib1 = [UINib nibWithNibName:@"ImageCollectionViewCell" bundle:[NSBundle mainBundle]];
+    [vwCompundDBCustomView.clVwCompoundDb registerNib:myNib1 forCellWithReuseIdentifier:@"ImageCollectionViewCellID"];
+    
+    [imageTabelview reloadData];
+    [vwCompundDBCustomView.btnSelectType setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:0] objectForKey:@"Category"]] forState:UIControlStateNormal];
+
+}
 @end

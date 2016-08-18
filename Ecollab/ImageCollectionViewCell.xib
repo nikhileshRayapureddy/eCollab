@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCellID" id="QIZ-cc-9uz" customClass="ImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="109" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="109" height="128"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mPF-Ci-fcq">
+                        <rect key="frame" x="0.0" y="0.0" width="109" height="128"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mPF-Ci-fcq" firstAttribute="leading" secondItem="QIZ-cc-9uz" secondAttribute="leading" id="4qi-il-3hZ"/>
+                <constraint firstAttribute="trailing" secondItem="mPF-Ci-fcq" secondAttribute="trailing" id="814-Ix-3l8"/>
+                <constraint firstItem="mPF-Ci-fcq" firstAttribute="top" secondItem="QIZ-cc-9uz" secondAttribute="top" id="Ibm-1M-2ly"/>
+                <constraint firstAttribute="bottom" secondItem="mPF-Ci-fcq" secondAttribute="bottom" id="SyD-TU-QhG"/>
+            </constraints>
+            <size key="customSize" width="109" height="128"/>
+            <connections>
+                <outlet property="CollectionImageView" destination="mPF-Ci-fcq" id="6d7-8U-B2h"/>
+            </connections>
+            <point key="canvasLocation" x="250.5" y="183"/>
+        </collectionViewCell>
+    </objects>
+</document>

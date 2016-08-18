@@ -267,7 +267,7 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
 
 }
 //opImagesOnTherapiticArea
--(void)requestForopImagesOnTherapiticAreaService:(NSMutableString *)therapiticidString{
+-(void)requestForopImagesOnTherapiticAreaService:(NSString *)therapiticidString{
     //responseopImagesOnTherapiticAreaService
     ServiceInterface *service = [[ServiceInterface alloc] init];
     service.theDelegate = self;

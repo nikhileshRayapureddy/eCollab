@@ -55,7 +55,6 @@
 		9E270AFC1D502A5D00C6A406 /* MenuProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E270AFB1D502A5D00C6A406 /* MenuProfileTableViewCell.m */; };
 		9E270B001D502D2F00C6A406 /* MenuLableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E270AFF1D502D2F00C6A406 /* MenuLableTableViewCell.m */; };
 		9E270B041D503FF700C6A406 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E270B031D503FF700C6A406 /* menu.png */; };
-		9E47E64E1D4CA30B00A50C2B /* calender.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9E47E64D1D4CA30B00A50C2B /* calender.jpeg */; };
 		9E47E6541D4CA59900A50C2B /* cam1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9E47E6511D4CA59900A50C2B /* cam1.jpeg */; };
 		9E47E6581D4CA79800A50C2B /* unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E47E6571D4CA79800A50C2B /* unselect.png */; };
 		9E47E65A1D4CA7B900A50C2B /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E47E6591D4CA7B900A50C2B /* buttons.png */; };
@@ -151,6 +150,10 @@
 		9EEE720B1D5C3A8700F54EB4 /* req_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEE720A1D5C3A8700F54EB4 /* req_img.png */; };
 		9EEF59881D42A51B00F04170 /* FAQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF59871D42A51B00F04170 /* FAQTableViewCell.m */; };
 		9EF26A3F1D3D210400465646 /* NewChemistryRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF26A3E1D3D210400465646 /* NewChemistryRequestViewController.m */; };
+		A770951E1D66045D001C0180 /* CompundDBCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A770951D1D66045D001C0180 /* CompundDBCustomView.m */; };
+		A77095221D661D23001C0180 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77095211D661D23001C0180 /* ImageCollectionViewCell.xib */; };
+		A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77095251D662673001C0180 /* CompundDBCustomView.xib */; };
+		A77095291D6635F3001C0180 /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = A77095281D6635F3001C0180 /* calender.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,7 +230,6 @@
 		9E270AFE1D502D2F00C6A406 /* MenuLableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLableTableViewCell.h; sourceTree = "<group>"; };
 		9E270AFF1D502D2F00C6A406 /* MenuLableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLableTableViewCell.m; sourceTree = "<group>"; };
 		9E270B031D503FF700C6A406 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
-		9E47E64D1D4CA30B00A50C2B /* calender.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = calender.jpeg; sourceTree = "<group>"; };
 		9E47E6511D4CA59900A50C2B /* cam1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cam1.jpeg; sourceTree = "<group>"; };
 		9E47E6571D4CA79800A50C2B /* unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselect.png; sourceTree = "<group>"; };
 		9E47E6591D4CA7B900A50C2B /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttons.png; sourceTree = "<group>"; };
@@ -341,6 +343,11 @@
 		9EEF59871D42A51B00F04170 /* FAQTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQTableViewCell.m; sourceTree = "<group>"; };
 		9EF26A3D1D3D210400465646 /* NewChemistryRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewChemistryRequestViewController.h; sourceTree = "<group>"; };
 		9EF26A3E1D3D210400465646 /* NewChemistryRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChemistryRequestViewController.m; sourceTree = "<group>"; };
+		A770951C1D66045D001C0180 /* CompundDBCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompundDBCustomView.h; sourceTree = "<group>"; };
+		A770951D1D66045D001C0180 /* CompundDBCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompundDBCustomView.m; sourceTree = "<group>"; };
+		A77095211D661D23001C0180 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		A77095251D662673001C0180 /* CompundDBCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompundDBCustomView.xib; sourceTree = "<group>"; };
+		A77095281D6635F3001C0180 /* calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -631,7 +638,6 @@
 				9E47E6571D4CA79800A50C2B /* unselect.png */,
 				9E47E6591D4CA7B900A50C2B /* buttons.png */,
 				9E47E6511D4CA59900A50C2B /* cam1.jpeg */,
-				9E47E64D1D4CA30B00A50C2B /* calender.jpeg */,
 				9EE74BB91D4376F400326CC5 /* ongoingprojexts.jpg */,
 				9EE74BB71D4376EA00326CC5 /* requestquote.jpg */,
 				9EE74BB51D43767400326CC5 /* TicIMG.jpeg */,
@@ -865,6 +871,7 @@
 				9EC27B321D622B24005C4CA6 /* dis.png */,
 				9EC27B331D622B24005C4CA6 /* personal.png */,
 				9EC27B341D622B24005C4CA6 /* shipping_inf.png */,
+				A77095281D6635F3001C0180 /* calender.png */,
 				9EC27B501D623EDB005C4CA6 /* btn_submit.png */,
 				9EC27B3E1D623B78005C4CA6 /* helps.png */,
 				9EC27B3F1D623B78005C4CA6 /* myprofile.png */,
@@ -888,6 +895,7 @@
 			children = (
 				9EEC9E851D5761C700CE896F /* ImageCollectionViewCell.h */,
 				9EEC9E861D5761C700CE896F /* ImageCollectionViewCell.m */,
+				A77095211D661D23001C0180 /* ImageCollectionViewCell.xib */,
 			);
 			name = collectionviewcells;
 			sourceTree = "<group>";
@@ -918,8 +926,11 @@
 		9EF26A3C1D3D1F3000465646 /* NewChemistryRequestVC */ = {
 			isa = PBXGroup;
 			children = (
+				A77095251D662673001C0180 /* CompundDBCustomView.xib */,
 				9EF26A3D1D3D210400465646 /* NewChemistryRequestViewController.h */,
 				9EF26A3E1D3D210400465646 /* NewChemistryRequestViewController.m */,
+				A770951C1D66045D001C0180 /* CompundDBCustomView.h */,
+				A770951D1D66045D001C0180 /* CompundDBCustomView.m */,
 			);
 			name = NewChemistryRequestVC;
 			sourceTree = "<group>";
@@ -1001,7 +1012,6 @@
 				9EBD33761D5F434300DF2760 /* dash-2.png in Resources */,
 				9EBEFF691D608F0A00271E18 /* chemistrysaved.png in Resources */,
 				9EC27B211D621AF3005C4CA6 /* cmnts_new.png in Resources */,
-				9E47E64E1D4CA30B00A50C2B /* calender.jpeg in Resources */,
 				9EBEFF731D60930500271E18 /* default_profile1.png in Resources */,
 				9EC27B381D622B24005C4CA6 /* personal.png in Resources */,
 				9EC27B5B1D62405F005C4CA6 /* My Profile_black.jpg in Resources */,
@@ -1037,6 +1047,8 @@
 				9EC27B4B1D623B78005C4CA6 /* projecttracer.png in Resources */,
 				9EBEFF4F1D60583800271E18 /* graycircle.png in Resources */,
 				9EE74BB61D43767400326CC5 /* TicIMG.jpeg in Resources */,
+				A77095291D6635F3001C0180 /* calender.png in Resources */,
+				A77095221D661D23001C0180 /* ImageCollectionViewCell.xib in Resources */,
 				9EBEFF711D6091DA00271E18 /* mail.png in Resources */,
 				9E0C0B7F1D368D7B0039A884 /* alerts.png in Resources */,
 				9EC27B131D62100D005C4CA6 /* request.png in Resources */,
@@ -1063,6 +1075,7 @@
 				9EEA59F31D4E252900C04C29 /* b3.jpg in Resources */,
 				9E23EE4A1D373416005D7859 /* kermit_empty.png in Resources */,
 				9EC27B191D621A95005C4CA6 /* proficon.png in Resources */,
+				A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */,
 				9EC27B2D1D62239E005C4CA6 /* 100x80.png in Resources */,
 				9EC27B251D621AF3005C4CA6 /* refer_new.png in Resources */,
 				9EBEFF6C1D60905D00271E18 /* chelocalimg.png in Resources */,
@@ -1115,6 +1128,7 @@
 				9EE74BB41D43646500326CC5 /* RequestOrProjectTableViewCell.m in Sources */,
 				9EEF59881D42A51B00F04170 /* FAQTableViewCell.m in Sources */,
 				9E4F7DF81D3B68E8001517BF /* ShippingInformationTableViewCell.m in Sources */,
+				A770951E1D66045D001C0180 /* CompundDBCustomView.m in Sources */,
 				9E1362731D36CE1800FFD592 /* AboutUsViewController.m in Sources */,
 				9E4F7DFC1D3B79D1001517BF /* AddNewShippingAddressViewController.m in Sources */,
 				9EC27B0D1D61F15E005C4CA6 /* DiscussQuoteViewController.m in Sources */,
