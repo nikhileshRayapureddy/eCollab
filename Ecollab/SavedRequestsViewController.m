@@ -24,6 +24,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+
     dictSelectedRequest = [[NSMutableDictionary alloc]init];
     [SavedRequestsTableView setDelegate: self];
     [SavedRequestsTableView setDataSource: self];
