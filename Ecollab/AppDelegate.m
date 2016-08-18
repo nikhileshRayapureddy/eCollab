@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 
@@ -31,6 +32,13 @@
     ViewController *loginController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginController];
     self.window.rootViewController=navController;
+    
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+    
+    [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:YES];
+
     return YES;
 }
 

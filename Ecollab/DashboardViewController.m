@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.navigationItem.hidesBackButton = YES;
+    
+    [self designNavBar];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"homebg.png"]]];
     
     [menuTable setHidden:YES];
@@ -42,6 +42,19 @@
     menuArray =[NSMutableArray arrayWithObjects:@"HOME",@"REQUEST A QUOTE ",@"SAVED REQUESTS",@"REQUEST/PROJECT TRACKER",@"MY PROFILE",@"LEGAL DISCLAIMER",@"REACH US",@"ALERTS",@"HELP",@"SHARE", nil];
     menuImagesArray = [[NSMutableArray alloc] initWithObjects:@"requestquotes.png",@"requestquotes.png",@"savedrequests.png",@"projecttracer.png",@"myprofile.png",@"slidelegal.png",@"newreach.png",@"notifications.png",@"helps.png",@"share.png", nil];
 }
+-(void)designNavBar
+{
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.hidesBackButton = YES;
+
+}
+
 -(void)Dashboard{
     if (menuFlag == 0) {
         [menuTable setHidden:NO];
