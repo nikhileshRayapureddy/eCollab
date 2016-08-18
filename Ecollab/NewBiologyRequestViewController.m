@@ -23,6 +23,16 @@
 @synthesize OtherViewsDataDictionary;
 @synthesize isFromRequestAQuote;
 @synthesize dictSavedOrderDetails;
+
+@synthesize strServiceIDFinal;
+@synthesize strAreaIDFinal;
+@synthesize strSubAreaIDFinal;
+@synthesize strModelIdIDFinal;
+@synthesize strMultipleModelIdIDFinal;
+@synthesize arrCellSelected;
+@synthesize shouldUpdateRequest;
+@synthesize strRIDForSavedRequest;
+@synthesize isSubmitAction;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -32,6 +42,7 @@
      [FAQLabelOutlet.layer setMasksToBounds:YES];
      [FAQLabelOutlet.layer setBorderColor:[[UIColor blackColor] CGColor]];
      */
+    arrCellSelected = [[NSMutableArray alloc]init];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [ServiceBtnOutlet.layer setBorderWidth: 1.0];
     [ServiceBtnOutlet.layer setMasksToBounds:YES];
@@ -110,30 +121,32 @@
     {
         return;
     }
-
+    NSString *strService = [dict objectForKey:@"Service"];
+    NSString *area = [dict objectForKey:@"Area"];
+    NSString *subArea = [dict objectForKey:@"SubArea"];
+    NSString *modelIds = [dict objectForKey:@"MultipleModelValues"];
+    if(modelIds.length == 0)
     {
-        NSString *strService = [dict objectForKey:@"Service"];
-        NSString *area = [dict objectForKey:@"Area"];
-        NSString *subArea = [dict objectForKey:@"SubArea"];
-        NSString *modelIds = [dict objectForKey:@"MultipleModelValues"];
-        if(modelIds.length == 0)
-        {
-            modelIds = @"SELECT ASSAYS/MODELS";
-        }
-        
-        [ServiceBtnOutlet setTitle:strService forState:UIControlStateNormal];
-        [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        [AreaOutlet setTitle:area forState:UIControlStateNormal];
-        [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
-        [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
-        [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        modelIds = @"SELECT ASSAYS/MODELS";
     }
+    
+    [ServiceBtnOutlet setTitle:strService forState:UIControlStateNormal];
+    [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [AreaOutlet setTitle:area forState:UIControlStateNormal];
+    [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
+    [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
+    [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     isFromRequestAQuote = YES;
+    
+    strServiceIDFinal = [dict objectForKey:@"ServiceID"];
+    strAreaIDFinal = [dict objectForKey:@"AreaID"];
+    strSubAreaIDFinal = [dict objectForKey:@"SubAreaID"];
+    strModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
 }
 
 -(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
@@ -152,6 +165,7 @@
             serFlag = 0;
             [ServiceBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]] forState:UIControlStateNormal];
             [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            strServiceIDFinal = [dict objectForKey:@"RID"];
             Type = [NSMutableString stringWithFormat:@"0"];
             //*Type,*SubID,*ModelID;  //RID Service
             if(isFromRequestAQuote)
@@ -206,7 +220,8 @@
     if (dropdownTableView.tag == 20 || dropdownTableView.tag == 10 || dropdownTableView.tag == 40) {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
     }
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y,_viewSubArea.frame.size.width ,_viewAssays.frame.origin.y-ServiceBtnOutlet.frame.origin.y) style:UITableViewStylePlain] ;
+    
+    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y+60,_viewSubArea.frame.size.width ,subAreaArray.count * 44) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
     [dropdownTableView setTag:30];
@@ -217,28 +232,247 @@
     if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 10) {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
     }
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(ModelsBtnOutlet.frame.origin.x, ServiceBtnOutlet.frame.origin.y-20,ModelsBtnOutlet.frame.size.width ,ModelsBtnOutlet.frame.origin.y-ServiceBtnOutlet.frame.origin.y) style:UITableViewStylePlain] ;
+    
+    
+    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewAssays.frame.origin.x, _viewAssays.frame.origin.y-60,_viewAssays.frame.size.width ,modelArray.count * 44) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
     [dropdownTableView setTag:40];
     [self.view addSubview:dropdownTableView];
     
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(dropdownTableView.frame.origin.x, dropdownTableView.frame.origin.y+dropdownTableView.frame.size.height, dropdownTableView.frame.size.width, 30);
+    [btn setTitle:@"Done" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    btn.tag = 3235;
+    [btn addTarget:self action:@selector(removeTableViewPopup) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+
+}
+
+-(void)removeTableViewPopup
+{
+    [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+    UIButton *btnTransparent = (UIButton *)[self.view viewWithTag:3235];
+    [btnTransparent removeFromSuperview];
+    
+    NSString *strSelectedModels = @"";
+    strMultipleModelIdIDFinal = @"";
+    for(NSIndexPath *indexpath in arrCellSelected)
+    {
+        NSDictionary *dict = [modelArray objectAtIndex:indexpath.row];
+        
+        if(strMultipleModelIdIDFinal.length)
+        {
+            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@,%@",strMultipleModelIdIDFinal,[dict objectForKey:@"RID"]];
+        }
+        else
+        {
+            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+        }
+        
+        if(strSelectedModels.length)
+        {
+            strSelectedModels = [NSString stringWithFormat:@"%@,%@",strSelectedModels,[dict objectForKey:@"Description"]];
+        }
+        else
+        {
+            strSelectedModels = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
+        }
+        
+    }
+    
+    if(!strSelectedModels.length)
+    {
+        [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [ModelsBtnOutlet setTitle:strSelectedModels forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
     //3
-    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
+    isSubmitAction = YES;
+    NSString *strUserId = [[DetailsManager sharedManager]rID];
+    
+    NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
+    [dictRequest setObject:strUserId forKey:@"UID"];
+    [dictRequest setValue:strServiceIDFinal forKey:@"ServiceID"];
+    [dictRequest setValue:strAreaIDFinal forKey:@"AreaID"];
+    [dictRequest setValue:strSubAreaIDFinal forKey:@"SubAreaID"];
+    if ([strModelIdIDFinal isKindOfClass:[NSNull class]] || strModelIdIDFinal == nil)
+    {
+        [dictRequest setObject:@"" forKey:@"ModelID"];
+    }
+    else
+    {
+        [dictRequest setValue:strModelIdIDFinal forKey:@"ModelID"];
+    }
+    
+    [dictRequest setObject:@"1" forKey:@"ISSubmit"];
+    [dictRequest setObject:@"" forKey:@"Status"];
+    [dictRequest setObject:strUserId forKey:@"CreatedBy"];
+    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
+    [dictRequest setObject:@"" forKey:@"RID"];
+    
+//    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
-    [request requestForopInsertBiologyRequestService:inputDick];
+    [request requestForopInsertBiologyRequestService:dictRequest];
     request =  nil;
 }
 
 - (IBAction)SaveForLaterBtnAction:(id)sender {
+    isSubmitAction = NO;
+    NSString *strUserId = [[DetailsManager sharedManager]rID];
+    
+    NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
+    [dictRequest setObject:strUserId forKey:@"UID"];
+    [dictRequest setValue:strServiceIDFinal forKey:@"ServiceID"];
+    [dictRequest setValue:strAreaIDFinal forKey:@"AreaID"];
+    [dictRequest setValue:strSubAreaIDFinal forKey:@"SubAreaID"];
+    if ([strModelIdIDFinal isKindOfClass:[NSNull class]] || strModelIdIDFinal == nil)
+    {
+        [dictRequest setObject:@"" forKey:@"ModelID"];
+    }
+    else
+    {
+        [dictRequest setValue:strModelIdIDFinal forKey:@"ModelID"];
+    }
+    
+    [dictRequest setObject:@"0" forKey:@"ISSubmit"];
+    [dictRequest setObject:@"" forKey:@"Status"];
+    [dictRequest setObject:strUserId forKey:@"CreatedBy"];
+    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
+    
+    //    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    if(shouldUpdateRequest)
+    {
+        [dictRequest setObject:strRIDForSavedRequest forKey:@"RID"];
+        
+        [request requestForopUpdateBiologyRequestService:dictRequest];
+    }
+    else
+    {
+        [dictRequest setObject:@"" forKey:@"RID"];
+        
+        [request requestForopInsertBiologyRequestService:dictRequest];
+    }
+
+    request =  nil;
+
     
 }
 -(void)requestReceivedopInsertBiologyRequestResponce:(NSMutableDictionary *)aregistrationDict{
     
+    if(isSubmitAction == YES)
+    {
+        NSArray *array = [aregistrationDict objectForKey:@"NewBiologyRequestResult"];
+        if(array.count)
+        {
+            NSDictionary *dictResponse = [array objectAtIndex:0];
+            NSString *strStatusCode = [dictResponse objectForKey:@"SuccessCode"];
+            if([strStatusCode  isEqual: @"200"])
+            {
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                               message:[dictResponse objectForKey:@"SuccessString"]
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                
+                
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            }
+        }
+        else
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                           message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    else
+    {
+        if(shouldUpdateRequest)
+        {
+            NSString *strStatusCode = [aregistrationDict objectForKey:@"SuccessCode"];
+            if([strStatusCode  isEqual: @"200"])
+            {
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                               message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                
+                
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            }
+            else
+            {
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                               message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                }];
+                
+                
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            }
+        }
+        else
+        {
+            NSArray *array = [aregistrationDict objectForKey:@"NewBiologyRequestResult"];
+            if(array.count)
+            {
+                NSDictionary *dictResponse = [array objectAtIndex:0];
+                NSString *strStatusCode = [dictResponse objectForKey:@"SuccessCode"];
+                if([strStatusCode  isEqual: @"200"])
+                {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                                   message:[dictResponse objectForKey:@"SuccessString"]
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                    
+                    
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                }
+            }
+            else
+            {
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                               message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                }];
+                
+                
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -279,6 +513,16 @@
         NSDictionary *dict = [subAreaArray objectAtIndex:indexPath.row];
          cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
     }else if (dropdownTableView.tag == 40){
+        if ([arrCellSelected containsObject:indexPath])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
+        
         NSDictionary *dict = [modelArray objectAtIndex:indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
     }
@@ -289,29 +533,33 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
     
     if (dropdownTableView.tag == 10) {
         serFlag = 0;
         NSDictionary *dict = [serviceArray objectAtIndex:indexPath.row];
         [ServiceBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]] forState:UIControlStateNormal];
         [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        strServiceIDFinal = [dict objectForKey:@"RID"];
+        
         Type = [NSMutableString stringWithFormat:@"0"];
         //*Type,*SubID,*ModelID;  //RID Service
         SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
         ModelID = [NSMutableString stringWithFormat:@"0"];
         [self GetDependencyDetails];
+        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+        
     }else if (dropdownTableView.tag == 20){
         serFlag = 1;
         NSDictionary *dict = [areaArray objectAtIndex:indexPath.row];
         [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
         [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        strAreaIDFinal = [dict objectForKey:@"RID"];
         Type = [NSMutableString stringWithFormat:@"1"];
         SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
         AreaID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
         ModelID = [NSMutableString stringWithFormat:@"0"];
         [self GetDependencyDetails];
-        
+        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
 //        Type = [NSMutableString stringWithFormat:@"2"];
 //        SubID = AreaID;
 //        ModelID = [NSMutableString stringWithFormat:@"0"];
@@ -325,18 +573,28 @@
 
         [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
         [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        strSubAreaIDFinal = [dict objectForKey:@"RID"];
         Type = [NSMutableString stringWithFormat:@"3"];
         SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
         ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
         [self GetDependencyDetails];
-
+        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
     }else if (dropdownTableView.tag == 40){
+        
+        if ([arrCellSelected containsObject:indexPath])
+        {
+            [arrCellSelected removeObject:indexPath];
+        }
+        else
+        {
+            [arrCellSelected addObject:indexPath];
+        }
+        [tableView reloadData];
 //        NSDictionary *dict = [modelArray objectAtIndex:indexPath.row];
 //        [ModelsBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
 //        [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //        [self GetDependencyDetails];
     }
-   [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
 }
 -(void)GetDependencyDetails{
     
@@ -370,6 +628,7 @@
                 NSDictionary *dictFirstObject = [areaArray objectAtIndex:0];
                 [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"Description"]] forState:UIControlStateNormal];
                 [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                strAreaIDFinal = [dictFirstObject objectForKey:@"RID"];
                 SubID = [NSMutableString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"RID"]];
                 AreaID = [NSMutableString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"RID"]];
             }
@@ -398,6 +657,7 @@
                     NSDictionary *dict = [subAreaArray objectAtIndex:0];
                     [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
                     [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    strSubAreaIDFinal = [dict objectForKey:@"RID"];
                     ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
                     
                 }
@@ -405,6 +665,7 @@
                 {
                     ModelID =  [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"SubAreaID"]];
                 }
+                [arrCellSelected removeAllObjects];
                 [self GetDependencyDetails];
             }
             else
@@ -420,6 +681,7 @@
         }
         else
         {
+            [arrCellSelected removeAllObjects];
             [self bindSavedOrderDetails:dictSavedOrderDetails];
             modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
             
