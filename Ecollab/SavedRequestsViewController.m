@@ -89,6 +89,13 @@
     }else{
         
         NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
+        NBRVCtrlObj.isFromRequestAQuote = NO;
+        NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+        if(arr.count != 0)
+        {
+            NSMutableDictionary *dict = [arr objectAtIndex:0];
+            NBRVCtrlObj.dictSavedOrderDetails = dict;
+        }
         [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
     }
 }

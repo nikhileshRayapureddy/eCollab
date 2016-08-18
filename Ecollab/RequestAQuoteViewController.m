@@ -52,6 +52,7 @@
 
 - (IBAction)BiologyBtnAction:(id)sender {
     NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
+    NBRVCtrlObj.isFromRequestAQuote = YES;
     [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
     
 }
