@@ -36,5 +36,14 @@
 @property (strong, nonatomic) NSMutableDictionary *dictSavedOrderDetails;
 -(void)bindSavedOrderDetails:(NSDictionary *)dict;
 
+@property (strong, nonatomic) NSString *strServiceIDFinal;
+@property (strong, nonatomic) NSString *strAreaIDFinal;
+@property (strong, nonatomic) NSString *strSubAreaIDFinal;
+@property (strong, nonatomic) NSString *strModelIdIDFinal;
+@property (strong, nonatomic) NSString *strMultipleModelIdIDFinal;
 
+@property (strong, nonatomic) NSMutableArray *arrCellSelected;
+@property (assign, nonatomic) BOOL shouldUpdateRequest;
+@property (strong, nonatomic) NSString *strRIDForSavedRequest;
+@property (assign, nonatomic) BOOL isSubmitAction;
 @end

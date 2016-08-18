@@ -54,7 +54,7 @@
 -(void)requestForopRequestedQuoteDetailsService:(NSMutableDictionary *)detailDictionary;
 //opPlaceChemistryRequest
 -(void)requestForopPlaceChemistryRequestService:(NSMutableDictionary *)detailDictionary;
-
+-(void)requestForopUpdateBiologyRequestService:(NSMutableDictionary *)detailDictionary;
 @end
 
 #pragma mark - ServiceRequesterProtocol
