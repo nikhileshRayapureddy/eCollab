@@ -89,6 +89,13 @@
     // Note please navigate with data dictionary
     if ([Type intValue] == 0) {
         NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
+        NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+        if(arr.count != 0)
+        {
+            NSMutableDictionary *dict = [arr objectAtIndex:0];
+            NCRVCtrlObj.dictSavedChemestryData = dict;
+        }
+        
         [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
         
     }else{
