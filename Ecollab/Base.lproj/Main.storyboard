@@ -2738,7 +2738,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="NS7-Ge-xNu"/>
                                                 </constraints>
-                                                <state key="normal" title="SUBMIT" backgroundImage="sign-in.png">
+                                                <state key="normal" title="SUBMIT" backgroundImage="btnRedGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -2757,7 +2757,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="eyM-Gm-5Ro"/>
                                                 </constraints>
-                                                <state key="normal" title="SAVE FOR LATER" backgroundImage="sign-in.png">
+                                                <state key="normal" title="SAVE FOR LATER" backgroundImage="btnGreyGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -2890,6 +2890,7 @@
                         <outlet property="GetAProposalLabel" destination="h5k-ae-U6h" id="Trp-UJ-IVx"/>
                         <outlet property="JournalReferenceTextField" destination="Z5F-6b-UO6" id="FyJ-YW-zWd"/>
                         <outlet property="KGBtnOutlet" destination="fKc-R8-ZiG" id="1eO-nj-L4I"/>
+                        <outlet property="MDLTextField" destination="MpF-iR-nNX" id="O1f-tI-AAb"/>
                         <outlet property="MGBtnOutlet" destination="kye-BS-kkc" id="A1p-dY-ifn"/>
                         <outlet property="NewOrEditChemistryReqHeaderLabel" destination="shV-ap-AYn" id="diR-Bz-Je6"/>
                         <outlet property="PuritybtnOutlet" destination="6xa-Nt-5Si" id="Nf9-z5-nmA"/>
