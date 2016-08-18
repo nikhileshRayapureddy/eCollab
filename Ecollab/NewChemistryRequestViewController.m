@@ -88,10 +88,6 @@
 {
     [self.view endEditing:YES];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)WeightBtnAction:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -552,6 +548,11 @@
     vwCompundDBCustomView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     [vwCompundDBCustomView.btnSubmit addTarget:self action:@selector(IMGSubmitAction:) forControlEvents:UIControlEventTouchUpInside];
     [vwCompundDBCustomView.btnCancel addTarget:self action:@selector(IMGCancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    [vwCompundDBCustomView.btnSelectType addTarget:self action:@selector(ButtonTableSubviewAction:) forControlEvents:UIControlEventTouchUpInside];
+    [vwCompundDBCustomView.btnSelectType.layer setBorderWidth: 1.0];
+    [vwCompundDBCustomView.btnSelectType.layer setBorderColor:[[UIColor redColor] CGColor]];
+
+    
     [self.view addSubview:vwCompundDBCustomView];
 
 }
@@ -578,4 +579,9 @@
     
     return YES;
 }
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 @end

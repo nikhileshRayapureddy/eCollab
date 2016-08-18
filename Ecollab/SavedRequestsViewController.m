@@ -36,6 +36,10 @@
     listArray = [aregistrationDict objectForKey:@"SavedOrdersList"];
     [SavedRequestsTableView reloadData];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 75;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;

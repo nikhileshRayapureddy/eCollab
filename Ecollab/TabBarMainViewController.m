@@ -20,11 +20,11 @@
     NSLog(@"%@",[[DetailsManager sharedManager]view_token]);
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     if ([[[DetailsManager sharedManager]view_token] isEqualToString:@"MyProfile"]) {
-        [self setSelectedViewController:(UIViewController *)[self.viewControllers objectAtIndex: 3]];
-    }else if ([[[DetailsManager sharedManager]view_token] isEqualToString:@"RequesterOrProjectTracker"]) {
         [self setSelectedViewController:(UIViewController *)[self.viewControllers objectAtIndex: 2]];
-    }else if ([[[DetailsManager sharedManager]view_token] isEqualToString:@"SavedRequests"]) {
+    }else if ([[[DetailsManager sharedManager]view_token] isEqualToString:@"RequesterOrProjectTracker"]) {
         [self setSelectedViewController:(UIViewController *)[self.viewControllers objectAtIndex: 1]];
+    }else if ([[[DetailsManager sharedManager]view_token] isEqualToString:@"SavedRequests"]) {
+        [self setSelectedViewController:(UIViewController *)[self.viewControllers objectAtIndex: 0]];
     }else{
         //RequestAQuote
 
