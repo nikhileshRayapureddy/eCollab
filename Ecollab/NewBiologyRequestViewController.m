@@ -21,7 +21,8 @@
 @implementation NewBiologyRequestViewController
 @synthesize ServiceBtnOutlet,AreaOutlet,SubAreaBtnOutlet,ModelsBtnOutlet,SubmitBtnOutlet,SaveForLaterBtnOutlet;
 @synthesize OtherViewsDataDictionary;
-
+@synthesize isFromRequestAQuote;
+@synthesize dictSavedOrderDetails;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,6 +56,86 @@
     [request requestForopLoadMasterService];
     request =  nil;
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:true];
+    NSLog(@"%d",isFromRequestAQuote);
+    
+    if(isFromRequestAQuote == YES)
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"NEW BIOLOGY REQUEST"
+                                                                 attributes:underlineAttribute];
+    }
+    else
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT BIOLOGY REQUEST"
+                                                                 attributes:underlineAttribute];
+    }
+}
+
+-(void)showViewAssays:(BOOL)shouldShow
+{
+    if(shouldShow == YES)
+    {
+        self.viewAssaysHeightConstraint.constant = 60;
+        self.viewAssays.hidden = NO;
+    }
+    else
+    {
+        self.viewAssaysHeightConstraint.constant = 0;
+        self.viewAssays.hidden = YES;
+    }
+}
+
+-(void)showViewSubArea:(BOOL)shouldShow
+{
+    if(shouldShow == YES)
+    {
+        self.viewSubAreaHeightConstraint.constant = 60;
+        self.viewSubArea.hidden = NO;
+    }
+    else
+    {
+        self.viewSubAreaHeightConstraint.constant = 0;
+        self.viewSubArea.hidden = YES;
+    }
+}
+
+-(void)bindSavedOrderDetails:(NSMutableDictionary *)dict
+{
+    if(isFromRequestAQuote)
+    {
+        return;
+    }
+
+    {
+        NSString *strService = [dict objectForKey:@"Service"];
+        NSString *area = [dict objectForKey:@"Area"];
+        NSString *subArea = [dict objectForKey:@"SubArea"];
+        NSString *modelIds = [dict objectForKey:@"MultipleModelValues"];
+        if(modelIds.length == 0)
+        {
+            modelIds = @"SELECT ASSAYS/MODELS";
+        }
+        
+        [ServiceBtnOutlet setTitle:strService forState:UIControlStateNormal];
+        [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [AreaOutlet setTitle:area forState:UIControlStateNormal];
+        [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
+        [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
+        [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    isFromRequestAQuote = YES;
+}
+
 -(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
     NSLog(@"%@",aregistrationDict);
     NSLog(@"%@",[aregistrationDict objectForKey:@"SuccessCode"]);
@@ -63,6 +144,28 @@
     {
         loadMasterDict = aregistrationDict;
         serviceArray = [aregistrationDict objectForKey:@"ServiceMaster"];
+        
+        if(serviceArray.count != 0)
+        {
+            NSDictionary *dict = [serviceArray objectAtIndex:0];
+            
+            serFlag = 0;
+            [ServiceBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]] forState:UIControlStateNormal];
+            [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            Type = [NSMutableString stringWithFormat:@"0"];
+            //*Type,*SubID,*ModelID;  //RID Service
+            if(isFromRequestAQuote)
+            {
+                SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            }
+            else
+            {
+                SubID = [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"ServiceID"]];
+            }
+            ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self GetDependencyDetails];
+        }
+
         
     }else{
         //show some alert
@@ -103,7 +206,7 @@
     if (dropdownTableView.tag == 20 || dropdownTableView.tag == 10 || dropdownTableView.tag == 40) {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
     }
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(SubAreaBtnOutlet.frame.origin.x, ServiceBtnOutlet.frame.origin.y,SubAreaBtnOutlet.frame.size.width ,ModelsBtnOutlet.frame.origin.y-ServiceBtnOutlet.frame.origin.y) style:UITableViewStylePlain] ;
+    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y,_viewSubArea.frame.size.width ,_viewAssays.frame.origin.y-ServiceBtnOutlet.frame.origin.y) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
     [dropdownTableView setTag:30];
@@ -209,11 +312,11 @@
         ModelID = [NSMutableString stringWithFormat:@"0"];
         [self GetDependencyDetails];
         
-        Type = [NSMutableString stringWithFormat:@"2"];
-        SubID = AreaID;
-        ModelID = [NSMutableString stringWithFormat:@"0"];
-
-        [self GetDependencyDetails];
+//        Type = [NSMutableString stringWithFormat:@"2"];
+//        SubID = AreaID;
+//        ModelID = [NSMutableString stringWithFormat:@"0"];
+//
+//        [self GetDependencyDetails];
 
     }else if (dropdownTableView.tag == 30){
         serFlag = 2;
@@ -255,18 +358,93 @@
     request =  nil;
 }
 -(void)requestReceivedopGetDependencyDetailsResponce:(NSMutableDictionary *)aregistrationDict{
-    if (serFlag == 0) {
+    if (serFlag == 0)
+    {
         areaArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
-    }else if (serFlag == 1){
-        if (modelflag == 0){
+        if(areaArray.count != 0)
+        {
+            serFlag = 1;
+            Type = [NSMutableString stringWithFormat:@"1"];
+            if(isFromRequestAQuote)
+            {
+                NSDictionary *dictFirstObject = [areaArray objectAtIndex:0];
+                [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"Description"]] forState:UIControlStateNormal];
+                [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                SubID = [NSMutableString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"RID"]];
+                AreaID = [NSMutableString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"RID"]];
+            }
+            else
+            {
+                SubID = [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"AreaID"]];
+                AreaID = [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"AreaID"]];
+            }
+            ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self GetDependencyDetails];
+        }
+    }
+    else if (serFlag == 1)
+    {
+        if (modelflag == 0)
+        {
             subAreaArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
-            modelflag = 1;
-        }else{
+            if(subAreaArray.count != 0)
+            {
+                serFlag = 2;
+                [self showViewSubArea:YES];
+                Type = [NSMutableString stringWithFormat:@"3"];
+                SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
+                if(isFromRequestAQuote)
+                {
+                    NSDictionary *dict = [subAreaArray objectAtIndex:0];
+                    [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
+                    [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+                    
+                }
+                else
+                {
+                    ModelID =  [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"SubAreaID"]];
+                }
+                [self GetDependencyDetails];
+            }
+            else
+            {
+                [self showViewSubArea:NO];
+                Type = [NSMutableString stringWithFormat:@"2"];
+                SubID = AreaID;
+                ModelID = [NSMutableString stringWithFormat:@"0"];
+                modelflag = 1;
+                [self GetDependencyDetails];
+            }
+            
+        }
+        else
+        {
+            [self bindSavedOrderDetails:dictSavedOrderDetails];
             modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
+            
+            if(modelArray.count == 0)
+            {
+                [self showViewAssays:NO];
+            }
+            else
+            {
+                [self showViewAssays:YES];
+            }
             modelflag = 0;
         }
-    }else if (serFlag == 2){
+    }
+    else if (serFlag == 2){
+        [self bindSavedOrderDetails:dictSavedOrderDetails];
         modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
+        if(modelArray.count != 0)
+        {
+            [self showViewAssays:YES];
+        }
+        else
+        {
+            [self showViewAssays:NO];
+        }
     }
 }
 

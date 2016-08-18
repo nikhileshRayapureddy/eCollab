@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *SubmitBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *SaveForLaterBtnOutlet;
 @property (strong, nonatomic) NSMutableDictionary *OtherViewsDataDictionary;
-
+@property (assign, nonatomic) BOOL isFromRequestAQuote;
 - (IBAction)ServiceBtnAction:(id)sender;
 - (IBAction)AreaBtnAction:(id)sender;
 - (IBAction)SubAreaBtnAction:(id)sender;
@@ -26,7 +26,15 @@
 - (IBAction)SaveForLaterBtnAction:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *lblRequestTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewAssaysHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *viewAssays;
 
+@property (weak, nonatomic) IBOutlet UIView *viewSubArea;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewSubAreaHeightConstraint;
+
+@property (strong, nonatomic) NSMutableDictionary *dictSavedOrderDetails;
+-(void)bindSavedOrderDetails:(NSDictionary *)dict;
 
 
 @end
