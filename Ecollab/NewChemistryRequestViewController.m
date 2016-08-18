@@ -29,6 +29,8 @@
 @implementation NewChemistryRequestViewController
 @synthesize BackgrounScrollview,TakeOrChoosePhotoBtnOutlet,NewOrEditChemistryReqHeaderLabel,GetAProposalLabel,ChoseFromReferenceCompounDBBtnOutlet,CASTextField,MDLTextField,JournalReferenceTextField,ExpectedDeleveryDateBtnOutlet,ExpectedDeleveryDateImageview,QuantityTextField,MGBtnOutlet,GBtnOutlet,KGBtnOutlet,PuritybtnOutlet,CharitybtnOutlet,RemarksTextField,SubmitBtnOutlet,SaveForLaterBtnOutlet;
 @synthesize OtherViewsDataDictionary;
+@synthesize dictSavedChemestryData;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     selCell = -1;
@@ -170,6 +172,7 @@
         [self ImagesDisplay:@"0"];
         
         [self performSelectorOnMainThread:@selector(bindCompundDBData) withObject:nil waitUntilDone:true];
+        [self bindChemestryData:dictSavedChemestryData];
     }else{
         //show some alert
 
@@ -579,9 +582,80 @@
     
     return YES;
 }
+-(void)bindChemestryData:(NSDictionary *)dictData
+{
+    CASTextField.text = [dictData objectForKey:@"CAS"];
+    MDLTextField.text = [dictData objectForKey:@"MDL"];
+    JournalReferenceTextField.text = [dictData objectForKey:@"jonuralref"];
+    NSString *strDate = [dictData objectForKey:@"Exp_Delivery_Date"];
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    NSDate *expdate = [df dateFromString:strDate];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy"];
+    strDate = [dateFormat stringFromDate:expdate];
+    [ExpectedDeleveryDateBtnOutlet setTitle:strDate forState:UIControlStateNormal];
+   
+    
+    NSNumber *qty = [dictData valueForKey:@"Quantity"];
+    
+    
+    
+    int quant = qty.intValue;
+    
+    QuantityTextField.text = [NSString stringWithFormat:@"%d",quant];
+    NSString *strQuantityUnit = [NSString stringWithFormat:@"%@",[dictData objectForKey:@"QuantityValue"]];
+    MGBtnOutlet.selected = NO;
+    GBtnOutlet.selected = NO;
+    KGBtnOutlet.selected = NO;
+    if([strQuantityUnit isEqualToString:@"mg"])
+    {
+        MGBtnOutlet.selected = YES;
+        GBtnOutlet.selected = NO;
+        KGBtnOutlet.selected = NO;
+    }
+    else if([strQuantityUnit isEqualToString:@"g"])
+    {
+        MGBtnOutlet.selected = NO;
+        GBtnOutlet.selected = YES;
+        KGBtnOutlet.selected = NO;
+    }
+    else if([strQuantityUnit isEqualToString:@"kg"])
+    {
+        MGBtnOutlet.selected = NO;
+        GBtnOutlet.selected = NO;
+        KGBtnOutlet.selected = YES;
+    }
+    
+    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
+    RemarksTextField.text = [dictData objectForKey:@"Comments"];
+    if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])
+    {
+        if (![[dictData objectForKey:@"ImageName"] isEqualToString:@""])
+        {
+            NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            _imgVwReferenceComp.image = [UIImage imageWithData:data];
+            ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
+            TakeOrChoosePhotoBtnOutlet.selected = NO;
+        }
+    }
+    else
+    {
+        if (![[dictData objectForKey:@"ImageName"] isEqualToString:@""])
+        {
+            NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            _imgVwTakeOrChoose.image = [UIImage imageWithData:data];
+            ChoseFromReferenceCompounDBBtnOutlet.selected = NO;
+            TakeOrChoosePhotoBtnOutlet.selected = YES;
+        }
+    }
+    //[dictData objectForKey:@"ImageName"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end

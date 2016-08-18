@@ -57,4 +57,6 @@
 - (IBAction)ChoseFromReferenceCompounDBBtnAction:(id)sender;
 - (IBAction)TakeOrChoosePhotoBtnAction:(id)sender;
 
+@property (strong, nonatomic) NSDictionary *dictSavedChemestryData;
+
 @end
