@@ -324,6 +324,30 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
         
 
 }
+
+//opInsertBiologyRequest
+-(void)requestForopUpdateBiologyRequestService:(NSMutableDictionary *)detailDictionary{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopInsertBiologyRequestService:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUpdateBiologyRequest"]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:detailDictionary options:NSJSONWritingPrettyPrinted error:nil];
+    request.HTTPBody = requestBodyData;
+    request.HTTPMethod = @"POST";
+    [request setValue:kBase_Content_Type forHTTPHeaderField:@"Content-Type"];
+    
+    NSLog(@"request  %@",request);
+    [service startWithRequest:request];
+    service = nil;
+    detailDictionary = nil;
+    
+    
+}
+
 //opTrackSelecctedOrderDetails
 -(void)requestForopTrackSelecctedOrderDetailsService:(NSMutableDictionary *)detailDictionary{
     ServiceInterface *service = [[ServiceInterface alloc] init];

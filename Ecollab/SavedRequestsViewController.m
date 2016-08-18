@@ -11,16 +11,20 @@
 @interface SavedRequestsViewController (){
     NSMutableArray *listArray;
     NSMutableString *Type;
+    NSMutableDictionary *dictSelectedRequest;
 }
+
 
 @end
 
 @implementation SavedRequestsViewController
 @synthesize SavedRequestsTableView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
+    dictSelectedRequest = [[NSMutableDictionary alloc]init];
     [SavedRequestsTableView setDelegate: self];
     [SavedRequestsTableView setDataSource: self];
     ServiceRequester *request = [ServiceRequester new];
@@ -74,6 +78,7 @@
     [self OrderDetails:inputDict];
 }
 -(void)OrderDetails:(NSMutableDictionary *)inputDict {
+    dictSelectedRequest = inputDict;
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopRequestedQuoteDetailsService:inputDict];
@@ -90,12 +95,14 @@
         
         NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
         NBRVCtrlObj.isFromRequestAQuote = NO;
+        NBRVCtrlObj.shouldUpdateRequest = YES;
         NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
         if(arr.count != 0)
         {
             NSMutableDictionary *dict = [arr objectAtIndex:0];
             NBRVCtrlObj.dictSavedOrderDetails = dict;
         }
+        NBRVCtrlObj.strRIDForSavedRequest = [dictSelectedRequest objectForKey:@"RID"];
         [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
     }
 }
