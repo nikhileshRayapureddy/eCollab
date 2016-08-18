@@ -43,7 +43,7 @@
 //opGetProjectTrackerDetails
 -(void)requestFopGetProjectTrackerDetailsService;
 //opImagesOnTherapiticArea
--(void)requestForopImagesOnTherapiticAreaService:(NSMutableString *)therapiticidString;
+-(void)requestForopImagesOnTherapiticAreaService:(NSString *)therapiticidString;
 //opGetDependencyDetails
 -(void)requestForopGetDependencyDetailsService:(NSMutableDictionary *)detailDictionary;
 //opInsertBiologyRequest
