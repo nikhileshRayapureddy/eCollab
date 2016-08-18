@@ -384,6 +384,7 @@
 		A770953E1D663B63001C0180 /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		A770953F1D663B63001C0180 /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ecollab-Prefix.pch"; sourceTree = "<group>"; };
 		CCE790481D65FCD8007A5623 /* btnGreyGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreyGradient.png; sourceTree = "<group>"; };
 		CCE790491D65FCD8007A5623 /* btnRedGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnRedGradient.png; sourceTree = "<group>"; };
 		CCE7904C1D65FED7007A5623 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
@@ -647,6 +648,7 @@
 				9E25476E1D32677A008A96C9 /* LaunchScreen.storyboard */,
 				9E2547711D32677A008A96C9 /* Info.plist */,
 				9E2547601D32677A008A96C9 /* Supporting Files */,
+				A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -1360,6 +1362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1375,6 +1378,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
