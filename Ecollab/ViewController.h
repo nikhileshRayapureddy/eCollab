@@ -11,9 +11,12 @@
 #import "LogInViewController.h"
 
 @interface ViewController : UIViewController<UIScrollViewDelegate>
+{
+    UIScrollView *scrlVwImages;
+}
 @property (strong, nonatomic) NSArray *pageImages;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrlVwImages;
+
 
 @end
 

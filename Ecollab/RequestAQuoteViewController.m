@@ -61,6 +61,7 @@
 
 - (IBAction)ChemistryBtnAction:(id)sender {
     NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
+    NCRVCtrlObj.isFromRequestAQuote = YES;
     [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
 }
 

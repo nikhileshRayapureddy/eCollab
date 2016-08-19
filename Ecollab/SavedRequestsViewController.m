@@ -78,11 +78,10 @@
     cell.PojectNameLabel.text =[[listArray objectAtIndex:indexPath.row]objectForKey:@"OrderNumber"];
     // based on type assign related image  biologysaved.png
     if ([[[listArray objectAtIndex:indexPath.row]objectForKey:@"Type"] intValue] == 0) {
-        cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
-    }else{
         cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
+    }else{
+        cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
     }
-    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -114,7 +113,8 @@
             NSMutableDictionary *dict = [arr objectAtIndex:0];
             NCRVCtrlObj.dictSavedChemestryData = dict;
         }
-        
+        NCRVCtrlObj.isFromRequestAQuote = NO;
+
         [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
         
     }else{
