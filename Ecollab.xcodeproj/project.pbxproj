@@ -170,6 +170,7 @@
 		CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790491D65FCD8007A5623 /* btnRedGradient.png */; };
 		CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904C1D65FED7007A5623 /* down-arrow.png */; };
 		CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */; };
+		CCE790961D675940007A5623 /* EcollabLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE790951D675940007A5623 /* EcollabLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -393,6 +394,8 @@
 		CCE790491D65FCD8007A5623 /* btnRedGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnRedGradient.png; sourceTree = "<group>"; };
 		CCE7904C1D65FED7007A5623 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
 		CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow@2x.png"; sourceTree = "<group>"; };
+		CCE790941D675940007A5623 /* EcollabLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcollabLoader.h; sourceTree = "<group>"; };
+		CCE790951D675940007A5623 /* EcollabLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcollabLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,6 +656,8 @@
 				9E2547711D32677A008A96C9 /* Info.plist */,
 				9E2547601D32677A008A96C9 /* Supporting Files */,
 				A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */,
+				CCE790941D675940007A5623 /* EcollabLoader.h */,
+				CCE790951D675940007A5623 /* EcollabLoader.m */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -1229,6 +1234,7 @@
 				A77095451D663B63001C0180 /* IQTitleBarButtonItem.m in Sources */,
 				9E1362521D36C60D00FFD592 /* RequestOrProjectTrackerViewController.m in Sources */,
 				9E13625F1D36C86B00FFD592 /* ReachUsViewController.m in Sources */,
+				CCE790961D675940007A5623 /* EcollabLoader.m in Sources */,
 				9E270AFC1D502A5D00C6A406 /* MenuProfileTableViewCell.m in Sources */,
 				9E1362571D36C6D900FFD592 /* SavedRequestsViewController.m in Sources */,
 				9E1096EC1D3403E20081D081 /* DashboardViewController.m in Sources */,
