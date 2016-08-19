@@ -294,6 +294,25 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     //3
+    
+    if(self.viewAssays.hidden == YES)
+    {
+        
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:@"Please select Assays/models"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
     isSubmitAction = YES;
     NSString *strUserId = [[DetailsManager sharedManager]rID];
     
