@@ -1509,10 +1509,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDn-dn-WOU">
-                                <rect key="frame" x="0.0" y="423" width="187" height="200"/>
+                                <rect key="frame" x="-4" y="423" width="191" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="peU-nS-wzy"/>
+                                    <constraint firstAttribute="height" constant="200" id="1Qc-oT-PWo"/>
                                 </constraints>
                                 <state key="normal" image="chemistry.png"/>
                                 <connections>
@@ -1520,11 +1520,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-KB-xDq">
-                                <rect key="frame" x="188" y="423" width="187" height="200"/>
+                                <rect key="frame" x="188" y="423" width="189" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="187" id="clL-vU-GdW"/>
-                                    <constraint firstAttribute="height" constant="200" id="o5F-zN-wTW"/>
+                                    <constraint firstAttribute="height" constant="200" id="baU-kd-edc"/>
                                 </constraints>
                                 <state key="normal" image="biology.png"/>
                                 <connections>
@@ -1538,24 +1537,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="leading" secondItem="ULS-sc-ojb" secondAttribute="leading" id="33F-BO-BnL"/>
+                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="top" secondItem="ULS-sc-ojb" secondAttribute="top" id="14x-wF-C0W"/>
+                            <constraint firstItem="sKr-15-DWV" firstAttribute="top" secondItem="h0J-KB-xDq" secondAttribute="bottom" id="4f3-OY-U6h"/>
+                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="trailing" secondItem="ULS-sc-ojb" secondAttribute="trailing" id="Agz-n5-0fU"/>
+                            <constraint firstItem="sKr-15-DWV" firstAttribute="top" secondItem="jDn-dn-WOU" secondAttribute="bottom" id="DFB-8Z-Fde"/>
                             <constraint firstItem="yYC-6F-b9l" firstAttribute="top" secondItem="sKr-15-DWV" secondAttribute="bottom" id="F27-uW-Z7d"/>
                             <constraint firstItem="yYC-6F-b9l" firstAttribute="top" secondItem="ULS-sc-ojb" secondAttribute="bottom" id="Hky-on-KLL"/>
-                            <constraint firstItem="h0J-KB-xDq" firstAttribute="top" secondItem="jDn-dn-WOU" secondAttribute="top" id="ITB-wD-8mQ"/>
                             <constraint firstItem="ULS-sc-ojb" firstAttribute="top" secondItem="8iQ-6E-aci" secondAttribute="bottom" id="LWB-4L-r9W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h0J-KB-xDq" secondAttribute="trailing" constant="-18" id="NAI-f9-OFB"/>
+                            <constraint firstItem="h0J-KB-xDq" firstAttribute="leading" secondItem="jDn-dn-WOU" secondAttribute="trailing" constant="1" id="Nvq-2f-M5X"/>
                             <constraint firstAttribute="trailing" secondItem="sKr-15-DWV" secondAttribute="trailing" id="OM9-y0-qNg"/>
-                            <constraint firstItem="h0J-KB-xDq" firstAttribute="leading" secondItem="jDn-dn-WOU" secondAttribute="trailing" constant="1" id="PTC-0q-f6N"/>
-                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="leading" secondItem="jDn-dn-WOU" secondAttribute="leading" id="Roi-Sm-5bQ"/>
-                            <constraint firstItem="h0J-KB-xDq" firstAttribute="trailing" secondItem="sKr-15-DWV" secondAttribute="trailing" id="YRB-RE-S71"/>
-                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="leading" secondItem="sKr-15-DWV" secondAttribute="leading" id="YXJ-j2-rqT"/>
+                            <constraint firstItem="h0J-KB-xDq" firstAttribute="top" secondItem="ZKR-fk-RPF" secondAttribute="bottom" id="XOF-FE-k7v"/>
+                            <constraint firstItem="h0J-KB-xDq" firstAttribute="width" secondItem="jDn-dn-WOU" secondAttribute="width" constant="-2" id="YWm-aR-cRP"/>
                             <constraint firstItem="ULS-sc-ojb" firstAttribute="leading" secondItem="JJA-SJ-CLG" secondAttribute="leading" id="cvQ-Vl-uuz"/>
-                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="top" secondItem="ULS-sc-ojb" secondAttribute="top" id="fSi-RZ-eNy"/>
-                            <constraint firstItem="sKr-15-DWV" firstAttribute="top" secondItem="jDn-dn-WOU" secondAttribute="bottom" id="mJF-Sk-nIA"/>
-                            <constraint firstItem="h0J-KB-xDq" firstAttribute="top" secondItem="ZKR-fk-RPF" secondAttribute="bottom" id="mSL-M0-hdc"/>
-                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="trailing" secondItem="h0J-KB-xDq" secondAttribute="trailing" id="nUI-0V-ag3"/>
-                            <constraint firstItem="sKr-15-DWV" firstAttribute="top" secondItem="h0J-KB-xDq" secondAttribute="bottom" id="qc0-75-fjZ"/>
+                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="leading" secondItem="ULS-sc-ojb" secondAttribute="leading" id="fSp-wP-rfk"/>
+                            <constraint firstItem="ZKR-fk-RPF" firstAttribute="leading" secondItem="sKr-15-DWV" secondAttribute="leading" id="kF9-xf-fcT"/>
+                            <constraint firstItem="jDn-dn-WOU" firstAttribute="leading" secondItem="JJA-SJ-CLG" secondAttribute="leadingMargin" constant="-20" id="kci-9X-q6j"/>
                             <constraint firstAttribute="trailing" secondItem="ULS-sc-ojb" secondAttribute="trailing" id="sBB-Xb-DEQ"/>
-                            <constraint firstItem="sKr-15-DWV" firstAttribute="top" secondItem="jDn-dn-WOU" secondAttribute="bottom" id="vwJ-sd-gzm"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -2738,7 +2736,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="NS7-Ge-xNu"/>
                                                 </constraints>
-                                                <state key="normal" title="SUBMIT" backgroundImage="sign-in.png">
+                                                <state key="normal" title="SUBMIT" backgroundImage="btnRedGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -2757,7 +2755,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="eyM-Gm-5Ro"/>
                                                 </constraints>
-                                                <state key="normal" title="SAVE FOR LATER" backgroundImage="sign-in.png">
+                                                <state key="normal" title="SAVE FOR LATER" backgroundImage="btnGreyGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -2890,6 +2888,7 @@
                         <outlet property="GetAProposalLabel" destination="h5k-ae-U6h" id="Trp-UJ-IVx"/>
                         <outlet property="JournalReferenceTextField" destination="Z5F-6b-UO6" id="FyJ-YW-zWd"/>
                         <outlet property="KGBtnOutlet" destination="fKc-R8-ZiG" id="1eO-nj-L4I"/>
+                        <outlet property="MDLTextField" destination="MpF-iR-nNX" id="O1f-tI-AAb"/>
                         <outlet property="MGBtnOutlet" destination="kye-BS-kkc" id="A1p-dY-ifn"/>
                         <outlet property="NewOrEditChemistryReqHeaderLabel" destination="shV-ap-AYn" id="diR-Bz-Je6"/>
                         <outlet property="PuritybtnOutlet" destination="6xa-Nt-5Si" id="Nf9-z5-nmA"/>

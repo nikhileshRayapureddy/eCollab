@@ -164,6 +164,8 @@
 		A77095481D663B63001C0180 /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A770953C1D663B63001C0180 /* UIView+Hierarchy.m */; };
 		A77095491D663B63001C0180 /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A770953E1D663B63001C0180 /* UIView+IQKeyboardToolbar.m */; };
 		A770954A1D663B63001C0180 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */; };
+		A770954E1D66751A001C0180 /* ecolablogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954C1D66751A001C0180 /* ecolablogo.png */; };
+		A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954D1D66751A001C0180 /* gvk_whitelogo1.png */; };
 		CCE7904A1D65FCD8007A5623 /* btnGreyGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790481D65FCD8007A5623 /* btnGreyGradient.png */; };
 		CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790491D65FCD8007A5623 /* btnRedGradient.png */; };
 		CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904C1D65FED7007A5623 /* down-arrow.png */; };
@@ -386,6 +388,8 @@
 		A770953F1D663B63001C0180 /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
 		A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ecollab-Prefix.pch"; sourceTree = "<group>"; };
+		A770954C1D66751A001C0180 /* ecolablogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ecolablogo.png; sourceTree = "<group>"; };
+		A770954D1D66751A001C0180 /* gvk_whitelogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gvk_whitelogo1.png; sourceTree = "<group>"; };
 		CCE790481D65FCD8007A5623 /* btnGreyGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreyGradient.png; sourceTree = "<group>"; };
 		CCE790491D65FCD8007A5623 /* btnRedGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnRedGradient.png; sourceTree = "<group>"; };
 		CCE7904C1D65FED7007A5623 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
@@ -861,6 +865,8 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A770954C1D66751A001C0180 /* ecolablogo.png */,
+				A770954D1D66751A001C0180 /* gvk_whitelogo1.png */,
 				9EC27B2E1D6224DC005C4CA6 /* new.PNG */,
 				9EC27B2B1D62239E005C4CA6 /* 100x80.png */,
 				9EC27B261D621BA8005C4CA6 /* estmate_new.png */,
@@ -1161,6 +1167,7 @@
 				9EC27B191D621A95005C4CA6 /* proficon.png in Resources */,
 				A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */,
 				9EC27B2D1D62239E005C4CA6 /* 100x80.png in Resources */,
+				A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */,
 				9EC27B251D621AF3005C4CA6 /* refer_new.png in Resources */,
 				9EBEFF6C1D60905D00271E18 /* chelocalimg.png in Resources */,
 				9EC27B271D621BA8005C4CA6 /* estmate_new.png in Resources */,
@@ -1179,6 +1186,7 @@
 				9EBEFF6D1D60905D00271E18 /* chemistryserveimg.png in Resources */,
 				CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */,
 				9E0C0B811D368DC00039A884 /* savedrequest.png in Resources */,
+				A770954E1D66751A001C0180 /* ecolablogo.png in Resources */,
 				9EC27B201D621AF3005C4CA6 /* cashbag.png in Resources */,
 				9EC27B231D621AF3005C4CA6 /* purity_new.png in Resources */,
 				9EC27B5D1D62405F005C4CA6 /* Request a Quote_black.jpg in Resources */,

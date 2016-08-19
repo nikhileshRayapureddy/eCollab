@@ -79,6 +79,21 @@
     ProductID = [NSMutableString stringWithFormat:@"0"];
     
     QuantityID= @"1";
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+
 
 }
 -(void)viewDidLayoutSubviews
@@ -172,7 +187,10 @@
         [self ImagesDisplay:@"0"];
         
         [self performSelectorOnMainThread:@selector(bindCompundDBData) withObject:nil waitUntilDone:true];
+        if (dictSavedChemestryData != nil)
+        {
         [self bindChemestryData:dictSavedChemestryData];
+        }
     }else{
         //show some alert
 
@@ -434,7 +452,33 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     
-    NSDictionary *inputDick = [NSDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",ProductID,@"ProductID",ProductType,@"ProductType",[NSString stringWithFormat:@"%@",JournalReferenceTextField.text],@"jonuralref",[NSString stringWithFormat:@"%@",date],@"ExpDeliveryDate",[NSString stringWithFormat:@"%@",QuantityTextField.text],@"Quantity",QuantityID,@"QuantityID",Purity,@"Purity",PurityID,@"PurityID",[NSString stringWithFormat:@"%@",CharitybtnOutlet.text],@"Chirality",[NSString stringWithFormat:@"%@",RemarksTextField.text],@"Comments",@"1",@"ISSubmit", @"1",@"Status",b64EncStr,@"Image",nil];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
+    [dict setValue:ProductType forKey:@"ProductType"];
+    if ([ProductType isEqualToString:@"1"])
+    {
+        [dict setValue:b64EncStr forKey:@"Image"];
+    }
+    else
+    {
+        [dict setValue:@"" forKey:@"Image"];
+    }
+    [dict setValue:ProductID forKey:@"ProductID"];
+    [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
+    [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
+    [dict setValue:QuantityTextField.text forKey:@"Quantity"];
+    [dict setValue:QuantityID forKey:@"QuantityID"];
+    [dict setValue:Purity forKey:@"Purity"];
+    [dict setValue:PurityID forKey:@"PurityID"];
+    [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
+    [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
+    [dict setValue:@"1" forKey:@"ISSubmit"];
+    [dict setValue:@"1" forKey:@"Status"];
+    [dict setValue:CASTextField.text forKey:@"CAS"];
+    [dict setValue:MDLTextField.text forKey:@"MDL"];
+    
+
     
     // producttype camera 1 product id 0 (image base 64)
     // producttype data 2   product id (image id from db )
@@ -449,7 +493,7 @@
 //    }else{
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
-        [request requestForopCreateChemistryRequestService:inputDick];
+        [request requestForopCreateChemistryRequestService:dict];
         request =  nil;
 //    }
 }
@@ -593,8 +637,8 @@
     NSDate *expdate = [df dateFromString:strDate];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
-    strDate = [dateFormat stringFromDate:expdate];
-    [ExpectedDeleveryDateBtnOutlet setTitle:strDate forState:UIControlStateNormal];
+    date = [dateFormat stringFromDate:expdate];
+    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
    
     
     NSNumber *qty = [dictData valueForKey:@"Quantity"];

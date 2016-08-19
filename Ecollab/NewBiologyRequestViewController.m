@@ -43,6 +43,20 @@
      [FAQLabelOutlet.layer setBorderColor:[[UIColor blackColor] CGColor]];
      */
     arrCellSelected = [[NSMutableArray alloc]init];
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [ServiceBtnOutlet.layer setBorderWidth: 1.0];
     [ServiceBtnOutlet.layer setMasksToBounds:YES];
@@ -243,7 +257,8 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(dropdownTableView.frame.origin.x, dropdownTableView.frame.origin.y+dropdownTableView.frame.size.height, dropdownTableView.frame.size.width, 30);
     [btn setTitle:@"Done" forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor whiteColor];
     btn.tag = 3235;
     [btn addTarget:self action:@selector(removeTableViewPopup) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
