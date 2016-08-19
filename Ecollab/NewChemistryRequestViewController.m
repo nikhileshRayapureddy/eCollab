@@ -60,7 +60,6 @@
     [self.PuritybtnOutlet.layer setBorderWidth: 1.0];
     [self.PuritybtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
 
-
     [self.imgVwTakeOrChoose setImage:[UIImage imageNamed:@"chemistryserveimg.png"]];
     [self.imgVwReferenceComp setImage:[UIImage imageNamed:@"chelocalimg.png"]];
     
@@ -94,6 +93,18 @@
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
 
+    if(self.isFromRequestAQuote == YES)
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"NEW CHEMISTRY REQUEST"
+                                                                              attributes:underlineAttribute];
+    }
+    else
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
+                                                                              attributes:underlineAttribute];
+    }
 
 }
 -(void)viewDidLayoutSubviews
@@ -203,7 +214,8 @@
     request =  nil;
 }
 -(void)requestReceivedopImagesOnTherapiticAreaResponce:(NSMutableDictionary *)aregistrationDict{
-    
+   
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     collectionImageDataArray =[aregistrationDict objectForKey:@"ImageTherapiticAreaResult"];
     [vwCompundDBCustomView.clVwCompoundDb reloadData];
 
@@ -445,7 +457,7 @@
         [dict setValue:@"1" forKey:@"Status"];
         [dict setValue:CASTextField.text forKey:@"CAS"];
         [dict setValue:MDLTextField.text forKey:@"MDL"];
-        
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopCreateChemistryRequestService:dict];
@@ -481,31 +493,17 @@
         [dict setValue:@"1" forKey:@"Status"];
         [dict setValue:CASTextField.text forKey:@"CAS"];
         [dict setValue:MDLTextField.text forKey:@"MDL"];
-        
-        
-        
-        // producttype camera 1 product id 0 (image base 64)
-        // producttype data 2   product id (image id from db )
-        // producttype defult 0 product id 0
-        // PurityID PurityMaster(load mastar) = rid in table data
-        //ISSubmit 1 submit 0 for save for later
-        // status always 1
-        
-        //NSDictionary *inputDick = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"UID",@"12",@"ProductID",@"1",@"ProductType",@"1236",@"jonuralref",@"12/22/2015",@"ExpDeliveryDate",@"10",@"Quantity",@"1",@"QuantityID",@"0",@"Purity",@"1",@"PurityID",@"1",@"Chirality",@"1",@"Comments",@"1",@"ISSubmit", @"1",@"Status",@"",@"Image",nil];
-        //    if ([CASTextField.text isEqualToString:@""]||[MDLTextField.text isEqualToString:@""]||[date isEqualToString:@""]||[QuantityTextField.text isEqualToString:@""]||[Purity isEqualToString:@""]||[CharitybtnOutlet.text isEqualToString:@""]) {
-        //        //show alert  some mesage
-        //    }else{
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopCreateChemistryRequestService:dict];
         request =  nil;
-        //    }
     }
 }
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
     
-    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
                                                                    message:@"Chemistery request saved successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];

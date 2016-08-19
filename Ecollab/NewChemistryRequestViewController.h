@@ -58,5 +58,6 @@
 - (IBAction)TakeOrChoosePhotoBtnAction:(id)sender;
 
 @property (strong, nonatomic) NSDictionary *dictSavedChemestryData;
+@property (assign, nonatomic) BOOL isFromRequestAQuote;
 
 @end
