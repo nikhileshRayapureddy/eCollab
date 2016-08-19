@@ -11,20 +11,38 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="am4-xK-6vz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rIF-44-Vzr"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="am4-xK-6vz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3MK-aT-6gL"/>
+                            <constraint firstAttribute="trailing" secondItem="am4-xK-6vz" secondAttribute="trailing" id="7hS-El-9Mx"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="am4-xK-6vz" secondAttribute="bottom" id="Lz2-2K-rZc"/>
+                            <constraint firstItem="am4-xK-6vz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zLL-pI-ZP8"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrlVwImages" destination="am4-xK-6vz" id="tIn-bU-ZE5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361.5" y="401.25"/>
+            <point key="canvasLocation" x="361.5" y="400.5"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="xKg-3u-JPQ">
