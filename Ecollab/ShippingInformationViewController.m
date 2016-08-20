@@ -9,7 +9,9 @@
 #import "ShippingInformationViewController.h"
 
 @interface ShippingInformationViewController ()
-
+{
+    NSMutableArray *arrAddresses;
+}
 @end
 
 @implementation ShippingInformationViewController
@@ -17,25 +19,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
-    [ShippingInformationTableview setDelegate:self];
-    [ShippingInformationTableview setDataSource:self];
-}
+    arrAddresses = [[NSMutableArray alloc]init];
+    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request requestForopGetShippingAddressDetailsService];
+    request =  nil;
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+-(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict
+{
+    arrAddresses = [aregistrationDict valueForKey:@"UserAddressDetailsResult"];
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    [ShippingInformationTableview reloadData];
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     // If you're serving data from an array, return the length of the array:
-    return 0;
+    return arrAddresses.count;
 }
 
 // Customize the appearance of table view cells.
@@ -48,13 +56,15 @@
         cell = [[ShippingInformationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    NSDictionary *dictAddress = [arrAddresses objectAtIndex:indexPath.row];
     // Set the data for this cell:
     
-    //    cell.textLabel.text = [dataArray objectAtIndex:indexPath.row];
-    //    cell.detailTextLabel.text = @"More text";
-    //    cell.imageView.image = [UIImage imageNamed:@"flower.png"];
-    
-    // set the accessory view:
+        cell.NameLabel.text = [dictAddress valueForKey:@"Name"];
+        cell.AddressLabel.text = [dictAddress valueForKey:@"Address"];
+        cell.AddressTwoLabel.text = [NSString stringWithFormat:@"%@ %@",[dictAddress valueForKey:@"City"],[dictAddress valueForKey:@"State"]];
+        cell.PinCodeLabel.text = [NSString stringWithFormat:@"%@ %@ %@",[dictAddress valueForKey:@"Pincode"],[dictAddress valueForKey:@"Country"],[dictAddress valueForKey:@"MobileNumber"]];
+    cell.EditAddressBtnOutlet.tag = 100+indexPath.row;
+    [cell.EditAddressBtnOutlet addTarget:self action:@selector(btnEditClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     
     return cell;
@@ -62,14 +72,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    int selectedRow = indexPath.row;
-    NSLog(@"touch on row %d", selectedRow);
+
 }
 
+-(void)btnEditClicked:(UIButton*)sender
+{
+    AddNewShippingAddressViewController *CPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"AddNewShippingAddressViewController"];
+    CPVCtrlObj.isEdit = YES;
+    CPVCtrlObj.dictAddress = [arrAddresses objectAtIndex:sender.tag - 100];
+    [self.navigationController pushViewController:CPVCtrlObj animated:YES];
 
+}
 - (IBAction)AddNewAddressBtnAction:(id)sender {
     AddNewShippingAddressViewController *CPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"AddNewShippingAddressViewController"];
+    CPVCtrlObj.isEdit = false;
     [self.navigationController pushViewController:CPVCtrlObj animated:YES];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 @end

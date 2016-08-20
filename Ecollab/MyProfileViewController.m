@@ -15,7 +15,7 @@
 @end
 
 @implementation MyProfileViewController
-@synthesize NameLabel,ProfileImage,EmailLabel,FirstNameLabel,LastNameLabel,EmailAddressLabel,DesignationLabel,CompanyNameLabel;
+@synthesize scrlVwProfile,ProfileImage;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -23,13 +23,17 @@
     //ProfileImage
     [ProfileImage.layer setBorderWidth: 1.0];
     [ProfileImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
 
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopGetUserDetailsService];
     request =  nil;
 }
-
+-(void)viewDidLayoutSubviews
+{
+    scrlVwProfile.contentSize = CGSizeMake(scrlVwProfile.contentSize.width, 650);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -43,28 +47,70 @@
     {
         // show some message unable to get usre details
     }else{
-        NameLabel.text = [dic objectForKey:@"FirstName"];
-        EmailLabel.text = [dic objectForKey:@"EmailID"];
-        FirstNameLabel.text = [dic objectForKey:@"FirstName"];
-        LastNameLabel.text =[dic objectForKey:@"LastName"];
-        EmailAddressLabel.text =[dic objectForKey:@"EmailID"];
-        DesignationLabel.text =[dic objectForKey:@"Designation"];
-        CompanyNameLabel.text = [dic objectForKey:@"CompanyName"];
+        _lblUserName.text = [dic objectForKey:@"FirstName"];
+        _lblEmail.text = [dic objectForKey:@"EmailID"];
+        _txtFldFirstName.text = [dic objectForKey:@"FirstName"];
+        _txtFldLastName.text =[dic objectForKey:@"LastName"];
+        _txtFldEmail.text =[dic objectForKey:@"EmailID"];
+        _txtFldDesignation.text =[dic objectForKey:@"Designation"];
+        _txtFldComapnyName.text = [dic objectForKey:@"CompanyName"];
         
         NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[dic objectForKey:@"Image"]];
         NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
         if(data != nil)
         {
             [ProfileImage setBackgroundImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
+            self.imgProfileBg.image = [UIImage imageWithData:data];
         }
     }
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+
 
 }
-- (IBAction)editPersonalDetailAction:(id)sender {
-    EditPersonalDetailsViewController *EPDVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"EditPersonalDetailsViewController"];
-    EPDVCtrlObj.userDataDict = [dic mutableCopy];
-    [self.navigationController pushViewController:EPDVCtrlObj animated:YES];
+- (IBAction)btnSaveProfileClicked:(UIButton *)sender {
+    NSMutableDictionary *dictUser = [[NSMutableDictionary alloc]init];
+    if (![_txtFldFirstName.text isEqualToString:@""]) {
+        [dictUser setObject:_txtFldFirstName.text forKey:@"FirstName"];
+    }
+    if (![_txtFldLastName.text isEqualToString:@""]){
+        [dictUser setObject:_txtFldLastName.text forKey:@"LastName"];
+    }
+    if (![_txtFldEmail.text isEqualToString:@""]){
+        [dictUser setObject:_txtFldEmail.text forKey:@"EmailID"];
+    }
+    if (![_txtFldComapnyName.text isEqualToString:@""]){
+        [dictUser setObject:_txtFldComapnyName.text forKey:@"CompanyName"];
+    }
+    if (![_txtFldDesignation.text isEqualToString:@""]){
+        [dictUser setObject:_txtFldDesignation.text forKey:@"Designation"];
+    }
+    [dictUser setObject:@"0" forKey:@"ISMobileUser"];
+    //ISGvkEmployee
+    [dictUser setObject:@"0" forKey:@"ISGvkEmployee"];
+    [dictUser setObject:[[DetailsManager sharedManager]rID] forKey:@"RID"];
+    [dictUser setObject:@"" forKey:@"Image"];
+
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request requestForopSaveUserDetailsService:dictUser];
+    request =  nil;
 }
+-(void)requestReceivedopSaveUserDetailsResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                   message:@"Profile saved Successfully."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
+    // show a message success or not
+}
+
 
 - (IBAction)ChangePasswordBtnAction:(id)sender {
     ChangePasswordViewController *CPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];

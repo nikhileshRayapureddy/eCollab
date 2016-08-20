@@ -91,7 +91,7 @@
         //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sivvalasanthu@gmail.com",@"EmailID",@"Gvkbio@123",@"Password",@"0",@"ISGvkEmployee", nil];
         //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sudheer.addala@gmail.com",@"EmailID",@"Gvkbio@12",@"Password",@"0",@"ISGvkEmployee", nil];
         NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",EmailTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",@"0",@"ISGvkEmployee", nil];
-    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForLoginService:inputDick];
@@ -100,7 +100,7 @@
 }
 //login request recived with a dictionary of data
 -(void)requestReceivedLoginResponce:(NSMutableDictionary *)aregistrationDict{
-    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     NSLog(@"%@",aregistrationDict);
     NSMutableArray *arr = [aregistrationDict objectForKey:@"Login"];
     NSDictionary *dic = [arr objectAtIndex:0];

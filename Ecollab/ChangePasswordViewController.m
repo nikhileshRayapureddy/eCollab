@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,15 +26,44 @@
 
 -(void)requestReceivedopChangePasswordResponce:(NSMutableDictionary *)aregistrationDict{
     // show a message success or not
-    [self.navigationController popViewControllerAnimated:YES];
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                   message:@"Password Changes Successfully."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
 
 }
 
 
 - (IBAction)ChangePasswordAction:(id)sender {
-    if ([oldPassword.text isEqualToString:@""]||[NewPassword.text isEqualToString:@""]||[confirmPassword.text isEqualToString:@""]) {
-        //show an alert
-    }else{
+    
+    
+    if ([oldPassword.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter old Password"];
+    }
+    else if ([NewPassword.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter New Password"];
+    }
+    else if ([confirmPassword.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please Re-enter New Password"];
+    }
+    else if (![NewPassword.text isEqualToString:confirmPassword.text])
+    {
+        [self showAlertWithMessage:@"Old Password and new password doesn't match."];
+    }
+    else{
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+
         NSMutableDictionary *ChangePasswordDict = [NSMutableDictionary new];
         ChangePasswordDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"UID",oldPassword.text,@"OldPassword",confirmPassword.text,@"CPassword",NewPassword.text,@"Password",nil];
         if ([confirmPassword.text isEqualToString:NewPassword.text])
@@ -46,5 +74,16 @@
             request = nil;
         }
     }
+}
+
+-(void)showAlertWithMessage:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 @end

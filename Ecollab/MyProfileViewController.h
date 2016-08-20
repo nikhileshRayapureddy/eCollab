@@ -15,15 +15,17 @@
 #import "ServiceRequester.h"
 @interface MyProfileViewController : UIViewController<ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UIButton *ProfileImage;
-@property (strong, nonatomic) IBOutlet UILabel *NameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *EmailLabel;
-@property (strong, nonatomic) IBOutlet UILabel *FirstNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *LastNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *EmailAddressLabel;
-@property (strong, nonatomic) IBOutlet UILabel *CompanyNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *DesignationLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrlVwProfile;
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfileBg;
 
 
+@property (weak, nonatomic) IBOutlet UITextField *txtFldFirstName;
+@property (weak, nonatomic) IBOutlet UITextField *txtFldLastName;
+@property (weak, nonatomic) IBOutlet UITextField *txtFldEmail;
+@property (weak, nonatomic) IBOutlet UITextField *txtFldComapnyName;
+@property (weak, nonatomic) IBOutlet UITextField *txtFldDesignation;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmail;
 
 
 
@@ -33,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *DisclimerBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *AboutUsBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *LogoutBtnOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *btnSaveProfile;
+- (IBAction)btnSaveProfileClicked:(UIButton *)sender;
 
 - (IBAction)editPersonalDetailAction:(id)sender;
 - (IBAction)ChangePasswordBtnAction:(id)sender;
