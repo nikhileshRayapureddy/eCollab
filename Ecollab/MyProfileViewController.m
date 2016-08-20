@@ -22,8 +22,6 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     //ProfileImage
     [ProfileImage.layer setBorderWidth: 1.0];
-    [ProfileImage.layer setCornerRadius:70.f];//((ProfileImage.frame.size.width)/2)
-    [ProfileImage.layer setMasksToBounds:YES];
     [ProfileImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
 
     ServiceRequester *request = [ServiceRequester new];

@@ -105,6 +105,10 @@
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
                                                                               attributes:underlineAttribute];
     }
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy"];
+    date = [dateFormat stringFromDate:[NSDate date]];
+    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
 
 }
 -(void)viewDidLayoutSubviews
@@ -430,9 +434,6 @@
 
 
 - (IBAction)SaveForLaterBtnAction:(id)sender {
-    
-    if ([self validationFields])
-    {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
         [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
         [dict setValue:ProductType forKey:@"ProductType"];
@@ -462,7 +463,6 @@
         request.serviceRequesterDelegate =  self;
         [request requestForopCreateChemistryRequestService:dict];
         request =  nil;
-    }
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
@@ -510,8 +510,15 @@
     
     UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
                                                                    handler:^(UIAlertAction * action) {
-                                                                       [self.navigationController popViewControllerAnimated:YES];
-
+                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                           {
+                                                                               [self.navigationController popToViewController:vc animated:YES];
+                                                                           }
+                                                                           
+                                                                           
+                                                                           
+                                                                       }
                                                                    }];
     
     
