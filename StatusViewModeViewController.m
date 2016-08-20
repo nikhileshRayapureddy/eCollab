@@ -32,20 +32,39 @@
 }
 -(void)dataDisplaying{
     LabelOne.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];
-    labelTwo.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Quantity"]];
-    LabelTrhee.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Purity"]];
-    LabelFour.text= [NSMutableString stringWithFormat:@"Exp_Delivery_Date"];
-    LabelFive.text= [NSMutableString stringWithFormat:@"EstimatedDelivaryDate"];
+//    labelTwo.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Quantity"]];
+    
+    self.lblQuantityValue.text = [NSMutableString stringWithFormat:@"%@ %@",[LocalDataDictionary objectForKey:@"Quantity"],[LocalDataDictionary objectForKey:@"QuantityValue"]];
+    LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Purity"]];
+
     LabelSix.text= [NSMutableString stringWithFormat:@"REMARKS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
     Labelseven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
     LabelEight.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"jonuralref"]];
     Labelnine.text= [NSMutableString stringWithFormat:@"PRICE(%@)",[LocalDataDictionary objectForKey:@"Currency"]];
     LabelTen.text= [NSMutableString stringWithFormat:@"QUOTATION COMMENTS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@""]];
     LabelEleven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"AdminComments"]];
-    LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Purity"]];
-    LabelFourTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Exp_Delivery_Date"]];
-    LabelFiveTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"EstimatedDelivaryDate"]];
-    labelNineTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Price"]];
+//    LabelFourTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Exp_Delivery_Date"]];
+    NSString *strExpected = [LocalDataDictionary objectForKey:@"Exp_Delivery_Date"];
+    NSString *strEstimated = [LocalDataDictionary objectForKey:@"EstimatedDelivaryDate"];
+    NSArray *arrExpected = [strExpected componentsSeparatedByString:@" "];
+    NSArray *arrEstimated = [strEstimated componentsSeparatedByString:@" "];
+    if(arrExpected.count > 0)
+    {
+        LabelFourTwo.text = [arrExpected objectAtIndex:0];
+    }
+    if(arrEstimated.count > 0)
+    {
+        LabelFiveTwo.text = [arrEstimated objectAtIndex:0];
+    }
+    
+//    LabelFiveTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"EstimatedDelivaryDate"]];
+    labelNineTwo.text= [NSMutableString stringWithFormat:@"%.2f",[[LocalDataDictionary objectForKey:@"Price"] floatValue]];
+    
+    self.viewRemarksValue.layer.borderWidth = 1.0;
+    self.viewCommentsValue.layer.borderWidth = 1.0;
+    
+    self.viewCommentsValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.viewCommentsValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

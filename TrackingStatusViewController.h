@@ -17,4 +17,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *StatusTableview;
 @property (strong, nonatomic) NSMutableDictionary *MainDataDictionary;
 @property (strong, nonatomic) NSMutableString *ItemType;
+@property (weak, nonatomic) IBOutlet UIImageView *imgRequestLogo;
+@property (weak, nonatomic) IBOutlet UILabel *lblRequestNumber;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
+@property (weak, nonatomic) IBOutlet UIImageView *imgRightArrow;
 @end

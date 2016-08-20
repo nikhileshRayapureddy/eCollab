@@ -46,4 +46,14 @@
 @property (assign, nonatomic) BOOL shouldUpdateRequest;
 @property (strong, nonatomic) NSString *strRIDForSavedRequest;
 @property (assign, nonatomic) BOOL isSubmitAction;
+
+
+
+@property (assign, nonatomic) BOOL isFromTracking;
+@property (weak, nonatomic) IBOutlet UIImageView *imgServiceDownArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSubAreaDownArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *imgModelsDownArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAreaDownArrow;
+
+
 @end
