@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *LegalDisclaimerBtnOutlet;
 - (IBAction)PrivacyAndTermsBtnAction:(id)sender;
 - (IBAction)LegalDisclaimerBtnAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitile;
 
 @end
