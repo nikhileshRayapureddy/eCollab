@@ -29,8 +29,49 @@
     NSLog(@"%@",TableDataArray);
     [StatusTableview setDelegate:self];
     [StatusTableview setDataSource:self];
+    if(TableDataArray.count > 0)
+    {
+        NSDictionary *dictOrderDetails = [TableDataArray objectAtIndex:0];
+        self.lblStatus.text = [NSString stringWithFormat:@"%@",[dictOrderDetails objectForKey:@"ReqStatus"]];
+        self.lblRequestNumber.text = [dictOrderDetails objectForKey:@"OrderNumber"];
 
+    }
+    if([ItemType  isEqual: @"0"])
+    {
+        self.imgRequestLogo.image = [UIImage imageNamed:@"chemistrysaved.png"];
+    }
+    else
+    {
+        self.imgRequestLogo.image = [UIImage imageNamed:@"biologysaved.png"];
+    }
+    [self designNavBar];
 }
+
+-(void)designNavBar
+{
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -65,14 +106,35 @@
      */
     NSDictionary *tempDict = [TableDataArray objectAtIndex:indexPath.row];
     //CreatedDate
-    cell.imageView.image = [UIImage imageNamed:@""];
+    if([[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"DISCUSS"] == YES || [[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"ACCEPTANCE"] == YES)
+    {
+        cell.StatusImage.image = [UIImage imageNamed:@"orangetracksubnew.png"];
+    }
+    else if((long)[tempDict valueForKey:@"ISRegretted"] == 1 || (long)[tempDict valueForKey:@"ISRejected"] == 1 )
+    {
+        cell.StatusImage.image = [UIImage imageNamed:@"crossred.png"];
+    }
+    else
+    {
+        cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+    }
+    
+    if([[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"UNDER PROCESS"] == YES)
+    {
+        cell.imgRightArrow.hidden = YES;
+    }
+    else
+    {
+        cell.imgRightArrow.hidden = NO;
+    }
+
     cell.StatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ReqStatus"]];
     cell.StatusTimeLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"CreatedDate"]];
     if (TableDataArray.count-1 == indexPath.row) {
         [cell.StatusProcessIndecatorLabel setHidden:YES];
     }
-
-return cell;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -106,48 +168,50 @@ return cell;
 -(void)requestReceivedopRequestedQuoteDetailsResponce:(NSMutableDictionary *)aregistrationDict
 {
 
-    
-    if ([ProjectStatus intValue] == 3) {
-        
-        //PlaceOrder = 0
-        // edit mode
-        
-        //PlaceOrder = 1
-        //view mode
-        StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
-        TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
-        TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
-        [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
-
-    }else if ([ProjectStatus intValue] == 2){
-            //PlaceOrder = 0
-            // edit mode
-        
-            //PlaceOrder = 1
-            //view mode
-            
-        StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
-        TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
-        TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
-        [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
-    }else
-    {
-        // Note please navigate with data dictionary
-
-        // always view mode
-        if ([ItemType intValue] == 0) {
-            NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
-            [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
-        }else{
-            // navigate bilogy NewBiologyRequestViewController.h
-            // discuss quote
-            // without discuss button
-            DiscussQuoteViewController *DQVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
-            DQVCtrlObj.DataDict = aregistrationDict;
-            [self.navigationController pushViewController:DQVCtrlObj animated:YES];
+    switch (ProjectStatus.intValue) {
+        case 0:
+        {
+            if ([ItemType intValue] == 0) {
+                NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
+                [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
+            }else{
+                NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
+                NBRVCtrlObj.isFromRequestAQuote = NO;
+                NBRVCtrlObj.shouldUpdateRequest = NO;
+                NBRVCtrlObj.isFromTracking = YES;
+                NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                if(arr.count != 0)
+                {
+                    NSMutableDictionary *dict = [arr objectAtIndex:0];
+                    NBRVCtrlObj.dictSavedOrderDetails = dict;
+                }
+                [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
+            }
         }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+            TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+            TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+            [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+        }
+            break;
+        case 3:
+        {
+            StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+            TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+            TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+            [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+        }
+            break;
+        default:
+            break;
     }
-
-
 }
 @end

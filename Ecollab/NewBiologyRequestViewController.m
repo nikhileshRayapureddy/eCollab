@@ -33,6 +33,9 @@
 @synthesize shouldUpdateRequest;
 @synthesize strRIDForSavedRequest;
 @synthesize isSubmitAction;
+
+@synthesize isFromTracking;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -93,11 +96,17 @@
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"NEW BIOLOGY REQUEST"
                                                                  attributes:underlineAttribute];
     }
-    else
+    else if(shouldUpdateRequest == YES)
     {
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT BIOLOGY REQUEST"
                                                                  attributes:underlineAttribute];
+    }
+    else if(isFromTracking == YES)
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"BIOLOGY REQUEST DETAILS"
+                                                                              attributes:underlineAttribute];
     }
 }
 
@@ -129,9 +138,56 @@
     }
 }
 
+-(void)bindOrderDetailsFromTracking:(NSMutableDictionary *)dict
+{
+    if(isFromRequestAQuote || shouldUpdateRequest)
+    {
+        return;
+    }
+    NSString *strService = [dict objectForKey:@"Service"];
+    NSString *area = [dict objectForKey:@"Area"];
+    NSString *subArea = [dict objectForKey:@"SubArea"];
+    NSString *modelIds = [dict objectForKey:@"MultipleModelValues"];
+    if(modelIds.length == 0)
+    {
+        modelIds = @"SELECT ASSAYS/MODELS";
+    }
+    
+    [ServiceBtnOutlet setTitle:strService forState:UIControlStateNormal];
+    [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [AreaOutlet setTitle:area forState:UIControlStateNormal];
+    [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
+    [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
+    [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    isFromRequestAQuote = YES;
+    
+    strServiceIDFinal = [dict objectForKey:@"ServiceID"];
+    strAreaIDFinal = [dict objectForKey:@"AreaID"];
+    strSubAreaIDFinal = [dict objectForKey:@"SubAreaID"];
+    strModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
+    
+    self.imgServiceDownArrow.hidden = YES;
+    self.imgAreaDownArrow.hidden = YES;
+    self.imgSubAreaDownArrow.hidden = YES;
+    self.imgModelsDownArrow.hidden = YES;
+    
+    ServiceBtnOutlet.userInteractionEnabled = NO;
+    AreaOutlet.userInteractionEnabled = NO;
+    SubAreaBtnOutlet.userInteractionEnabled = NO;
+    ModelsBtnOutlet.userInteractionEnabled = NO;
+    
+    SubmitBtnOutlet.hidden = YES;
+    SaveForLaterBtnOutlet.hidden = YES;
+}
+
 -(void)bindSavedOrderDetails:(NSMutableDictionary *)dict
 {
-    if(isFromRequestAQuote)
+    if(isFromRequestAQuote || isFromTracking)
     {
         return;
     }
@@ -182,7 +238,7 @@
             strServiceIDFinal = [dict objectForKey:@"RID"];
             Type = [NSMutableString stringWithFormat:@"0"];
             //*Type,*SubID,*ModelID;  //RID Service
-            if(isFromRequestAQuote)
+            if(isFromRequestAQuote == YES || isFromTracking == YES)
             {
                 SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             }
@@ -329,6 +385,7 @@
     }
     else
     {
+        ModelsBtnOutlet.titleLabel.numberOfLines = 2;
         [ModelsBtnOutlet setTitle:strSelectedModels forState:UIControlStateNormal];
     }
 }
@@ -366,20 +423,28 @@
     [dictRequest setValue:strSubAreaIDFinal forKey:@"SubAreaID"];
     if ([strModelIdIDFinal isKindOfClass:[NSNull class]] || strModelIdIDFinal == nil)
     {
-        [dictRequest setObject:@"" forKey:@"ModelID"];
+        [dictRequest setObject:@"" forKey:@"MultipleModelIDS"];
     }
     else
     {
-        [dictRequest setValue:strModelIdIDFinal forKey:@"ModelID"];
+        [dictRequest setValue:strModelIdIDFinal forKey:@"MultipleModelIDS"];
     }
-    
+    [dictRequest setObject:@"" forKey:@"ModelID"];
     [dictRequest setObject:@"1" forKey:@"ISSubmit"];
     [dictRequest setObject:@"" forKey:@"Status"];
     [dictRequest setObject:strUserId forKey:@"CreatedBy"];
-    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
-    [dictRequest setObject:@"" forKey:@"RID"];
+//    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
+    if(shouldUpdateRequest == YES)
+    {
+        [dictRequest setValue:strRIDForSavedRequest forKey:@"RID"];
+    }
+    else
+    {
+        [dictRequest setObject:@"" forKey:@"RID"];
+    }
     
-//    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    //    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopInsertBiologyRequestService:dictRequest];
@@ -410,6 +475,8 @@
     [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
     
     //    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
+    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     if(shouldUpdateRequest)
@@ -431,6 +498,7 @@
 }
 -(void)requestReceivedopInsertBiologyRequestResponce:(NSMutableDictionary *)aregistrationDict{
     
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     if(isSubmitAction == YES)
     {
         NSArray *array = [aregistrationDict objectForKey:@"NewBiologyRequestResult"];
@@ -444,7 +512,23 @@
                                                                                message:[dictResponse objectForKey:@"SuccessString"]
                                                                         preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self.navigationController popViewControllerAnimated:YES];
+                    for (UIViewController *vc in self.navigationController.viewControllers) {
+                        if ([vc isKindOfClass:[DashboardViewController class]])
+                        {
+                            for (UIViewController *vc in self.navigationController.viewControllers) {
+                                if ([vc isKindOfClass:[DashboardViewController class]])
+                                {
+                                    [self.navigationController popToViewController:vc animated:YES];
+                                }
+                                
+                                
+                                
+                            }
+                        }
+                        
+                        
+                        
+                    }
                 }];
                 
                 
@@ -477,7 +561,15 @@
                                                                                message:[aregistrationDict objectForKey:@"SuccessString"]
                                                                         preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self.navigationController popViewControllerAnimated:YES];
+                    for (UIViewController *vc in self.navigationController.viewControllers) {
+                        if ([vc isKindOfClass:[DashboardViewController class]])
+                        {
+                            [self.navigationController popToViewController:vc animated:YES];
+                        }
+                        
+                        
+                        
+                    }
                 }];
                 
                 
@@ -512,7 +604,15 @@
                                                                                    message:[dictResponse objectForKey:@"SuccessString"]
                                                                             preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        [self.navigationController popViewControllerAnimated:YES];
+                        for (UIViewController *vc in self.navigationController.viewControllers) {
+                            if ([vc isKindOfClass:[DashboardViewController class]])
+                            {
+                                [self.navigationController popToViewController:vc animated:YES];
+                            }
+                            
+                            
+                            
+                        }
                     }];
                     
                     
@@ -685,7 +785,7 @@
         {
             serFlag = 1;
             Type = [NSMutableString stringWithFormat:@"1"];
-            if(isFromRequestAQuote)
+            if(isFromRequestAQuote == YES || isFromTracking == YES)
             {
                 NSDictionary *dictFirstObject = [areaArray objectAtIndex:0];
                 [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"Description"]] forState:UIControlStateNormal];
@@ -714,7 +814,7 @@
                 [self showViewSubArea:YES];
                 Type = [NSMutableString stringWithFormat:@"3"];
                 SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
-                if(isFromRequestAQuote)
+                if(isFromRequestAQuote == YES || isFromTracking == YES)
                 {
                     NSDictionary *dict = [subAreaArray objectAtIndex:0];
                     [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
@@ -744,7 +844,14 @@
         else
         {
             [arrCellSelected removeAllObjects];
-            [self bindSavedOrderDetails:dictSavedOrderDetails];
+            if(shouldUpdateRequest == YES)
+            {
+                [self bindSavedOrderDetails:dictSavedOrderDetails];
+            }
+            if(isFromTracking == YES)
+            {
+                [self bindOrderDetailsFromTracking:dictSavedOrderDetails];
+            }
             modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
             
             if(modelArray.count == 0)
@@ -759,7 +866,15 @@
         }
     }
     else if (serFlag == 2){
-        [self bindSavedOrderDetails:dictSavedOrderDetails];
+        if(shouldUpdateRequest == YES)
+        {
+            [self bindSavedOrderDetails:dictSavedOrderDetails];
+        }
+        if(isFromTracking == YES)
+        {
+            [self bindOrderDetailsFromTracking:dictSavedOrderDetails];
+        }
+        
         modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
         if(modelArray.count != 0)
         {

@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *StatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *StatusTimeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *StatusProcessIndecatorLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imgRightArrow;
 
 @end
