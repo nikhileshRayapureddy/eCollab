@@ -76,22 +76,9 @@
         [menuTable setHidden:NO];
         menuTable.delegate = self;
         menuTable.dataSource = self;
-        //menuTable.backgroundColor = [UIColor cyanColor];
-        //[self.menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
-       // [menuTable reloadData];
-//        [UIView transitionWithView:menuTable
-//                          duration:0.40f
-//                           options:UIViewAnimationOptionTransitionCrossDissolve
-//                        animations:^(void) {[menuTable reloadData];}
-//                        completion:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView transitionWithView:menuTable
-                              duration:0.1f
-                               options:UIViewAnimationOptionTransitionFlipFromRight
-                            animations:^(void) {
-                                [menuTable reloadData];
-                            } completion:NULL];
-        });
+        [menuTable setHidden:NO];
+        [menuTable reloadData];
+
         menuFlag = 1;
     }else{
         [menuTable setHidden:YES];

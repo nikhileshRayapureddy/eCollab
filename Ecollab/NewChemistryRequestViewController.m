@@ -60,7 +60,6 @@
     [self.PuritybtnOutlet.layer setBorderWidth: 1.0];
     [self.PuritybtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
 
-
     [self.imgVwTakeOrChoose setImage:[UIImage imageNamed:@"chemistryserveimg.png"]];
     [self.imgVwReferenceComp setImage:[UIImage imageNamed:@"chelocalimg.png"]];
     
@@ -94,6 +93,18 @@
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
 
+    if(self.isFromRequestAQuote == YES)
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"NEW CHEMISTRY REQUEST"
+                                                                              attributes:underlineAttribute];
+    }
+    else
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
+                                                                              attributes:underlineAttribute];
+    }
 
 }
 -(void)viewDidLayoutSubviews
@@ -203,7 +214,8 @@
     request =  nil;
 }
 -(void)requestReceivedopImagesOnTherapiticAreaResponce:(NSMutableDictionary *)aregistrationDict{
-    
+   
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     collectionImageDataArray =[aregistrationDict objectForKey:@"ImageTherapiticAreaResult"];
     [vwCompundDBCustomView.clVwCompoundDb reloadData];
 
@@ -419,88 +431,79 @@
 
 - (IBAction)SaveForLaterBtnAction:(id)sender {
     
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
-    [dict setValue:ProductType forKey:@"ProductType"];
-    if ([ProductType isEqualToString:@"1"])
+    if ([self validationFields])
     {
-        [dict setValue:b64EncStr forKey:@"Image"];
-    }
-    else
-    {
-        [dict setValue:@"" forKey:@"Image"];
-    }
-    [dict setValue:ProductID forKey:@"ProductID"];
-    [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
-    [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
-    [dict setValue:QuantityTextField.text forKey:@"Quantity"];
-    [dict setValue:QuantityID forKey:@"QuantityID"];
-    [dict setValue:Purity forKey:@"Purity"];
-    [dict setValue:PurityID forKey:@"PurityID"];
-    [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
-    [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
-    [dict setValue:@"0" forKey:@"ISSubmit"];
-    [dict setValue:@"1" forKey:@"Status"];
-    [dict setValue:CASTextField.text forKey:@"CAS"];
-    [dict setValue:MDLTextField.text forKey:@"MDL"];
-    
-    ServiceRequester *request = [ServiceRequester new];
-    request.serviceRequesterDelegate =  self;
-    [request requestForopCreateChemistryRequestService:dict];
-    request =  nil;
-}
-
-- (IBAction)SubmitBtnAction:(id)sender {
-    
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
-    [dict setValue:ProductType forKey:@"ProductType"];
-    if ([ProductType isEqualToString:@"1"])
-    {
-        [dict setValue:b64EncStr forKey:@"Image"];
-    }
-    else
-    {
-        [dict setValue:@"" forKey:@"Image"];
-    }
-    [dict setValue:ProductID forKey:@"ProductID"];
-    [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
-    [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
-    [dict setValue:QuantityTextField.text forKey:@"Quantity"];
-    [dict setValue:QuantityID forKey:@"QuantityID"];
-    [dict setValue:Purity forKey:@"Purity"];
-    [dict setValue:PurityID forKey:@"PurityID"];
-    [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
-    [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
-    [dict setValue:@"1" forKey:@"ISSubmit"];
-    [dict setValue:@"1" forKey:@"Status"];
-    [dict setValue:CASTextField.text forKey:@"CAS"];
-    [dict setValue:MDLTextField.text forKey:@"MDL"];
-    
-
-    
-    // producttype camera 1 product id 0 (image base 64)
-    // producttype data 2   product id (image id from db )
-    // producttype defult 0 product id 0
-    // PurityID PurityMaster(load mastar) = rid in table data
-    //ISSubmit 1 submit 0 for save for later
-    // status always 1
-
-    //NSDictionary *inputDick = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"UID",@"12",@"ProductID",@"1",@"ProductType",@"1236",@"jonuralref",@"12/22/2015",@"ExpDeliveryDate",@"10",@"Quantity",@"1",@"QuantityID",@"0",@"Purity",@"1",@"PurityID",@"1",@"Chirality",@"1",@"Comments",@"1",@"ISSubmit", @"1",@"Status",@"",@"Image",nil];
-//    if ([CASTextField.text isEqualToString:@""]||[MDLTextField.text isEqualToString:@""]||[date isEqualToString:@""]||[QuantityTextField.text isEqualToString:@""]||[Purity isEqualToString:@""]||[CharitybtnOutlet.text isEqualToString:@""]) {
-//        //show alert  some mesage
-//    }else{
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+        [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
+        [dict setValue:ProductType forKey:@"ProductType"];
+        if ([ProductType isEqualToString:@"1"])
+        {
+            [dict setValue:b64EncStr forKey:@"Image"];
+        }
+        else
+        {
+            [dict setValue:@"" forKey:@"Image"];
+        }
+        [dict setValue:ProductID forKey:@"ProductID"];
+        [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
+        [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
+        [dict setValue:QuantityTextField.text forKey:@"Quantity"];
+        [dict setValue:QuantityID forKey:@"QuantityID"];
+        [dict setValue:Purity forKey:@"Purity"];
+        [dict setValue:PurityID forKey:@"PurityID"];
+        [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
+        [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
+        [dict setValue:@"0" forKey:@"ISSubmit"];
+        [dict setValue:@"1" forKey:@"Status"];
+        [dict setValue:CASTextField.text forKey:@"CAS"];
+        [dict setValue:MDLTextField.text forKey:@"MDL"];
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopCreateChemistryRequestService:dict];
         request =  nil;
-//    }
+    }
+}
+
+- (IBAction)SubmitBtnAction:(id)sender {
+    
+    if ([self validationFields])
+    {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+        [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
+        [dict setValue:ProductType forKey:@"ProductType"];
+        if ([ProductType isEqualToString:@"1"])
+        {
+            [dict setValue:b64EncStr forKey:@"Image"];
+        }
+        else
+        {
+            [dict setValue:@"" forKey:@"Image"];
+        }
+        [dict setValue:ProductID forKey:@"ProductID"];
+        [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
+        [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
+        [dict setValue:QuantityTextField.text forKey:@"Quantity"];
+        [dict setValue:QuantityID forKey:@"QuantityID"];
+        [dict setValue:Purity forKey:@"Purity"];
+        [dict setValue:PurityID forKey:@"PurityID"];
+        [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
+        [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
+        [dict setValue:@"1" forKey:@"ISSubmit"];
+        [dict setValue:@"1" forKey:@"Status"];
+        [dict setValue:CASTextField.text forKey:@"CAS"];
+        [dict setValue:MDLTextField.text forKey:@"MDL"];
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+        ServiceRequester *request = [ServiceRequester new];
+        request.serviceRequesterDelegate =  self;
+        [request requestForopCreateChemistryRequestService:dict];
+        request =  nil;
+    }
 }
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
     
-    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
                                                                    message:@"Chemistery request saved successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -697,6 +700,67 @@
         }
     }
     //[dictData objectForKey:@"ImageName"];
+}
+-(BOOL)validationFields
+{
+    if ([CASTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"CAS should not be empty."];
+        return false;
+   }
+    else if ([MDLTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"MDL should not be empty."];
+        return false;
+    }
+    else if ([JournalReferenceTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Journal Reference should not be empty."];
+        return false;
+    }
+    else if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please select Expected delivery date"];
+        return false;
+    }
+    else if ([QuantityTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Quantity should not be empty."];
+        return false;
+    }
+    else if ([QuantityTextField.text isEqualToString:@"0"])
+    {
+        [self showAlertWithMessage:@"Quantity should not be 0"];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Chirality should not be empty."];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
+    {
+        [self showAlertWithMessage:@"Chirality should not be 0"];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Remarks should not be empty."];
+        return false;
+   }
+
+    return true;
+}
+
+-(void)showAlertWithMessage:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

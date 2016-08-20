@@ -10,10 +10,12 @@
 #import "PageContentViewController.h"
 #import "LogInViewController.h"
 
-@interface ViewController : UIViewController<UIPageViewControllerDataSource>
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) NSArray *pageTitles;
+@interface ViewController : UIViewController<UIScrollViewDelegate>
+{
+    UIScrollView *scrlVwImages;
+}
 @property (strong, nonatomic) NSArray *pageImages;
+
 
 
 @end

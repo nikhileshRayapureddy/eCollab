@@ -21,9 +21,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
-    
     [EmailTextField setDelegate:self];
     [PasswordTextField setDelegate:self];
     

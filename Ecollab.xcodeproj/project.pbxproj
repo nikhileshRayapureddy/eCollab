@@ -150,6 +150,8 @@
 		9EEE720B1D5C3A8700F54EB4 /* req_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEE720A1D5C3A8700F54EB4 /* req_img.png */; };
 		9EEF59881D42A51B00F04170 /* FAQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF59871D42A51B00F04170 /* FAQTableViewCell.m */; };
 		9EF26A3F1D3D210400465646 /* NewChemistryRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF26A3E1D3D210400465646 /* NewChemistryRequestViewController.m */; };
+		A758C6AD1D67727200F14BF5 /* rightarr.png in Resources */ = {isa = PBXBuildFile; fileRef = A758C6AB1D67727200F14BF5 /* rightarr.png */; };
+		A758C6AE1D67727200F14BF5 /* rightarr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A758C6AC1D67727200F14BF5 /* rightarr@2x.png */; };
 		A770951E1D66045D001C0180 /* CompundDBCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A770951D1D66045D001C0180 /* CompundDBCustomView.m */; };
 		A77095221D661D23001C0180 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77095211D661D23001C0180 /* ImageCollectionViewCell.xib */; };
 		A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77095251D662673001C0180 /* CompundDBCustomView.xib */; };
@@ -360,6 +362,8 @@
 		9EEF59871D42A51B00F04170 /* FAQTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQTableViewCell.m; sourceTree = "<group>"; };
 		9EF26A3D1D3D210400465646 /* NewChemistryRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewChemistryRequestViewController.h; sourceTree = "<group>"; };
 		9EF26A3E1D3D210400465646 /* NewChemistryRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChemistryRequestViewController.m; sourceTree = "<group>"; };
+		A758C6AB1D67727200F14BF5 /* rightarr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightarr.png; sourceTree = "<group>"; };
+		A758C6AC1D67727200F14BF5 /* rightarr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightarr@2x.png"; sourceTree = "<group>"; };
 		A770951C1D66045D001C0180 /* CompundDBCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompundDBCustomView.h; sourceTree = "<group>"; };
 		A770951D1D66045D001C0180 /* CompundDBCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompundDBCustomView.m; sourceTree = "<group>"; };
 		A77095211D661D23001C0180 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -917,6 +921,8 @@
 		9EC27B521D624035005C4CA6 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				A758C6AB1D67727200F14BF5 /* rightarr.png */,
+				A758C6AC1D67727200F14BF5 /* rightarr@2x.png */,
 				9EC27B421D623B78005C4CA6 /* projecttracer.png */,
 				9EC27B431D623B78005C4CA6 /* requestquotes.png */,
 				9EC27B441D623B78005C4CA6 /* savedrequests.png */,
@@ -1155,6 +1161,7 @@
 				9EC27B3C1D6236F2005C4CA6 /* radio_btn.png in Resources */,
 				9E47E6581D4CA79800A50C2B /* unselect.png in Resources */,
 				9EC27B5F1D62405F005C4CA6 /* Request Project Tracker_black.jpg in Resources */,
+				A758C6AD1D67727200F14BF5 /* rightarr.png in Resources */,
 				9EC27B471D623B78005C4CA6 /* helps.png in Resources */,
 				9EC27B2F1D6224DC005C4CA6 /* new.PNG in Resources */,
 				9E2547701D32677A008A96C9 /* LaunchScreen.storyboard in Resources */,
@@ -1178,6 +1185,7 @@
 				9E2245211D3891730081E4EF /* ProfileBG4.jpg in Resources */,
 				9EBEFF5B1D608C3500271E18 /* 02.png in Resources */,
 				9EC27B4A1D623B78005C4CA6 /* notifications.png in Resources */,
+				A758C6AE1D67727200F14BF5 /* rightarr@2x.png in Resources */,
 				9EC27B0F1D61FCFF005C4CA6 /* faq.png in Resources */,
 				9E25476D1D32677A008A96C9 /* Assets.xcassets in Resources */,
 				9E0C0B791D368CC70039A884 /* myprofile.png in Resources */,
@@ -1382,7 +1390,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
+				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Debug;
 		};
@@ -1398,7 +1406,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
+				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Release;
 		};
