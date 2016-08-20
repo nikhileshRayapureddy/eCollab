@@ -1010,6 +1010,40 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ECg-3p-bYk">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+<<<<<<< HEAD
+=======
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQTableViewCellID" rowHeight="50" id="UrD-nv-fDV" customClass="FAQTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UrD-nv-fDV" id="9hl-V0-G8k">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R9-EO-bC7">
+                                                    <rect key="frame" x="8" y="9" width="584" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5R9-EO-bC7" firstAttribute="centerY" secondItem="9hl-V0-G8k" secondAttribute="centerY" id="LGV-Ck-vOD"/>
+                                                <constraint firstAttribute="trailing" secondItem="5R9-EO-bC7" secondAttribute="trailing" constant="8" id="Y9V-hb-Vct"/>
+                                                <constraint firstItem="5R9-EO-bC7" firstAttribute="leading" secondItem="9hl-V0-G8k" secondAttribute="leading" constant="8" id="ezm-oT-zMg"/>
+                                                <constraint firstItem="5R9-EO-bC7" firstAttribute="centerX" secondItem="9hl-V0-G8k" secondAttribute="centerX" id="hX4-jj-rOp"/>
+                                                <constraint firstItem="5R9-EO-bC7" firstAttribute="top" secondItem="9hl-V0-G8k" secondAttribute="top" constant="9" id="wn2-zc-fhz"/>
+                                                <constraint firstAttribute="bottom" secondItem="5R9-EO-bC7" secondAttribute="bottom" constant="10" id="xdV-8c-fj7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="FAQLabelOutlet" destination="5R9-EO-bC7" id="Vtz-Be-oLI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+>>>>>>> master
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
