@@ -17,10 +17,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
-    NSString * aboutUsText = @"GVK Biosciences (GVK BIO) is one of Asia’s leading Discovery Research and Development organizations with over a decade of rich experience. At GVK BIO, we blend science with people and technology to help accelerate research and development for over 350 clients globally. Our clients include the world’s top 10 corporations in the field of Pharmaceutical, Agrochemical, Electronics, Biotechnology and Academics. Our distinctiveness comes from our expertise in the breadth and depth of services that we provide in drug development. GVK BIO’s capabilities include Integrated Programs, Discovery Services, Development Services, Contract Manufacturing and Formulation R&D Services. GVK BIO is a 2000 people strong company, which includes a large pool of 1700 scientists who are passionate about enhancing the quality of human life, striving each day to address the unmet global healthcare challenges. Lower costs, superior infrastructure, boosted efficiencies and an infusion of fresh ideas make GVK BIO an ideal research partner.";
-    [DisplayText setText:aboutUsText];
+    [self designNavBar];
 }
+-(void)designNavBar
+{
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

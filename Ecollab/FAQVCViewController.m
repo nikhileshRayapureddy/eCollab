@@ -15,6 +15,9 @@
     NSMutableArray *generalDataArray, *orderingAndTrackinDataArray,*DeliveryAndPaymentDataArray,*myAccountDataArray;
      NSMutableArray *generalDataAnsArray, *orderingAndTrackinDataAnsArray,*DeliveryAndPaymentDataAnsArray,*myAccountDataAnsArray;
     NSMutableString *popviewDisplyaString;
+    
+    NSInteger selHeader;
+    NSInteger selRow;
 }
 
 
@@ -25,10 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    selRow = -1;
+    selHeader = -1;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [FAQTableview setDelegate: self];
     [FAQTableview setDataSource: self];
-    flag=0;
     generalDataArray = [[NSMutableArray alloc] initWithObjects:@"1. Who can use GVKBIO's eCollab ?",@"2. What is a CAS number ?",@"3. What is an MDL number ?",@"4. What can I find in the reference coumpound database ?", nil];
     
     generalDataAnsArray = [[NSMutableArray alloc] initWithObjects:@"Anyone wanting to request a compound synthesis or interested in biology services can use the app to conveniently raise inquiries, get quotes and track the progress of their projects.",@"It is a unique numerical identifier assigned by Chemical Abstracts Service (CAS) to every chemical substance described in the open scientific literature. All CAS numbers are maintained in a CAS registry database to allow unique and convenient search options for the scientific community. Many search engines are available to locate a chemical/reagents based on its CAS number.",@"An MDL number is a unique identification number for each reaction and variation. The format is RXXXnnnnnnnn, where R indicates a reaction, XXX indicates the database containing the reaction record, and ‘nnnnnnnn’ is an 8-digit number.",@"It is a database with various structures linked to their known therapeutic usage as per literature. The structures need to be ordered and can be selected based on therapeutic area of interest.", nil];
@@ -65,158 +69,211 @@
     return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    // If you're serving data from an array, return the length of the array:
-    if (section == 0) {
-        return generalDataArray.count;
-    }else if (section == 1){
-        return orderingAndTrackinDataArray.count;
-    }else if (section == 2){
-        return DeliveryAndPaymentDataArray.count;
-    }else{
-        return myAccountDataArray.count;
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *vwHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+    vwHeader.backgroundColor = [UIColor clearColor];
+    
+    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(10, 0, vwHeader.frame.size.width-20, 40)];
+    vw.backgroundColor = [UIColor lightGrayColor];
+    vw.layer.borderColor = [UIColor blackColor].CGColor;
+    vw.layer.borderWidth = 1;
+    [vwHeader addSubview:vw];
+    
+    UIButton *btnarr = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnarr.backgroundColor = [UIColor clearColor];
+    btnarr.frame = CGRectMake(0, 0, 40, 40);
+    [btnarr setImage:[UIImage imageNamed:@"redarrowup.png"] forState:UIControlStateNormal];
+    [btnarr setImage:[UIImage imageNamed:@"redarrowdown.png"] forState:UIControlStateSelected];
+    [vw addSubview:btnarr];
+    if (selHeader == section)
+    {
+        btnarr.selected = YES;
     }
-//    return nil;
+    else
+    {
+        btnarr.selected = NO;
+    }
+    UILabel *lblHeader = [[UILabel alloc]initWithFrame:CGRectMake(btnarr.frame.size.width, 0, vw.frame.size.width-40, 40)];
+    lblHeader.backgroundColor = [UIColor clearColor];
+    if (section == 0) {
+        [lblHeader setText:[NSString stringWithFormat:@"Genenral"]];
+    }else if (section == 1){
+        [lblHeader setText:[NSString stringWithFormat:@"Ordering and Tracking"]];
+    }else if (section == 2){
+        [lblHeader setText:[NSString stringWithFormat:@"Delivery and Payment"]];
+    }else{
+        [lblHeader setText:[NSString stringWithFormat:@"My Account"]];
+    }
+    lblHeader.font = [UIFont fontWithName:@"Helvetica-SemiBold" size:15];
+    [vw addSubview:lblHeader];
+    
+    UIButton *btnHeader = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnHeader.backgroundColor = [UIColor clearColor];
+    btnHeader.frame = CGRectMake(0, 0, vwHeader.frame.size.width, vwHeader.frame.size.height);
+    btnHeader.tag = 100+section;
+    [btnHeader addTarget:self action:@selector(btnHeaderClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [vwHeader addSubview:btnHeader];
+    return vwHeader;
 }
 
-// Customize the appearance of table view cells.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (selHeader == 0 && selHeader == section) {
+        return generalDataArray.count;
+    }else if (selHeader == 1 && selHeader == section){
+        return orderingAndTrackinDataArray.count;
+    }else if (selHeader == 2 && selHeader == section){
+        return DeliveryAndPaymentDataArray.count;
+    }else if (selHeader == 3 && selHeader == section){
+        return myAccountDataArray.count;
+    }
+    else
+    {
+        return 0;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (selRow == indexPath.row)
+    {
+        NSString *strRowTitle = @"";
+        if (indexPath.section == 0) {
+            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
+        }else if (indexPath.section == 1){
+            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
+        }else if (indexPath.section == 2){
+            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
+        }else{
+            strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
+        }
+        
+        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
+                                                context:nil];
+
+        NSString *strRowDetail = @"";
+        if (indexPath.section == 0) {
+            strRowDetail =  [generalDataAnsArray objectAtIndex:indexPath.row];
+        }else if (indexPath.section == 1){
+            strRowDetail =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
+        }else if (indexPath.section == 2){
+            strRowDetail =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
+        }else{
+            strRowDetail =  [myAccountDataAnsArray objectAtIndex:indexPath.row];
+        }
+        
+        CGRect rect2 = [strRowDetail boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 117, 1000)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
+                                                context:nil];
+
+        if (ceil(rect.size.height) < 40)
+        {
+            return 40 + ceil(rect2.size.height);
+        }
+        
+
+        return ceil(rect.size.height) + ceil(rect2.size.height);
+    }
+    else
+    {
+        NSString *strRowTitle = @"";
+        if (selHeader == 0 && indexPath.section == selHeader) {
+            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
+        }else if (selHeader == 1 && indexPath.section == 1){
+            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
+        }else if (selHeader == 2 && indexPath.section == 2){
+            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
+        }else if (selHeader == 3 && indexPath.section == 3){
+            strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
+        }
+        NSLog(@"strRowTitle : %@",strRowTitle);
+        NSLog(@"indexpath.row : %li",indexPath.row);
+        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
+                                                 context:nil];
+        
+        FAQTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+        
+        if (ceil(rect.size.height) < 40)
+            {
+                cell.constHeightVwTitle.constant = 40;
+                return 40;
+            }
+        cell.constHeightVwTitle.constant = ceil(rect.size.height);
+        return ceil(rect.size.height);
+    }
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"FAQTableViewCellID";
+    static NSString *CellIdentifier = @"FAQTableViewCell";
     
-    FAQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[FAQTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    FAQTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // set the accessory view:
-    //cell.accessoryType =  UITableViewCellAccessoryDetailButton;
-    if (indexPath.section == 0) {
-        cell.FAQLabelOutlet.text = [NSMutableString stringWithFormat:@"%@",[generalDataArray objectAtIndex:indexPath.row]];
-    }else if (indexPath.section == 1){
-        cell.FAQLabelOutlet.text = [NSMutableString stringWithFormat:@"%@",[orderingAndTrackinDataArray objectAtIndex:indexPath.row]];
-    }else if (indexPath.section == 2){
-        cell.FAQLabelOutlet.text = [NSMutableString stringWithFormat:@"%@",[DeliveryAndPaymentDataArray objectAtIndex:indexPath.row]];
+    if(cell==nil)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"FAQTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+        cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
-    else{
-      cell.FAQLabelOutlet.text = [NSMutableString stringWithFormat:@"%@",[myAccountDataArray objectAtIndex:indexPath.row]];
-    }
+    [cell.vwTitle.layer setBorderWidth: 1.0];
+    [cell.vwTitle.layer setCornerRadius:5.0f];
+    [cell.vwTitle.layer setMasksToBounds:YES];
+    [cell.vwTitle.layer setBorderColor:[[UIColor blackColor] CGColor]];
     
+    [cell.vwDetail.layer setBorderWidth: 1.0];
+    [cell.vwDetail.layer setCornerRadius:5.0f];
+    [cell.vwDetail.layer setMasksToBounds:YES];
+    [cell.vwDetail.layer setBorderColor:[[UIColor blackColor] CGColor]];
+
+    if (indexPath.section == 0)
+    {
+        cell.lblTitle.text = [generalDataArray objectAtIndex:indexPath.row];
+        [cell.btnDetail setTitle:[generalDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    }
+    else if (indexPath.section == 1)
+    {
+        cell.lblTitle.text = [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
+        [cell.btnDetail setTitle:[orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    }
+    else if (indexPath.section == 2)
+    {
+        cell.lblTitle.text = [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
+        [cell.btnDetail setTitle:[DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    }
+    else
+    {
+        cell.lblTitle.text = [myAccountDataArray objectAtIndex:indexPath.row];
+        [cell.btnDetail setTitle:[myAccountDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    }
+    if (selRow == indexPath.row)
+    {
+        cell.vwDetail.hidden = NO;
+    }
+    else
+    {
+        cell.vwDetail.hidden = YES;
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 50;
 }
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    //put your values, this is part of my code
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50.0f)];
-    [view setBackgroundColor:[UIColor lightGrayColor]];
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, self.view.bounds.size.width-60, 40)];
-    lbl.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:22];
-    [lbl setTextAlignment:NSTextAlignmentCenter];
-
-    //[lbl setFont:[UIFont systemFontOfSize:18]];
-    [lbl setTextColor:[UIColor redColor]];
-    [view addSubview:lbl];
-    if (section == 0) {
-        [lbl setText:[NSString stringWithFormat:@"Genenral"]];
-    }else if (section == 1){
-        [lbl setText:[NSString stringWithFormat:@"Ordering and Tracking"]];
-    }else if (section == 2){
-        [lbl setText:[NSString stringWithFormat:@"Delivery and Payment"]];
-    }else{
-        [lbl setText:[NSString stringWithFormat:@"My Account"]];
-    }
-    
-    return view;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (flag == 0) {
-        popviewDisplyaString = [[NSMutableString alloc] init];
-        if (indexPath.section == 0) {
-            popviewDisplyaString = [generalDataAnsArray objectAtIndex:indexPath.row];
-            //[NSMutableString stringWithFormat:@"%@",[generalDataAnsArray objectAtIndex:indexPath.row]];
-        }else if (indexPath.section == 1){
-            popviewDisplyaString = [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 2){
-            popviewDisplyaString = [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
-        }else{
-            popviewDisplyaString = [myAccountDataAnsArray objectAtIndex:indexPath.row];
-        }
-        [self popViewWithString:popviewDisplyaString];
-        flag = 1;
-    }else{
-        [self dismissPop:nil];
-        flag = 0;
-    }
+    selRow = indexPath.row;
+    [tableView reloadData];
 
 }
-
-- (IBAction)dismissPop:(id)sender {
-    flag = 0;
-    [[self.view viewWithTag:12345] removeFromSuperview];
+-(void)btnHeaderClicked:(UIButton*)sender
+{
+    selHeader = sender.tag - 100;
+    [FAQTableview reloadData];
 }
 
--(void)popViewWithString:(NSMutableString*)displayString{
-    popTextView = [[UITextView alloc]init];
-    [popTextView setFrame:CGRectMake(0, 0, self.view.bounds.size.width-40, self.view.bounds.size.width-40)];
-    popTextView.center = CGPointMake( self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
-    
-    [popTextView setBackgroundColor:[UIColor whiteColor]];
-    popTextView.text = displayString;
-    [popTextView setTextColor:[UIColor blackColor]];
-    popTextView.layer.backgroundColor = [UIColor whiteColor].CGColor;
-    [popTextView setFont:[UIFont fontWithName:@"ArialMT" size:17]];
-    
-    
-    [popTextView.layer setBorderWidth: 2.0];
-    [popTextView.layer setCornerRadius:15.0f];
-    [popTextView.layer setMasksToBounds:YES];
-    [popTextView.layer setBorderColor:[[UIColor blackColor] CGColor]];
-    
-    
-    popTextView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
-    
-    [self.view addSubview:popTextView];
-    popTextView.editable = NO;
-    
-    [UIView animateWithDuration:0.3/1.5 animations:^{
-        popTextView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3/2 animations:^{
-            popTextView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3/2 animations:^{
-                popTextView.transform = CGAffineTransformIdentity;
-            }];
-        }];
-    }];
-    [popTextView setTag:12345];
-    
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(dismissPop:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"X" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, 42, 42);
-    button.center = CGPointMake( popTextView.bounds.size.width/2, popTextView.bounds.size.height - 21);
-    [button setBackgroundColor:[UIColor redColor]];
-    [button.layer setBorderWidth: 3.0];
-    [button.layer setCornerRadius:18.0f];
-    [popTextView addSubview:button];
-    
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
-    NSLog(@"touches began");
-    UITouch *touch = [touches anyObject];
-    if(touch.view!=popTextView){
-        popTextView.hidden = YES;
-    }
-}
 
 @end

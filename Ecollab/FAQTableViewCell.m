@@ -9,14 +9,10 @@
 #import "FAQTableViewCell.h"
 
 @implementation FAQTableViewCell
-@synthesize FAQLabelOutlet;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [FAQLabelOutlet.layer setBorderWidth: 1.0];
-    [FAQLabelOutlet.layer setCornerRadius:10.0f];
-    [FAQLabelOutlet.layer setMasksToBounds:YES];
-    [FAQLabelOutlet.layer setBorderColor:[[UIColor blackColor] CGColor]];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
