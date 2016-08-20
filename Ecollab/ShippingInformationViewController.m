@@ -16,6 +16,8 @@
 
 @implementation ShippingInformationViewController
 @synthesize ShippingInformationTableview,AddNewAddressOutlet;
+@synthesize isFromTracking;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -72,9 +74,47 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(isFromTracking == YES)
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab!"
+                                                                       message:@"Do you want to add this address as your defaut address?"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            NSDictionary *dict = [arrAddresses objectAtIndex:indexPath.row];
+            [self updateShippingAddress:dict];
+            
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        
+        [alert addAction:okAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+    
 
 }
 
+-(void)updateShippingAddress:(NSDictionary *)dictAddress
+{
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+        // here check you input validation
+        NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",[dictAddress valueForKey:@"Address"],@"Address",[dictAddress valueForKey:@"Address1"],@"Address1",[dictAddress valueForKey:@"City"],@"City",[dictAddress valueForKey:@"Country"],@"Country",[dictAddress valueForKey:@"State"],@"State",[dictAddress valueForKey:@"Pincode"],@"PinCode",@"1",@"ISDefault",[dictAddress valueForKey:@"LandMark"],@"LandMark",[dictAddress valueForKey:@"Name"],@"Name",[dictAddress valueForKey:@"MobileNumber"],@"MobileNumber",[dictAddress valueForKey:@"RID"],@"RID", nil];
+        
+        ServiceRequester *request = [ServiceRequester new];
+        request.serviceRequesterDelegate =  self;
+        [request requestForopUpdateShippingAddressDetailsService:inputDick];
+        request =  nil;
+}
+
+-(void)requestReceivedopUpdateShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
+{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)btnEditClicked:(UIButton*)sender
 {
     AddNewShippingAddressViewController *CPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"AddNewShippingAddressViewController"];

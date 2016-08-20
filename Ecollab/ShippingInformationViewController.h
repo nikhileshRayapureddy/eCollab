@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *AddNewAddressOutlet;
 - (IBAction)AddNewAddressBtnAction:(id)sender;
 
+@property (assign, nonatomic) BOOL isFromTracking;
+
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -545,7 +545,7 @@
                                         <rect key="frame" x="0.0" y="28" width="400" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vie-8b-Hhf" id="ZeW-io-cKN">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="162"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="162.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fkflsdjfjsdfjsd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjL-9f-uzb">
@@ -606,7 +606,7 @@
                                         <rect key="frame" x="0.0" y="191" width="400" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6J9-qc-DNC" id="VOZ-91-QqR">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="40.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-g8-X4w">
@@ -652,7 +652,7 @@
                                         <rect key="frame" x="0.0" y="232" width="400" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eV7-5i-hgs" id="eqz-rU-B01">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_submit.png" translatesAutoresizingMaskIntoConstraints="NO" id="9De-Su-6hV">
@@ -909,7 +909,7 @@
                                         <rect key="frame" x="0.0" y="1" width="600" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jn-ad-Irb" id="bwj-dD-bIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chemistry.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-Qc-z2O">
@@ -974,7 +974,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UrD-nv-fDV" id="9hl-V0-G8k">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R9-EO-bC7">
@@ -1418,7 +1418,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jac-ZB-5q0" id="m3d-jS-vIr">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-yn-Grq">
@@ -1635,7 +1635,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5B9-uC-iJB" id="AHg-QW-KSa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-Pd-ag2">
@@ -3567,6 +3567,91 @@
             </objects>
             <point key="canvasLocation" x="5051" y="-858"/>
         </scene>
+        <!--Select Address View Controller-->
+        <scene sceneID="gVB-d7-4of">
+            <objects>
+                <viewController storyboardIdentifier="SelectAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5TI-y0-nmW" customClass="SelectAddressViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IKN-gn-nTq"/>
+                        <viewControllerLayoutGuide type="bottom" id="dPw-84-DQn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ljZ-7d-2i5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gl-JR-Hrx">
+                                <rect key="frame" x="10" y="627" width="355" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2Wq-XI-JXE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="SUBMIT" backgroundImage="btnRedGradient.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSubmitClicked:" destination="5TI-y0-nmW" eventType="touchUpInside" id="glV-Lt-E3O"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapship.png" translatesAutoresizingMaskIntoConstraints="NO" id="SkY-pu-ATX">
+                                <rect key="frame" x="10" y="20" width="25" height="25"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-ky-UzS">
+                                <rect key="frame" x="40" y="20" width="150" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESL-qd-eN2">
+                                <rect key="frame" x="245" y="20" width="120" height="25"/>
+                                <state key="normal" title="Change Address"/>
+                                <connections>
+                                    <action selector="btnChangeAddressClicked:" destination="5TI-y0-nmW" eventType="touchUpInside" id="ULU-8g-q54"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8O-zz-3fT">
+                                <rect key="frame" x="10" y="60" width="355" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab9-mx-SCf">
+                                <rect key="frame" x="10" y="100" width="355" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZO-UB-ZhN">
+                                <rect key="frame" x="10" y="135" width="355" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ti-IA-u2n">
+                                <rect key="frame" x="10" y="170" width="355" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4gl-JR-Hrx" secondAttribute="trailing" constant="10" id="Frv-nu-Gws"/>
+                            <constraint firstItem="4gl-JR-Hrx" firstAttribute="leading" secondItem="ljZ-7d-2i5" secondAttribute="leading" constant="10" id="fjH-W2-fd4"/>
+                            <constraint firstItem="dPw-84-DQn" firstAttribute="top" secondItem="4gl-JR-Hrx" secondAttribute="bottom" constant="10" id="k9V-5V-WVj"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="lblAddress1" destination="gZO-UB-ZhN" id="zH7-xB-fbP"/>
+                        <outlet property="lblAddress2" destination="3ti-IA-u2n" id="Eoc-if-arl"/>
+                        <outlet property="lblName" destination="z8O-zz-3fT" id="mJM-X4-arH"/>
+                        <outlet property="lblNumber" destination="ab9-mx-SCf" id="fj8-Zf-lTx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQq-Tu-Ocz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5640.5" y="-824.5"/>
+        </scene>
         <!--Discuss Quote View Controller-->
         <scene sceneID="As5-90-RLp">
             <objects>
@@ -4268,7 +4353,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hy2-06-1xk" id="hxv-4a-pg3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctt-Mj-5zW">
@@ -5467,6 +5552,7 @@
         <image name="lock.png" width="28" height="28"/>
         <image name="logo.png" width="260" height="58"/>
         <image name="mail.png" width="28" height="28"/>
+        <image name="mapship.png" width="32" height="32"/>
         <image name="msg_icon1.png" width="24" height="24"/>
         <image name="myprof_tab.png" width="42" height="42"/>
         <image name="personal.png" width="94" height="114"/>

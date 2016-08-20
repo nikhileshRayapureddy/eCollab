@@ -176,6 +176,8 @@
 		CCE790961D675940007A5623 /* EcollabLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE790951D675940007A5623 /* EcollabLoader.m */; };
 		CCF87EF11D68619000A2A343 /* orangetracksubnew.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF01D68619000A2A343 /* orangetracksubnew.png */; };
 		CCF87EF31D6861E100A2A343 /* crossred.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF21D6861E100A2A343 /* crossred.png */; };
+		CCF87EF61D687EAA00A2A343 /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */; };
+		CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF71D687EDE00A2A343 /* mapship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -406,6 +408,9 @@
 		CCE790951D675940007A5623 /* EcollabLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcollabLoader.m; sourceTree = "<group>"; };
 		CCF87EF01D68619000A2A343 /* orangetracksubnew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangetracksubnew.png; sourceTree = "<group>"; };
 		CCF87EF21D6861E100A2A343 /* crossred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossred.png; sourceTree = "<group>"; };
+		CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressViewController.h; sourceTree = "<group>"; };
+		CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressViewController.m; sourceTree = "<group>"; };
+		CCF87EF71D687EDE00A2A343 /* mapship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -596,6 +601,7 @@
 		9E2547541D32677A008A96C9 = {
 			isa = PBXGroup;
 			children = (
+				CCF87EF71D687EDE00A2A343 /* mapship.png */,
 				CCF87EF21D6861E100A2A343 /* crossred.png */,
 				CCF87EF01D68619000A2A343 /* orangetracksubnew.png */,
 				CCE7904C1D65FED7007A5623 /* down-arrow.png */,
@@ -670,6 +676,8 @@
 				A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */,
 				CCE790941D675940007A5623 /* EcollabLoader.h */,
 				CCE790951D675940007A5623 /* EcollabLoader.m */,
+				CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */,
+				CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -1215,6 +1223,7 @@
 				9E0C0B851D36901C0039A884 /* 03_home.jpg in Resources */,
 				A76EF4211D6862950009FD34 /* edit.png in Resources */,
 				9E0C0B871D36913C0039A884 /* faqbottom.jpg in Resources */,
+				CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */,
 				9E1096DF1D33FF9E0081D081 /* sign-in.png in Resources */,
 				9E0C0B831D368F870039A884 /* homebg.png in Resources */,
 				9E47E6541D4CA59900A50C2B /* cam1.jpeg in Resources */,
@@ -1283,6 +1292,7 @@
 				9EE00CBB1D3DC55800870051 /* NewBiologyRequestViewController.m in Sources */,
 				9E2547621D32677A008A96C9 /* main.m in Sources */,
 				9EDA81F91D56E181003E0BA5 /* ServiceInterface.m in Sources */,
+				CCF87EF61D687EAA00A2A343 /* SelectAddressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

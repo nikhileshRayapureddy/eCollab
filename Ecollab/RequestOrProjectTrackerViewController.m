@@ -29,11 +29,21 @@
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];//requestquote.jpg
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
 
+//
+//    ServiceRequester *request = [ServiceRequester new];
+//    request.serviceRequesterDelegate =  self;
+//    [request requestFopGetProjectTrackerDetailsService];
+//    request =  nil;
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestFopGetProjectTrackerDetailsService];
     request =  nil;
+
 }
 -(void)requestReceivedopGetProjectTrackerDetailsResponce:(NSMutableDictionary *)aregistrationDict{
     UserProjectTrackerDetailsResult = aregistrationDict;
@@ -43,8 +53,9 @@
 
     for (int counter=0; counter<UserProjectTrackerArray.count; counter++) {
         NSMutableDictionary * tempDict = [UserProjectTrackerArray objectAtIndex:counter];
-        if ([[tempDict objectForKey:@"QuoteStatus"] intValue] == 3&&[[tempDict objectForKey:@"PlaceOrder"] intValue]==1) {
+        if ([[tempDict objectForKey:@"PlaceOrder"] intValue]==1 && [[tempDict objectForKey:@"ItemType"] intValue] == 0) {
             [OnGoingProjectsArray addObject:[UserProjectTrackerArray objectAtIndex:counter]];
+            [RequestedQuotesArray addObject:[UserProjectTrackerArray objectAtIndex:counter]];
         }else{
             [RequestedQuotesArray addObject:[UserProjectTrackerArray objectAtIndex:counter]];
         }
@@ -128,7 +139,25 @@
             cell.StatusImageThree.image = [UIImage imageNamed:@"orangecircle.png"];
             cell.StatusImageFour.image = [UIImage imageNamed:@"graycircle.png"];
 
-        }else{
+        }else  if ([[tempDict objectForKey:@"QuoteStatus"] intValue]== 3)
+        {
+            if([[tempDict valueForKey:@"PlaceOrder"] intValue] == 0 )
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageTwo.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageThree.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageFour.image = [UIImage imageNamed:@"orangecircle.png"];
+            }
+            else
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageTwo.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageThree.image = [UIImage imageNamed:@"tick.png"];
+                cell.StatusImageFour.image = [UIImage imageNamed:@"tick.png"];
+            }
+        }
+        else
+        {
             // green image
             cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
             cell.StatusImageTwo.image = [UIImage imageNamed:@"tick.png"];
@@ -163,14 +192,14 @@
             cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ProjectStatusDesc"]];
         }
         
-        if ([[tempDict objectForKey:@"QuoteStatus"] intValue]== 0) {
+        if ([[tempDict objectForKey:@"ProjectStatus"] intValue]== 0) {
             // orange image
             cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
             
             cell.StatusImageTwo.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageThree.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageFour.image = [UIImage imageNamed:@"graycircle.png"];
-        }else if ([[tempDict objectForKey:@"QuoteStatus"] intValue]== 1) {
+        }else if ([[tempDict objectForKey:@"ProjectStatus"] intValue]== 1) {
             // green image
             cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
             // orange image
@@ -178,7 +207,7 @@
             cell.StatusImageThree.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageFour.image = [UIImage imageNamed:@"graycircle.png"];
             
-        }else if ([[tempDict objectForKey:@"QuoteStatus"] intValue]== 2) {
+        }else if ([[tempDict objectForKey:@"ProjectStatus"] intValue]== 2) {
             // green image
             cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
             // green image

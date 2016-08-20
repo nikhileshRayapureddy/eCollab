@@ -7,6 +7,7 @@
 //
 
 #import "StatusViewModeViewController.h"
+#import "SelectAddressViewController.h"
 
 @interface StatusViewModeViewController (){
     NSMutableDictionary *LocalDataDictionary;
@@ -20,7 +21,7 @@
 @synthesize StatuImgOne,StatusImgTwo,StatuImgThree,StatusImgFour,StatusImgFive,StatusImgsix,StatusImgnine,statusImgTen,StausImgEight;
 @synthesize LabelOne,labelTwo,LabelTrhee,LabelFour,LabelFive,LabelSix,Labelseven,LabelEight,Labelnine,LabelTen,LabelEleven,LableThreeTwo,LabelFiveTwo,labelNineTwo,LabelFourTwo;
 @synthesize PlaceOrderBtnOutlet,RejectQuoteBtnOutlet;
-
+@synthesize strRequestRID;
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%@",PlaceOrder);
@@ -63,7 +64,7 @@
     self.viewRemarksValue.layer.borderWidth = 1.0;
     self.viewCommentsValue.layer.borderWidth = 1.0;
     
-    self.viewCommentsValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.viewRemarksValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.viewCommentsValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 - (void)didReceiveMemoryWarning {
@@ -84,11 +85,11 @@
  */
     //[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];
  // NSMutableDictionary  *inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[tempDict objectForKey:@"RID"],@"RID",ItemType,@"Type", nil];
-    ServiceRequester *request = [ServiceRequester new];
-    request.serviceRequesterDelegate =  self;
-   // [request requestForopRequestedQuoteDetailsService:inputDict];
-    request =  nil;
+    SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
+    SAVCtrlObj.strRequestRID = strRequestRID;
+    [self.navigationController pushViewController:SAVCtrlObj animated:YES];
 }
+
 - (IBAction)RejectQuoteBtnAction:(id)sender {
     
 }

@@ -429,10 +429,25 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service.theSuccessMethod = @selector(responseopPlaceChemistryRequestService:);
     service.theFailureMethod = @selector(requestFailedWithError:);
     [self addServiceInterfaceToServiceStack:service];
-    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opPlaceChemistryRequest?RID=%@&Type=%@&RejectedComments=%@&AddressID=%@",[detailDictionary objectForKey:@"RID"],[detailDictionary objectForKey:@"Type"],[detailDictionary objectForKey:@"RejectedComments"],[detailDictionary objectForKey:@"AddressID"]]];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opPlaceChemistryRequest"]];
     NSURL* url = [NSURL URLWithString:stringURL];
-    [service startWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:detailDictionary options:NSJSONWritingPrettyPrinted error:nil];
+    request.HTTPBody = requestBodyData;
+    request.HTTPMethod = @"POST";
+    [request setValue:kBase_Content_Type forHTTPHeaderField:@"Content-Type"];
+    
+    NSLog(@"request  %@",request);
+    [service startWithRequest:request];
+    //or startWithURL is also working
+    //[service startWithURL:url];
     service = nil;
+    detailDictionary = nil;
+    
+//    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opPlaceChemistryRequest?RID=%@&Type=%@&RejectedComments=%@&AddressID=%@",[detailDictionary objectForKey:@"RID"],[detailDictionary objectForKey:@"Type"],[detailDictionary objectForKey:@"RejectedComments"],[detailDictionary objectForKey:@"AddressID"]]];
+//    NSURL* url = [NSURL URLWithString:stringURL];
+//    [service startWithURL:url];
+//    service = nil;
 }
 #pragma mark - ServiceResponceMethods
 -(void)requestFailedWithError:(NSString *)errorMessage{
