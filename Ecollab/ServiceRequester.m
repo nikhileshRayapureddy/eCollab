@@ -196,6 +196,39 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service = nil;
     detailDictionary = nil;
 }
+//opInsertShippingAddressDetails
+-(void)requestForopUpdateShippingAddressDetailsService:(NSMutableDictionary *)detailDictionary{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopUpdateShippingAddressDetailsService:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUpdateShippingAddressDetails"]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:detailDictionary options:NSJSONWritingPrettyPrinted error:nil];
+    request.HTTPBody = requestBodyData;
+    request.HTTPMethod = @"POST";
+    [request setValue:kBase_Content_Type forHTTPHeaderField:@"Content-Type"];
+    
+    NSLog(@"request  %@",request);
+    [service startWithRequest:request];
+    service = nil;
+    detailDictionary = nil;
+}
+
+//opGetUserAddressDetails
+-(void)requestForopGetShippingAddressDetailsService{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopGetUserAddressListService:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opGetUserAddressDetails?UID=%@",[[DetailsManager sharedManager] rID]]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    [service startWithURL:url];
+    service = nil;
+}
 //opSaveUserRatings
 -(void)requestForopSaveUserRatingsService:(NSMutableDictionary *)detailDictionary{
     ServiceInterface *service = [[ServiceInterface alloc] init];
@@ -494,6 +527,15 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [serviceRequesterDelegate requestReceivedopInsertShippingAddressDetailsResponce:jsonDict];
     // alert =  nil;
 }
+-(void)responseopUpdateShippingAddressDetailsService:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopUpdateShippingAddressDetailsResponce:jsonDict];
+    // alert =  nil;
+}
 //opSaveUserRatings
 -(void)responseopSaveUserRatingsService:(NSData *)data
 {
@@ -604,4 +646,15 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [serviceRequesterDelegate requestReceivedopPlaceChemistryRequestResponce:jsonDict];
     // alert =  nil;
 }
+-(void)responseopGetUserAddressListService:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopGetUserAddressListRequestResponce:jsonDict];
+    // alert =  nil;
+}
+
+
 @end

@@ -8,6 +8,7 @@
 
 #import "NewChemistryRequestViewController.h"
 #import "CompundDBCustomView.h"
+#import "DashboardViewController.h"
 @interface NewChemistryRequestViewController (){
     UIDatePicker *myPicker;
     UITableView *purityTableView, *imageTabelview;

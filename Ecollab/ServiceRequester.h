@@ -32,6 +32,10 @@
 -(void)requestForopChangePasswordService:(NSMutableDictionary *)detailDictionary;
 //opInsertShippingAddressDetails
 -(void)requestForopInsertShippingAddressDetailsService:(NSMutableDictionary *)detailDictionary;
+//opUpdateShippingAddressDetails
+-(void)requestForopUpdateShippingAddressDetailsService:(NSMutableDictionary *)detailDictionary;
+////opGetUserAddressListRequest
+-(void)requestForopGetShippingAddressDetailsService;
 ////opSaveUserRatings
 -(void)requestForopSaveUserRatingsService:(NSMutableDictionary *)detailDictionary;
 //opLoadMaster
@@ -72,6 +76,8 @@
 -(void)requestReceivedopChangePasswordResponce:(NSMutableDictionary *)aregistrationDict;
 //opInsertShippingAddressDetails
 -(void)requestReceivedopInsertShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
+//opUpdateShippingAddressDetails
+-(void)requestReceivedopUpdateShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
 //opSaveUserRatings
 -(void)requestReceivedopSaveUserRatingsResponce:(NSMutableDictionary *)aregistrationDict;
 //opLoadMaster
@@ -94,4 +100,7 @@
 -(void)requestReceivedopRequestedQuoteDetailsResponce:(NSMutableDictionary *)aregistrationDict;
 //opPlaceChemistryRequest
 -(void)requestReceivedopPlaceChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict;
+//opGetUserAddressListRequest
+-(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict;
+
 @end
