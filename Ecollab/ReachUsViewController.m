@@ -30,6 +30,9 @@
     self.rateView.editable = YES;
     self.rateView.maxRating = 5;
     self.rateView.delegate = self;
+    _vwCommentsBg.layer.borderWidth = 1.0;
+    _vwCommentsBg.layer.borderColor = [UIColor redColor].CGColor;
+
 }
 //method for rating functionality
 - (void)rateView:(RateView *)rateView ratingDidChange:(int)rating {
@@ -42,12 +45,24 @@
 }
 -(void)requestReceivedopSaveUserRatingsResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigate user to login view controller
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                   message:@"Rating Submitted successfully."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 
 }
 - (IBAction)CommentAndRateBtnActio:(id)sender{
-    NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"UID",[NSString stringWithFormat:@"%d",(int)floor(CustomerRating)],@"Rating",CommentTf.text,@"RatingComments", nil];
-    
+    NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",[NSString stringWithFormat:@"%d",(int)floor(CustomerRating)],@"Rating",CommentTf.text,@"RatingComments", nil];
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopSaveUserRatingsService:inputDick];
