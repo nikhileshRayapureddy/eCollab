@@ -207,9 +207,15 @@
 }
 
 - (IBAction)ServiceBtnAction:(id)sender {
-    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
+    if(dropdownTableView)
+    {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+        dropdownTableView = nil;
     }
+    
+//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
+//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+//    }
     
     dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(ServiceBtnOutlet.frame.origin.x, ServiceBtnOutlet.frame.origin.y + ServiceBtnOutlet.frame.size.height,ServiceBtnOutlet.frame.size.width ,SubmitBtnOutlet.frame.origin.y+SubmitBtnOutlet.frame.size.height) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
@@ -219,9 +225,15 @@
 }
 
 - (IBAction)AreaBtnAction:(id)sender {
-    if (dropdownTableView.tag == 10 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
+    if(dropdownTableView)
+    {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+        dropdownTableView = nil;
     }
+    
+//    if (dropdownTableView.tag == 10 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
+//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+//    }
     dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(AreaOutlet.frame.origin.x, AreaOutlet.frame.origin.y + AreaOutlet.frame.size.height,AreaOutlet.frame.size.width ,SubmitBtnOutlet.frame.origin.y-AreaOutlet.frame.origin.y) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
@@ -231,11 +243,18 @@
 
 - (IBAction)SubAreaBtnAction:(id)sender {
     
-    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 10 || dropdownTableView.tag == 40) {
+    if(dropdownTableView)
+    {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+        dropdownTableView = nil;
     }
     
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y+60,_viewSubArea.frame.size.width ,subAreaArray.count * 44) style:UITableViewStylePlain] ;
+
+//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 10 || dropdownTableView.tag == 40) {
+//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+//    }
+    int height = 3*44;
+    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y+60,_viewSubArea.frame.size.width ,height) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
     [dropdownTableView setTag:30];
@@ -243,12 +262,19 @@
 }
 
 - (IBAction)ModelsBtnAction:(id)sender {
-    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 10) {
+    if(dropdownTableView)
+    {
         [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+        dropdownTableView = nil;
     }
     
+
+//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 10) {
+//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
+//    }
     
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewAssays.frame.origin.x, _viewAssays.frame.origin.y-60,_viewAssays.frame.size.width ,modelArray.count * 44) style:UITableViewStylePlain] ;
+    int height = 3*44;
+    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewAssays.frame.origin.x, _viewAssays.frame.origin.y-60,_viewAssays.frame.size.width ,height) style:UITableViewStylePlain] ;
     dropdownTableView.dataSource = self;
     dropdownTableView.delegate = self;
     [dropdownTableView setTag:40];
@@ -309,23 +335,25 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     //3
-    
     if(self.viewAssays.hidden == YES)
     {
         
     }
     else
     {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"Please select Assays/models"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
+        if([ModelsBtnOutlet.titleLabel.text  isEqual: @"SELECT ASSAYS/MODELS"])
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                           message:@"Please select Assays/models"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
     }
     
     isSubmitAction = YES;
