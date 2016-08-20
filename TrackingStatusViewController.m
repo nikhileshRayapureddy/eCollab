@@ -34,6 +34,7 @@
         NSDictionary *dictOrderDetails = [TableDataArray objectAtIndex:0];
         self.lblStatus.text = [NSString stringWithFormat:@"%@",[dictOrderDetails objectForKey:@"ReqStatus"]];
         self.lblRequestNumber.text = [dictOrderDetails objectForKey:@"OrderNumber"];
+        strRequestRID = [dictOrderDetails objectForKey:@"RID"];
 
     }
     if([ItemType  isEqual: @"0"])
@@ -105,27 +106,99 @@
      @property (strong, nonatomic) IBOutlet UILabel *StatusProcessIndecatorLabel;
      */
     NSDictionary *tempDict = [TableDataArray objectAtIndex:indexPath.row];
-    //CreatedDate
-    if([[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"DISCUSS"] == YES || [[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"ACCEPTANCE"] == YES)
+    if([ItemType isEqual:@"0"])
     {
-        cell.StatusImage.image = [UIImage imageNamed:@"orangetracksubnew.png"];
-    }
-    else if((long)[tempDict valueForKey:@"ISRegretted"] == 1 || (long)[tempDict valueForKey:@"ISRejected"] == 1 )
-    {
-        cell.StatusImage.image = [UIImage imageNamed:@"crossred.png"];
+        if(indexPath.row == 0)
+        {
+            NSNumber *regretted = [tempDict valueForKey:@"ISRegretted"];
+            BOOL isRegretted = regretted.boolValue;
+
+            NSNumber *rejected = [tempDict valueForKey:@"ISRejected"];
+            BOOL isRejected = rejected.boolValue;
+            
+            if(isRegretted || isRejected)
+            {
+                cell.StatusImage.image = [UIImage imageNamed:@"crossred.png"];
+            }
+            else
+            {
+                NSNumber *projectStatus = [tempDict valueForKey:@"ProjectStatus"];
+                int projectStat = projectStatus.intValue;
+                if(projectStat == 3)
+                {
+                    cell.StatusImage.image = [UIImage imageNamed:@"orangetracksubnew.png"];
+                }
+                else if(projectStat == 7)
+                {
+                    cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+                }
+                else
+                {
+                    cell.StatusImage.image = [UIImage imageNamed:@"orangecircle.png"];
+                }
+            }
+        }
+        else
+        {
+            cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+        }
     }
     else
     {
-        cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+        if(indexPath.row == 0)
+        {
+            NSNumber *regretted = [tempDict valueForKey:@"ISRegretted"];
+            BOOL isRegretted = regretted.boolValue;
+            
+            NSNumber *rejected = [tempDict valueForKey:@"ISRejected"];
+            BOOL isRejected = rejected.boolValue;
+            
+            if(isRegretted || isRejected)
+            {
+                cell.StatusImage.image = [UIImage imageNamed:@"crossred.png"];
+            }
+            else
+            {
+                NSNumber *projectStatus = [tempDict valueForKey:@"ProjectStatus"];
+                int projectStat = projectStatus.intValue;
+                if(projectStat == 3)
+                {
+                    NSNumber *placeOrder = [tempDict valueForKey:@"PlaceOrder"];
+                    BOOL isPlaceOrder = placeOrder.boolValue;
+                    if(isPlaceOrder == YES)
+                    {
+                        cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+                    }
+                    else
+                    {
+                        cell.StatusImage.image = [UIImage imageNamed:@"orangetracksubnew.png"];
+                    }
+                }
+                else
+                {
+                    cell.StatusImage.image = [UIImage imageNamed:@"orangecircle.png"];
+                }
+            }
+        }
+        else
+        {
+            cell.StatusImage.image = [UIImage imageNamed:@"tick.png"];
+        }
     }
     
-    if([[tempDict objectForKey:@"ReqStatus"] isEqualToString:@"UNDER PROCESS"] == YES)
-    {
-        cell.imgRightArrow.hidden = YES;
-    }
-    else
-    {
-        cell.imgRightArrow.hidden = NO;
+    switch ([[tempDict valueForKey:@"ProjectStatus"] intValue] ) {
+        case 0:
+            cell.imgRightArrow.hidden = NO;
+            break;
+        case 2:
+            cell.imgRightArrow.hidden = NO;
+            break;
+        case 3:
+            cell.imgRightArrow.hidden = NO;
+            break;
+        default:
+            cell.imgRightArrow.hidden = YES;
+            break;
     }
 
     cell.StatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ReqStatus"]];
@@ -199,6 +272,7 @@
             StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
             TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
             TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+            TSVMVCtrlObj.strRequestRID = strRequestRID;
             [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
         }
             break;
@@ -207,6 +281,7 @@
             StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
             TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
             TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+            TSVMVCtrlObj.strRequestRID = strRequestRID;
             [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
         }
             break;

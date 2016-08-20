@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 @interface FAQTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *FAQLabelOutlet;
+@property (weak, nonatomic) IBOutlet UIView *vwTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnArr;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UIView *vwDetail;
+@property (weak, nonatomic) IBOutlet UIButton *btnDetail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constHeightVwTitle;
 
 @end

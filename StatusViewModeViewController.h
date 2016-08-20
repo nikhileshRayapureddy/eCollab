@@ -47,4 +47,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewCommentsValue;
 @property (weak, nonatomic) IBOutlet UILabel *lblQuantityValue;
+
+@property (strong, nonatomic) NSString *strRequestRID;
 @end

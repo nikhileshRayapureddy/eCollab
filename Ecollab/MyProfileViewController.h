@@ -38,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSaveProfile;
 - (IBAction)btnSaveProfileClicked:(UIButton *)sender;
 
-- (IBAction)editPersonalDetailAction:(id)sender;
 - (IBAction)ChangePasswordBtnAction:(id)sender;
 - (IBAction)ShippingAddressBtnAction:(id)sender;
 - (IBAction)DisclimerBtnAction:(id)sender;

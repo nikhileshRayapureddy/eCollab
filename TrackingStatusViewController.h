@@ -14,6 +14,9 @@
 #import "NewBiologyRequestViewController.h"
 #import "DiscussQuoteViewController.h"
 @interface TrackingStatusViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+{
+    NSString *strRequestRID;
+}
 @property (strong, nonatomic) IBOutlet UITableView *StatusTableview;
 @property (strong, nonatomic) NSMutableDictionary *MainDataDictionary;
 @property (strong, nonatomic) NSMutableString *ItemType;
