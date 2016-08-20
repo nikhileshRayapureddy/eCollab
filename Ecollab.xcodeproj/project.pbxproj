@@ -173,6 +173,8 @@
 		CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904C1D65FED7007A5623 /* down-arrow.png */; };
 		CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */; };
 		CCE790961D675940007A5623 /* EcollabLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE790951D675940007A5623 /* EcollabLoader.m */; };
+		CCF87EF11D68619000A2A343 /* orangetracksubnew.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF01D68619000A2A343 /* orangetracksubnew.png */; };
+		CCF87EF31D6861E100A2A343 /* crossred.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF21D6861E100A2A343 /* crossred.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -400,6 +402,8 @@
 		CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow@2x.png"; sourceTree = "<group>"; };
 		CCE790941D675940007A5623 /* EcollabLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcollabLoader.h; sourceTree = "<group>"; };
 		CCE790951D675940007A5623 /* EcollabLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcollabLoader.m; sourceTree = "<group>"; };
+		CCF87EF01D68619000A2A343 /* orangetracksubnew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangetracksubnew.png; sourceTree = "<group>"; };
+		CCF87EF21D6861E100A2A343 /* crossred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossred.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -590,6 +594,8 @@
 		9E2547541D32677A008A96C9 = {
 			isa = PBXGroup;
 			children = (
+				CCF87EF21D6861E100A2A343 /* crossred.png */,
+				CCF87EF01D68619000A2A343 /* orangetracksubnew.png */,
 				CCE7904C1D65FED7007A5623 /* down-arrow.png */,
 				CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */,
 				CCE790481D65FCD8007A5623 /* btnGreyGradient.png */,
@@ -1130,6 +1136,7 @@
 				9EE74BBA1D4376F400326CC5 /* ongoingprojexts.jpg in Resources */,
 				9EC27B4D1D623B78005C4CA6 /* savedrequests.png in Resources */,
 				9EC27B351D622B24005C4CA6 /* about.png in Resources */,
+				CCF87EF11D68619000A2A343 /* orangetracksubnew.png in Resources */,
 				9E47E65C1D4CD5A600A50C2B /* cam2.jpeg in Resources */,
 				9EC27B371D622B24005C4CA6 /* dis.png in Resources */,
 				9EE74BB81D4376EA00326CC5 /* requestquote.jpg in Resources */,
@@ -1164,6 +1171,7 @@
 				A758C6AD1D67727200F14BF5 /* rightarr.png in Resources */,
 				9EC27B471D623B78005C4CA6 /* helps.png in Resources */,
 				9EC27B2F1D6224DC005C4CA6 /* new.PNG in Resources */,
+				CCF87EF31D6861E100A2A343 /* crossred.png in Resources */,
 				9E2547701D32677A008A96C9 /* LaunchScreen.storyboard in Resources */,
 				9EC27B151D621123005C4CA6 /* on-going-1.png in Resources */,
 				9E47E65A1D4CA7B900A50C2B /* buttons.png in Resources */,
@@ -1382,8 +1390,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1398,8 +1406,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

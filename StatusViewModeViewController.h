@@ -43,5 +43,8 @@
 - (IBAction)PlaceOrderBtnAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *RejectQuoteBtnOutlet;
 - (IBAction)RejectQuoteBtnAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewRemarksValue;
 
+@property (weak, nonatomic) IBOutlet UIView *viewCommentsValue;
+@property (weak, nonatomic) IBOutlet UILabel *lblQuantityValue;
 @end
