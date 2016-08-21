@@ -119,6 +119,13 @@
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
                                                                               attributes:underlineAttribute];
     }
+    if(isFromTracking == YES)
+    {
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+        self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"CHEMISTRY REQUEST DETAILS"
+                                                                              attributes:underlineAttribute];
+    }
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
