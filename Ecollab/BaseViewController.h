@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
-
+-(void)designTabBar;
+-(void)btnTabClicked:(UIButton*)sender;
+-(void)setSelected:(int)Vc;
 @end

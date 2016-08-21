@@ -137,12 +137,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
         NSInteger i= indexPath.row;
+        vwSideMenu.hidden = YES;
+        menuFlag = 0;
+
         switch (i) {
             case 0:
             {
                //Home
-                menuTable.hidden = YES;
-                menuFlag = 0;
             }
                 break;
             case 1:
@@ -217,20 +218,20 @@
 
 - (IBAction)RequesterOrProjectTrackerBtnAction:(id)sender {
    
-[[[DetailsManager sharedManager]view_token]setString:@"RequesterOrProjectTracker"];
-  [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TabBarMainViewController"] animated:YES];
+    RequestOrProjectTrackerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestOrProjectTrackerViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)SavedRequestsBtnAction:(id)sender {
     
-    [[[DetailsManager sharedManager]view_token]setString:@"SavedRequests"];
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TabBarMainViewController"] animated:YES];
+    SavedRequestsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SavedRequestsViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)MyProfileBtnAction:(id)sender {
     
-    [[[DetailsManager sharedManager]view_token]setString:@"MyProfile"];
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TabBarMainViewController"] animated:YES];
+    MyProfileViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyProfileViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)ReachUsBtnAction:(id)sender {

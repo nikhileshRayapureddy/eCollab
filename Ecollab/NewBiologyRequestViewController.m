@@ -39,6 +39,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self designTabBar];
+    [self setSelected:0];
     // Do any additional setup after loading the view.
     /*
      [FAQLabelOutlet.layer setBorderWidth: 1.0];

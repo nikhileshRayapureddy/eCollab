@@ -10,7 +10,8 @@
 #import "ServiceRequester.h"
 #import "ImageCollectionViewCell.h"
 #import "DetailsManager.h"
-@interface NewChemistryRequestViewController : UIViewController<UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,ServiceRequesterProtocol,UICollectionViewDelegate,UICollectionViewDataSource>
+#import "BaseViewController.h"
+@interface NewChemistryRequestViewController : BaseViewController<UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,ServiceRequesterProtocol,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableDictionary *OtherViewsDataDictionary;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *BackgrounScrollview;

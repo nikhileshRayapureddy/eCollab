@@ -123,6 +123,10 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
     [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    
+    [self designTabBar];
+    [self setSelected:0];
+
 
 }
 -(void)viewDidLayoutSubviews
