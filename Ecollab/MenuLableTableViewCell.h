@@ -11,5 +11,6 @@
 @interface MenuLableTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *DisplayLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *MenuImg;
+@property (weak, nonatomic) IBOutlet UILabel *lblCount;
 
 @end
