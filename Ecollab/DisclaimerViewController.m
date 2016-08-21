@@ -25,30 +25,6 @@
     legaStr = @"Legal Disclaimer \n No eCollab user is allowed to use the APP to submit any inquiries about any chemicals the use of which by such user is prohibited or unauthorized under the applicable laws. A user must be solely responsible for all his/her own conducts/acts under the registered account, including without limitation any contents such user submits as well as any subsequent consequences. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S CONDUCTS/ACTS UNDER HIS/HER REGISTERED ACCOUNT. \n All compounds that GVK BIO provides to users are for research purposes only. All users acknowledge that their use of any and all compounds provided by GVK BIO is merely based on their own independent judgement, and they shall bear all the associated risks on their own in this connection. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S USE OF ANY COMPOUNDS PROVIDED BY GVK BIO. \n Once users confirm the acceptance of product, GVK BIO’s obligation under the purchase order (“PO”) shall be deemed to be fulfilled completely, and users shall be responsible for the payment to GVK BIO according to payment term and amount of the PO.\n";
     [self designNavBar];
 }
--(void)designNavBar
-{
-    self.navigationItem.hidesBackButton = NO;
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,7 +33,7 @@
 
 
 - (IBAction)PrivacyAndTermsBtnAction:(id)sender {
-
+    
     UIButton *btn = (UIButton*)sender;
     _lblTitile.text = @"PPRIVACY POLICY AND TERMS OF USE";
     PrivacyAndTermsBtnOutlet.selected = NO;

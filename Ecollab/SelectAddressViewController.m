@@ -106,7 +106,7 @@
     
 }
 
--(void)requestReceivedopPlaceChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict;
+-(void)requestReceivedopPlaceChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict
 {
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     NSString *messageString=[aregistrationDict objectForKey:@"SuccessString"];
@@ -115,24 +115,21 @@
         // show an alert with messageString
     }
     else{
-        {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
                                                                            message:messageString
                                                                     preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                for (UIViewController *vc in self.navigationController.viewControllers) {
-                    if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
-                    {
-                        [self.navigationController popToViewController:vc animated:YES];
-                    }
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            for (UIViewController *vc in self.navigationController.viewControllers) {
+                if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
+                {
+                    [self.navigationController popToViewController:vc animated:YES];
                 }
-            }];
-            
-            
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        }
+            }
+
+        }];
+        
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 
 }

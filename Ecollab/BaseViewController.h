@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BaseViewController : UIViewController
+#import "SideMenuCustomView.h"
+@interface BaseViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)SideMenuCustomView *vwSideMenuCustomView;
+@property (strong, nonatomic) NSMutableDictionary *userData;
+@property (strong, nonatomic) NSMutableArray *menuArray,*menuImagesArray;
+@property (assign, nonatomic) int menuFlag;
+-(void)designNavBar;
 -(void)designTabBar;
 -(void)btnTabClicked:(UIButton*)sender;
 -(void)setSelected:(int)Vc;
+-(void)btnSideMenuBgClicked:(UIButton*)sender;
+-(void)initialiseSideMenu;
 @end

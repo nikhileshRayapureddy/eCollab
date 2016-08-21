@@ -30,6 +30,7 @@
     request.serviceRequesterDelegate =  self;
     [request requestFopUserAlertsOrNotificationsService];
     request =  nil;
+    [self designNavBar];
 
 }
 -(void)requestReceivedopUserAlertsOrNotificationsResponce:(NSMutableDictionary *)aregistrationDict{
@@ -42,7 +43,7 @@
 {
     if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        [super tableView:tableView heightForRowAtIndexPath:indexPath];
+       return [super tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     else
     {
@@ -55,7 +56,7 @@
     // Return the number of sections.
     if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        [super numberOfSectionsInTableView:tableView];
+        return [super numberOfSectionsInTableView:tableView];
     }
     else
     {
@@ -68,21 +69,20 @@
     // If you're serving data from an array, return the length of the array:
     if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        [super tableView:tableView numberOfRowsInSection:section];
+        return [super tableView:tableView numberOfRowsInSection:section];
     }
     else
     {
         return notificationListArray.count;
     }
-    
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        [super tableView:tableView cellForRowAtIndexPath:indexPath]
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
     else
     {
@@ -119,7 +119,7 @@
     
     if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        [super tableView:tableView didSelectRowAtIndexPath:indexPath]
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
     else
     {

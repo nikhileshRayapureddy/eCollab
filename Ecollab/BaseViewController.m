@@ -11,16 +11,73 @@
 #import "SavedRequestsViewController.h"
 #import "RequestOrProjectTrackerViewController.h"
 #import "MyProfileViewController.h"
+#import "DashboardViewController.h"
+#import "DisclaimerViewController.h"
+#import "ReachUsViewController.h"
+#import "AlertsViewController.h"
+#import "FAQVCViewController.h"
 #define TAG_BOTTOM_BAR 1800
+
 @interface BaseViewController ()
 
 @end
 
 @implementation BaseViewController
-
+@synthesize vwSideMenuCustomView,userData,menuArray,menuImagesArray,menuFlag;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    menuArray =[NSMutableArray arrayWithObjects:@"HOME",@"REQUEST A QUOTE ",@"SAVED REQUESTS",@"REQUEST/PROJECT TRACKER",@"MY PROFILE",@"LEGAL DISCLAIMER",@"REACH US",@"ALERTS",@"HELP",@"SHARE", nil];
+    menuImagesArray = [[NSMutableArray alloc] initWithObjects:@"requestquotes.png",@"requestquotes.png",@"savedrequests.png",@"projecttracer.png",@"myprofile.png",@"slidelegal.png",@"newreach.png",@"notifications.png",@"helps.png",@"share.png", nil];
+    self.menuFlag = 0;
+
+}
+-(void)designNavBar
+{
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.hidesBackButton = YES;
+    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 30,25);
+    UIButton *lefttBarBtn = [[UIButton alloc] initWithFrame:frameimg2];
+    [lefttBarBtn setBackgroundImage:leftBarbtnImage forState:UIControlStateNormal];
+    [lefttBarBtn addTarget:self action:@selector(btnMenuClicked:)
+          forControlEvents:UIControlEventTouchUpInside];
+    [lefttBarBtn setShowsTouchWhenHighlighted:YES];
+    UIBarButtonItem *leftBarBtnItem =[[UIBarButtonItem alloc] initWithCustomView:lefttBarBtn];
+    self.navigationItem.leftBarButtonItem =leftBarBtnItem;
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    
+    
+}
+
+-(void)btnMenuClicked:(UIButton*)sender{
+    if (self.menuFlag == 0) {
+        [self initialiseSideMenu];
+        self.menuFlag = 1;
+    }else{
+        [self btnSideMenuBgClicked:nil];
+        self.menuFlag = 0;
+    }
+    
 }
 
 -(void)designTabBar
@@ -205,7 +262,333 @@
     }
     sender.selected = YES;
 }
+-(void)initialiseSideMenu
+{
+        vwSideMenuCustomView = [[SideMenuCustomView alloc]initWithFrame:CGRectMake(-self.view.frame.size.width, 64, self.view.frame.size.width, self.view.frame.size.height)];
+        userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserData"];
+        NSArray *arr  = [userData objectForKey:@"Login"];
+        NSDictionary *dic = [arr objectAtIndex:0];
 
+        vwSideMenuCustomView.lblUserName.text = [dic objectForKey:@"Name"];
+        vwSideMenuCustomView.lblEmailID.text = [dic objectForKey:@"EmailID"];
+        vwSideMenuCustomView.menuTable.delegate = self;
+        vwSideMenuCustomView.menuTable.dataSource = self;
+        vwSideMenuCustomView.menuTable.tableFooterView = [self tableViewFooterView];
+        
+        NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[dic objectForKey:@"Image"]];
+        NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        vwSideMenuCustomView.imgProfile.image = [UIImage imageWithData:data];
+        vwSideMenuCustomView.imgProfileBg.image = [UIImage imageWithData:data];
+        vwSideMenuCustomView.backgroundColor = [UIColor clearColor];
+        [vwSideMenuCustomView.btnSideMenuBg addTarget:self action:@selector(btnSideMenuBgClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view.window addSubview:vwSideMenuCustomView];
+        [vwSideMenuCustomView.menuTable reloadData];
+    [UIView animateWithDuration:0.3 animations:^{
+        vwSideMenuCustomView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return menuArray.count;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"MenuLableTableViewCellID";
+    
+    MenuLableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        [tableView registerNib:[UINib nibWithNibName:@"MenuLableTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+        cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    }
+    cell.MenuImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[menuImagesArray objectAtIndex:indexPath.row]]];
+    cell.DisplayLabel.text = [NSString stringWithFormat:@"%@",[menuArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger i= indexPath.row;
+    vwSideMenuCustomView.hidden = YES;
+    menuFlag = 0;
+    
+    switch (i) {
+        case 0:
+        {
+            DashboardViewController *vcDashboardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[DashboardViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[DashboardViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcDashboardViewController animated:NO];
+        }
+            break;
+        case 1:
+        {
+            RequestAQuoteViewController *vcRequestAQuoteViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestAQuoteViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[RequestAQuoteViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[RequestAQuoteViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcRequestAQuoteViewController animated:NO];
+        }
+            break;
+        case 2:
+        {
+            SavedRequestsViewController *vcSavedRequestsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SavedRequestsViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[SavedRequestsViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[SavedRequestsViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcSavedRequestsViewController animated:NO];
+        }
+            break;
+        case 3:
+        {
+            RequestOrProjectTrackerViewController *vcRequestOrProjectTrackerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestOrProjectTrackerViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[RequestOrProjectTrackerViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcRequestOrProjectTrackerViewController animated:NO];
+        }
+            break;
+        case 4:
+        {
+            MyProfileViewController *vcMyProfileViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyProfileViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[MyProfileViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[MyProfileViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcMyProfileViewController animated:NO];
+        }
+            break;
+            
+        case 5:
+        {
+            DisclaimerViewController *vcDisclaimerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DisclaimerViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[DisclaimerViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[DisclaimerViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcDisclaimerViewController animated:NO];
+        }
+            break;
+        case 6:
+        {
+            ReachUsViewController *vcReachUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReachUsViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[ReachUsViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[ReachUsViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcReachUsViewController animated:NO];
+        }
+            break;
+        case 7:
+        {
+            AlertsViewController *vcAlertsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AlertsViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[AlertsViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[AlertsViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcAlertsViewController animated:NO];
+        }
+            break;
+        case 8:
+        {
+            FAQVCViewController *vcFAQVCViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FAQVCViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[FAQVCViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[FAQVCViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcFAQVCViewController animated:NO];
+        }
+            break;
+       default:
+        {
+            DashboardViewController *vcDashboardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[DashboardViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[DashboardViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcDashboardViewController animated:NO];
+        }
+            break;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+-(void)btnSideMenuBgClicked:(UIButton*)sender
+{
+    self.menuFlag = 0;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        vwSideMenuCustomView.frame = CGRectMake(-self.view.frame.size.width, 64, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+//        [vwSideMenuCustomView removeFromSuperview];
+    }];
+}
+-(UIView*)tableViewFooterView
+{
+    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(0, 0, vwSideMenuCustomView.menuTable.frame.size.width, 44)];
+    vw.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btnSignOut = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnSignOut.backgroundColor = [UIColor clearColor];
+    [btnSignOut setBackgroundImage:[UIImage imageNamed:@"btnRedGradient.png"] forState:UIControlStateNormal];
+    [btnSignOut setTitle:@"SIGN OUT" forState:UIControlStateNormal];
+    [btnSignOut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnSignOut.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+    btnSignOut.frame = CGRectMake(0, 0, 80, 30);
+    btnSignOut.center = CGPointMake((vwSideMenuCustomView.menuTable.frame.size.width - 80)/2, vw.center.y);
+    [btnSignOut addTarget:self action:@selector(btnSignOutClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [vw addSubview:btnSignOut];
+    return vw;
+}
+-(void)btnSignOutClicked:(UIButton *)sender
+{
+    vwSideMenuCustomView.hidden = YES;
+    menuFlag = 0;
+    [vwSideMenuCustomView removeFromSuperview];
+
+    [self.navigationController popToViewController:[[self.navigationController viewControllers]objectAtIndex:1] animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
