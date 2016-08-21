@@ -16,8 +16,8 @@
      NSMutableArray *generalDataAnsArray, *orderingAndTrackinDataAnsArray,*DeliveryAndPaymentDataAnsArray,*myAccountDataAnsArray;
     NSMutableString *popviewDisplyaString;
     
-    NSInteger selHeader;
-    NSInteger selRow;
+    NSMutableArray *arrSelHeader;
+    NSMutableArray *arrSelRow;
 }
 
 
@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    selRow = -1;
-    selHeader = -1;
+    arrSelRow = [[NSMutableArray alloc]init];
+    arrSelHeader = [[NSMutableArray alloc]init];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [FAQTableview setDelegate: self];
     [FAQTableview setDataSource: self];
@@ -86,7 +86,7 @@
     [btnarr setImage:[UIImage imageNamed:@"redarrowup.png"] forState:UIControlStateNormal];
     [btnarr setImage:[UIImage imageNamed:@"redarrowdown.png"] forState:UIControlStateSelected];
     [vw addSubview:btnarr];
-    if (selHeader == section)
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]])
     {
         btnarr.selected = YES;
     }
@@ -118,13 +118,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (selHeader == 0 && selHeader == section) {
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"0"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]) {
         return generalDataArray.count;
-    }else if (selHeader == 1 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"1"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return orderingAndTrackinDataArray.count;
-    }else if (selHeader == 2 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"2"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return DeliveryAndPaymentDataArray.count;
-    }else if (selHeader == 3 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"3"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return myAccountDataArray.count;
     }
     else
@@ -134,77 +134,36 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (selRow == indexPath.row)
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
     {
         NSString *strRowTitle = @"";
         if (indexPath.section == 0) {
-            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [generalDataAnsArray objectAtIndex:indexPath.row];
         }else if (indexPath.section == 1){
-            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
         }else if (indexPath.section == 2){
-            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
         }else{
             strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
         }
         
-        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
-                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
-                                                context:nil];
-
-        NSString *strRowDetail = @"";
-        if (indexPath.section == 0) {
-            strRowDetail =  [generalDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 1){
-            strRowDetail =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 2){
-            strRowDetail =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
-        }else{
-            strRowDetail =  [myAccountDataAnsArray objectAtIndex:indexPath.row];
-        }
         
-        CGRect rect2 = [strRowDetail boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 117, 1000)
+        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 28, 1000)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
                                                 context:nil];
-
-        if (ceil(rect.size.height) < 40)
+        if (indexPath.row == 0)
         {
-            return 40 + ceil(rect2.size.height);
+            return 52 + ceilf(rect.size.height) + 35;
         }
-        
-
-        return ceil(rect.size.height) + ceil(rect2.size.height);
+        else
+        {
+            return 52 + ceilf(rect.size.height) + 25;
+        }
     }
     else
     {
-        NSString *strRowTitle = @"";
-        if (selHeader == 0 && indexPath.section == selHeader) {
-            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 1 && indexPath.section == 1){
-            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 2 && indexPath.section == 2){
-            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 3 && indexPath.section == 3){
-            strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
-        }
-        NSLog(@"strRowTitle : %@",strRowTitle);
-        NSLog(@"indexpath.row : %li",indexPath.row);
-        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
-                                                 context:nil];
-        
-        FAQTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-
-        
-        if (ceil(rect.size.height) < 40)
-            {
-                cell.constHeightVwTitle.constant = 40;
-                return 40;
-            }
-        cell.constHeightVwTitle.constant = ceil(rect.size.height);
-        return ceil(rect.size.height);
+        return 52;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -227,7 +186,7 @@
     [cell.vwDetail.layer setCornerRadius:5.0f];
     [cell.vwDetail.layer setMasksToBounds:YES];
     [cell.vwDetail.layer setBorderColor:[[UIColor blackColor] CGColor]];
-
+    cell.constHeightVwTitle.constant = 50;
     if (indexPath.section == 0)
     {
         cell.lblTitle.text = [generalDataArray objectAtIndex:indexPath.row];
@@ -248,13 +207,16 @@
         cell.lblTitle.text = [myAccountDataArray objectAtIndex:indexPath.row];
         [cell.btnDetail setTitle:[myAccountDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     }
-    if (selRow == indexPath.row)
+    
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
     {
         cell.vwDetail.hidden = NO;
+        cell.btnArr.selected = YES;
     }
     else
     {
         cell.vwDetail.hidden = YES;
+        cell.btnArr.selected = NO;
     }
     return cell;
 }
@@ -265,13 +227,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    selRow = indexPath.row;
+    
+    
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]])
+    {
+        [arrSelRow removeObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]];
+    }
+    else
+    {
+        
+        [arrSelRow addObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]];
+    }
     [tableView reloadData];
 
 }
 -(void)btnHeaderClicked:(UIButton*)sender
 {
-    selHeader = sender.tag - 100;
+    
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]])
+    {
+        [arrSelHeader removeObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]];
+    }
+    else
+    {
+        
+        [arrSelHeader addObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]];
+    }
+    
     [FAQTableview reloadData];
 }
 
