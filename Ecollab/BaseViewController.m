@@ -17,7 +17,7 @@
 #import "AlertsViewController.h"
 #import "FAQVCViewController.h"
 #import "LogInViewController.h"
-
+#import "ShareViewController.h"
 #define TAG_BOTTOM_BAR 1800
 
 @interface BaseViewController ()
@@ -266,29 +266,37 @@
 }
 -(void)initialiseSideMenu
 {
-        vwSideMenuCustomView = [[SideMenuCustomView alloc]initWithFrame:CGRectMake(-self.view.frame.size.width, 64, self.view.frame.size.width, self.view.frame.size.height)];
-        userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserData"];
-        NSArray *arr  = [userData objectForKey:@"Login"];
-        NSDictionary *dic = [arr objectAtIndex:0];
-
-        vwSideMenuCustomView.lblUserName.text = [dic objectForKey:@"Name"];
-        vwSideMenuCustomView.lblEmailID.text = [dic objectForKey:@"EmailID"];
-        vwSideMenuCustomView.menuTable.delegate = self;
-        vwSideMenuCustomView.menuTable.dataSource = self;
-        vwSideMenuCustomView.menuTable.tableFooterView = [self tableViewFooterView];
-        
-        NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[dic objectForKey:@"Image"]];
-        NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    vwSideMenuCustomView = [[SideMenuCustomView alloc]initWithFrame:CGRectMake(-self.view.frame.size.width, 64, self.view.frame.size.width, self.view.frame.size.height)];
+    userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserData"];
+    NSArray *arr  = [userData objectForKey:@"Login"];
+    NSDictionary *dic = [arr objectAtIndex:0];
+    
+    vwSideMenuCustomView.lblUserName.text = [dic objectForKey:@"Name"];
+    vwSideMenuCustomView.lblEmailID.text = [dic objectForKey:@"EmailID"];
+    vwSideMenuCustomView.menuTable.delegate = self;
+    vwSideMenuCustomView.menuTable.dataSource = self;
+    vwSideMenuCustomView.menuTable.tableFooterView = [self tableViewFooterView];
+    
+    NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[dic objectForKey:@"Image"]];
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    if (base64String && [base64String isEqualToString:@""])
+    {
+        vwSideMenuCustomView.imgProfile.image = [UIImage imageNamed:@"default_profile1.png"];
+        vwSideMenuCustomView.imgProfileBg.image = [UIImage imageNamed:@""];
+    }
+    else
+    {
         vwSideMenuCustomView.imgProfile.image = [UIImage imageWithData:data];
         vwSideMenuCustomView.imgProfileBg.image = [UIImage imageWithData:data];
-        vwSideMenuCustomView.backgroundColor = [UIColor clearColor];
-        [vwSideMenuCustomView.btnSideMenuBg addTarget:self action:@selector(btnSideMenuBgClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view.window addSubview:vwSideMenuCustomView];
-        [vwSideMenuCustomView.menuTable reloadData];
+    }
+    vwSideMenuCustomView.backgroundColor = [UIColor clearColor];
+    [vwSideMenuCustomView.btnSideMenuBg addTarget:self action:@selector(btnSideMenuBgClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view.window addSubview:vwSideMenuCustomView];
+    [vwSideMenuCustomView.menuTable reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         vwSideMenuCustomView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
     }];
-
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -527,7 +535,30 @@
             [self.navigationController pushViewController:vcFAQVCViewController animated:NO];
         }
             break;
-       default:
+        case 9:
+        {
+            ShareViewController *vcShareViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareViewController"];
+            
+            
+            if ([self.navigationController.visibleViewController isKindOfClass:[ShareViewController class]])
+            {
+                return;
+            }
+            else
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[ShareViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                        return;
+                    }
+                }
+            }
+            [self.navigationController pushViewController:vcShareViewController animated:NO];
+        }
+            break;
+      default:
         {
             DashboardViewController *vcDashboardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
             

@@ -59,7 +59,13 @@
         
         NSMutableString *base64String = [NSMutableString stringWithFormat:@"%@",[dic objectForKey:@"Image"]];
         NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        if(data != nil)
+        
+        if (base64String && [base64String isEqualToString:@""])
+        {
+            [ProfileImage setBackgroundImage:[UIImage imageNamed:@"default_profile1.png"] forState:UIControlStateNormal];
+            self.imgProfileBg.image = [UIImage imageNamed:@""];
+        }
+        else
         {
             [ProfileImage setBackgroundImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
             self.imgProfileBg.image = [UIImage imageWithData:data];
@@ -68,7 +74,6 @@
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
         [dict setObject:arr forKey:@"Login"];
         [[NSUserDefaults standardUserDefaults]setObject:dict forKey:@"UserData"];
-        
     }
     
     [EcollabLoader hideLoaderForView:self.view animated:YES];

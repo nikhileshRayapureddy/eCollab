@@ -162,6 +162,11 @@
 		A76C6CC81D69D49100679322 /* SideMenuCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C6CC71D69D49100679322 /* SideMenuCustomView.m */; };
 		A76C6CCA1D69D4B500679322 /* SideMenuCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CC91D69D4B500679322 /* SideMenuCustomView.xib */; };
 		A76C6CCC1D69DBF500679322 /* MenuLableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CCB1D69DBF500679322 /* MenuLableTableViewCell.xib */; };
+		A76C6CCE1D69FE8D00679322 /* twittershare.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CCD1D69FE8D00679322 /* twittershare.png */; };
+		A76C6CD01D69FE9F00679322 /* facebookshare.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CCF1D69FE9F00679322 /* facebookshare.png */; };
+		A76C6CD21D69FEA700679322 /* googleplusshare.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CD11D69FEA700679322 /* googleplusshare.png */; };
+		A76C6CD41D69FEB200679322 /* linkedinshare.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CD31D69FEB200679322 /* linkedinshare.png */; };
+		A76C6CD71D69FFE100679322 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C6CD61D69FFE100679322 /* ShareViewController.m */; };
 		A76EF4211D6862950009FD34 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4201D6862950009FD34 /* edit.png */; };
 		A76EF4231D6889160009FD34 /* redarrowup.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4221D6889160009FD34 /* redarrowup.png */; };
 		A76EF4251D6889360009FD34 /* redarrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4241D6889360009FD34 /* redarrowdown.png */; };
@@ -403,6 +408,12 @@
 		A76C6CC71D69D49100679322 /* SideMenuCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCustomView.m; sourceTree = "<group>"; };
 		A76C6CC91D69D4B500679322 /* SideMenuCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuCustomView.xib; sourceTree = "<group>"; };
 		A76C6CCB1D69DBF500679322 /* MenuLableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuLableTableViewCell.xib; sourceTree = "<group>"; };
+		A76C6CCD1D69FE8D00679322 /* twittershare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twittershare.png; sourceTree = "<group>"; };
+		A76C6CCF1D69FE9F00679322 /* facebookshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookshare.png; sourceTree = "<group>"; };
+		A76C6CD11D69FEA700679322 /* googleplusshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleplusshare.png; sourceTree = "<group>"; };
+		A76C6CD31D69FEB200679322 /* linkedinshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedinshare.png; sourceTree = "<group>"; };
+		A76C6CD51D69FFE100679322 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		A76C6CD61D69FFE100679322 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		A76EF4201D6862950009FD34 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		A76EF4221D6889160009FD34 /* redarrowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redarrowup.png; sourceTree = "<group>"; };
 		A76EF4241D6889360009FD34 /* redarrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redarrowdown.png; sourceTree = "<group>"; };
@@ -733,6 +744,8 @@
 				CCEAC8851D69D63E0047AD1E /* BiologyDropDownListView.h */,
 				CCEAC8861D69D63E0047AD1E /* BiologyDropDownListView.m */,
 				CCEAC8881D69D64B0047AD1E /* BiologyDropDownListView.xib */,
+				A76C6CD51D69FFE100679322 /* ShareViewController.h */,
+				A76C6CD61D69FFE100679322 /* ShareViewController.m */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -932,6 +945,10 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A76C6CD31D69FEB200679322 /* linkedinshare.png */,
+				A76C6CD11D69FEA700679322 /* googleplusshare.png */,
+				A76C6CCF1D69FE9F00679322 /* facebookshare.png */,
+				A76C6CCD1D69FE8D00679322 /* twittershare.png */,
 				A76C6CBE1D69C22200679322 /* MyProfile_red.jpg */,
 				A76C6CBF1D69C22200679322 /* RequestaQuote_red.jpg */,
 				A76C6CC01D69C22200679322 /* RequestProjectTracker_red.jpg */,
@@ -1260,6 +1277,7 @@
 				A76C6CAB1D6994D500679322 /* 05_1.png in Resources */,
 				A758C6AD1D67727200F14BF5 /* rightarr.png in Resources */,
 				9EC27B471D623B78005C4CA6 /* helps.png in Resources */,
+				A76C6CD41D69FEB200679322 /* linkedinshare.png in Resources */,
 				9EC27B2F1D6224DC005C4CA6 /* new.PNG in Resources */,
 				CCF87EF31D6861E100A2A343 /* crossred.png in Resources */,
 				9E2547701D32677A008A96C9 /* LaunchScreen.storyboard in Resources */,
@@ -1270,6 +1288,7 @@
 				9EEA59F31D4E252900C04C29 /* b3.jpg in Resources */,
 				9E23EE4A1D373416005D7859 /* kermit_empty.png in Resources */,
 				9EC27B191D621A95005C4CA6 /* proficon.png in Resources */,
+				A76C6CCE1D69FE8D00679322 /* twittershare.png in Resources */,
 				A76C6CCC1D69DBF500679322 /* MenuLableTableViewCell.xib in Resources */,
 				A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */,
 				A76C6CC51D69C22200679322 /* SavedRequests_red.jpg in Resources */,
@@ -1296,6 +1315,7 @@
 				9EBEFF6D1D60905D00271E18 /* chemistryserveimg.png in Resources */,
 				CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */,
 				CCEAC8821D69B7040047AD1E /* assay_img.png in Resources */,
+				A76C6CD21D69FEA700679322 /* googleplusshare.png in Resources */,
 				A76C6CA81D6994D500679322 /* 02_1.png in Resources */,
 				9E0C0B811D368DC00039A884 /* savedrequest.png in Resources */,
 				A770954E1D66751A001C0180 /* ecolablogo.png in Resources */,
@@ -1312,6 +1332,7 @@
 				CCEAC8891D69D64B0047AD1E /* BiologyDropDownListView.xib in Resources */,
 				CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */,
 				9E1096DF1D33FF9E0081D081 /* sign-in.png in Resources */,
+				A76C6CD01D69FE9F00679322 /* facebookshare.png in Resources */,
 				9E0C0B831D368F870039A884 /* homebg.png in Resources */,
 				9E47E6541D4CA59900A50C2B /* cam1.jpeg in Resources */,
 				CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */,
@@ -1348,6 +1369,7 @@
 				9E4F7DFC1D3B79D1001517BF /* AddNewShippingAddressViewController.m in Sources */,
 				A77095471D663B63001C0180 /* NSArray+Sort.m in Sources */,
 				CCEAC8871D69D63E0047AD1E /* BiologyDropDownListView.m in Sources */,
+				A76C6CD71D69FFE100679322 /* ShareViewController.m in Sources */,
 				9EC27B0D1D61F15E005C4CA6 /* DiscussQuoteViewController.m in Sources */,
 				A77095451D663B63001C0180 /* IQTitleBarButtonItem.m in Sources */,
 				9E1362521D36C60D00FFD592 /* RequestOrProjectTrackerViewController.m in Sources */,
