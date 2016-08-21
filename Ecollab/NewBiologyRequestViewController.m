@@ -7,6 +7,7 @@
 //
 
 #import "NewBiologyRequestViewController.h"
+#import "DashboardViewController.h"
 
 @interface NewBiologyRequestViewController (){
     UITableView *dropdownTableView;

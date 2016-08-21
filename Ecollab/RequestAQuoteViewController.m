@@ -18,6 +18,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self designNavBar];
+    
+    if ([[UIScreen mainScreen] bounds].size.width > 320)
+    {
+        [self.BiologyBtnOutlet setImage:[UIImage imageNamed:@"biology_img_1.png"] forState:UIControlStateNormal];
+        [self.ChemistryBtnOutlet setImage:[UIImage imageNamed:@"chemistry_img_1.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.BiologyBtnOutlet setImage:[UIImage imageNamed:@"biology.png"] forState:UIControlStateNormal];
+        [self.ChemistryBtnOutlet setImage:[UIImage imageNamed:@"chemistry.png"] forState:UIControlStateNormal];
+    }
+    
+
 }
 
 -(void)designNavBar
@@ -41,6 +54,7 @@
 
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
+    
 
 }
 
