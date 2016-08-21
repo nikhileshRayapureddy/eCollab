@@ -28,6 +28,8 @@
     [RequestOrProjectTableView setDataSource:self];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];//requestquote.jpg
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
+    [self designTabBar];
+    [self setSelected:2];
 
 //
 //    ServiceRequester *request = [ServiceRequester new];
