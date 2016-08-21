@@ -8,7 +8,7 @@
 
 #import "StatusViewModeViewController.h"
 #import "SelectAddressViewController.h"
-
+#import "RequestOrProjectTrackerViewController.h"
 @interface StatusViewModeViewController (){
     NSMutableDictionary *LocalDataDictionary;
 }
@@ -22,6 +22,7 @@
 @synthesize LabelOne,labelTwo,LabelTrhee,LabelFour,LabelFive,LabelSix,Labelseven,LabelEight,Labelnine,LabelTen,LabelEleven,LableThreeTwo,LabelFiveTwo,labelNineTwo,LabelFourTwo;
 @synthesize PlaceOrderBtnOutlet,RejectQuoteBtnOutlet;
 @synthesize strRequestRID;
+@synthesize isRegrettedOrRejected;
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%@",PlaceOrder);
@@ -36,7 +37,7 @@
 //    labelTwo.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Quantity"]];
     
     self.lblQuantityValue.text = [NSMutableString stringWithFormat:@"%@ %@",[LocalDataDictionary objectForKey:@"Quantity"],[LocalDataDictionary objectForKey:@"QuantityValue"]];
-    LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Purity"]];
+    LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"PurityValue"]];
 
     LabelSix.text= [NSMutableString stringWithFormat:@"REMARKS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
     Labelseven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
@@ -66,6 +67,23 @@
     
     self.viewRemarksValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.viewCommentsValue.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    if(PlaceOrder.intValue == 0)
+    {
+        PlaceOrderBtnOutlet.hidden = NO;
+        RejectQuoteBtnOutlet.hidden = NO;
+    }
+    else
+    {
+        PlaceOrderBtnOutlet.hidden = YES;
+        RejectQuoteBtnOutlet.hidden = YES;
+    }
+    
+    if(isRegrettedOrRejected)
+    {
+        PlaceOrderBtnOutlet.hidden = YES;
+        RejectQuoteBtnOutlet.hidden = YES;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -91,6 +109,88 @@
 }
 
 - (IBAction)RejectQuoteBtnAction:(id)sender {
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request requestForopLoadMasterService];
+    request =  nil;
+
+}
+
+-(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
+    NSLog(@"%@",aregistrationDict);
+    NSLog(@"%@",[aregistrationDict objectForKey:@"SuccessCode"]);
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    if([[aregistrationDict objectForKey:@"SuccessCode"] intValue]== 200)
+    {
+        NSArray *serviceArray = [aregistrationDict objectForKey:@"RejectStatusMaster"];
+        if(rejectView)
+        {
+            rejectView.delegate = nil;
+            [rejectView removeFromSuperview];
+            rejectView = nil;
+        }
+        rejectView = [[RejectedReasonsCustomView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        rejectView.delegate = self;
+        rejectView.strRequestId = strRequestRID;
+        [rejectView.arrTitles addObjectsFromArray:serviceArray];
+        [rejectView reloadData];
+        rejectView.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:rejectView];
+    }
     
+        
+}
+
+-(void)showAlert:(NSString *)message
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)removePopUp
+{
+    if(rejectView)
+    {
+        rejectView.delegate = nil;
+        [rejectView removeFromSuperview];
+        rejectView = nil;
+    }
+}
+
+-(void)rejectResponseRecieved:(NSMutableDictionary *)dictResponse
+{
+    NSString *messageString=[dictResponse objectForKey:@"SuccessString"];
+    // Check email validation
+    if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
+        // show an alert with messageString
+    }
+    else{
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                           message:messageString
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self removePopUp];
+                for (UIViewController *vc in self.navigationController.viewControllers) {
+                    if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:YES];
+                    }
+                }
+            }];
+            
+            
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+    }
 }
 @end

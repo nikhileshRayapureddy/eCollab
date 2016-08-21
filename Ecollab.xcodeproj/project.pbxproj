@@ -187,6 +187,12 @@
 		CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904C1D65FED7007A5623 /* down-arrow.png */; };
 		CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */; };
 		CCE790961D675940007A5623 /* EcollabLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE790951D675940007A5623 /* EcollabLoader.m */; };
+		CCEAC87A1D69751B0047AD1E /* RejectedReasonsCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEAC8791D69751B0047AD1E /* RejectedReasonsCustomView.m */; };
+		CCEAC87C1D6975300047AD1E /* RejectedReasonsCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEAC87B1D6975300047AD1E /* RejectedReasonsCustomView.xib */; };
+		CCEAC8811D69B7040047AD1E /* area_img.png in Resources */ = {isa = PBXBuildFile; fileRef = CCEAC87D1D69B7040047AD1E /* area_img.png */; };
+		CCEAC8821D69B7040047AD1E /* assay_img.png in Resources */ = {isa = PBXBuildFile; fileRef = CCEAC87E1D69B7040047AD1E /* assay_img.png */; };
+		CCEAC8831D69B7040047AD1E /* service_img.png in Resources */ = {isa = PBXBuildFile; fileRef = CCEAC87F1D69B7040047AD1E /* service_img.png */; };
+		CCEAC8841D69B7040047AD1E /* subarea_img.png in Resources */ = {isa = PBXBuildFile; fileRef = CCEAC8801D69B7040047AD1E /* subarea_img.png */; };
 		CCF87EF11D68619000A2A343 /* orangetracksubnew.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF01D68619000A2A343 /* orangetracksubnew.png */; };
 		CCF87EF31D6861E100A2A343 /* crossred.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF87EF21D6861E100A2A343 /* crossred.png */; };
 		CCF87EF61D687EAA00A2A343 /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */; };
@@ -433,6 +439,13 @@
 		CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow@2x.png"; sourceTree = "<group>"; };
 		CCE790941D675940007A5623 /* EcollabLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcollabLoader.h; sourceTree = "<group>"; };
 		CCE790951D675940007A5623 /* EcollabLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcollabLoader.m; sourceTree = "<group>"; };
+		CCEAC8781D69751B0047AD1E /* RejectedReasonsCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectedReasonsCustomView.h; sourceTree = "<group>"; };
+		CCEAC8791D69751B0047AD1E /* RejectedReasonsCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectedReasonsCustomView.m; sourceTree = "<group>"; };
+		CCEAC87B1D6975300047AD1E /* RejectedReasonsCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RejectedReasonsCustomView.xib; sourceTree = "<group>"; };
+		CCEAC87D1D69B7040047AD1E /* area_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = area_img.png; sourceTree = "<group>"; };
+		CCEAC87E1D69B7040047AD1E /* assay_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assay_img.png; sourceTree = "<group>"; };
+		CCEAC87F1D69B7040047AD1E /* service_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_img.png; sourceTree = "<group>"; };
+		CCEAC8801D69B7040047AD1E /* subarea_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subarea_img.png; sourceTree = "<group>"; };
 		CCF87EF01D68619000A2A343 /* orangetracksubnew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangetracksubnew.png; sourceTree = "<group>"; };
 		CCF87EF21D6861E100A2A343 /* crossred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossred.png; sourceTree = "<group>"; };
 		CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressViewController.h; sourceTree = "<group>"; };
@@ -628,6 +641,10 @@
 		9E2547541D32677A008A96C9 = {
 			isa = PBXGroup;
 			children = (
+				CCEAC87D1D69B7040047AD1E /* area_img.png */,
+				CCEAC87E1D69B7040047AD1E /* assay_img.png */,
+				CCEAC87F1D69B7040047AD1E /* service_img.png */,
+				CCEAC8801D69B7040047AD1E /* subarea_img.png */,
 				CCF87EF71D687EDE00A2A343 /* mapship.png */,
 				CCF87EF21D6861E100A2A343 /* crossred.png */,
 				CCF87EF01D68619000A2A343 /* orangetracksubnew.png */,
@@ -705,6 +722,9 @@
 				CCE790951D675940007A5623 /* EcollabLoader.m */,
 				CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */,
 				CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */,
+				CCEAC8781D69751B0047AD1E /* RejectedReasonsCustomView.h */,
+				CCEAC8791D69751B0047AD1E /* RejectedReasonsCustomView.m */,
+				CCEAC87B1D6975300047AD1E /* RejectedReasonsCustomView.xib */,
 				A76C6CB11D69B6CB00679322 /* BaseViewController.h */,
 				A76C6CB21D69B6CB00679322 /* BaseViewController.m */,
 			);
@@ -1160,6 +1180,7 @@
 				9EC27B4C1D623B78005C4CA6 /* requestquotes.png in Resources */,
 				9EBEFF651D608DE500271E18 /* logo.png in Resources */,
 				9EBD33761D5F434300DF2760 /* dash-2.png in Resources */,
+				CCEAC87C1D6975300047AD1E /* RejectedReasonsCustomView.xib in Resources */,
 				9EBEFF691D608F0A00271E18 /* chemistrysaved.png in Resources */,
 				A76EF42B1D689ED00009FD34 /* Rate_Unsel.png in Resources */,
 				9EC27B211D621AF3005C4CA6 /* cmnts_new.png in Resources */,
@@ -1198,6 +1219,7 @@
 				9E47E65C1D4CD5A600A50C2B /* cam2.jpeg in Resources */,
 				9EC27B371D622B24005C4CA6 /* dis.png in Resources */,
 				9EE74BB81D4376EA00326CC5 /* requestquote.jpg in Resources */,
+				CCEAC8811D69B7040047AD1E /* area_img.png in Resources */,
 				9E0C0B7B1D368D0F0039A884 /* requestatracker.png in Resources */,
 				9EBD33781D5F449900DF2760 /* ban.png in Resources */,
 				9EC27B621D62405F005C4CA6 /* Saved Requests_red.jpg in Resources */,
@@ -1217,6 +1239,7 @@
 				9EBEFF611D608CBA00271E18 /* 04.png in Resources */,
 				9EE80FBC1D52F1B700D894D0 /* reqquot_tab.png in Resources */,
 				9EC27B5C1D62405F005C4CA6 /* My Profile_red.jpg in Resources */,
+				CCEAC8831D69B7040047AD1E /* service_img.png in Resources */,
 				9EEA59F21D4E252900C04C29 /* b2.jpg in Resources */,
 				9EC27B5E1D62405F005C4CA6 /* Request a Quote_red.jpg in Resources */,
 				CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */,
@@ -1256,6 +1279,7 @@
 				9EBEFF5B1D608C3500271E18 /* 02.png in Resources */,
 				9EC27B4A1D623B78005C4CA6 /* notifications.png in Resources */,
 				A758C6AE1D67727200F14BF5 /* rightarr@2x.png in Resources */,
+				CCEAC8841D69B7040047AD1E /* subarea_img.png in Resources */,
 				9EC27B0F1D61FCFF005C4CA6 /* faq.png in Resources */,
 				9E25476D1D32677A008A96C9 /* Assets.xcassets in Resources */,
 				9E0C0B791D368CC70039A884 /* myprofile.png in Resources */,
@@ -1263,6 +1287,7 @@
 				9EC27B611D62405F005C4CA6 /* Saved Requests_black.jpg in Resources */,
 				9EBEFF6D1D60905D00271E18 /* chemistryserveimg.png in Resources */,
 				CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */,
+				CCEAC8821D69B7040047AD1E /* assay_img.png in Resources */,
 				A76C6CA81D6994D500679322 /* 02_1.png in Resources */,
 				9E0C0B811D368DC00039A884 /* savedrequest.png in Resources */,
 				A770954E1D66751A001C0180 /* ecolablogo.png in Resources */,
@@ -1301,6 +1326,7 @@
 				9E1362671D36C93800FFD592 /* FAQVCViewController.m in Sources */,
 				9E2547791D3267DE008A96C9 /* PageContentViewController.m in Sources */,
 				9EC27B031D61A965005C4CA6 /* StatusViewModeViewController.m in Sources */,
+				CCEAC87A1D69751B0047AD1E /* RejectedReasonsCustomView.m in Sources */,
 				9E25478A1D328281008A96C9 /* LogInViewController.m in Sources */,
 				9E13625B1D36C77A00FFD592 /* MyProfileViewController.m in Sources */,
 				9E0C0B8A1D3696670039A884 /* RequestAQuoteViewController.m in Sources */,

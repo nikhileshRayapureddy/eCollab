@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
-@interface StatusViewModeViewController : UIViewController<ServiceRequesterProtocol>
+#import "RejectedReasonsCustomView.h"
+@interface StatusViewModeViewController : UIViewController<ServiceRequesterProtocol,RejectedReasonsCustomView_Delegate>
+{
+    RejectedReasonsCustomView *rejectView;
+}
 @property (strong, nonatomic) NSMutableDictionary *inputDataDictionary;
 @property (strong, nonatomic) NSMutableString *PlaceOrder;
 
@@ -49,4 +53,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblQuantityValue;
 
 @property (strong, nonatomic) NSString *strRequestRID;
+@property (assign, nonatomic) BOOL isRegrettedOrRejected;
 @end

@@ -214,6 +214,17 @@
     NSMutableDictionary *inputDict ;
     ProjectStatus = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ProjectStatus"];
     PlaceOrder = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"PlaceOrder"];
+    NSNumber *regret = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRegretted"];
+    NSNumber *reject = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRejected"];
+    
+    if(regret.boolValue == YES || reject.boolValue == YES)
+    {
+        rejectOrRegrett = YES;
+    }
+    else
+    {
+        rejectOrRegrett = NO;
+    }
     NSDictionary * tempDict = [TableDataArray objectAtIndex:indexPath.row];
     
     
@@ -241,13 +252,58 @@
 -(void)requestReceivedopRequestedQuoteDetailsResponce:(NSMutableDictionary *)aregistrationDict
 {
 
-    switch (ProjectStatus.intValue) {
-        case 0:
-        {
-            if ([ItemType intValue] == 0) {
+    if(ItemType.intValue == 0)
+    {
+        switch (ProjectStatus.intValue) {
+            case 0:
+            {
                 NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
+                NCRVCtrlObj.isFromTracking = YES;
+                NCRVCtrlObj.isFromRequestAQuote = NO;
+                NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                if(arr.count != 0)
+                {
+                    NSMutableDictionary *dict = [arr objectAtIndex:0];
+                    NCRVCtrlObj.dictSavedChemestryData = dict;
+                }
+
                 [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
-            }else{
+            }
+                break;
+            case 1:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+                TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+                TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+                TSVMVCtrlObj.strRequestRID = strRequestRID;
+                TSVMVCtrlObj.isRegrettedOrRejected = rejectOrRegrett;
+                [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+            }
+                break;
+            case 3:
+            {
+                StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+                TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+                TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+                TSVMVCtrlObj.isRegrettedOrRejected = rejectOrRegrett;
+                TSVMVCtrlObj.strRequestRID = strRequestRID;
+                [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        switch (ProjectStatus.intValue) {
+            case 0:
+            {
                 NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
                 NBRVCtrlObj.isFromRequestAQuote = NO;
                 NBRVCtrlObj.shouldUpdateRequest = NO;
@@ -260,33 +316,39 @@
                 }
                 [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
             }
+                break;
+            case 1:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
+                NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                if(arr.count != 0)
+                {
+                    NSMutableDictionary *dict = [arr objectAtIndex:0];
+                    TSVMVCtrlObj.DataDict = dict;
+                }
+                [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+            }
+                break;
+            case 3:
+            {
+                DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
+                NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                if(arr.count != 0)
+                {
+                    NSMutableDictionary *dict = [arr objectAtIndex:0];
+                    TSVMVCtrlObj.DataDict = dict;
+                }
+                [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case 1:
-        {
-            
-        }
-            break;
-        case 2:
-        {
-            StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
-            TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
-            TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
-            TSVMVCtrlObj.strRequestRID = strRequestRID;
-            [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
-        }
-            break;
-        case 3:
-        {
-            StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
-            TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
-            TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
-            TSVMVCtrlObj.strRequestRID = strRequestRID;
-            [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
-        }
-            break;
-        default:
-            break;
     }
 }
 @end
