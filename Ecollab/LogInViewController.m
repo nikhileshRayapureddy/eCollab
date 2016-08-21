@@ -129,6 +129,14 @@
     if([[dic objectForKey:@"SuccessCode"] intValue]!= 200)
     {
         //SuccessString = "Sorry, your login credentials are invalid.";
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:[dic objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+
         PasswordTextField.text=@"";
     }else{
         

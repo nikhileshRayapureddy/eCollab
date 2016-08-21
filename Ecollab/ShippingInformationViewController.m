@@ -23,13 +23,18 @@
     // Do any additional setup after loading the view.
     arrAddresses = [[NSMutableArray alloc]init];
     
+    [self designNavBar];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopGetShippingAddressDetailsService];
     request =  nil;
 
-    [self designNavBar];
 }
 -(void)designNavBar
 {
