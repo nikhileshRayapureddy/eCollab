@@ -16,6 +16,7 @@
 #import "ReachUsViewController.h"
 #import "AlertsViewController.h"
 #import "FAQVCViewController.h"
+#import "LogInViewController.h"
 #import "ShareViewController.h"
 #define TAG_BOTTOM_BAR 1800
 
@@ -618,8 +619,28 @@
     vwSideMenuCustomView.hidden = YES;
     menuFlag = 0;
     [vwSideMenuCustomView removeFromSuperview];
-
-    [self.navigationController popToViewController:[[self.navigationController viewControllers]objectAtIndex:1] animated:YES];
+    [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:@"ISLOGGEDIN"];
+    BOOL isFound = NO;
+    LogInViewController *loginVc;
+    for (UIViewController *vc in self.navigationController.viewControllers)
+    {
+        if([vc isKindOfClass:[LogInViewController class]])
+        {
+            isFound = YES;
+            loginVc = (LogInViewController*)vc;
+        }
+    }
+    
+    if(isFound == YES)
+    {
+        [self.navigationController popToViewController:loginVc animated:YES];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"SHOULDPUSHTOLOGIN"];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

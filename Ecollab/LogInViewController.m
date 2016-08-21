@@ -143,6 +143,7 @@
         [[[DetailsManager sharedManager]rID]setString:[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]]];
         [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"ISLOGGEDIN"];
         [[NSUserDefaults standardUserDefaults] setObject:aregistrationDict forKey:@"UserData"];
+        [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]] forKey:@"USERLOGGEDINID"];
         DashboardViewController *DVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
         DVCtrlObj.userData = aregistrationDict;
         [self.navigationController pushViewController:DVCtrlObj animated:YES];
