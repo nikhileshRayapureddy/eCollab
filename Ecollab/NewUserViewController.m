@@ -83,28 +83,92 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+-(void)showAlertWithMessage:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)SignUpBtnAction:(id)sender {
-   // NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sivvala",@"FirstName",@"kumar",@"LastName",@"san@gmail.com",@"EmailID",@"12345",@"Password",@"12345",@"ConfirmPassword",@"abcd",@"CompanyName",@"developer",@"Designation",@"1",@"CreatedBy",@"0",@"ISMobileUser",@"0",@"ISGvkEmployee",@"A1J2C3",@"RefaralCode", nil];
-    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",FirstNameTextField.text],@"FirstName",[NSString stringWithFormat:@"%@",LastNameTextField.text],@"LastName",[NSString stringWithFormat:@"%@",EmailAddressTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",[NSString stringWithFormat:@"%@",ConfirmPasswordTextField.text],@"ConfirmPassword",[NSString stringWithFormat:@"%@",CompanyNameTextField.text],@"CompanyName",[NSString stringWithFormat:@"%@",DesignationTextField.text],@"Designation",@"1",@"CreatedBy",@"0",@"ISMobileUser",@"0",@"ISGvkEmployee",@"A1J2C3",@"RefaralCode", nil];
     
-    if ([FirstNameTextField.text isEqualToString:@""]||[LastNameTextField.text isEqualToString:@""]||[EmailAddressTextField.text isEqualToString:@""]||[PasswordTextField.text isEqualToString:@""]||[ConfirmPasswordTextField.text isEqualToString:@""]||[CompanyNameTextField.text isEqualToString:@""]||[DesignationTextField.text isEqualToString:@""]) {
-        //show @"Please Enter All Fields"
-    }
-    if (![[DetailsManager sharedManager] validEmail:EmailAddressTextField.text]) {
-        // show @"Enter Valid Email Id"
-        EmailAddressTextField.text=@"";
-    }else if (![ConfirmPasswordTextField.text isEqualToString:PasswordTextField.text])
+    if([FirstNameTextField.text isEqualToString:@""])
     {
-//show @"Password and Confrim Password Are Not Same"
+        [self showAlertWithMessage:@"Please enter first name."];
+    }
+    else if ([LastNameTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter last name."];
+    }
+    else if ([EmailAddressTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter email address."];
+    }
+    else if (![[DetailsManager sharedManager] validEmail:EmailAddressTextField.text])
+    {
+        [self showAlertWithMessage:@"Please enter valid email address."];
+        EmailAddressTextField.text=@"";
+    }
+    else if ([PasswordTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter password."];
+    }
+    else if (PasswordTextField.text.length < 8)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if (PasswordTextField.text.length > 12)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if ([ConfirmPasswordTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter confirm password. Or Enter confirm password."];
+    }
+    else if (ConfirmPasswordTextField.text.length < 8)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if(ConfirmPasswordTextField.text.length > 12)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if (![PasswordTextField.text isEqualToString:ConfirmPasswordTextField.text])
+    {
+        [self showAlertWithMessage:@"Password and Confirm Password does not match."];
         PasswordTextField.text=@"";
         ConfirmPasswordTextField.text=@"";
-    }else{
-    
+    }
+    else
+    {
+        NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",FirstNameTextField.text],@"FirstName",[NSString stringWithFormat:@"%@",LastNameTextField.text],@"LastName",[NSString stringWithFormat:@"%@",EmailAddressTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",[NSString stringWithFormat:@"%@",ConfirmPasswordTextField.text],@"ConfirmPassword",[NSString stringWithFormat:@"%@",CompanyNameTextField.text],@"CompanyName",[NSString stringWithFormat:@"%@",DesignationTextField.text],@"Designation",@"1",@"CreatedBy",@"0",@"ISMobileUser",@"0",@"ISGvkEmployee",@"A1J2C3",@"RefaralCode", nil];
+        
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopCreatedUserService:inputDick];
         request =  nil;
+
     }
+    
+//    if ([FirstNameTextField.text isEqualToString:@""]||[LastNameTextField.text isEqualToString:@""]||[EmailAddressTextField.text isEqualToString:@""]||[PasswordTextField.text isEqualToString:@""]||[ConfirmPasswordTextField.text isEqualToString:@""]||[CompanyNameTextField.text isEqualToString:@""]||[DesignationTextField.text isEqualToString:@""]) {
+//        //show @"Please Enter All Fields"
+//    }
+//    if (![[DetailsManager sharedManager] validEmail:EmailAddressTextField.text]) {
+//        // show @"Enter Valid Email Id"
+//        EmailAddressTextField.text=@"";
+//    }else if (![ConfirmPasswordTextField.text isEqualToString:PasswordTextField.text])
+//    {
+////show @"Password and Confrim Password Are Not Same"
+//        PasswordTextField.text=@"";
+//        ConfirmPasswordTextField.text=@"";
+//    }else{
+//    
+//    }
 }
 -(void)requestReceivedopCreatedUserResponce:(NSMutableDictionary *)aregistrationDict{
             NSLog(@"%@",aregistrationDict);

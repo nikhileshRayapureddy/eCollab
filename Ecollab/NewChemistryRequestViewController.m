@@ -315,8 +315,8 @@
 }
 - (IBAction)TakeOrChoosePhotoBtnAction:(id)sender {
     
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Photo"
-                                                                       message:@"Please select photo"
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"Add Photo!"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Photo From Gallery" style:UIAlertActionStyleDefault
@@ -853,14 +853,14 @@
         [self showAlertWithMessage:@"MDL should not be empty."];
         return false;
     }
-    else if ([JournalReferenceTextField.text isEqualToString:@""])
+    else /*if ([JournalReferenceTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Journal Reference should not be empty."];
         return false;
     }
-    else if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
+    else*/ if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Please select Expected delivery date"];
+        [self showAlertWithMessage:@"Please select expected delivery date."];
         return false;
     }
     else if ([QuantityTextField.text isEqualToString:@""])
@@ -873,9 +873,24 @@
         [self showAlertWithMessage:@"Quantity should not be 0"];
         return false;
     }
+    else if ([QuantityTextField.text isEqualToString:@"."])
+    {
+        [self showAlertWithMessage:@"Please enter quantity"];
+        return false;
+    }
+    else if (QuantityTextField.text.length > 10)
+    {
+        [self showAlertWithMessage:@"Quantity must be less than 10 digits."];
+        return false;
+    }
     else if ([CharitybtnOutlet.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Chirality should not be empty."];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@"."])
+    {
+        [self showAlertWithMessage:@"Please enter chirality."];
         return false;
     }
     else if ([CharitybtnOutlet.text isEqualToString:@"0"])

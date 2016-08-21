@@ -60,13 +60,41 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     
-    if (Pincode.text.length < 6)
+    if(Name.text.length == 0)
     {
-        [self showAlertWithMessage:@"Pincode should be 6 digits"];
+        [self showAlertWithMessage:@"Please enter your name."];
     }
-    else if (Phone.text.length < 10)
+    else if (Pincode.text.length == 0)
     {
-        [self showAlertWithMessage:@"Phone number should be 10 digits"];
+        [self showAlertWithMessage:@"Please enter pin code."];
+    }
+    else if (Pincode.text.length < 6 || Pincode.text.length > 6)
+    {
+        [self showAlertWithMessage:@"Length of pin code must equal to 6 digits."];
+    }
+    else if(Address.text.length == 0)
+    {
+        [self showAlertWithMessage:@"Please enter your address."];
+    }
+    else if(City.text.length == 0)
+    {
+        [self showAlertWithMessage:@"Please enter your city."];
+    }
+    else if (State.text.length == 0)
+    {
+        [self showAlertWithMessage:@"Please enter your state."];
+    }
+    else if (Country.text.length == 0)
+    {
+        [self showAlertWithMessage:@"Please enter your Country."];
+    }
+    else if (Phone.text.length == 0)
+    {
+        [self showAlertWithMessage:@"Please enter your Phone number."];
+    }
+    else if (Phone.text.length < 10 || Phone.text.length > 10)
+    {
+        [self showAlertWithMessage:@"Phone number must be of 10 digits."];
     }
     else
     {

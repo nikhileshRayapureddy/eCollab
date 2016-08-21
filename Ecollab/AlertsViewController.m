@@ -38,76 +38,118 @@
     [AlertsTableView reloadData];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+        return 83;
+    }
+
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        [super numberOfSectionsInTableView:tableView];
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     // If you're serving data from an array, return the length of the array:
-    return notificationListArray.count;
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
+        return notificationListArray.count;
+    }
+    
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"AlertsTableViewCellID";
-    
-    AlertsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[AlertsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    cell.ProjectNameLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderNumber"];
-    cell.PojectStatuLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"Notification"];
-
-    // based on type assign related image
-    if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
-        cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
-    }else{
-        cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
-    }
-    
-    if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 1)
+    if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        cell.imgRightArrow.hidden = YES;
+        [super tableView:tableView cellForRowAtIndexPath:indexPath]
     }
     else
     {
-        cell.imgRightArrow.hidden = NO;
+        static NSString *CellIdentifier = @"AlertsTableViewCellID";
+        
+        AlertsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[AlertsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        cell.ProjectNameLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderNumber"];
+        cell.PojectStatuLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"Notification"];
+        
+        // based on type assign related image
+        if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
+        }else{
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
+        }
+        
+        if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 1)
+        {
+            cell.imgRightArrow.hidden = YES;
+        }
+        else
+        {
+            cell.imgRightArrow.hidden = NO;
+        }
+        
+        return cell;
     }
-    
-    return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    NSLog(@"notification %@",notificationListArray);
-    NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
-    NSMutableString *Type = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
-    OrderStatus = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderStatus"]];
-    OrderType = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
-    PlaceOrder = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"PlaceOrder"]];
-    NSMutableDictionary  *inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[dict objectForKey:@"OrderID"],@"RID",Type,@"Type", nil];
-    
-    NSNumber *regretted = [dict valueForKey:@"RegretStatus"];
-    BOOL isRegretted = regretted.boolValue;
-    
-    NSNumber *rejected = [dict valueForKey:@"RejectStatus"];
-    BOOL isRejected = rejected.boolValue;
-    
-    if(isRegretted == YES || isRejected == YES)
+    if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        isRegretReject = YES;
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath]
     }
     else
     {
-        isRegretReject = NO;
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSLog(@"notification %@",notificationListArray);
+        NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
+        NSMutableString *Type = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
+        OrderStatus = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderStatus"]];
+        OrderType = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
+        PlaceOrder = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"PlaceOrder"]];
+        NSMutableDictionary  *inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[dict objectForKey:@"OrderID"],@"RID",Type,@"Type", nil];
+        
+        NSNumber *regretted = [dict valueForKey:@"RegretStatus"];
+        BOOL isRegretted = regretted.boolValue;
+        
+        NSNumber *rejected = [dict valueForKey:@"RejectStatus"];
+        BOOL isRejected = rejected.boolValue;
+        
+        if(isRegretted == YES || isRejected == YES)
+        {
+            isRegretReject = YES;
+        }
+        else
+        {
+            isRegretReject = NO;
+        }
+        strRequestRID = [dict objectForKey:@"OrderID"];
+        [self OrderDetails:inputDict];
     }
-    strRequestRID = [dict objectForKey:@"OrderID"];
-    [self OrderDetails:inputDict];
 
 }
 -(void)OrderDetails:(NSMutableDictionary *)inputDict {
