@@ -10,7 +10,8 @@
 #import "RateView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ServiceRequester.h"
-@interface ReachUsViewController : UIViewController<RateViewDelegate,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+@interface ReachUsViewController : BaseViewController<RateViewDelegate,ServiceRequesterProtocol>
 @property (weak, nonatomic) IBOutlet RateView *rateView;
 
 - (IBAction)CommentAndRateBtnActio:(id)sender;

@@ -30,6 +30,7 @@
     request.serviceRequesterDelegate =  self;
     [request requestFopUserAlertsOrNotificationsService];
     request =  nil;
+    [self designNavBar];
 
 }
 -(void)requestReceivedopUserAlertsOrNotificationsResponce:(NSMutableDictionary *)aregistrationDict{
@@ -38,14 +39,8 @@
     [AlertsTableView reloadData];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    // If you're serving data from an array, return the length of the array:
+    
     return notificationListArray.count;
 }
 

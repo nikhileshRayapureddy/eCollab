@@ -13,8 +13,9 @@
 #import "NewChemistryRequestViewController.h"
 #import "TrackingStatusViewController.h"
 #import "DiscussQuoteViewController.h"
+#import "BaseViewController.h"
 
-@interface AlertsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+@interface AlertsViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
 {
     BOOL isRegretReject;
     NSString *strRequestRID;

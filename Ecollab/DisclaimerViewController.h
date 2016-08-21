@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DisclaimerViewController : UIViewController
+#import "BaseViewController.h"
+@interface DisclaimerViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UITextView *DiscTextview;
 
 @property (strong, nonatomic) IBOutlet UIButton *PrivacyAndTermsBtnOutlet;

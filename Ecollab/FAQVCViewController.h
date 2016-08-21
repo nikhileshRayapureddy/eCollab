@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FAQTableViewCell.h"
-@interface FAQVCViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+#import "BaseViewController.h"
+
+@interface FAQVCViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *FAQTableview;
 
 @end
