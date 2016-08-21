@@ -11,7 +11,9 @@
 #import "ServiceRequester.h"
 #import "NewBiologyRequestViewController.h"
 #import "NewChemistryRequestViewController.h"
-@interface SavedRequestsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+
+@interface SavedRequestsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UITableView *SavedRequestsTableView;
 
 @end

@@ -22,7 +22,13 @@
 @interface DashboardViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableDictionary *userData;
 
-@property (strong, nonatomic) IBOutlet UIView *ratioView;
+@property (weak, nonatomic) IBOutlet UIView *vwSideMenu;
+@property (weak, nonatomic) IBOutlet UIButton *btnSideMenuBg;
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfileBg;
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfile;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmailID;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constVwSideMenuXPos;
 
 @property (strong, nonatomic) IBOutlet UITableView *menuTable;
 
@@ -44,5 +50,6 @@
 - (IBAction)ReachUsBtnAction:(id)sender;
 - (IBAction)AlertsBtnAction:(id)sender;
 - (IBAction)FAQBtnAction:(id)sender;
+- (IBAction)btnSideMenuBgClicked:(UIButton *)sender;
 
 @end

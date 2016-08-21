@@ -37,7 +37,7 @@ Label</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IOk-RV-7m9" firstAttribute="leading" secondItem="qxt-8i-8u1" secondAttribute="trailing" constant="8" id="9ih-1X-L0u"/>
                             <constraint firstItem="qxt-8i-8u1" firstAttribute="centerY" secondItem="kpi-mF-Vrr" secondAttribute="centerY" id="BvW-Gr-b5q"/>
@@ -47,6 +47,12 @@ Label</string>
                             <constraint firstItem="IOk-RV-7m9" firstAttribute="top" secondItem="kpi-mF-Vrr" secondAttribute="top" id="rn0-ge-VNZ"/>
                             <constraint firstAttribute="height" constant="50" id="wJX-Y0-bA7"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejn-dj-viL">
                         <rect key="frame" x="20" y="56" width="292" height="195"/>
@@ -69,8 +75,15 @@ label</string>
                             <constraint firstItem="rg2-Hf-cdI" firstAttribute="top" secondItem="Ejn-dj-viL" secondAttribute="top" id="RQy-qe-GIo"/>
                             <constraint firstItem="rg2-Hf-cdI" firstAttribute="leading" secondItem="Ejn-dj-viL" secondAttribute="leading" constant="5" id="tUg-G4-4fA"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kpi-mF-Vrr" secondAttribute="trailing" constant="8" id="8pv-bq-fVM"/>
                     <constraint firstItem="Ejn-dj-viL" firstAttribute="top" secondItem="kpi-mF-Vrr" secondAttribute="bottom" constant="1" id="GWS-NV-S0e"/>

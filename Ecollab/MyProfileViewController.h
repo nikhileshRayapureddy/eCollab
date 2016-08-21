@@ -13,7 +13,9 @@
 #import "AboutUsViewController.h"
 #import "ChangePasswordViewController.h"
 #import "ServiceRequester.h"
-@interface MyProfileViewController : UIViewController<ServiceRequesterProtocol>
+#import "BaseViewController.h"
+
+@interface MyProfileViewController : BaseViewController<ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UIButton *ProfileImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrlVwProfile;
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfileBg;

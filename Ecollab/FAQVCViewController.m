@@ -63,7 +63,34 @@
    
     ///////////
     myAccountDataAnsArray = [[NSMutableArray alloc] initWithObjects:@"Go to the eCollab App and click ‘New User’. Enter your registration details and authenticate via the link sent by the app on your mail id. Viola! It’s done. Please check.",@"Click on ‘Forgot Password’ from the login page and enter your registered email address. An email will be sent to your to help you reset your password.",@"Yes, the password can be changed by choosing ‘Change Password’ from your profile. ",@"Share your app with your friends on either Twitter, Facebook, LinkedIn or Google Plus by choosing share from the contextual menu that pops us on clicking three horizontal bars icon.",@"No, you can only edit personal details like first name, last name, company and designation from ‘My Profile’.", nil];
+    
+    [self designNavBar];
 }
+-(void)designNavBar
+{
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 4;
@@ -74,10 +101,12 @@
     UIView *vwHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
     vwHeader.backgroundColor = [UIColor clearColor];
     
-    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(10, 0, vwHeader.frame.size.width-20, 40)];
-    vw.backgroundColor = [UIColor lightGrayColor];
+    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(8, 0, vwHeader.frame.size.width-16, 40)];
+    vw.backgroundColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
     vw.layer.borderColor = [UIColor blackColor].CGColor;
     vw.layer.borderWidth = 1;
+    vw.layer.cornerRadius = 10;
+    vw.layer.masksToBounds = YES;
     [vwHeader addSubview:vw];
     
     UIButton *btnarr = [UIButton buttonWithType:UIButtonTypeCustom];
