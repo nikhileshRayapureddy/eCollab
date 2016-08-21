@@ -18,7 +18,9 @@
 @synthesize scrlVwProfile,ProfileImage;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self designTabBar];
+    [self setSelected:3];
+
     [ProfileImage.layer setBorderWidth: 1.0];
     [ProfileImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
 #import "DetailsManager.h"
-@interface NewBiologyRequestViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+
+@interface NewBiologyRequestViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UIButton *ServiceBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *AreaOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *SubAreaBtnOutlet;

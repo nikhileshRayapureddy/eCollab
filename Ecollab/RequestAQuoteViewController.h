@@ -10,8 +10,8 @@
 #import "NewBiologyRequestViewController.h"
 #import "NewChemistryRequestViewController.h"
 #import "FAQVCViewController.h"
-#import "BaseViewController.h"
-@interface RequestAQuoteViewController : BaseViewController
+
+@interface RequestAQuoteViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *ChemistryBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *BiologyBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *FAQOutlet;

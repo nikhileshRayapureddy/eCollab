@@ -30,7 +30,6 @@
         [self.ChemistryBtnOutlet setImage:[UIImage imageNamed:@"chemistry.png"] forState:UIControlStateNormal];
     }
     
-
 }
 
 -(void)designNavBar

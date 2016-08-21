@@ -63,7 +63,6 @@
 		9E4F7DFC1D3B79D1001517BF /* AddNewShippingAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F7DFB1D3B79D1001517BF /* AddNewShippingAddressViewController.m */; };
 		9E9567341D3757B100AA76B2 /* AlertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9567331D3757B000AA76B2 /* AlertsTableViewCell.m */; };
 		9E9567381D376DA500AA76B2 /* SavedRequestsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9567371D376DA500AA76B2 /* SavedRequestsTableViewCell.m */; };
-		9E95673C1D37735100AA76B2 /* TabBarMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E95673B1D37735100AA76B2 /* TabBarMainViewController.m */; };
 		9EBD33741D5F405500DF2760 /* dash-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBD33731D5F405500DF2760 /* dash-1.png */; };
 		9EBD33761D5F434300DF2760 /* dash-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBD33751D5F434300DF2760 /* dash-2.png */; };
 		9EBD33781D5F449900DF2760 /* ban.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBD33771D5F449900DF2760 /* ban.png */; };
@@ -119,14 +118,6 @@
 		9EC27B4E1D623B78005C4CA6 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B451D623B78005C4CA6 /* share.png */; };
 		9EC27B4F1D623B78005C4CA6 /* slidelegal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B461D623B78005C4CA6 /* slidelegal.png */; };
 		9EC27B511D623EDB005C4CA6 /* btn_submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B501D623EDB005C4CA6 /* btn_submit.png */; };
-		9EC27B5B1D62405F005C4CA6 /* My Profile_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B531D62405F005C4CA6 /* My Profile_black.jpg */; };
-		9EC27B5C1D62405F005C4CA6 /* My Profile_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B541D62405F005C4CA6 /* My Profile_red.jpg */; };
-		9EC27B5D1D62405F005C4CA6 /* Request a Quote_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B551D62405F005C4CA6 /* Request a Quote_black.jpg */; };
-		9EC27B5E1D62405F005C4CA6 /* Request a Quote_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B561D62405F005C4CA6 /* Request a Quote_red.jpg */; };
-		9EC27B5F1D62405F005C4CA6 /* Request Project Tracker_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B571D62405F005C4CA6 /* Request Project Tracker_black.jpg */; };
-		9EC27B601D62405F005C4CA6 /* Request Project Tracker_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B581D62405F005C4CA6 /* Request Project Tracker_red.jpg */; };
-		9EC27B611D62405F005C4CA6 /* Saved Requests_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B591D62405F005C4CA6 /* Saved Requests_black.jpg */; };
-		9EC27B621D62405F005C4CA6 /* Saved Requests_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EC27B5A1D62405F005C4CA6 /* Saved Requests_red.jpg */; };
 		9EDA81F91D56E181003E0BA5 /* ServiceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EDA81F61D56E181003E0BA5 /* ServiceInterface.m */; };
 		9EDA81FA1D56E181003E0BA5 /* ServiceRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EDA81F81D56E181003E0BA5 /* ServiceRequester.m */; };
 		9EE00CBB1D3DC55800870051 /* NewBiologyRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE00CBA1D3DC55800870051 /* NewBiologyRequestViewController.m */; };
@@ -160,6 +151,14 @@
 		A76C6CAF1D69B1DE00679322 /* biology_img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CAD1D69B1DE00679322 /* biology_img_1.png */; };
 		A76C6CB01D69B1DE00679322 /* chemistry_img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CAE1D69B1DE00679322 /* chemistry_img_1.png */; };
 		A76C6CB31D69B6CB00679322 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C6CB21D69B6CB00679322 /* BaseViewController.m */; };
+		A76C6CBA1D69C1D400679322 /* MyProfile_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CB61D69C1D400679322 /* MyProfile_black.jpg */; };
+		A76C6CBB1D69C1D400679322 /* Request_a_Quote_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CB71D69C1D400679322 /* Request_a_Quote_black.jpg */; };
+		A76C6CBC1D69C1D400679322 /* RequestProjectTracker_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CB81D69C1D400679322 /* RequestProjectTracker_black.jpg */; };
+		A76C6CBD1D69C1D400679322 /* SavedRequests_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CB91D69C1D400679322 /* SavedRequests_black.jpg */; };
+		A76C6CC21D69C22200679322 /* MyProfile_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CBE1D69C22200679322 /* MyProfile_red.jpg */; };
+		A76C6CC31D69C22200679322 /* RequestaQuote_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CBF1D69C22200679322 /* RequestaQuote_red.jpg */; };
+		A76C6CC41D69C22200679322 /* RequestProjectTracker_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CC01D69C22200679322 /* RequestProjectTracker_red.jpg */; };
+		A76C6CC51D69C22200679322 /* SavedRequests_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A76C6CC11D69C22200679322 /* SavedRequests_red.jpg */; };
 		A76EF4211D6862950009FD34 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4201D6862950009FD34 /* edit.png */; };
 		A76EF4231D6889160009FD34 /* redarrowup.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4221D6889160009FD34 /* redarrowup.png */; };
 		A76EF4251D6889360009FD34 /* redarrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = A76EF4241D6889360009FD34 /* redarrowdown.png */; };
@@ -285,8 +284,6 @@
 		9E9567331D3757B000AA76B2 /* AlertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsTableViewCell.m; sourceTree = "<group>"; };
 		9E9567361D376DA500AA76B2 /* SavedRequestsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedRequestsTableViewCell.h; sourceTree = "<group>"; };
 		9E9567371D376DA500AA76B2 /* SavedRequestsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedRequestsTableViewCell.m; sourceTree = "<group>"; };
-		9E95673A1D37735100AA76B2 /* TabBarMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarMainViewController.h; sourceTree = "<group>"; };
-		9E95673B1D37735100AA76B2 /* TabBarMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarMainViewController.m; sourceTree = "<group>"; };
 		9EBD33731D5F405500DF2760 /* dash-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dash-1.png"; sourceTree = "<group>"; };
 		9EBD33751D5F434300DF2760 /* dash-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dash-2.png"; sourceTree = "<group>"; };
 		9EBD33771D5F449900DF2760 /* ban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ban.png; sourceTree = "<group>"; };
@@ -347,14 +344,6 @@
 		9EC27B451D623B78005C4CA6 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		9EC27B461D623B78005C4CA6 /* slidelegal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slidelegal.png; sourceTree = "<group>"; };
 		9EC27B501D623EDB005C4CA6 /* btn_submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_submit.png; sourceTree = "<group>"; };
-		9EC27B531D62405F005C4CA6 /* My Profile_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "My Profile_black.jpg"; sourceTree = "<group>"; };
-		9EC27B541D62405F005C4CA6 /* My Profile_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "My Profile_red.jpg"; sourceTree = "<group>"; };
-		9EC27B551D62405F005C4CA6 /* Request a Quote_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Request a Quote_black.jpg"; sourceTree = "<group>"; };
-		9EC27B561D62405F005C4CA6 /* Request a Quote_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Request a Quote_red.jpg"; sourceTree = "<group>"; };
-		9EC27B571D62405F005C4CA6 /* Request Project Tracker_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Request Project Tracker_black.jpg"; sourceTree = "<group>"; };
-		9EC27B581D62405F005C4CA6 /* Request Project Tracker_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Request Project Tracker_red.jpg"; sourceTree = "<group>"; };
-		9EC27B591D62405F005C4CA6 /* Saved Requests_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Saved Requests_black.jpg"; sourceTree = "<group>"; };
-		9EC27B5A1D62405F005C4CA6 /* Saved Requests_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Saved Requests_red.jpg"; sourceTree = "<group>"; };
 		9EDA81F51D56E181003E0BA5 /* ServiceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceInterface.h; sourceTree = "<group>"; };
 		9EDA81F61D56E181003E0BA5 /* ServiceInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceInterface.m; sourceTree = "<group>"; };
 		9EDA81F71D56E181003E0BA5 /* ServiceRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequester.h; sourceTree = "<group>"; };
@@ -397,6 +386,14 @@
 		A76C6CAE1D69B1DE00679322 /* chemistry_img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chemistry_img_1.png; sourceTree = "<group>"; };
 		A76C6CB11D69B6CB00679322 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		A76C6CB21D69B6CB00679322 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		A76C6CB61D69C1D400679322 /* MyProfile_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MyProfile_black.jpg; sourceTree = "<group>"; };
+		A76C6CB71D69C1D400679322 /* Request_a_Quote_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Request_a_Quote_black.jpg; sourceTree = "<group>"; };
+		A76C6CB81D69C1D400679322 /* RequestProjectTracker_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RequestProjectTracker_black.jpg; sourceTree = "<group>"; };
+		A76C6CB91D69C1D400679322 /* SavedRequests_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SavedRequests_black.jpg; sourceTree = "<group>"; };
+		A76C6CBE1D69C22200679322 /* MyProfile_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MyProfile_red.jpg; sourceTree = "<group>"; };
+		A76C6CBF1D69C22200679322 /* RequestaQuote_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RequestaQuote_red.jpg; sourceTree = "<group>"; };
+		A76C6CC01D69C22200679322 /* RequestProjectTracker_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RequestProjectTracker_red.jpg; sourceTree = "<group>"; };
+		A76C6CC11D69C22200679322 /* SavedRequests_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SavedRequests_red.jpg; sourceTree = "<group>"; };
 		A76EF4201D6862950009FD34 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		A76EF4221D6889160009FD34 /* redarrowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redarrowup.png; sourceTree = "<group>"; };
 		A76EF4241D6889360009FD34 /* redarrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redarrowdown.png; sourceTree = "<group>"; };
@@ -652,14 +649,6 @@
 				CCE7904D1D65FED7007A5623 /* down-arrow@2x.png */,
 				CCE790481D65FCD8007A5623 /* btnGreyGradient.png */,
 				CCE790491D65FCD8007A5623 /* btnRedGradient.png */,
-				9EC27B531D62405F005C4CA6 /* My Profile_black.jpg */,
-				9EC27B541D62405F005C4CA6 /* My Profile_red.jpg */,
-				9EC27B551D62405F005C4CA6 /* Request a Quote_black.jpg */,
-				9EC27B561D62405F005C4CA6 /* Request a Quote_red.jpg */,
-				9EC27B571D62405F005C4CA6 /* Request Project Tracker_black.jpg */,
-				9EC27B581D62405F005C4CA6 /* Request Project Tracker_red.jpg */,
-				9EC27B591D62405F005C4CA6 /* Saved Requests_black.jpg */,
-				9EC27B5A1D62405F005C4CA6 /* Saved Requests_red.jpg */,
 				9EC27B521D624035005C4CA6 /* New Group */,
 				9EC27B091D61B9D2005C4CA6 /* test&real imgs */,
 				9E25475F1D32677A008A96C9 /* Ecollab */,
@@ -700,7 +689,6 @@
 				9E0C0B8B1D36966D0039A884 /* RequestAQuote */,
 				9E1362531D36C61500FFD592 /* RequestOrProjectTrackerVC */,
 				9E1362581D36C75800FFD592 /* MyProfileVC */,
-				9E9567391D37730900AA76B2 /* TabBarMainVC */,
 				9E23EE401D373192005D7859 /* ThirdParty */,
 				9E1362701D36CDF500FFD592 /* AboutUsVC */,
 				9E13626F1D36CDD600FFD592 /* DisclaimerVC */,
@@ -884,15 +872,6 @@
 			name = SavedRequestsTableViewCell;
 			sourceTree = "<group>";
 		};
-		9E9567391D37730900AA76B2 /* TabBarMainVC */ = {
-			isa = PBXGroup;
-			children = (
-				9E95673A1D37735100AA76B2 /* TabBarMainViewController.h */,
-				9E95673B1D37735100AA76B2 /* TabBarMainViewController.m */,
-			);
-			name = TabBarMainVC;
-			sourceTree = "<group>";
-		};
 		9EBEFF501D607EE900271E18 /* TrackingStatusVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +913,14 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A76C6CBE1D69C22200679322 /* MyProfile_red.jpg */,
+				A76C6CBF1D69C22200679322 /* RequestaQuote_red.jpg */,
+				A76C6CC01D69C22200679322 /* RequestProjectTracker_red.jpg */,
+				A76C6CC11D69C22200679322 /* SavedRequests_red.jpg */,
+				A76C6CB61D69C1D400679322 /* MyProfile_black.jpg */,
+				A76C6CB71D69C1D400679322 /* Request_a_Quote_black.jpg */,
+				A76C6CB81D69C1D400679322 /* RequestProjectTracker_black.jpg */,
+				A76C6CB91D69C1D400679322 /* SavedRequests_black.jpg */,
 				A76C6CAD1D69B1DE00679322 /* biology_img_1.png */,
 				A76C6CAE1D69B1DE00679322 /* chemistry_img_1.png */,
 				A770954C1D66751A001C0180 /* ecolablogo.png */,
@@ -1187,7 +1174,7 @@
 				9EBEFF731D60930500271E18 /* default_profile1.png in Resources */,
 				A76EF4271D688A510009FD34 /* FAQTableViewCell.xib in Resources */,
 				9EC27B381D622B24005C4CA6 /* personal.png in Resources */,
-				9EC27B5B1D62405F005C4CA6 /* My Profile_black.jpg in Resources */,
+				A76C6CC31D69C22200679322 /* RequestaQuote_red.jpg in Resources */,
 				A76C6CA71D6994D500679322 /* 01_1.png in Resources */,
 				9EC27B4F1D623B78005C4CA6 /* slidelegal.png in Resources */,
 				9E2547971D32A4E7008A96C9 /* msg_icon1.png in Resources */,
@@ -1201,11 +1188,11 @@
 				9EC27B491D623B78005C4CA6 /* newreach.png in Resources */,
 				A76EF4251D6889360009FD34 /* redarrowdown.png in Resources */,
 				9EBEFF591D608BD400271E18 /* 01.png in Resources */,
+				A76C6CBD1D69C1D400679322 /* SavedRequests_black.jpg in Resources */,
 				9E2245231D3894CA0081E4EF /* sampleprofile.jpeg in Resources */,
 				9EC27B511D623EDB005C4CA6 /* btn_submit.png in Resources */,
 				9E23EE4D1D37393C005D7859 /* star_favorite.png in Resources */,
 				9EBEFF621D608CBA00271E18 /* 05.png in Resources */,
-				9EC27B601D62405F005C4CA6 /* Request Project Tracker_red.jpg in Resources */,
 				9E2547961D32A4E7008A96C9 /* gvklogo1.png in Resources */,
 				9EC27B3D1D6236F2005C4CA6 /* radio-off.png in Resources */,
 				A76C6CB01D69B1DE00679322 /* chemistry_img_1.png in Resources */,
@@ -1222,7 +1209,6 @@
 				CCEAC8811D69B7040047AD1E /* area_img.png in Resources */,
 				9E0C0B7B1D368D0F0039A884 /* requestatracker.png in Resources */,
 				9EBD33781D5F449900DF2760 /* ban.png in Resources */,
-				9EC27B621D62405F005C4CA6 /* Saved Requests_red.jpg in Resources */,
 				9EBEFF681D608F0A00271E18 /* biologysaved.png in Resources */,
 				9E0C0B7D1D368D270039A884 /* reachus.png in Resources */,
 				9EC27B4B1D623B78005C4CA6 /* projecttracer.png in Resources */,
@@ -1237,21 +1223,21 @@
 				9EC27B131D62100D005C4CA6 /* request.png in Resources */,
 				9EBD33741D5F405500DF2760 /* dash-1.png in Resources */,
 				9EBEFF611D608CBA00271E18 /* 04.png in Resources */,
+				A76C6CBC1D69C1D400679322 /* RequestProjectTracker_black.jpg in Resources */,
+				A76C6CC21D69C22200679322 /* MyProfile_red.jpg in Resources */,
 				9EE80FBC1D52F1B700D894D0 /* reqquot_tab.png in Resources */,
-				9EC27B5C1D62405F005C4CA6 /* My Profile_red.jpg in Resources */,
 				CCEAC8831D69B7040047AD1E /* service_img.png in Resources */,
 				9EEA59F21D4E252900C04C29 /* b2.jpg in Resources */,
-				9EC27B5E1D62405F005C4CA6 /* Request a Quote_red.jpg in Resources */,
 				CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */,
 				9EBEFF4C1D6048C700271E18 /* orangecircle.png in Resources */,
 				CCE7904A1D65FCD8007A5623 /* btnGreyGradient.png in Resources */,
 				9EC27B391D622B24005C4CA6 /* shipping_inf.png in Resources */,
 				9EBEFF631D608CBA00271E18 /* 06.png in Resources */,
 				9EEE21641D582A8A00A6E943 /* signout.png in Resources */,
+				A76C6CBB1D69C1D400679322 /* Request_a_Quote_black.jpg in Resources */,
 				9EC27B3C1D6236F2005C4CA6 /* radio_btn.png in Resources */,
 				9E47E6581D4CA79800A50C2B /* unselect.png in Resources */,
 				A76C6CAB1D6994D500679322 /* 05_1.png in Resources */,
-				9EC27B5F1D62405F005C4CA6 /* Request Project Tracker_black.jpg in Resources */,
 				A758C6AD1D67727200F14BF5 /* rightarr.png in Resources */,
 				9EC27B471D623B78005C4CA6 /* helps.png in Resources */,
 				9EC27B2F1D6224DC005C4CA6 /* new.PNG in Resources */,
@@ -1265,6 +1251,7 @@
 				9E23EE4A1D373416005D7859 /* kermit_empty.png in Resources */,
 				9EC27B191D621A95005C4CA6 /* proficon.png in Resources */,
 				A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */,
+				A76C6CC51D69C22200679322 /* SavedRequests_red.jpg in Resources */,
 				9EC27B2D1D62239E005C4CA6 /* 100x80.png in Resources */,
 				A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */,
 				9EC27B251D621AF3005C4CA6 /* refer_new.png in Resources */,
@@ -1283,8 +1270,8 @@
 				9EC27B0F1D61FCFF005C4CA6 /* faq.png in Resources */,
 				9E25476D1D32677A008A96C9 /* Assets.xcassets in Resources */,
 				9E0C0B791D368CC70039A884 /* myprofile.png in Resources */,
+				A76C6CBA1D69C1D400679322 /* MyProfile_black.jpg in Resources */,
 				9EBEFF4D1D6048C700271E18 /* tick.png in Resources */,
-				9EC27B611D62405F005C4CA6 /* Saved Requests_black.jpg in Resources */,
 				9EBEFF6D1D60905D00271E18 /* chemistryserveimg.png in Resources */,
 				CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */,
 				CCEAC8821D69B7040047AD1E /* assay_img.png in Resources */,
@@ -1293,10 +1280,10 @@
 				A770954E1D66751A001C0180 /* ecolablogo.png in Resources */,
 				9EC27B201D621AF3005C4CA6 /* cashbag.png in Resources */,
 				9EC27B231D621AF3005C4CA6 /* purity_new.png in Resources */,
-				9EC27B5D1D62405F005C4CA6 /* Request a Quote_black.jpg in Resources */,
 				9E25476B1D32677A008A96C9 /* Main.storyboard in Resources */,
 				9EE80FC01D52F3A500D894D0 /* reqprojtrack_tab.png in Resources */,
 				9E2547951D32A4E7008A96C9 /* gvkbiologotxt.png in Resources */,
+				A76C6CC41D69C22200679322 /* RequestProjectTracker_red.jpg in Resources */,
 				9E0C0B851D36901C0039A884 /* 03_home.jpg in Resources */,
 				A76EF4211D6862950009FD34 /* edit.png in Resources */,
 				A76C6CAA1D6994D500679322 /* 04_1.png in Resources */,
@@ -1347,7 +1334,6 @@
 				9E1362571D36C6D900FFD592 /* SavedRequestsViewController.m in Sources */,
 				9E1096EC1D3403E20081D081 /* DashboardViewController.m in Sources */,
 				9E270B001D502D2F00C6A406 /* MenuLableTableViewCell.m in Sources */,
-				9E95673C1D37735100AA76B2 /* TabBarMainViewController.m in Sources */,
 				9E1362791D36CEC200FFD592 /* ShippingInformationViewController.m in Sources */,
 				9E9567381D376DA500AA76B2 /* SavedRequestsTableViewCell.m in Sources */,
 				9EDA81FA1D56E181003E0BA5 /* ServiceRequester.m in Sources */,

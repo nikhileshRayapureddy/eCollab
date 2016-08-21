@@ -38,6 +38,8 @@
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
+    [self designTabBar];
+    [self setSelected:1];
 
     dictSelectedRequest = [[NSMutableDictionary alloc]init];
     [SavedRequestsTableView setDelegate: self];
