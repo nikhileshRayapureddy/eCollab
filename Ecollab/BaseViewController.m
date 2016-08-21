@@ -296,7 +296,22 @@
     [UIView animateWithDuration:0.3 animations:^{
         vwSideMenuCustomView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
     }];
-    
+    [self performSelectorInBackground:@selector(getAlertCount) withObject:nil];
+}
+
+-(void)getAlertCount
+{
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request requestFopUserAlertsOrNotificationsServiceForSideMenu];
+    request =  nil;
+}
+
+-(void)requestReceivedopUserAlertsOrNotificationsForSideMenuResponce:(NSMutableDictionary *)aregistrationDict
+{
+    NSArray *alerts = [aregistrationDict objectForKey:@"NotificationsOrAlertsResult"];
+    alertsCount = alerts.count;
+
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuCustomView.h"
-@interface BaseViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface BaseViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+{
+    NSInteger alertsCount;
+}
 @property(nonatomic,strong)SideMenuCustomView *vwSideMenuCustomView;
 @property (strong, nonatomic) NSMutableDictionary *userData;
 @property (strong, nonatomic) NSMutableArray *menuArray,*menuImagesArray;

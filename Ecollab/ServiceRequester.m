@@ -306,6 +306,18 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service = nil;
 }
 
+-(void)requestFopUserAlertsOrNotificationsServiceForSideMenu{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopUserAlertsOrNotificationsServiceForSideMenu:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUserAlertsOrNotifications?UID=%@",[[DetailsManager sharedManager] rID]]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    [service startWithURL:url];
+    service = nil;
+}
+
 -(void)getAddressForPinCode:(NSString *)strPinCode{
     ServiceInterface *service = [[ServiceInterface alloc] init];
     service.theDelegate = self;
@@ -637,6 +649,17 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [serviceRequesterDelegate requestReceivedopUserAlertsOrNotificationsResponce:jsonDict];
     // alert =  nil;
 }
+
+-(void)responseopUserAlertsOrNotificationsServiceForSideMenu:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopUserAlertsOrNotificationsForSideMenuResponce:jsonDict];
+    // alert =  nil;
+}
+
 //opGetProjectTrackerDetails
 -(void)responseopGetProjectTrackerDetailsService:(NSData *)data
 {
