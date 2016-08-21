@@ -81,6 +81,7 @@ didCompleteWithError:(NSError *)error
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"REMOVEHUDLOADER" object:nil];
         NSString *errorMessage = [error localizedDescription];
         [theDelegate performSelector:theFailureMethod withObject:errorMessage];
 #pragma clang diagnostic pop

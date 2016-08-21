@@ -10,8 +10,12 @@
 #import "ServiceRequester.h"
 #import "DetailsManager.h"
 #import "BaseViewController.h"
+#import "BiologyDropDownListView.h"
 
-@interface NewBiologyRequestViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+@interface NewBiologyRequestViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol,BiologyDropDownListView_Delegate>
+{
+    BiologyDropDownListView *viewDropDown;
+}
 @property (strong, nonatomic) IBOutlet UIButton *ServiceBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *AreaOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *SubAreaBtnOutlet;
@@ -44,7 +48,6 @@
 @property (strong, nonatomic) NSString *strModelIdIDFinal;
 @property (strong, nonatomic) NSString *strMultipleModelIdIDFinal;
 
-@property (strong, nonatomic) NSMutableArray *arrCellSelected;
 @property (assign, nonatomic) BOOL shouldUpdateRequest;
 @property (strong, nonatomic) NSString *strRIDForSavedRequest;
 @property (assign, nonatomic) BOOL isSubmitAction;
@@ -57,5 +60,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgModelsDownArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAreaDownArrow;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

@@ -121,7 +121,7 @@
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 for (UIViewController *vc in self.navigationController.viewControllers) {
-                    if ([vc isKindOfClass:[TabBarMainViewController class]])
+                    if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
                     {
                         [self.navigationController popToViewController:vc animated:YES];
                     }

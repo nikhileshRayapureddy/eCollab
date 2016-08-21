@@ -83,6 +83,12 @@ static const CGFloat kPadding = 4.f;
     [self removeFromSuperview];
 }
 
++(void)removeLoader
+{
+    EcollabLoader *loader = [[EcollabLoader alloc]init];
+    [loader done];
+}
+
 - (void)setupLabels {
     
     
