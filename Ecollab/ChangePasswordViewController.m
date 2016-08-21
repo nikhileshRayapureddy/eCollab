@@ -52,17 +52,23 @@
     // show a message success or not
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:@"Password Changes Successfully."
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self.navigationController popViewControllerAnimated:YES];
-
-    }];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:nil];
-
-
+    if ([[aregistrationDict objectForKey:@"SuccessCode"]intValue] != 200) {
+        
+        [self showAlertWithMessage:[aregistrationDict objectForKey:@"SuccessString"]];
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                       message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
 }
 
 
@@ -71,15 +77,39 @@
     
     if ([oldPassword.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Please enter old Password"];
+        [self showAlertWithMessage:@"Enter old password."];
+    }
+    else if (oldPassword.text.length < 8)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if (oldPassword.text.length > 12)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
     }
     else if ([NewPassword.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Please enter New Password"];
+        [self showAlertWithMessage:@"Enter new password."];
+    }
+    else if (NewPassword.text.length < 8)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if (NewPassword.text.length > 12)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
     }
     else if ([confirmPassword.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Please Re-enter New Password"];
+        [self showAlertWithMessage:@"Enter confirm password."];
+    }
+    else if (confirmPassword.text.length < 8)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
+    }
+    else if (confirmPassword.text.length > 12)
+    {
+        [self showAlertWithMessage:@"Length of password must be between 8-12 characters and it should contain 1 uppercase letter, 1 lowercase letter, 1 digit and 1 special character ( i.e. !,@,#,$,%,&,* )."];
     }
     else if (![NewPassword.text isEqualToString:confirmPassword.text])
     {

@@ -80,14 +80,34 @@
     }];
 }
 
+-(void)showAlertWithMessage:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)SignInBtnAction:(id)sender {
     
-    if ([EmailTextField.text isEqualToString:@""]||[PasswordTextField.text isEqualToString:@""]){
-        // shwo an alert //Fields Can't Be Empty//
-    }else if (![[DetailsManager sharedManager] validEmail:EmailTextField.text]) {
-        // shwo an alert @"Invalid Email ID. Please Try Again"
+    if ([EmailTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter email address."];
+    }
+    else if (![[DetailsManager sharedManager] validEmail:EmailTextField.text])
+    {
+        [self showAlertWithMessage:@"Please enter valid email address."];
         PasswordTextField.text=@"";
-    }else{
+    }
+    else if([PasswordTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter password."];
+    }
+    else
+    {
         //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sivvalasanthu@gmail.com",@"EmailID",@"Gvkbio@123",@"Password",@"0",@"ISGvkEmployee", nil];
         //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sudheer.addala@gmail.com",@"EmailID",@"Gvkbio@12",@"Password",@"0",@"ISGvkEmployee", nil];
         NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",EmailTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",@"0",@"ISGvkEmployee", nil];
@@ -113,6 +133,7 @@
     }else{
         
         [[[DetailsManager sharedManager]rID]setString:[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]]];
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"ISLOGGEDIN"];
         [[NSUserDefaults standardUserDefaults] setObject:aregistrationDict forKey:@"UserData"];
         DashboardViewController *DVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
         DVCtrlObj.userData = aregistrationDict;

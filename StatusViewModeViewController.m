@@ -170,11 +170,12 @@
     // Check email validation
     if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
         // show an alert with messageString
+        [self showAlert:messageString];
     }
     else{
         {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                           message:messageString
+                                                                           message:@"You have cancelled this request."
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self removePopUp];

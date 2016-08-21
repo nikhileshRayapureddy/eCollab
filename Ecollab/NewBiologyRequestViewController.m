@@ -300,7 +300,7 @@
         if([ModelsBtnOutlet.titleLabel.text  isEqual: @"SELECT ASSAYS/MODELS"])
         {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                           message:@"Please select Assays/models"
+                                                                           message:@"Please select at least one option from Assay/Models."
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             }];

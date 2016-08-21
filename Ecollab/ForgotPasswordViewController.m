@@ -33,7 +33,7 @@
     NSString *messageString=[aregistrationDict objectForKey:@"SuccessString"];
     // Check email validation
     if ([[aregistrationDict objectForKey:@"SuccessCode"]intValue] != 200) {
-        // show an alert with messageString
+        [self showAlertWithMessage:messageString];
         ForgotPasswordTextField.text=@"";
     }
     else{
@@ -43,11 +43,25 @@
 
 }
 
+-(void)showAlertWithMessage:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)SubmitBtnAction:(id)sender {
-    if ([ForgotPasswordTextField.text isEqualToString:@""]){
-        // show alert pwd not empy
-    }else if (![[DetailsManager sharedManager] validEmail:ForgotPasswordTextField.text]) {
-        //show an alert @"Invalid Email ID. Please Try Again"
+    if ([ForgotPasswordTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Please enter email address."];
+    }
+    else if (![[DetailsManager sharedManager] validEmail:ForgotPasswordTextField.text])
+    {
+        [self showAlertWithMessage:@"Please enter a valid email address."];
         ForgotPasswordTextField.text=@"";
     }else{
         ServiceRequester *request = [ServiceRequester new];

@@ -33,6 +33,12 @@
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginController];
     self.window.rootViewController=navController;
     
+    NSString *strLoggedIn = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISLOGGEDIN"];
+    if([strLoggedIn isEqualToString:@"1"])
+    {
+        
+    }
+    
     [[IQKeyboardManager sharedManager] setEnable:YES];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];

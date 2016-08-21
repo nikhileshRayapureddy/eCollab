@@ -1887,12 +1887,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get a proposal for uploaded structure images Reference compound database / CAS or MDL number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5k-ae-U6h">
-                                                <rect key="frame" x="20" y="48" width="335" height="36"/>
+                                                <rect key="frame" x="20" y="48" width="335" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="FdX-TA-QAy"/>
+                                                    <constraint firstAttribute="height" constant="40" id="FdX-TA-QAy"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2029,7 +2029,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ee-du-uf6">
                                                 <rect key="frame" x="58" y="294" width="309" height="35"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E.g. MFCD00022266" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-iR-nNX">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E.g, MFCD00022266" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-iR-nNX">
                                                         <rect key="frame" x="5" y="0.0" width="304" height="35"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -2412,7 +2412,7 @@
                                             <constraint firstItem="RkV-Eq-yMg" firstAttribute="top" secondItem="5pi-HN-AWG" secondAttribute="bottom" constant="8" id="ebP-ei-cSr"/>
                                             <constraint firstItem="7nk-Ja-hSQ" firstAttribute="top" secondItem="3Ee-du-uf6" secondAttribute="bottom" constant="8" id="ep5-KY-PLr"/>
                                             <constraint firstItem="EuJ-4x-3NL" firstAttribute="top" secondItem="d6y-u0-NYe" secondAttribute="bottom" constant="8" id="fHg-H6-9v4"/>
-                                            <constraint firstItem="5pi-HN-AWG" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="8" id="ghF-oh-CEW"/>
+                                            <constraint firstItem="5pi-HN-AWG" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="4" id="ghF-oh-CEW"/>
                                             <constraint firstAttribute="trailing" secondItem="GKh-m8-bcK" secondAttribute="trailing" constant="8" id="hM9-tb-too"/>
                                             <constraint firstAttribute="trailing" secondItem="z2X-Gp-d2b" secondAttribute="trailing" constant="10" id="jdU-Z4-Jlc"/>
                                             <constraint firstItem="jZH-pW-r7l" firstAttribute="leading" secondItem="CXY-0W-dRo" secondAttribute="leading" constant="10" id="jep-lR-NRk"/>
@@ -2424,7 +2424,7 @@
                                             <constraint firstAttribute="trailing" secondItem="h5k-ae-U6h" secondAttribute="trailing" constant="20" id="pg3-p9-7jb"/>
                                             <constraint firstItem="6YY-ua-fWU" firstAttribute="top" secondItem="RkV-Eq-yMg" secondAttribute="bottom" constant="8" id="qi7-6N-i77"/>
                                             <constraint firstItem="5pi-HN-AWG" firstAttribute="width" secondItem="zv2-br-fU7" secondAttribute="width" id="s76-c9-2h2"/>
-                                            <constraint firstItem="zv2-br-fU7" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="8" id="sDF-z1-arT"/>
+                                            <constraint firstItem="zv2-br-fU7" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="4" id="sDF-z1-arT"/>
                                             <constraint firstItem="6xa-Nt-5Si" firstAttribute="top" secondItem="HfV-Ro-ZHg" secondAttribute="bottom" constant="8" id="sRj-Q9-WbC"/>
                                             <constraint firstItem="Gmn-YJ-1HT" firstAttribute="leading" secondItem="CXY-0W-dRo" secondAttribute="leading" constant="10" id="tI6-RF-HeE"/>
                                             <constraint firstItem="F4k-JL-ksv" firstAttribute="leading" secondItem="CXY-0W-dRo" secondAttribute="leading" constant="10" id="teS-nF-05s"/>
