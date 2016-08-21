@@ -65,6 +65,18 @@
     [self.imgVwTakeOrChoose setImage:[UIImage imageNamed:@"chemistryserveimg.png"]];
     [self.imgVwReferenceComp setImage:[UIImage imageNamed:@"chelocalimg.png"]];
     
+    
+    self.imgVwTakeOrChoose.layer.cornerRadius = 50.0;
+    self.imgVwTakeOrChoose.layer.borderColor = [UIColor redColor].CGColor;
+    self.imgVwTakeOrChoose.layer.borderWidth = 1.0;
+    
+    self.imgVwReferenceComp.layer.cornerRadius = 50.0;
+    self.imgVwReferenceComp.layer.borderColor = [UIColor redColor].CGColor;
+    self.imgVwReferenceComp.layer.borderWidth = 1.0;
+    
+    self.imgVwReferenceComp.layer.masksToBounds = YES;
+    self.imgVwTakeOrChoose.layer.masksToBounds = YES;
+    
     //purityArray = [[NSArray alloc] initWithObjects:@">=99",@">=98",@">=95",@">=90",@">=85",@">=80",nil];
     
     UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc]initWithTarget:self     action:@selector(tapped)];

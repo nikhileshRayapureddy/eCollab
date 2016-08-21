@@ -326,6 +326,9 @@
             {
                 DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
                 NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                TSVMVCtrlObj.isRjectOrRegretted = rejectOrRegrett;
+                TSVMVCtrlObj.placeOrder = PlaceOrder;
+                TSVMVCtrlObj.strRequestRID = strRequestRID;
                 if(arr.count != 0)
                 {
                     NSMutableDictionary *dict = [arr objectAtIndex:0];
@@ -337,6 +340,9 @@
             case 3:
             {
                 DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
+                TSVMVCtrlObj.placeOrder = PlaceOrder;
+                TSVMVCtrlObj.isRjectOrRegretted = rejectOrRegrett;
+                TSVMVCtrlObj.strRequestRID = strRequestRID;
                 NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
                 if(arr.count != 0)
                 {
