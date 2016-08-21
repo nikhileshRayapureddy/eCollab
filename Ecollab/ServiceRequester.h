@@ -59,6 +59,10 @@
 //opPlaceChemistryRequest
 -(void)requestForopPlaceChemistryRequestService:(NSMutableDictionary *)detailDictionary;
 -(void)requestForopUpdateBiologyRequestService:(NSMutableDictionary *)detailDictionary;
+-(void)responseopUploadProfileImage:(NSData *)data;
+-(void)requestForopUpdateProfileImage:(NSDictionary *)dict;
+-(void)responseGetAddressForPinCode:(NSData *)data;
+-(void)getAddressForPinCode:(NSString *)strPinCode;
 @end
 
 #pragma mark - ServiceRequesterProtocol
@@ -103,4 +107,6 @@
 //opGetUserAddressListRequest
 -(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict;
 
+-(void)requestReceivedopProfileImageUploadRequestResponse:(NSMutableDictionary *)aregistrationDict;
+-(void)requestReceivedGetAddressFromPinCodeRequestResponse:(NSMutableDictionary *)aregistrationDict;
 @end

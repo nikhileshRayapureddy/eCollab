@@ -38,6 +38,20 @@
     
     // Create page view controller
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    NSString *str = [[NSUserDefaults standardUserDefaults]objectForKey:@"SHOULDPUSHTOLOGIN"];
+    if([str isEqualToString:@"1"])
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:@"SHOULDPUSHTOLOGIN"];
+        [self pushToLoginScreen];
+    }
+    
+
+}
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     NSLog(@"scrollView.contentOffset.x : %f",scrollView.contentOffset.x);
@@ -54,6 +68,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)pushToLoginScreen
+{
+    LogInViewController *loginController=[self.storyboard instantiateViewControllerWithIdentifier:@"LogInViewController"];
+    [self.navigationController pushViewController:loginController animated:YES];
+    
+}
 
 @end

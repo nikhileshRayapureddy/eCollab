@@ -15,7 +15,11 @@
 #import "ServiceRequester.h"
 #import "BaseViewController.h"
 
-@interface MyProfileViewController : BaseViewController<ServiceRequesterProtocol>
+@interface MyProfileViewController : BaseViewController<ServiceRequesterProtocol,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    NSString *b64EncStr;
+
+}
 @property (strong, nonatomic) IBOutlet UIButton *ProfileImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrlVwProfile;
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfileBg;
@@ -45,6 +49,7 @@
 - (IBAction)DisclimerBtnAction:(id)sender;
 - (IBAction)AboutUsBtnAction:(id)sender;
 - (IBAction)LogoutBtnAction:(id)sender;
+- (IBAction)btnProfileImageClicked:(UIButton *)sender;
 
 
 @end

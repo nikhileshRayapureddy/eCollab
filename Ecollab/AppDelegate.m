@@ -15,7 +15,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     // here you have to check if user logedin or not
@@ -36,7 +35,17 @@
     NSString *strLoggedIn = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISLOGGEDIN"];
     if([strLoggedIn isEqualToString:@"1"])
     {
+        NSString *strUserId = [[NSUserDefaults standardUserDefaults]objectForKey:@"USERLOGGEDINID"];
+        [[[DetailsManager sharedManager]rID]setString:strUserId];
         
+        NSMutableDictionary *dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserData"];
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"ISLOGGEDIN"];
+        UIStoryboard *storyboard =
+        [UIStoryboard storyboardWithName:@"Main"
+                                  bundle:[NSBundle mainBundle]];
+        DashboardViewController *DVCtrlObj = [storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
+        DVCtrlObj.userData = dict;
+        [navController pushViewController:DVCtrlObj animated:false];
     }
     
     [[IQKeyboardManager sharedManager] setEnable:YES];

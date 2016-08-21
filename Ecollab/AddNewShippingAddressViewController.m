@@ -148,6 +148,10 @@
         }
         
         NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        if(newLength == 6)
+        {
+            [self getAddressForPinCode:[NSString stringWithFormat:@"%@%@",textField.text,string]];
+        }
         return newLength <= 6;
     }
     else if (textField == Phone)
@@ -173,4 +177,23 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(void)getAddressForPinCode:(NSString *)strPin
+{
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request getAddressForPinCode:strPin];
+    request =  nil;
+}
+
+-(void)requestReceivedGetAddressFromPinCodeRequestResponse:(NSMutableDictionary *)aregistrationDict
+{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    NSArray *arr = [aregistrationDict objectForKey:@"Data"];
+    NSDictionary *dictAddress = [arr lastObject];
+    City.text = [dictAddress objectForKey:@"Address"];
+    State.text = [dictAddress objectForKey:@"State"];
+    Country.text = [dictAddress objectForKey:@"Country"];
+    
+}
 @end

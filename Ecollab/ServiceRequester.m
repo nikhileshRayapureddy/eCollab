@@ -116,6 +116,25 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [service startWithRequest:request];
     service = nil;
 }
+
+-(void)requestForopUpdateProfileImage:(NSDictionary *)dict{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopUploadProfileImage:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/imageupload"]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    request.HTTPBody = requestBodyData;
+    request.HTTPMethod = @"POST";
+    [request setValue:kBase_Content_Type forHTTPHeaderField:@"Content-Type"];
+    NSLog(@"request  %@",request);
+    [service startWithRequest:request];
+    service = nil;
+}
+
 //opGetUserDetails
 -(void)requestForopGetUserDetailsService{
     ServiceInterface *service = [[ServiceInterface alloc] init];
@@ -286,6 +305,21 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [service startWithURL:url];
     service = nil;
 }
+
+-(void)getAddressForPinCode:(NSString *)strPinCode{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseGetAddressForPinCode:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [NSString stringWithFormat:@"http://www.whizapi.com/api/v2/util/ui/in/indian-city-by-postal-code?AppKey=lqabadiabeg7hndxg63r5xk7&pin=%@",strPinCode];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    [service startWithURL:url];
+    service = nil;
+    
+}
+
+
 //opGetProjectTrackerDetails
 -(void)requestFopGetProjectTrackerDetailsService{
     ServiceInterface *service = [[ServiceInterface alloc] init];
@@ -501,6 +535,18 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     // alert =  nil;
 }
 
+-(void)responseopUploadProfileImage:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopProfileImageUploadRequestResponse:jsonDict];
+    // alert =  nil;
+}
+
+
+
 //opGetUserDetails
 
 -(void)responseopGetUserDetailsService:(NSData *)data
@@ -599,6 +645,16 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
     NSLog(@"Parsed JSON Data: %@", jsonDict);
     [serviceRequesterDelegate requestReceivedopGetProjectTrackerDetailsResponce:jsonDict];
+    // alert =  nil;
+}
+
+-(void)responseGetAddressForPinCode:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedGetAddressFromPinCodeRequestResponse:jsonDict];
     // alert =  nil;
 }
 //opImagesOnTherapiticArea
