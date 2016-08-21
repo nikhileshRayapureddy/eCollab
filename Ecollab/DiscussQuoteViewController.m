@@ -28,7 +28,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)displayData
+{
+    self.labelTwo.text = [DataDict objectForKey:@"Service"];
+    self.LabelFour.text = [DataDict objectForKey:@"Area"];
+    self.LabelSix.text = [DataDict objectForKey:@"SubArea"];
+    self.LabelEight.text = [DataDict objectForKey:@"MultipleModelValues"];
+    
+}
 
 - (IBAction)DiscussBtnAction:(id)sender {
 }

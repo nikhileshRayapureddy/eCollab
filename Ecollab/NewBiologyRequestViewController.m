@@ -162,6 +162,7 @@
     [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
     [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+    ModelsBtnOutlet.titleLabel.numberOfLines = 2;
     [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
     [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //    isFromRequestAQuote = YES;
@@ -209,6 +210,7 @@
     [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
     [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+    ModelsBtnOutlet.titleLabel.numberOfLines = 2;
     [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
     [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     isFromRequestAQuote = YES;
@@ -238,7 +240,7 @@
             strServiceIDFinal = [dict objectForKey:@"RID"];
             Type = [NSMutableString stringWithFormat:@"0"];
             //*Type,*SubID,*ModelID;  //RID Service
-            if(isFromRequestAQuote == YES || isFromTracking == YES)
+            if(isFromRequestAQuote == YES)
             {
                 SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             }
@@ -785,7 +787,7 @@
         {
             serFlag = 1;
             Type = [NSMutableString stringWithFormat:@"1"];
-            if(isFromRequestAQuote == YES || isFromTracking == YES)
+            if(isFromRequestAQuote == YES)
             {
                 NSDictionary *dictFirstObject = [areaArray objectAtIndex:0];
                 [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dictFirstObject objectForKey:@"Description"]] forState:UIControlStateNormal];
@@ -814,7 +816,7 @@
                 [self showViewSubArea:YES];
                 Type = [NSMutableString stringWithFormat:@"3"];
                 SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
-                if(isFromRequestAQuote == YES || isFromTracking == YES)
+                if(isFromRequestAQuote == YES)
                 {
                     NSDictionary *dict = [subAreaArray objectAtIndex:0];
                     [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];

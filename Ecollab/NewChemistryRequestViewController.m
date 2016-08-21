@@ -31,6 +31,7 @@
 @synthesize BackgrounScrollview,TakeOrChoosePhotoBtnOutlet,NewOrEditChemistryReqHeaderLabel,GetAProposalLabel,ChoseFromReferenceCompounDBBtnOutlet,CASTextField,MDLTextField,JournalReferenceTextField,ExpectedDeleveryDateBtnOutlet,ExpectedDeleveryDateImageview,QuantityTextField,MGBtnOutlet,GBtnOutlet,KGBtnOutlet,PuritybtnOutlet,CharitybtnOutlet,RemarksTextField,SubmitBtnOutlet,SaveForLaterBtnOutlet;
 @synthesize OtherViewsDataDictionary;
 @synthesize dictSavedChemestryData;
+@synthesize isFromTracking;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -203,9 +204,18 @@
         [self ImagesDisplay:@"0"];
         
         [self performSelectorOnMainThread:@selector(bindCompundDBData) withObject:nil waitUntilDone:true];
+        
         if (dictSavedChemestryData != nil)
         {
-        [self bindChemestryData:dictSavedChemestryData];
+            if(isFromTracking == YES)
+            {
+                [self bindChemistryDataFromTracking:dictSavedChemestryData];
+            }
+            else
+            {
+                [self bindChemestryData:dictSavedChemestryData];
+            }
+        
         }
     }else{
         //show some alert
@@ -707,6 +717,105 @@
             TakeOrChoosePhotoBtnOutlet.selected = YES;
         }
     }
+    //[dictData objectForKey:@"ImageName"];
+}
+
+-(void)bindChemistryDataFromTracking:(NSDictionary *)dictData
+{
+    CASTextField.text = [dictData objectForKey:@"CAS"];
+    MDLTextField.text = [dictData objectForKey:@"MDL"];
+    JournalReferenceTextField.text = [dictData objectForKey:@"jonuralref"];
+    NSString *strDate = [dictData objectForKey:@"Exp_Delivery_Date"];
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    NSDate *expdate = [df dateFromString:strDate];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy"];
+    date = [dateFormat stringFromDate:expdate];
+    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    
+    
+    NSNumber *qty = [dictData valueForKey:@"Quantity"];
+    
+    
+    
+    int quant = qty.intValue;
+    
+    QuantityTextField.text = [NSString stringWithFormat:@"%d",quant];
+    NSString *strQuantityUnit = [NSString stringWithFormat:@"%@",[dictData objectForKey:@"QuantityID"]];
+    MGBtnOutlet.selected = NO;
+    GBtnOutlet.selected = NO;
+    KGBtnOutlet.selected = NO;
+    if([strQuantityUnit isEqualToString:@"0"] || [strQuantityUnit isEqualToString:@"1"])
+    {
+        MGBtnOutlet.selected = YES;
+        GBtnOutlet.selected = NO;
+        KGBtnOutlet.selected = NO;
+    }
+    else if([strQuantityUnit isEqualToString:@"2"])
+    {
+        MGBtnOutlet.selected = NO;
+        GBtnOutlet.selected = YES;
+        KGBtnOutlet.selected = NO;
+    }
+    else if([strQuantityUnit isEqualToString:@"3"])
+    {
+        MGBtnOutlet.selected = NO;
+        GBtnOutlet.selected = NO;
+        KGBtnOutlet.selected = YES;
+    }
+    
+    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
+    RemarksTextField.text = [dictData objectForKey:@"Comments"];
+    if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])
+    {
+        if (![[dictData objectForKey:@"ImageName"] isEqualToString:@""])
+        {
+            NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            _imgVwReferenceComp.image = [UIImage imageWithData:data];
+            ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
+            TakeOrChoosePhotoBtnOutlet.selected = NO;
+        }
+    }
+    else
+    {
+        if (![[dictData objectForKey:@"ImageName"] isEqualToString:@""])
+        {
+            NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
+            NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            _imgVwTakeOrChoose.image = [UIImage imageWithData:data];
+            ChoseFromReferenceCompounDBBtnOutlet.selected = NO;
+            TakeOrChoosePhotoBtnOutlet.selected = YES;
+        }
+    }
+    
+    for (UIView *vw in self.scrollViewInnerView.subviews)
+    {
+        if([vw isKindOfClass:[UIView class]])
+        {
+            for(UIView *view in vw.subviews)
+            {
+                if ([view isKindOfClass:[UIButton class]] || [view isKindOfClass:[UITextField class]])
+                {
+                    view.userInteractionEnabled = NO;
+                }            }
+        }
+        else if ([vw isKindOfClass:[UIButton class]] || [vw isKindOfClass:[UITextField class]])
+        {
+            vw.userInteractionEnabled = NO;
+        }
+    }
+    
+    QuantityTextField.userInteractionEnabled = NO;
+    PuritybtnOutlet.userInteractionEnabled = NO;
+    TakeOrChoosePhotoBtnOutlet.hidden = YES;
+    ChoseFromReferenceCompounDBBtnOutlet.hidden = YES;
+
+    SubmitBtnOutlet.hidden = YES;
+    SaveForLaterBtnOutlet.hidden = YES;
+    
     //[dictData objectForKey:@"ImageName"];
 }
 -(BOOL)validationFields

@@ -15,6 +15,7 @@
 #import "DiscussQuoteViewController.h"
 @interface TrackingStatusViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
 {
+    BOOL rejectOrRegrett;
     NSString *strRequestRID;
 }
 @property (strong, nonatomic) IBOutlet UITableView *StatusTableview;
@@ -24,4 +25,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblRequestNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UIImageView *imgRightArrow;
+
 @end

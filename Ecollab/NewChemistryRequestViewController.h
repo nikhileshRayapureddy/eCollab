@@ -60,4 +60,7 @@
 @property (strong, nonatomic) NSDictionary *dictSavedChemestryData;
 @property (assign, nonatomic) BOOL isFromRequestAQuote;
 
+@property (assign, nonatomic) BOOL isFromTracking;
+@property (weak, nonatomic) IBOutlet UIView *scrollViewInnerView;
+
 @end

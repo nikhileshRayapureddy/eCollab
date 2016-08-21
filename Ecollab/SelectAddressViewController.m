@@ -8,7 +8,7 @@
 
 #import "SelectAddressViewController.h"
 #import "ShippingInformationViewController.h"
-
+#import "RequestOrProjectTrackerViewController.h"
 @interface SelectAddressViewController ()
 
 @end
@@ -119,7 +119,7 @@
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 for (UIViewController *vc in self.navigationController.viewControllers) {
-                    if ([vc isKindOfClass:[DashboardViewController class]])
+                    if ([vc isKindOfClass:[RequestOrProjectTrackerViewController class]])
                     {
                         [self.navigationController popToViewController:vc animated:YES];
                     }

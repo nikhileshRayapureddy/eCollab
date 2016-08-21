@@ -118,7 +118,14 @@
 
         if ([[tempDict objectForKey:@"QuoteStatus"] intValue]== 0) {
             // orange image
-            cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
+            if([[tempDict valueForKey:@"ISRegretted"] intValue] == 1 || [[tempDict valueForKey:@"ISRejected"] intValue] == 1)
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"crossred.png"];
+            }
+            else
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
+            }
             cell.StatusImageTwo.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageThree.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageFour.image = [UIImage imageNamed:@"graycircle.png"];
@@ -126,7 +133,15 @@
             // green image
             cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
             // orange image
-            cell.StatusImageTwo.image = [UIImage imageNamed:@"orangecircle.png"];
+            if([[tempDict valueForKey:@"ISRegretted"] intValue] == 1 || [[tempDict valueForKey:@"ISRejected"] intValue] == 1)
+            {
+                cell.StatusImageTwo.image = [UIImage imageNamed:@"crossred.png"];
+            }
+            else
+            {
+                cell.StatusImageTwo.image = [UIImage imageNamed:@"orangecircle.png"];
+            }
+            
             cell.StatusImageThree.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageFour.image = [UIImage imageNamed:@"graycircle.png"];
 
@@ -146,7 +161,14 @@
                 cell.StatuImageOne.image = [UIImage imageNamed:@"tick.png"];
                 cell.StatusImageTwo.image = [UIImage imageNamed:@"tick.png"];
                 cell.StatusImageThree.image = [UIImage imageNamed:@"tick.png"];
-                cell.StatusImageFour.image = [UIImage imageNamed:@"orangecircle.png"];
+                if([[tempDict valueForKey:@"ISRegretted"] intValue] == 1 || [[tempDict valueForKey:@"ISRejected"] intValue] == 1)
+                {
+                    cell.StatusImageFour.image = [UIImage imageNamed:@"crossred.png"];
+                }
+                else
+                {
+                    cell.StatusImageFour.image = [UIImage imageNamed:@"orangecircle.png"];
+                }
             }
             else
             {
