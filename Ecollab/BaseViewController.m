@@ -333,6 +333,15 @@
     }
     cell.MenuImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[menuImagesArray objectAtIndex:indexPath.row]]];
     cell.DisplayLabel.text = [NSString stringWithFormat:@"%@",[menuArray objectAtIndex:indexPath.row]];
+    
+    if (indexPath.row == 7)
+    {
+        UILabel *lblAlertCount = [[UILabel alloc]initWithFrame:CGRectMake(cell.frame.size.width-30, 0, 30, cell.frame.size.height)];
+        lblAlertCount.backgroundColor = [UIColor clearColor];
+        lblAlertCount.text = @"50";
+        lblAlertCount.font = [UIFont fontWithName:@"Helvetica" size:14];
+        [cell.contentView addSubview:lblAlertCount];
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
