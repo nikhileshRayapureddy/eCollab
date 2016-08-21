@@ -10,7 +10,9 @@
 #import "RequestOrProjectTableViewCell.h"
 #import "ServiceRequester.h"
 #import "TrackingStatusViewController.h"
-@interface RequestOrProjectTrackerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+
+@interface RequestOrProjectTrackerViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UITableView *RequestOrProjectTableView;
 @property (strong, nonatomic) IBOutlet UIButton *RequestedQuotesBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *OnGoingProjectsBtnOutlet;

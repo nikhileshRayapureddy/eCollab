@@ -16,8 +16,8 @@
      NSMutableArray *generalDataAnsArray, *orderingAndTrackinDataAnsArray,*DeliveryAndPaymentDataAnsArray,*myAccountDataAnsArray;
     NSMutableString *popviewDisplyaString;
     
-    NSInteger selHeader;
-    NSInteger selRow;
+    NSMutableArray *arrSelHeader;
+    NSMutableArray *arrSelRow;
 }
 
 
@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    selRow = -1;
-    selHeader = -1;
+    arrSelRow = [[NSMutableArray alloc]init];
+    arrSelHeader = [[NSMutableArray alloc]init];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [FAQTableview setDelegate: self];
     [FAQTableview setDataSource: self];
@@ -63,7 +63,34 @@
    
     ///////////
     myAccountDataAnsArray = [[NSMutableArray alloc] initWithObjects:@"Go to the eCollab App and click ‘New User’. Enter your registration details and authenticate via the link sent by the app on your mail id. Viola! It’s done. Please check.",@"Click on ‘Forgot Password’ from the login page and enter your registered email address. An email will be sent to your to help you reset your password.",@"Yes, the password can be changed by choosing ‘Change Password’ from your profile. ",@"Share your app with your friends on either Twitter, Facebook, LinkedIn or Google Plus by choosing share from the contextual menu that pops us on clicking three horizontal bars icon.",@"No, you can only edit personal details like first name, last name, company and designation from ‘My Profile’.", nil];
+    
+    [self designNavBar];
 }
+-(void)designNavBar
+{
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 4;
@@ -74,10 +101,12 @@
     UIView *vwHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
     vwHeader.backgroundColor = [UIColor clearColor];
     
-    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(10, 0, vwHeader.frame.size.width-20, 40)];
-    vw.backgroundColor = [UIColor lightGrayColor];
+    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(8, 0, vwHeader.frame.size.width-16, 40)];
+    vw.backgroundColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
     vw.layer.borderColor = [UIColor blackColor].CGColor;
     vw.layer.borderWidth = 1;
+    vw.layer.cornerRadius = 10;
+    vw.layer.masksToBounds = YES;
     [vwHeader addSubview:vw];
     
     UIButton *btnarr = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,7 +115,7 @@
     [btnarr setImage:[UIImage imageNamed:@"redarrowup.png"] forState:UIControlStateNormal];
     [btnarr setImage:[UIImage imageNamed:@"redarrowdown.png"] forState:UIControlStateSelected];
     [vw addSubview:btnarr];
-    if (selHeader == section)
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]])
     {
         btnarr.selected = YES;
     }
@@ -118,13 +147,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (selHeader == 0 && selHeader == section) {
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"0"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]) {
         return generalDataArray.count;
-    }else if (selHeader == 1 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"1"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return orderingAndTrackinDataArray.count;
-    }else if (selHeader == 2 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"2"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return DeliveryAndPaymentDataArray.count;
-    }else if (selHeader == 3 && selHeader == section){
+    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"3"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
         return myAccountDataArray.count;
     }
     else
@@ -134,77 +163,36 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (selRow == indexPath.row)
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
     {
         NSString *strRowTitle = @"";
         if (indexPath.section == 0) {
-            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [generalDataAnsArray objectAtIndex:indexPath.row];
         }else if (indexPath.section == 1){
-            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
         }else if (indexPath.section == 2){
-            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
+            strRowTitle =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
         }else{
             strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
         }
         
-        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
-                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
-                                                context:nil];
-
-        NSString *strRowDetail = @"";
-        if (indexPath.section == 0) {
-            strRowDetail =  [generalDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 1){
-            strRowDetail =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 2){
-            strRowDetail =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
-        }else{
-            strRowDetail =  [myAccountDataAnsArray objectAtIndex:indexPath.row];
-        }
         
-        CGRect rect2 = [strRowDetail boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 117, 1000)
+        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 28, 1000)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
                                                 context:nil];
-
-        if (ceil(rect.size.height) < 40)
+        if (indexPath.row == 0)
         {
-            return 40 + ceil(rect2.size.height);
+            return 52 + ceilf(rect.size.height) + 35;
         }
-        
-
-        return ceil(rect.size.height) + ceil(rect2.size.height);
+        else
+        {
+            return 52 + ceilf(rect.size.height) + 25;
+        }
     }
     else
     {
-        NSString *strRowTitle = @"";
-        if (selHeader == 0 && indexPath.section == selHeader) {
-            strRowTitle =  [generalDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 1 && indexPath.section == 1){
-            strRowTitle =  [orderingAndTrackinDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 2 && indexPath.section == 2){
-            strRowTitle =  [DeliveryAndPaymentDataArray objectAtIndex:indexPath.row];
-        }else if (selHeader == 3 && indexPath.section == 3){
-            strRowTitle =  [myAccountDataArray objectAtIndex:indexPath.row];
-        }
-        NSLog(@"strRowTitle : %@",strRowTitle);
-        NSLog(@"indexpath.row : %li",indexPath.row);
-        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 71, 1000)
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
-                                                 context:nil];
-        
-        FAQTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-
-        
-        if (ceil(rect.size.height) < 40)
-            {
-                cell.constHeightVwTitle.constant = 40;
-                return 40;
-            }
-        cell.constHeightVwTitle.constant = ceil(rect.size.height);
-        return ceil(rect.size.height);
+        return 52;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -227,7 +215,7 @@
     [cell.vwDetail.layer setCornerRadius:5.0f];
     [cell.vwDetail.layer setMasksToBounds:YES];
     [cell.vwDetail.layer setBorderColor:[[UIColor blackColor] CGColor]];
-
+    cell.constHeightVwTitle.constant = 50;
     if (indexPath.section == 0)
     {
         cell.lblTitle.text = [generalDataArray objectAtIndex:indexPath.row];
@@ -248,13 +236,16 @@
         cell.lblTitle.text = [myAccountDataArray objectAtIndex:indexPath.row];
         [cell.btnDetail setTitle:[myAccountDataAnsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     }
-    if (selRow == indexPath.row)
+    
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
     {
         cell.vwDetail.hidden = NO;
+        cell.btnArr.selected = YES;
     }
     else
     {
         cell.vwDetail.hidden = YES;
+        cell.btnArr.selected = NO;
     }
     return cell;
 }
@@ -265,13 +256,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    selRow = indexPath.row;
+    
+    
+    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]])
+    {
+        [arrSelRow removeObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]];
+    }
+    else
+    {
+        
+        [arrSelRow addObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]];
+    }
     [tableView reloadData];
 
 }
 -(void)btnHeaderClicked:(UIButton*)sender
 {
-    selHeader = sender.tag - 100;
+    
+    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]])
+    {
+        [arrSelHeader removeObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]];
+    }
+    else
+    {
+        
+        [arrSelHeader addObject:[NSString stringWithFormat:@"%li",(long)sender.tag-100]];
+    }
+    
     [FAQTableview reloadData];
 }
 
