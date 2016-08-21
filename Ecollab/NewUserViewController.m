@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [FirstNameTextField setDelegate:self];
     [LastNameTextField setDelegate:self];
@@ -28,8 +27,34 @@
     [CompanyNameTextField setDelegate:self];
     [DesignationTextField setDelegate:self];
     textfieldTag=0;
-
+    [self designNavBar];
+    
 }
+-(void)designNavBar
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
+    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
+    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imgLogoEcoLab;
+    
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    imgLogoGVK.backgroundColor = [UIColor clearColor];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -41,42 +66,12 @@
 {
     [self.view endEditing:YES];
 }
-// Called when the view is about to made visible. Default does nothing
-- (void)viewWillAppear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-// Called when the view is dismissed, covered or otherwise hidden. Default does nothing
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
 
 #pragma mark - keyboard movements
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    if(textfieldTag >= 50){
-        [UIView animateWithDuration:0.3 animations:^{
-            CGRect f = self.view.frame;
-            f.origin.y = -150.0f;  //set the -215.0f to your required value
-            self.view.frame = f;
-        }];
-    }
-}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     textfieldTag=textField.tag;
     return YES;
-}
--(void)keyboardWillHide:(NSNotification *)notification
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = 0.0f;//64.0f
-        self.view.frame = f;
-    }];
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
@@ -147,45 +142,44 @@
     else
     {
         NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",FirstNameTextField.text],@"FirstName",[NSString stringWithFormat:@"%@",LastNameTextField.text],@"LastName",[NSString stringWithFormat:@"%@",EmailAddressTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",[NSString stringWithFormat:@"%@",ConfirmPasswordTextField.text],@"ConfirmPassword",[NSString stringWithFormat:@"%@",CompanyNameTextField.text],@"CompanyName",[NSString stringWithFormat:@"%@",DesignationTextField.text],@"Designation",@"1",@"CreatedBy",@"0",@"ISMobileUser",@"0",@"ISGvkEmployee",@"A1J2C3",@"RefaralCode", nil];
-        
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopCreatedUserService:inputDick];
         request =  nil;
 
     }
-    
-//    if ([FirstNameTextField.text isEqualToString:@""]||[LastNameTextField.text isEqualToString:@""]||[EmailAddressTextField.text isEqualToString:@""]||[PasswordTextField.text isEqualToString:@""]||[ConfirmPasswordTextField.text isEqualToString:@""]||[CompanyNameTextField.text isEqualToString:@""]||[DesignationTextField.text isEqualToString:@""]) {
-//        //show @"Please Enter All Fields"
-//    }
-//    if (![[DetailsManager sharedManager] validEmail:EmailAddressTextField.text]) {
-//        // show @"Enter Valid Email Id"
-//        EmailAddressTextField.text=@"";
-//    }else if (![ConfirmPasswordTextField.text isEqualToString:PasswordTextField.text])
-//    {
-////show @"Password and Confrim Password Are Not Same"
-//        PasswordTextField.text=@"";
-//        ConfirmPasswordTextField.text=@"";
-//    }else{
-//    
-//    }
 }
 -(void)requestReceivedopCreatedUserResponce:(NSMutableDictionary *)aregistrationDict{
             NSLog(@"%@",aregistrationDict);
     NSMutableArray *arr = [aregistrationDict objectForKey:@"CreateUserList"];
     NSDictionary *dic = [arr objectAtIndex:0];
     NSLog(@"%@",[dic objectForKey:@"SuccessCode"]);
-    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+   
     if([[dic objectForKey:@"SuccessCode"] intValue]!= 200)
     {
-        //SuccessString = "Sorry, your login credentials are invalid.";
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:[dic objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+
         PasswordTextField.text=@"";
     }else{
-//        DashboardViewController *DVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
-//        [self.navigationController pushViewController:DVCtrlObj animated:YES];
-        
-        // show alert controller and navigate user to login view controller
-        [self.navigationController popViewControllerAnimated:YES];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:@"Account created successfully. Please activate your account by following the link sent at your mail id."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }
 }
 @end
