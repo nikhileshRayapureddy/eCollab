@@ -281,7 +281,7 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service.theSuccessMethod = @selector(responseopUserAlertsOrNotificationsService:);
     service.theFailureMethod = @selector(requestFailedWithError:);
     [self addServiceInterfaceToServiceStack:service];
-    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUserAlertsOrNotifications?UID=1"]];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUserAlertsOrNotifications?UID=%@",[[DetailsManager sharedManager] rID]]];
     NSURL* url = [NSURL URLWithString:stringURL];
     [service startWithURL:url];
     service = nil;

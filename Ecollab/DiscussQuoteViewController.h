@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscussQuoteViewController : UIViewController
+@interface DiscussQuoteViewController : UIViewController<ServiceRequesterProtocol>
 
 @property (strong, nonatomic) NSMutableDictionary *DataDict;
 
@@ -25,6 +25,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *StatusImgFour;
 @property (strong, nonatomic) IBOutlet UILabel *LabelEight;
 @property (strong, nonatomic) IBOutlet UIButton *DiscussBtnOutlet;
+@property (strong, nonatomic) NSString *placeOrder;
+@property (assign, nonatomic) BOOL isRjectOrRegretted;
+@property (strong, nonatomic) NSString *strRequestRID;
 - (IBAction)DiscussBtnAction:(id)sender;
 
 @end

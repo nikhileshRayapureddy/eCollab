@@ -25,6 +25,7 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [AlertsTableView setDelegate: self];
     [AlertsTableView setDataSource: self];
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestFopUserAlertsOrNotificationsService];
@@ -32,6 +33,7 @@
 
 }
 -(void)requestReceivedopUserAlertsOrNotificationsResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     notificationListArray = [aregistrationDict objectForKey:@"NotificationsOrAlertsResult"];
     [AlertsTableView reloadData];
 }
@@ -61,13 +63,20 @@
     cell.PojectStatuLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"Notification"];
 
     // based on type assign related image
-    if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"Type"] intValue] == 0) {
+    if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
         cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
     }else{
         cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
     }
     
-    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+    if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 1)
+    {
+        cell.imgRightArrow.hidden = YES;
+    }
+    else
+    {
+        cell.imgRightArrow.hidden = NO;
+    }
     
     return cell;
 }
@@ -82,6 +91,22 @@
     OrderType = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
     PlaceOrder = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"PlaceOrder"]];
     NSMutableDictionary  *inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[dict objectForKey:@"OrderID"],@"RID",Type,@"Type", nil];
+    
+    NSNumber *regretted = [dict valueForKey:@"RegretStatus"];
+    BOOL isRegretted = regretted.boolValue;
+    
+    NSNumber *rejected = [dict valueForKey:@"RejectStatus"];
+    BOOL isRejected = rejected.boolValue;
+    
+    if(isRegretted == YES || isRejected == YES)
+    {
+        isRegretReject = YES;
+    }
+    else
+    {
+        isRegretReject = NO;
+    }
+    strRequestRID = [dict objectForKey:@"RID"];
     [self OrderDetails:inputDict];
 
 }
@@ -94,8 +119,115 @@
 -(void)requestReceivedopRequestedQuoteDetailsResponce:(NSMutableDictionary *)aregistrationDict
 {
     // Note please navigate with data dictionary
-
-    if ([OrderType intValue]== 0) {
+    {
+        
+        if(OrderType.intValue == 0)
+        {
+            switch (OrderStatus.intValue) {
+                case 0:
+                {
+                    NewChemistryRequestViewController *NCRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewChemistryRequestViewController"];
+                    NCRVCtrlObj.isFromTracking = YES;
+                    NCRVCtrlObj.isFromRequestAQuote = NO;
+                    NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                    if(arr.count != 0)
+                    {
+                        NSMutableDictionary *dict = [arr objectAtIndex:0];
+                        NCRVCtrlObj.dictSavedChemestryData = dict;
+                    }
+                    
+                    [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    
+                }
+                    break;
+                case 2:
+                {
+                    StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+                    TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+                    TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+                    TSVMVCtrlObj.strRequestRID = strRequestRID;
+                    TSVMVCtrlObj.isRegrettedOrRejected = isRegretReject;
+                    [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+                }
+                    break;
+                case 3:
+                {
+                    StatusViewModeViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"StatusViewModeViewController"];
+                    TSVMVCtrlObj.PlaceOrder = [NSMutableString stringWithFormat:@"%@",PlaceOrder];
+                    TSVMVCtrlObj.inputDataDictionary= aregistrationDict;
+                    TSVMVCtrlObj.isRegrettedOrRejected = isRegretReject;
+                    TSVMVCtrlObj.strRequestRID = strRequestRID;
+                    [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (OrderStatus.intValue) {
+                case 0:
+                {
+                    NewBiologyRequestViewController *NBRVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewBiologyRequestViewController"];
+                    NBRVCtrlObj.isFromRequestAQuote = NO;
+                    NBRVCtrlObj.shouldUpdateRequest = NO;
+                    NBRVCtrlObj.isFromTracking = YES;
+                    NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                    if(arr.count != 0)
+                    {
+                        NSMutableDictionary *dict = [arr objectAtIndex:0];
+                        NBRVCtrlObj.dictSavedOrderDetails = dict;
+                    }
+                    [self.navigationController pushViewController:NBRVCtrlObj animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    
+                }
+                    break;
+                case 2:
+                {
+                    DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
+                    NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                    TSVMVCtrlObj.isRjectOrRegretted = isRegretReject;
+                    TSVMVCtrlObj.placeOrder = PlaceOrder;
+                    TSVMVCtrlObj.strRequestRID = strRequestRID;
+                    if(arr.count != 0)
+                    {
+                        NSMutableDictionary *dict = [arr objectAtIndex:0];
+                        TSVMVCtrlObj.DataDict = dict;
+                    }
+                    [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+                }
+                    break;
+                case 3:
+                {
+                    DiscussQuoteViewController *TSVMVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussQuoteViewController"];
+                    TSVMVCtrlObj.placeOrder = PlaceOrder;
+                    TSVMVCtrlObj.isRjectOrRegretted = isRegretReject;
+                    TSVMVCtrlObj.strRequestRID = strRequestRID;
+                    NSArray *arr = [aregistrationDict objectForKey:@"RequestedQuoteList"];
+                    if(arr.count != 0)
+                    {
+                        NSMutableDictionary *dict = [arr objectAtIndex:0];
+                        TSVMVCtrlObj.DataDict = dict;
+                    }
+                    [self.navigationController pushViewController:TSVMVCtrlObj animated:YES];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+/*    if ([OrderType intValue]== 0) {
         //OrderType = 0
             if( [OrderStatus intValue] == 0 || [OrderStatus intValue] == 1 ){
                 // chemistry req view non editable
@@ -127,7 +259,7 @@
                 [self.navigationController pushViewController:DQVCtrlObj animated:YES];
             }
     }
-    
+    */
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

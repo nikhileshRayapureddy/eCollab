@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *PojectStatuLabel;
 
 @property (strong, nonatomic) IBOutlet UIImageView *ProjectTypeImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgRightArrow;
 
 @end

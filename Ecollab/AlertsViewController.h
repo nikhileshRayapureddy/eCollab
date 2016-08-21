@@ -15,6 +15,10 @@
 #import "DiscussQuoteViewController.h"
 
 @interface AlertsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+{
+    BOOL isRegretReject;
+    NSString *strRequestRID;
+}
 @property (strong, nonatomic) IBOutlet UITableView *AlertsTableView;
 
 @end
