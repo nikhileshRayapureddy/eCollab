@@ -106,7 +106,7 @@
     {
         isRegretReject = NO;
     }
-    strRequestRID = [dict objectForKey:@"RID"];
+    strRequestRID = [dict objectForKey:@"OrderID"];
     [self OrderDetails:inputDict];
 
 }

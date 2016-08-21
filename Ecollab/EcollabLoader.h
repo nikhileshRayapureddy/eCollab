@@ -46,5 +46,5 @@ typedef enum kAnimationType
 //Result
 //Yes to hide and No to don't hide
 + (BOOL)hideLoaderForView:(UIView *)view animated:(BOOL)animated;
-
++(void)removeLoader;
 @end

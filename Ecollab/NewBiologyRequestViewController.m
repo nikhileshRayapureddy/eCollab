@@ -10,7 +10,6 @@
 #import "DashboardViewController.h"
 
 @interface NewBiologyRequestViewController (){
-    UITableView *dropdownTableView;
     NSMutableArray *serviceArray,*areaArray,*subAreaArray,*modelArray;
     NSMutableDictionary * loadMasterDict;
     NSMutableString *Type,*SubID,*ModelID,*AreaID;
@@ -30,7 +29,6 @@
 @synthesize strSubAreaIDFinal;
 @synthesize strModelIdIDFinal;
 @synthesize strMultipleModelIdIDFinal;
-@synthesize arrCellSelected;
 @synthesize shouldUpdateRequest;
 @synthesize strRIDForSavedRequest;
 @synthesize isSubmitAction;
@@ -49,7 +47,6 @@
      [FAQLabelOutlet.layer setMasksToBounds:YES];
      [FAQLabelOutlet.layer setBorderColor:[[UIColor blackColor] CGColor]];
      */
-    arrCellSelected = [[NSMutableArray alloc]init];
     UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
     imgLogoEcoLab.backgroundColor = [UIColor clearColor];
     imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
@@ -89,6 +86,11 @@
     request =  nil;
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 450);
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:true];
@@ -269,131 +271,22 @@
 }
 
 - (IBAction)ServiceBtnAction:(id)sender {
-    if(dropdownTableView)
-    {
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-        dropdownTableView = nil;
-    }
     
-//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
-//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-//    }
-    
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(ServiceBtnOutlet.frame.origin.x, ServiceBtnOutlet.frame.origin.y + ServiceBtnOutlet.frame.size.height,ServiceBtnOutlet.frame.size.width ,SubmitBtnOutlet.frame.origin.y+SubmitBtnOutlet.frame.size.height) style:UITableViewStylePlain] ;
-    dropdownTableView.dataSource = self;
-    dropdownTableView.delegate = self;
-    [dropdownTableView setTag:10];
-    [self.view addSubview:dropdownTableView];
+    [self showBiologyOptionSelectionForTag:10];
 }
 
 - (IBAction)AreaBtnAction:(id)sender {
-    if(dropdownTableView)
-    {
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-        dropdownTableView = nil;
-    }
     
-//    if (dropdownTableView.tag == 10 || dropdownTableView.tag == 30 || dropdownTableView.tag == 40) {
-//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-//    }
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(AreaOutlet.frame.origin.x, AreaOutlet.frame.origin.y + AreaOutlet.frame.size.height,AreaOutlet.frame.size.width ,SubmitBtnOutlet.frame.origin.y-AreaOutlet.frame.origin.y) style:UITableViewStylePlain] ;
-    dropdownTableView.dataSource = self;
-    dropdownTableView.delegate = self;
-    [dropdownTableView setTag:20];
-    [self.view addSubview:dropdownTableView];
+    [self showBiologyOptionSelectionForTag:20];
 }
 
 - (IBAction)SubAreaBtnAction:(id)sender {
     
-    if(dropdownTableView)
-    {
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-        dropdownTableView = nil;
-    }
-    
-
-//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 10 || dropdownTableView.tag == 40) {
-//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-//    }
-    int height = 3*44;
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewSubArea.frame.origin.x, _viewSubArea.frame.origin.y+60,_viewSubArea.frame.size.width ,height) style:UITableViewStylePlain] ;
-    dropdownTableView.dataSource = self;
-    dropdownTableView.delegate = self;
-    [dropdownTableView setTag:30];
-    [self.view addSubview:dropdownTableView];
+    [self showBiologyOptionSelectionForTag:30];
 }
 
 - (IBAction)ModelsBtnAction:(id)sender {
-    if(dropdownTableView)
-    {
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-        dropdownTableView = nil;
-    }
-    
-
-//    if (dropdownTableView.tag == 20 || dropdownTableView.tag == 30 || dropdownTableView.tag == 10) {
-//        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-//    }
-    
-    int height = 3*44;
-    dropdownTableView = [[UITableView alloc] initWithFrame:CGRectMake(_viewAssays.frame.origin.x, _viewAssays.frame.origin.y-60,_viewAssays.frame.size.width ,height) style:UITableViewStylePlain] ;
-    dropdownTableView.dataSource = self;
-    dropdownTableView.delegate = self;
-    [dropdownTableView setTag:40];
-    [self.view addSubview:dropdownTableView];
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(dropdownTableView.frame.origin.x, dropdownTableView.frame.origin.y+dropdownTableView.frame.size.height, dropdownTableView.frame.size.width, 30);
-    [btn setTitle:@"Done" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor whiteColor];
-    btn.tag = 3235;
-    [btn addTarget:self action:@selector(removeTableViewPopup) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-
-}
-
--(void)removeTableViewPopup
-{
-    [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-    UIButton *btnTransparent = (UIButton *)[self.view viewWithTag:3235];
-    [btnTransparent removeFromSuperview];
-    
-    NSString *strSelectedModels = @"";
-    strMultipleModelIdIDFinal = @"";
-    for(NSIndexPath *indexpath in arrCellSelected)
-    {
-        NSDictionary *dict = [modelArray objectAtIndex:indexpath.row];
-        
-        if(strMultipleModelIdIDFinal.length)
-        {
-            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@,%@",strMultipleModelIdIDFinal,[dict objectForKey:@"RID"]];
-        }
-        else
-        {
-            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-        }
-        
-        if(strSelectedModels.length)
-        {
-            strSelectedModels = [NSString stringWithFormat:@"%@,%@",strSelectedModels,[dict objectForKey:@"Description"]];
-        }
-        else
-        {
-            strSelectedModels = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
-        }
-        
-    }
-    
-    if(!strSelectedModels.length)
-    {
-        [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
-    }
-    else
-    {
-        ModelsBtnOutlet.titleLabel.numberOfLines = 2;
-        [ModelsBtnOutlet setTitle:strSelectedModels forState:UIControlStateNormal];
-    }
+    [self showBiologyOptionSelectionForTag:40];
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
@@ -643,127 +536,6 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (dropdownTableView.tag == 10) {
-        return serviceArray.count;
-    }else if (dropdownTableView.tag == 20){
-        return areaArray.count;
-    }else if (dropdownTableView.tag == 30){
-        return subAreaArray.count;
-    }else if (dropdownTableView.tag == 40){
-        return modelArray.count;
-    }
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
-    }
-    
-    if (dropdownTableView.tag == 10) {
-        NSDictionary *dict = [serviceArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]];
-    }else if (dropdownTableView.tag == 20){
-        NSDictionary *dict = [areaArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
-    }else if (dropdownTableView.tag == 30){
-        NSDictionary *dict = [subAreaArray objectAtIndex:indexPath.row];
-         cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
-    }else if (dropdownTableView.tag == 40){
-        if ([arrCellSelected containsObject:indexPath])
-        {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            
-        }
-        
-        NSDictionary *dict = [modelArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
-    }
-
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    
-    if (dropdownTableView.tag == 10) {
-        serFlag = 0;
-        NSDictionary *dict = [serviceArray objectAtIndex:indexPath.row];
-        [ServiceBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]] forState:UIControlStateNormal];
-        [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        strServiceIDFinal = [dict objectForKey:@"RID"];
-        
-        Type = [NSMutableString stringWithFormat:@"0"];
-        //*Type,*SubID,*ModelID;  //RID Service
-        SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-        ModelID = [NSMutableString stringWithFormat:@"0"];
-        [self GetDependencyDetails];
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-        
-    }else if (dropdownTableView.tag == 20){
-        serFlag = 1;
-        NSDictionary *dict = [areaArray objectAtIndex:indexPath.row];
-        [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
-        [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        strAreaIDFinal = [dict objectForKey:@"RID"];
-        Type = [NSMutableString stringWithFormat:@"1"];
-        SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-        AreaID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-        ModelID = [NSMutableString stringWithFormat:@"0"];
-        [self GetDependencyDetails];
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-//        Type = [NSMutableString stringWithFormat:@"2"];
-//        SubID = AreaID;
-//        ModelID = [NSMutableString stringWithFormat:@"0"];
-//
-//        [self GetDependencyDetails];
-
-    }else if (dropdownTableView.tag == 30){
-        serFlag = 2;
-
-        NSDictionary *dict = [subAreaArray objectAtIndex:indexPath.row];
-
-        [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
-        [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        strSubAreaIDFinal = [dict objectForKey:@"RID"];
-        Type = [NSMutableString stringWithFormat:@"3"];
-        SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
-        ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-        [self GetDependencyDetails];
-        [[self.view viewWithTag:dropdownTableView.tag] removeFromSuperview];
-    }else if (dropdownTableView.tag == 40){
-        
-        if ([arrCellSelected containsObject:indexPath])
-        {
-            [arrCellSelected removeObject:indexPath];
-        }
-        else
-        {
-            [arrCellSelected addObject:indexPath];
-        }
-        [tableView reloadData];
-//        NSDictionary *dict = [modelArray objectAtIndex:indexPath.row];
-//        [ModelsBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
-//        [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        [self GetDependencyDetails];
-    }
-}
 -(void)GetDependencyDetails{
     
     NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",[[DetailsManager sharedManager]rID]],@"UID",Type,@"Type",SubID,@"SubID",ModelID,@"ModelID",nil];
@@ -833,7 +605,6 @@
                 {
                     ModelID =  [NSMutableString stringWithFormat:@"%@",[dictSavedOrderDetails objectForKey:@"SubAreaID"]];
                 }
-                [arrCellSelected removeAllObjects];
                 [self GetDependencyDetails];
             }
             else
@@ -849,7 +620,6 @@
         }
         else
         {
-            [arrCellSelected removeAllObjects];
             if(shouldUpdateRequest == YES)
             {
                 [self bindSavedOrderDetails:dictSavedOrderDetails];
@@ -891,6 +661,148 @@
             [self showViewAssays:NO];
         }
     }
+}
+
+-(void)showBiologyOptionSelectionForTag:(NSInteger)tableTag
+{
+    if(viewDropDown)
+    {
+        viewDropDown.delegate = nil;
+        [viewDropDown removeFromSuperview];
+        viewDropDown = nil;
+    }
+    viewDropDown = [[BiologyDropDownListView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    viewDropDown.delegate = self;
+    viewDropDown.tableViewTag = tableTag;
+    
+    switch (tableTag) {
+        case 10:
+        {
+            [viewDropDown.arrTitles addObjectsFromArray:serviceArray];
+        }
+            break;
+        case 20:
+        {
+            [viewDropDown.arrTitles addObjectsFromArray:areaArray];
+        }
+            break;
+        case 30:
+        {
+            [viewDropDown.arrTitles addObjectsFromArray:subAreaArray];
+        }
+            break;
+        case 40:
+        {
+            [viewDropDown.arrTitles addObjectsFromArray:modelArray];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [viewDropDown reloadData];
+    viewDropDown.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:viewDropDown];
+}
+
+-(void)removeSelectionPopUp
+{
+    if(viewDropDown)
+    {
+        viewDropDown.delegate = nil;
+        [viewDropDown removeFromSuperview];
+        viewDropDown = nil;
+    }
+}
+
+-(void)selectedDictionary:(NSDictionary *)dict forTag:(NSInteger)tagSelected
+{
+    
+    switch (tagSelected) {
+        case 10:
+        {
+            serFlag = 0;
+            [ServiceBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]] forState:UIControlStateNormal];
+            [ServiceBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            strServiceIDFinal = [dict objectForKey:@"RID"];
+            
+            Type = [NSMutableString stringWithFormat:@"0"];
+            //*Type,*SubID,*ModelID;  //RID Service
+            SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self GetDependencyDetails];
+        }
+            break;
+        case 20:
+        {
+            serFlag = 1;
+            [AreaOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
+            [AreaOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            strAreaIDFinal = [dict objectForKey:@"RID"];
+            Type = [NSMutableString stringWithFormat:@"1"];
+            SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            AreaID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self GetDependencyDetails];
+        }
+            break;
+        case 30:
+        {
+            serFlag = 2;
+            
+            [SubAreaBtnOutlet setTitle:[NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]] forState:UIControlStateNormal];
+            [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            strSubAreaIDFinal = [dict objectForKey:@"RID"];
+            Type = [NSMutableString stringWithFormat:@"3"];
+            SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
+            ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            [self GetDependencyDetails];
+        }
+            break;
+        default:
+            break;
+    }
+    [self removeSelectionPopUp];
+}
+
+-(void)selectedListOfAssays:(NSMutableArray *)arrCellSelected
+{
+    NSString *strSelectedModels = @"";
+    strMultipleModelIdIDFinal = @"";
+    for(NSIndexPath *indexpath in arrCellSelected)
+    {
+        NSDictionary *dict = [modelArray objectAtIndex:indexpath.row];
+        
+        if(strMultipleModelIdIDFinal.length)
+        {
+            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@,%@",strMultipleModelIdIDFinal,[dict objectForKey:@"RID"]];
+        }
+        else
+        {
+            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+        }
+        
+        if(strSelectedModels.length)
+        {
+            strSelectedModels = [NSString stringWithFormat:@"%@,%@",strSelectedModels,[dict objectForKey:@"Description"]];
+        }
+        else
+        {
+            strSelectedModels = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
+        }
+        
+    }
+    
+    if(!strSelectedModels.length)
+    {
+        [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
+    }
+    else
+    {
+        ModelsBtnOutlet.titleLabel.numberOfLines = 2;
+        [ModelsBtnOutlet setTitle:strSelectedModels forState:UIControlStateNormal];
+    }
+    [self removeSelectionPopUp];
 }
 
 @end
