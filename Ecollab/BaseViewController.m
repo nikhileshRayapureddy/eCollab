@@ -311,7 +311,7 @@
 {
     NSArray *alerts = [aregistrationDict objectForKey:@"NotificationsOrAlertsResult"];
     alertsCount = alerts.count;
-
+    [vwSideMenuCustomView.menuTable reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -336,11 +336,12 @@
     
     if (indexPath.row == 7)
     {
-        UILabel *lblAlertCount = [[UILabel alloc]initWithFrame:CGRectMake(cell.frame.size.width-30, 0, 30, cell.frame.size.height)];
-        lblAlertCount.backgroundColor = [UIColor clearColor];
-        lblAlertCount.text = @"50";
-        lblAlertCount.font = [UIFont fontWithName:@"Helvetica" size:14];
-        [cell.contentView addSubview:lblAlertCount];
+        cell.lblCount.hidden = NO;
+        cell.lblCount.text = [NSString stringWithFormat:@"%li",(long)alertsCount];
+    }
+    else{
+        cell.lblCount.hidden = YES;
+        cell.lblCount.text = @"";
     }
     return cell;
 }

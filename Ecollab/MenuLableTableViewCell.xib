@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mGh-2A-hkL" id="YJ2-eD-3fG">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IfS-6u-R41">
@@ -21,8 +21,17 @@
                             <constraint firstAttribute="height" constant="28" id="VB6-8N-R98"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0N-Cw-CUe">
+                        <rect key="frame" x="290" y="0.0" width="30" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="9ad-Kf-Ima"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fs-ru-ZB1">
-                        <rect key="frame" x="49" y="0.0" width="271" height="43"/>
+                        <rect key="frame" x="49" y="0.0" width="241" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -30,9 +39,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="IfS-6u-R41" firstAttribute="centerY" secondItem="YJ2-eD-3fG" secondAttribute="centerY" id="2mb-DZ-5PM"/>
-                    <constraint firstAttribute="trailing" secondItem="8fs-ru-ZB1" secondAttribute="trailing" id="7H5-c3-DSI"/>
+                    <constraint firstAttribute="trailing" secondItem="j0N-Cw-CUe" secondAttribute="trailing" id="3Ja-4w-xok"/>
                     <constraint firstItem="8fs-ru-ZB1" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="8UR-Vq-bej"/>
+                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="leading" secondItem="8fs-ru-ZB1" secondAttribute="trailing" id="BPT-4g-n3b"/>
+                    <constraint firstAttribute="bottom" secondItem="j0N-Cw-CUe" secondAttribute="bottom" id="Caf-sa-PBG"/>
                     <constraint firstItem="IfS-6u-R41" firstAttribute="leading" secondItem="YJ2-eD-3fG" secondAttribute="leading" constant="8" id="Nqb-RN-bjc"/>
+                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="Ow5-Ir-cis"/>
                     <constraint firstItem="8fs-ru-ZB1" firstAttribute="leading" secondItem="IfS-6u-R41" secondAttribute="trailing" constant="8" id="e98-qm-cBs"/>
                     <constraint firstAttribute="bottom" secondItem="8fs-ru-ZB1" secondAttribute="bottom" id="q24-i0-pfC"/>
                 </constraints>
@@ -40,6 +52,7 @@
             <connections>
                 <outlet property="DisplayLabel" destination="8fs-ru-ZB1" id="1Vu-6A-JXc"/>
                 <outlet property="MenuImg" destination="IfS-6u-R41" id="cVC-Kn-1E6"/>
+                <outlet property="lblCount" destination="j0N-Cw-CUe" id="JOj-eW-XgZ"/>
             </connections>
             <point key="canvasLocation" x="286" y="325"/>
         </tableViewCell>
