@@ -66,87 +66,85 @@
     
     [self designNavBar];
 }
--(void)designNavBar
-{
-    self.navigationItem.hidesBackButton = NO;
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-    
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 4;
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return 1;
+    }
+    else
+    {
+        return 4;
+    }
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *vwHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
-    vwHeader.backgroundColor = [UIColor clearColor];
-    
-    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(8, 0, vwHeader.frame.size.width-16, 40)];
-    vw.backgroundColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
-    vw.layer.borderColor = [UIColor blackColor].CGColor;
-    vw.layer.borderWidth = 1;
-    vw.layer.cornerRadius = 10;
-    vw.layer.masksToBounds = YES;
-    [vwHeader addSubview:vw];
-    
-    UIButton *btnarr = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnarr.backgroundColor = [UIColor clearColor];
-    btnarr.frame = CGRectMake(0, 0, 40, 40);
-    [btnarr setImage:[UIImage imageNamed:@"redarrowup.png"] forState:UIControlStateNormal];
-    [btnarr setImage:[UIImage imageNamed:@"redarrowdown.png"] forState:UIControlStateSelected];
-    [vw addSubview:btnarr];
-    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]])
+    if(tableView == self.vwSideMenuCustomView.menuTable)
     {
-        btnarr.selected = YES;
+        return nil;
     }
     else
     {
-        btnarr.selected = NO;
+        
+        
+        UIView *vwHeader = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+        vwHeader.backgroundColor = [UIColor clearColor];
+        
+        UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(8, 0, vwHeader.frame.size.width-16, 40)];
+        vw.backgroundColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
+        vw.layer.borderColor = [UIColor blackColor].CGColor;
+        vw.layer.borderWidth = 1;
+        vw.layer.cornerRadius = 10;
+        vw.layer.masksToBounds = YES;
+        [vwHeader addSubview:vw];
+        
+        UIButton *btnarr = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnarr.backgroundColor = [UIColor clearColor];
+        btnarr.frame = CGRectMake(0, 0, 40, 40);
+        [btnarr setImage:[UIImage imageNamed:@"redarrowup.png"] forState:UIControlStateNormal];
+        [btnarr setImage:[UIImage imageNamed:@"redarrowdown.png"] forState:UIControlStateSelected];
+        [vw addSubview:btnarr];
+        if ([arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]])
+        {
+            btnarr.selected = YES;
+        }
+        else
+        {
+            btnarr.selected = NO;
+        }
+        UILabel *lblHeader = [[UILabel alloc]initWithFrame:CGRectMake(btnarr.frame.size.width, 0, vw.frame.size.width-40, 40)];
+        lblHeader.backgroundColor = [UIColor clearColor];
+        if (section == 0) {
+            [lblHeader setText:[NSString stringWithFormat:@"Genenral"]];
+        }else if (section == 1){
+            [lblHeader setText:[NSString stringWithFormat:@"Ordering and Tracking"]];
+        }else if (section == 2){
+            [lblHeader setText:[NSString stringWithFormat:@"Delivery and Payment"]];
+        }else{
+            [lblHeader setText:[NSString stringWithFormat:@"My Account"]];
+        }
+        lblHeader.font = [UIFont fontWithName:@"Helvetica-SemiBold" size:15];
+        [vw addSubview:lblHeader];
+        
+        UIButton *btnHeader = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnHeader.backgroundColor = [UIColor clearColor];
+        btnHeader.frame = CGRectMake(0, 0, vwHeader.frame.size.width, vwHeader.frame.size.height);
+        btnHeader.tag = 100+section;
+        [btnHeader addTarget:self action:@selector(btnHeaderClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [vwHeader addSubview:btnHeader];
+        return vwHeader;
     }
-    UILabel *lblHeader = [[UILabel alloc]initWithFrame:CGRectMake(btnarr.frame.size.width, 0, vw.frame.size.width-40, 40)];
-    lblHeader.backgroundColor = [UIColor clearColor];
-    if (section == 0) {
-        [lblHeader setText:[NSString stringWithFormat:@"Genenral"]];
-    }else if (section == 1){
-        [lblHeader setText:[NSString stringWithFormat:@"Ordering and Tracking"]];
-    }else if (section == 2){
-        [lblHeader setText:[NSString stringWithFormat:@"Delivery and Payment"]];
-    }else{
-        [lblHeader setText:[NSString stringWithFormat:@"My Account"]];
-    }
-    lblHeader.font = [UIFont fontWithName:@"Helvetica-SemiBold" size:15];
-    [vw addSubview:lblHeader];
     
-    UIButton *btnHeader = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHeader.backgroundColor = [UIColor clearColor];
-    btnHeader.frame = CGRectMake(0, 0, vwHeader.frame.size.width, vwHeader.frame.size.height);
-    btnHeader.tag = 100+section;
-    [btnHeader addTarget:self action:@selector(btnHeaderClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [vwHeader addSubview:btnHeader];
-    return vwHeader;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
     if ([arrSelHeader containsObject:[NSString stringWithFormat:@"0"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]) {
         return generalDataArray.count;
     }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"1"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
@@ -160,9 +158,17 @@
     {
         return 0;
     }
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+   
     if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
     {
         NSString *strRowTitle = @"";
@@ -194,9 +200,17 @@
     {
         return 52;
     }
+    }
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+   
     static NSString *CellIdentifier = @"FAQTableViewCell";
     
     FAQTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -248,13 +262,27 @@
         cell.btnArr.selected = NO;
     }
     return cell;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return 0;
+    }
+    else
+    {
+        return 50;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else
+    {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
@@ -268,6 +296,7 @@
         [arrSelRow addObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]];
     }
     [tableView reloadData];
+    }
 
 }
 -(void)btnHeaderClicked:(UIButton*)sender

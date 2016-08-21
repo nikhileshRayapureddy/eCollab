@@ -113,7 +113,7 @@
     }else{
         
         [[[DetailsManager sharedManager]rID]setString:[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]]];
-        
+        [[NSUserDefaults standardUserDefaults] setObject:aregistrationDict forKey:@"UserData"];
         DashboardViewController *DVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
         DVCtrlObj.userData = aregistrationDict;
         [self.navigationController pushViewController:DVCtrlObj animated:YES];

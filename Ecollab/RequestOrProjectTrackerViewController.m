@@ -22,25 +22,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     TableFlag = 0;
     [RequestOrProjectTableView setDelegate:self];
     [RequestOrProjectTableView setDataSource:self];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];//requestquote.jpg
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
+    [self designNavBar];
     [self designTabBar];
     [self setSelected:2];
 
-//
-//    ServiceRequester *request = [ServiceRequester new];
-//    request.serviceRequesterDelegate =  self;
-//    [request requestFopGetProjectTrackerDetailsService];
-//    request =  nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestFopGetProjectTrackerDetailsService];
@@ -48,6 +45,8 @@
 
 }
 -(void)requestReceivedopGetProjectTrackerDetailsResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    
     UserProjectTrackerDetailsResult = aregistrationDict;
     NSMutableArray * UserProjectTrackerArray = [UserProjectTrackerDetailsResult objectForKey:@"UserProjectTrackerDetailsResult"];
     OnGoingProjectsArray = [NSMutableArray new];
@@ -66,12 +65,13 @@
     [RequestOrProjectTableView reloadData];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
     // Return the number of rows in the section.
     if (TableFlag == 0) {
         return RequestedQuotesArray.count;
@@ -79,11 +79,30 @@
         return OnGoingProjectsArray.count;
     }
     return 0;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+        
+            return 161;
+    }
+    
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    else
+    {
     static NSString *CellIdentifier = @"RequestOrProjectTableViewCellID";
     //RequestOrProjectTableViewCell
     RequestOrProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -255,8 +274,18 @@
         
     }
     return cell;
+        
+    }
+
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else
+    {
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSMutableDictionary *inputDick;
     if (TableFlag == 0) {
@@ -278,10 +307,11 @@
     request.serviceRequesterDelegate =  self;
     [request requestForopTrackSelecctedOrderDetailsService:inputDick];
     request =  nil;
+    }
 }
 -(void)requestReceivedopTrackSelecctedOrderDetailsResponce:(NSMutableDictionary *)aregistrationDict{
     NSLog(@"%@",aregistrationDict);
-    
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     TrackingStatusViewController *TSVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackingStatusViewController"];
     TSVCtrlObj.MainDataDictionary = aregistrationDict;
     TSVCtrlObj.ItemType = ItemType;
