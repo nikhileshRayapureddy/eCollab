@@ -116,7 +116,7 @@
         UILabel *lblHeader = [[UILabel alloc]initWithFrame:CGRectMake(btnarr.frame.size.width, 0, vw.frame.size.width-40, 40)];
         lblHeader.backgroundColor = [UIColor clearColor];
         if (section == 0) {
-            [lblHeader setText:[NSString stringWithFormat:@"Genenral"]];
+            [lblHeader setText:[NSString stringWithFormat:@"General"]];
         }else if (section == 1){
             [lblHeader setText:[NSString stringWithFormat:@"Ordering and Tracking"]];
         }else if (section == 2){
