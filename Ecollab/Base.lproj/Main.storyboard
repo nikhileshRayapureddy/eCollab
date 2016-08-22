@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -228,7 +228,7 @@
                                     <action selector="SignUpBtnAction:" destination="wg0-OM-lqe" eventType="touchUpInside" id="18g-eU-y6g"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbiologotxt.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
                                 <rect key="frame" x="88" y="103" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HZe-1k-8X9"/>
@@ -748,7 +748,7 @@
                                         <rect key="frame" x="0.0" y="1" width="600" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jn-ad-Irb" id="bwj-dD-bIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chemistry.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-Qc-z2O">
@@ -1016,11 +1016,11 @@
                                         </constraints>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
-                                                <fragment content="                      NEW USER">
+                                                <fragment content="NEW USER">
                                                     <attributes>
                                                         <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -1239,7 +1239,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jac-ZB-5q0" id="m3d-jS-vIr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-yn-Grq">
@@ -1457,7 +1457,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5B9-uC-iJB" id="AHg-QW-KSa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-Pd-ag2">
@@ -4083,7 +4083,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hy2-06-1xk" id="hxv-4a-pg3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctt-Mj-5zW">
@@ -5080,7 +5080,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKV-QX-bk6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKV-QX-bk6">
                                 <rect key="frame" x="56" y="224" width="299" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5178,7 +5178,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbiologotxt.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
                                 <rect key="frame" x="88" y="101" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4E3-QX-d30"/>
@@ -5505,7 +5505,6 @@
         <image name="faqbottom.jpg" width="1072" height="128"/>
         <image name="googleplusshare.png" width="401" height="53"/>
         <image name="gvkbg.png" width="640" height="960"/>
-        <image name="gvkbiologotxt.png" width="340" height="88"/>
         <image name="gvklogo1.png" width="200" height="60"/>
         <image name="homebg.png" width="640" height="1136"/>
         <image name="linkedinshare.png" width="401" height="53"/>

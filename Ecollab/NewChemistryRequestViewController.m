@@ -539,7 +539,7 @@
     
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"Chemistery request saved successfully."
+                                                                   message:@"New chemistry request created successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
