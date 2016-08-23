@@ -12,6 +12,7 @@
 @synthesize arrTitles;
 @synthesize tableViewTag;
 @synthesize delegate;
+@synthesize arrCellSelected;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -113,15 +114,6 @@
             break;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([arrCellSelected containsObject:indexPath])
-    {
-        [arrCellSelected removeObject:indexPath];
-    }
-    else
-    {
-        [arrCellSelected addObject:indexPath];
-    }
-    
     [tableView reloadData];
     
 }

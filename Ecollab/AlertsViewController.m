@@ -35,6 +35,7 @@
 }
 -(void)requestReceivedopUserAlertsOrNotificationsResponce:(NSMutableDictionary *)aregistrationDict{
     [EcollabLoader hideLoaderForView:self.view animated:YES];
+    [notificationListArray removeAllObjects];
     notificationListArray = [aregistrationDict objectForKey:@"NotificationsOrAlertsResult"];
     [AlertsTableView reloadData];
 }
@@ -111,21 +112,77 @@
         {
             cell.imgRightArrow.hidden = NO;
         }
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        tapGestureRecognizer.numberOfTouchesRequired = 1;
+        cell.tag = indexPath.row;
+        [cell addGestureRecognizer:tapGestureRecognizer];
         
+        
+        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                              initWithTarget:self action:@selector(handleLongPress:)];
+        lpgr.minimumPressDuration = 1.0; //seconds
+        [cell addGestureRecognizer:lpgr];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         return cell;
     }
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
     
-    if(tableView == self.vwSideMenuCustomView.menuTable)
+    if(longPress.state == UIGestureRecognizerStateBegan)
     {
-        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    }
-    else
-    {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        CGPoint p = [longPress locationInView:AlertsTableView];
         
-        NSLog(@"notification %@",notificationListArray);
+        NSIndexPath *indexPath = [AlertsTableView indexPathForRowAtPoint:p];
+        if (indexPath == nil) {
+            NSLog(@"long press on table view but not on a row");
+        } else {
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+                                                                           message:@"Do you want to delete?"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+                NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
+                NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
+                
+                [dictRequest setObject:[[DetailsManager sharedManager] rID] forKey:@"uid"];
+                [dictRequest setObject:[dict objectForKey:@"OrderID"] forKey:@"rid"];
+                [dictRequest setObject:@"2" forKey:@"Type"];
+                NSLog(@"%d",indexPath.row);
+                ServiceRequester *request = [ServiceRequester new];
+                request.serviceRequesterDelegate =  self;
+                [request requestForopDeleteRequest:dictRequest];
+                request =  nil;
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
+            
+        }
+    }
+}
+
+-(void)cellTapped:(UITapGestureRecognizer*)tap
+{
+    // Your code here
+    CGPoint p = [tap locationInView:AlertsTableView];
+    NSIndexPath *indexPath = [AlertsTableView indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+        NSLog(@"long press on table view but not on a row");
+    } else {
+        NSLog(@"%d",indexPath.row);
         NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
         NSMutableString *Type = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
         OrderStatus = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderStatus"]];
@@ -150,8 +207,48 @@
         strRequestRID = [dict objectForKey:@"OrderID"];
         [self OrderDetails:inputDict];
     }
+    
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSLog(@"notification %@",notificationListArray);
+    }
 
 }
+-(void)requestReceivedopDeleteReqestResponce:(NSMutableDictionary *)aregistrationDict
+{
+    NSString *strStatusCode = [aregistrationDict objectForKey:@"SuccessCode"];
+    if([strStatusCode  isEqual: @"200"])
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
+                                                                       message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            ServiceRequester *request = [ServiceRequester new];
+            request.serviceRequesterDelegate =  self;
+            [request requestFopUserAlertsOrNotificationsService];
+            request =  nil;
+        }];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
+    
+}
+
 -(void)OrderDetails:(NSMutableDictionary *)inputDict {
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;

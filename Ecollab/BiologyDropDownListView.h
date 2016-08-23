@@ -18,14 +18,14 @@
 
 @interface BiologyDropDownListView : UIView
 {
-    NSMutableArray *arrCellSelected;
+    
 }
 @property (assign, nonatomic) id <BiologyDropDownListView_Delegate> delegate;
 @property (assign, nonatomic) NSInteger tableViewTag;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrTitles;
 @property (weak, nonatomic) IBOutlet UIButton *btnDone;
-
+@property (strong, nonatomic)NSMutableArray *arrCellSelected;
 -(void)reloadData;
 - (IBAction)btnDoneClicked:(UIButton *)sender;
 

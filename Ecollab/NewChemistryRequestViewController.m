@@ -538,26 +538,34 @@
     // show alert controller and navigare back
     
     [EcollabLoader hideLoaderForView:self.view animated:YES];
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"Chemistery request saved successfully."
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {
-                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
-                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
-                                                                           {
-                                                                               [self.navigationController popToViewController:vc animated:YES];
+    if ([[aregistrationDict objectForKey:@"SuccessCode"]intValue] != 200) {
+        
+        [self showAlertWithMessage:[aregistrationDict objectForKey:@"SuccessString"]];
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:@"New chemistry request created successfully."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                                       handler:^(UIAlertAction * action) {
+                                                                           for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                               if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                               {
+                                                                                   [self.navigationController popToViewController:vc animated:YES];
+                                                                               }
+                                                                               
+                                                                               
+                                                                               
                                                                            }
-                                                                           
-                                                                           
-                                                                           
-                                                                       }
-                                                                   }];
+                                                                       }];
+        
+        
+        [alert addAction:PhotoFromGalleryAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
     
-    
-    [alert addAction:PhotoFromGalleryAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
