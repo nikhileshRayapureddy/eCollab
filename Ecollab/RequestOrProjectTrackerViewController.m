@@ -22,11 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    TableFlag = 0;
+    TableFlag = 1;
     [RequestOrProjectTableView setDelegate:self];
     [RequestOrProjectTableView setDataSource:self];
-    [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];//requestquote.jpg
-    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
+    [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];//requestquote.jpg
+    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];//ongoingprojexts.jpg
     [self designNavBar];
     [self designTabBar];
     [self setSelected:2];
@@ -118,10 +118,10 @@
         
         if ([[tempDict objectForKey:@"ItemType"] intValue]==0) {
             cell.RequestOrProjectType.image = [UIImage imageNamed:@"chemistrysaved.png"];
-            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"CHEMISTRY"];
+//            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"CHEMISTRY"];
         }else{
             cell.RequestOrProjectType.image = [UIImage imageNamed:@"biologysaved.png"];
-            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"BIOLOGY"];
+//            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"BIOLOGY"];
         }
         
         cell.RequestOrProjectIDLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"OrderNumber"]];
@@ -219,7 +219,7 @@
         NSLog(@"QQQQQQ = %@",[tempDict objectForKey:@"QuoteStatus"]);
         if ([[tempDict objectForKey:@"ItemType"] intValue]==0) {
             cell.RequestOrProjectType.image = [UIImage imageNamed:@"chemistrysaved.png"];
-            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"CHEMISTRY"];
+//            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"CHEMISTRY"];
         }
 //            else{
 //            cell.RequestOrProjectType.image = [UIImage imageNamed:@"biologysaved.png"];

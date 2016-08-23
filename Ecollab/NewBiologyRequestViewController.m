@@ -40,6 +40,7 @@
     
     [self designTabBar];
     [self setSelected:0];
+    arrAssaysSelected = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
     /*
      [FAQLabelOutlet.layer setBorderWidth: 1.0];
@@ -694,6 +695,7 @@
         case 40:
         {
             [viewDropDown.arrTitles addObjectsFromArray:modelArray];
+            [viewDropDown.arrCellSelected addObjectsFromArray:arrAssaysSelected];
         }
             break;
             
@@ -792,6 +794,8 @@
         }
         
     }
+    [arrAssaysSelected removeAllObjects];
+    [arrAssaysSelected addObjectsFromArray:arrCellSelected];
     
     if(!strSelectedModels.length)
     {

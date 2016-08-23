@@ -1524,7 +1524,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.capillary.URDoorStep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a7a82255-6f7d-4774-b98b-dab448c84cec";
+				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Debug;
 		};
@@ -1540,7 +1540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.capillary.URDoorStep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a7a82255-6f7d-4774-b98b-dab448c84cec";
+				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Release;
 		};
