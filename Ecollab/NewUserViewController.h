@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *DesignationTextField;
 @property (strong, nonatomic) IBOutlet UIButton *SignUpBtnOutlet;
 - (IBAction)SignUpBtnAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrlVwNewUser;
 
 
 

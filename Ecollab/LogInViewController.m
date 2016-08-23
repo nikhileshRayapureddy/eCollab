@@ -109,10 +109,10 @@
     }
     else
     {
-        //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sivvalasanthu@gmail.com",@"EmailID",@"Gvkbio@123",@"Password",@"0",@"ISGvkEmployee", nil];
-        //NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"sudheer.addala@gmail.com",@"EmailID",@"Gvkbio@12",@"Password",@"0",@"ISGvkEmployee", nil];
+        [EmailTextField resignFirstResponder];
+        [PasswordTextField resignFirstResponder];
         NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",EmailTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",@"0",@"ISGvkEmployee", nil];
-    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForLoginService:inputDick];

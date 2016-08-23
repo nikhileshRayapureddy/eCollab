@@ -31,6 +31,17 @@
     request.serviceRequesterDelegate =  self;
     [request requestForopGetUserDetailsService];
     request =  nil;
+    
+    [self.vwFirstNam.layer setBorderWidth: 1.0];
+    [self.vwFirstNam.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [self.vwLastName.layer setBorderWidth: 1.0];
+    [self.vwLastName.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [self.vwEmailId.layer setBorderWidth: 1.0];
+    [self.vwEmailId.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [self.vwCompanyName.layer setBorderWidth: 1.0];
+    [self.vwCompanyName.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [self.vwDesignation.layer setBorderWidth: 1.0];
+    [self.vwDesignation.layer setBorderColor:[[UIColor redColor] CGColor]];
 }
 -(void)viewDidLayoutSubviews
 {

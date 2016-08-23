@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [self designNavBar];
 }
 -(void)designNavBar
@@ -37,7 +36,7 @@
     imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = imgLogoEcoLab;
     
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
     imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
@@ -53,6 +52,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)requestReceivedopForgotPasswordResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
       NSLog(@"%@",aregistrationDict);
     NSString *messageString=[aregistrationDict objectForKey:@"SuccessString"];
     // Check email validation
@@ -62,7 +62,7 @@
     }
     else{
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:messageString
+                                                                       message:@"Password has been sent successfully to the registered email."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];
@@ -89,6 +89,7 @@
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
+    [ForgotPasswordTextField resignFirstResponder];
     if ([ForgotPasswordTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Please enter email address."];
@@ -98,6 +99,7 @@
         [self showAlertWithMessage:@"Please enter a valid email address."];
         ForgotPasswordTextField.text=@"";
     }else{
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopForgotPassword:ForgotPasswordTextField.text];

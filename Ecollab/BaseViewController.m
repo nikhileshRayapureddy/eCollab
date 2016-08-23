@@ -44,22 +44,22 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.hidesBackButton = YES;
-    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 30,25);
+    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 60,25);
     UIButton *lefttBarBtn = [[UIButton alloc] initWithFrame:frameimg2];
-    [lefttBarBtn setBackgroundImage:leftBarbtnImage forState:UIControlStateNormal];
+    lefttBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [lefttBarBtn setImage:leftBarbtnImage forState:UIControlStateNormal];
     [lefttBarBtn addTarget:self action:@selector(btnMenuClicked:)
           forControlEvents:UIControlEventTouchUpInside];
-    [lefttBarBtn setShowsTouchWhenHighlighted:YES];
     UIBarButtonItem *leftBarBtnItem =[[UIBarButtonItem alloc] initWithCustomView:lefttBarBtn];
     self.navigationItem.leftBarButtonItem =leftBarBtnItem;
-    
+
     UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
     imgLogoEcoLab.backgroundColor = [UIColor clearColor];
     imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
     imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = imgLogoEcoLab;
     
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
     imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
@@ -88,36 +88,38 @@
     if (!vwBase)
     {
         vwBase = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 114, self.view.frame.size.width, 50)];
-        vwBase.backgroundColor = [UIColor blackColor];
+        vwBase.backgroundColor = [UIColor whiteColor];
         vwBase.tag = 1875;
         [self.view addSubview:vwBase];
         CGFloat x= 0.0;
         
         CGFloat width = (self.view.frame.size.width  ) / 4.0;
-        
         for (int i=0;i<4;i++)
         {
             
             UIButton *btnTab = [UIButton buttonWithType:UIButtonTypeCustom];
             
             
-            btnTab.frame = CGRectMake(x, 0,width, vwBase.frame.size.height);
             [btnTab addTarget:self action:@selector(btnTabClicked:) forControlEvents:UIControlEventTouchUpInside];
             switch(i)
             {
                 case 0 :
+                    btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
                     [btnTab setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
                     [btnTab setImage:[UIImage imageNamed:@"RequestaQuote_red.jpg"] forState:UIControlStateSelected];
                     break;
                 case 1 :
+                    btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
                     [btnTab setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
                     [btnTab setImage:[UIImage imageNamed:@"SavedRequests_red.jpg"] forState:UIControlStateSelected];
                     break;
                 case 2 :
+                    btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
                     [btnTab setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
                     [btnTab setImage:[UIImage imageNamed:@"RequestProjectTracker_red.jpg"] forState:UIControlStateSelected];
                    break;
                 case 3 :
+                    btnTab.frame = CGRectMake(x, 0,width, vwBase.frame.size.height);
                     [btnTab setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
                     [btnTab setImage:[UIImage imageNamed:@"MyProfile_red.jpg"] forState:UIControlStateSelected];
                     break;
@@ -271,6 +273,8 @@
     NSArray *arr  = [userData objectForKey:@"Login"];
     NSDictionary *dic = [arr objectAtIndex:0];
     
+    vwSideMenuCustomView.imgProfile.layer.borderColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0].CGColor;
+    vwSideMenuCustomView.imgProfile.layer.borderWidth = 4.0;
     vwSideMenuCustomView.lblUserName.text = [dic objectForKey:@"Name"];
     vwSideMenuCustomView.lblEmailID.text = [dic objectForKey:@"EmailID"];
     vwSideMenuCustomView.menuTable.delegate = self;
