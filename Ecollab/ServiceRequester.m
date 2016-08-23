@@ -455,6 +455,27 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service = nil;
 }
 
+-(void)requestForopDeleteRequest:(NSMutableDictionary *)detailDictionary{
+    //responseopRequestedQuoteDetailsService
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopDeleteReqestService:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL = @"";
+    if(detailDictionary.allKeys.count == 3)
+    {
+        stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opDeleteRequest?uid=%@&RID=%@&Type=%@",[detailDictionary objectForKey:@"uid"],[detailDictionary objectForKey:@"rid"],[detailDictionary objectForKey:@"Type"]]];
+    }
+    else
+    {
+        stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opDeleteUserAddress?uid=%@&addressid=%@",[[DetailsManager sharedManager]rID],[detailDictionary objectForKey:@"ADDRESSID"]]];
+    }
+    NSURL* url = [NSURL URLWithString:stringURL];
+    [service startWithURL:url];
+    service = nil;
+}
+
 //opPlaceChemistryRequest
 -(void)requestForopPlaceChemistryRequestService:(NSMutableDictionary *)detailDictionary{
     //responseopPlaceChemistryRequestService
@@ -720,6 +741,18 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     [serviceRequesterDelegate requestReceivedopTrackSelecctedOrderDetailsResponce:jsonDict];
     // alert =  nil;
 }
+
+-(void)responseopDeleteReqestService:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopDeleteReqestResponce:jsonDict];
+    // alert =  nil;
+}
+
+
 //opRequestedQuoteDetails
 -(void)responseopRequestedQuoteDetailsService:(NSData *)data
 {

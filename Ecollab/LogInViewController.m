@@ -23,7 +23,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [EmailTextField setDelegate:self];
     [PasswordTextField setDelegate:self];
-    
+    EmailTextField.text = @"p.venkat.it@gmail.com";
+    PasswordTextField.text = @"Gvkbio@1";
 }
 
 - (void)didReceiveMemoryWarning {

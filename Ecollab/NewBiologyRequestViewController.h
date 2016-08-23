@@ -15,6 +15,7 @@
 @interface NewBiologyRequestViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol,BiologyDropDownListView_Delegate>
 {
     BiologyDropDownListView *viewDropDown;
+    NSMutableArray *arrAssaysSelected;
 }
 @property (strong, nonatomic) IBOutlet UIButton *ServiceBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *AreaOutlet;

@@ -65,6 +65,7 @@
 -(void)getAddressForPinCode:(NSString *)strPinCode;
 -(void)requestFopUserAlertsOrNotificationsServiceForSideMenu;
 -(void)responseopUserAlertsOrNotificationsServiceForSideMenu:(NSData *)data;
+-(void)requestForopDeleteRequest:(NSMutableDictionary *)detailDictionary;
 @end
 
 #pragma mark - ServiceRequesterProtocol
@@ -112,4 +113,6 @@
 -(void)requestReceivedopProfileImageUploadRequestResponse:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedGetAddressFromPinCodeRequestResponse:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopUserAlertsOrNotificationsForSideMenuResponce:(NSMutableDictionary *)aregistrationDict;
+-(void)requestReceivedopDeleteReqestResponce:(NSMutableDictionary *)aregistrationDict;
+
 @end

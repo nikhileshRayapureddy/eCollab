@@ -62,6 +62,7 @@
 
 -(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict
 {
+    [arrAddresses removeAllObjects];
     arrAddresses = [aregistrationDict valueForKey:@"UserAddressDetailsResult"];
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     [ShippingInformationTableview reloadData];
@@ -97,16 +98,130 @@
         cell.PinCodeLabel.text = [NSString stringWithFormat:@"%@ %@ %@",[dictAddress valueForKey:@"Pincode"],[dictAddress valueForKey:@"Country"],[dictAddress valueForKey:@"MobileNumber"]];
     cell.EditAddressBtnOutlet.tag = 100+indexPath.row;
     [cell.EditAddressBtnOutlet addTarget:self action:@selector(btnEditClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    tapGestureRecognizer.numberOfTouchesRequired = 1;
+    cell.tag = indexPath.row;
+    [cell addGestureRecognizer:tapGestureRecognizer];
     
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0; //seconds
+    [cell addGestureRecognizer:lpgr];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    
+    if(longPress.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint p = [longPress locationInView:ShippingInformationTableview];
+        
+        NSIndexPath *indexPath = [ShippingInformationTableview indexPathForRowAtPoint:p];
+        if (indexPath == nil) {
+            NSLog(@"long press on table view but not on a row");
+        } else {
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+                                                                           message:@"Do you want to delete?"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+                NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
+                NSMutableDictionary *dict =[arrAddresses objectAtIndex:indexPath.row];
+                
+                
+                [dictRequest setObject:[dict objectForKey:@"RID"] forKey:@"ADDRESSID"];
+                NSLog(@"%d",indexPath.row);
+                ServiceRequester *request = [ServiceRequester new];
+                request.serviceRequesterDelegate =  self;
+                [request requestForopDeleteRequest:dictRequest];
+                request =  nil;
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
+            
+        }
+    }
+}
+
+-(void)requestReceivedopDeleteReqestResponce:(NSMutableDictionary *)aregistrationDict
+{
+    NSString *strStatusCode = [aregistrationDict objectForKey:@"SuccessCode"];
+    if([strStatusCode  isEqual: @"200"])
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
+                                                                       message:[aregistrationDict objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            ServiceRequester *request = [ServiceRequester new];
+            request.serviceRequesterDelegate =  self;
+            [request requestForopGetShippingAddressDetailsService];
+            request =  nil;
+            
+        }];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
+    
+}
+
+-(void)cellTapped:(UITapGestureRecognizer*)tap
+{
+    // Your code here
+    CGPoint p = [tap locationInView:ShippingInformationTableview];
+    NSIndexPath *indexPath = [ShippingInformationTableview indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+        NSLog(@"long press on table view but not on a row");
+    } else {
+        if(isFromTracking == YES)
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+                                                                           message:@"Do you want to add this address as your defaut address?"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSDictionary *dict = [arrAddresses objectAtIndex:indexPath.row];
+                [self updateShippingAddress:dict];
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+    }
+    
+    
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(isFromTracking == YES)
     {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab!"
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
                                                                        message:@"Do you want to add this address as your defaut address?"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

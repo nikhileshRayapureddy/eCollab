@@ -536,28 +536,37 @@
 }
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
-    
+    NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+    NSDictionary *dictResponse = [arr objectAtIndex:0];
     [EcollabLoader hideLoaderForView:self.view animated:YES];
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"New chemistry request created successfully."
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {
-                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
-                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
-                                                                           {
-                                                                               [self.navigationController popToViewController:vc animated:YES];
+    if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
+        
+        [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:@"New chemistry request created successfully."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                                       handler:^(UIAlertAction * action) {
+                                                                           for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                               if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                               {
+                                                                                   [self.navigationController popToViewController:vc animated:YES];
+                                                                               }
+                                                                               
+                                                                               
+                                                                               
                                                                            }
-                                                                           
-                                                                           
-                                                                           
-                                                                       }
-                                                                   }];
+                                                                       }];
+        
+        
+        [alert addAction:PhotoFromGalleryAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
     
-    
-    [alert addAction:PhotoFromGalleryAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

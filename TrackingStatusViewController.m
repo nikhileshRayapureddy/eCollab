@@ -32,10 +32,14 @@
     if(TableDataArray.count > 0)
     {
         NSDictionary *dictOrderDetails = [TableDataArray objectAtIndex:0];
-        self.lblStatus.text = [NSString stringWithFormat:@"%@",[dictOrderDetails objectForKey:@"ReqStatus"]];
+        NSString *status = [NSString stringWithFormat:@"STATUS : %@",[dictOrderDetails objectForKey:@"ReqStatus"]];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:status];
+        [str addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0,7)];
+        self.lblStatus.attributedText = str;
         self.lblRequestNumber.text = [dictOrderDetails objectForKey:@"OrderNumber"];
         strRequestRID = [dictOrderDetails objectForKey:@"RID"];
-
+        self.lblStatus.adjustsFontSizeToFitWidth = YES;
+        self.lblRequestNumber.adjustsFontSizeToFitWidth = YES;
     }
     if([ItemType  isEqual: @"0"])
     {
@@ -202,6 +206,7 @@
     }
 
     cell.StatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ReqStatus"]];
+    cell.StatusLabel.adjustsFontSizeToFitWidth = YES;
     cell.StatusTimeLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"CreatedDate"]];
     if (TableDataArray.count-1 == indexPath.row) {
         [cell.StatusProcessIndecatorLabel setHidden:YES];
