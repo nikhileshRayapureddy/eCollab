@@ -132,7 +132,8 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
     [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
-    
+    CharitybtnOutlet.text = @"1";
+    QuantityTextField.text = @"1";
     [self designTabBar];
     [self setSelected:0];
 

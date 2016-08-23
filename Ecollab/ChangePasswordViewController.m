@@ -18,6 +18,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self designNavBar];
+    NSMutableAttributedString *text =
+    [[NSMutableAttributedString alloc]
+     initWithAttributedString: [[NSAttributedString alloc]initWithString:@"OLD PASSWORD *"]];
+    
+    [text addAttribute:NSForegroundColorAttributeName
+                 value:[UIColor redColor]
+                 range:NSMakeRange(13, 1)];
+    
+    oldPassword.attributedPlaceholder = text;
+    
+    text =
+    [[NSMutableAttributedString alloc]
+     initWithAttributedString: [[NSAttributedString alloc]initWithString:@"NEW PASSWORD *"]];
+    
+    [text addAttribute:NSForegroundColorAttributeName
+                 value:[UIColor redColor]
+                 range:NSMakeRange(13, 1)];
+    
+    NewPassword.attributedPlaceholder = text;
+    
+    text =
+    [[NSMutableAttributedString alloc]
+     initWithAttributedString: [[NSAttributedString alloc]initWithString:@"CONFIRM PASSWORD *"]];
+    
+    [text addAttribute:NSForegroundColorAttributeName
+                 value:[UIColor redColor]
+                 range:NSMakeRange(17, 1)];
+    
+    confirmPassword.attributedPlaceholder = text;
+    
+
 }
 -(void)designNavBar
 {

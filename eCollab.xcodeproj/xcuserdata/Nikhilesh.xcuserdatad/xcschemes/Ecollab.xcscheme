@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-               BuildableName = "eCcollab.app"
+               BuildableName = "eCollab.app"
                BlueprintName = "eCollab"
                ReferencedContainer = "container:eCollab.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "eCcollab.app"
+            BuildableName = "eCollab.app"
             BlueprintName = "eCollab"
             ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "eCcollab.app"
+            BuildableName = "eCollab.app"
             BlueprintName = "eCollab"
             ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "eCcollab.app"
+            BuildableName = "eCollab.app"
             BlueprintName = "eCollab"
             ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
