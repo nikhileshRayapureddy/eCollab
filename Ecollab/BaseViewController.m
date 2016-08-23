@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     menuArray =[NSMutableArray arrayWithObjects:@"HOME",@"REQUEST A QUOTE ",@"SAVED REQUESTS",@"REQUEST/PROJECT TRACKER",@"MY PROFILE",@"LEGAL DISCLAIMER",@"REACH US",@"ALERTS",@"HELP",@"SHARE", nil];
-    menuImagesArray = [[NSMutableArray alloc] initWithObjects:@"requestquotes.png",@"requestquotes.png",@"savedrequests.png",@"projecttracer.png",@"myprofile.png",@"slidelegal.png",@"newreach.png",@"notifications.png",@"helps.png",@"share.png", nil];
+    menuImagesArray = [[NSMutableArray alloc] initWithObjects:@"home_menu.png",@"requestquote_menu.png",@"savedrequest_menu.png",@"projectTracker_menu.png",@"myprofile_menu.png",@"Legal_menu.png",@"ReachUs_menu.png",@"Alerts_menu.png",@"help_menu.png",@"share_menu.png", nil];
     self.menuFlag = 0;
 
 }

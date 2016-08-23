@@ -9,7 +9,8 @@
 #import "NewChemistryRequestViewController.h"
 #import "CompundDBCustomView.h"
 #import "DashboardViewController.h"
-@interface NewChemistryRequestViewController (){
+#import "ZoomViewController.h"
+@interface NewChemistryRequestViewController ()<UIGestureRecognizerDelegate>{
     UIDatePicker *myPicker;
     UITableView *purityTableView, *imageTabelview;
     NSString *b64EncStr;
@@ -22,7 +23,9 @@
     NSMutableString *ProductType,*ProductID;
     CompundDBCustomView *vwCompundDBCustomView;
     NSInteger selCell;
-    
+    ZoomViewController *obj_ZoomViewController;
+    UIView *vwBg;
+
 }
 
 @end
@@ -37,7 +40,6 @@
     [super viewDidLoad];
     selCell = -1;
     [BackgrounScrollview setDelegate:self];
-
     [self.vwCasTxtFldBg.layer setBorderWidth: 1.0];
     [self.vwCasTxtFldBg.layer setBorderColor:[[UIColor redColor] CGColor]];
 
@@ -311,6 +313,8 @@
 {
     ImageData = nil;
     selCell = indexPath.row;
+    ImageCollectionViewCell *cell = (ImageCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    [self previewImageclicked:cell.CollectionImageView.image];
     [collectionView reloadData];
 }
 - (IBAction)TakeOrChoosePhotoBtnAction:(id)sender {
@@ -852,66 +856,61 @@
 }
 -(BOOL)validationFields
 {
-    if ([CASTextField.text isEqualToString:@""])
+    if ([CASTextField.text isEqualToString:@""] && [MDLTextField.text isEqualToString:@""] && b64EncStr == nil)
     {
-        [self showAlertWithMessage:@"CAS should not be empty."];
+        [self showAlertWithMessage:@"Provide one or more input(s) from the 'Upload structure Image', 'Choose from reference compound database', 'CAS ID' or 'MDL ID'"];
         return false;
    }
-    else if ([MDLTextField.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"MDL should not be empty."];
-        return false;
-    }
-    else /*if ([JournalReferenceTextField.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"Journal Reference should not be empty."];
-        return false;
-    }
-    else*/ if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"Please select expected delivery date."];
-        return false;
-    }
-    else if ([QuantityTextField.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"Quantity should not be empty."];
-        return false;
-    }
-    else if ([QuantityTextField.text isEqualToString:@"0"])
-    {
-        [self showAlertWithMessage:@"Quantity should not be 0"];
-        return false;
-    }
-    else if ([QuantityTextField.text isEqualToString:@"."])
-    {
-        [self showAlertWithMessage:@"Please enter quantity"];
-        return false;
-    }
-    else if (QuantityTextField.text.length > 10)
-    {
-        [self showAlertWithMessage:@"Quantity must be less than 10 digits."];
-        return false;
-    }
-    else if ([CharitybtnOutlet.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"Chirality should not be empty."];
-        return false;
-    }
-    else if ([CharitybtnOutlet.text isEqualToString:@"."])
-    {
-        [self showAlertWithMessage:@"Please enter chirality."];
-        return false;
-    }
-    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
-    {
-        [self showAlertWithMessage:@"Chirality should not be 0"];
-        return false;
-    }
-    else if ([CharitybtnOutlet.text isEqualToString:@""])
-    {
-        [self showAlertWithMessage:@"Remarks should not be empty."];
-        return false;
-   }
+//    else if ([MDLTextField.text isEqualToString:@""])
+//    {
+//        [self showAlertWithMessage:@"MDL should not be empty."];
+//        return false;
+//    }
+// if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
+//    {
+//        [self showAlertWithMessage:@"Please select expected delivery date."];
+//        return false;
+//    }
+//    else if ([QuantityTextField.text isEqualToString:@""])
+//    {
+//        [self showAlertWithMessage:@"Quantity should not be empty."];
+//        return false;
+//    }
+//    else if ([QuantityTextField.text isEqualToString:@"0"])
+//    {
+//        [self showAlertWithMessage:@"Quantity should not be 0"];
+//        return false;
+//    }
+//    else if ([QuantityTextField.text isEqualToString:@"."])
+//    {
+//        [self showAlertWithMessage:@"Please enter quantity"];
+//        return false;
+//    }
+//    else if (QuantityTextField.text.length > 10)
+//    {
+//        [self showAlertWithMessage:@"Quantity must be less than 10 digits."];
+//        return false;
+//    }
+//    else if ([CharitybtnOutlet.text isEqualToString:@""])
+//    {
+//        [self showAlertWithMessage:@"Chirality should not be empty."];
+//        return false;
+//    }
+//    else if ([CharitybtnOutlet.text isEqualToString:@"."])
+//    {
+//        [self showAlertWithMessage:@"Please enter chirality."];
+//        return false;
+//    }
+//    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
+//    {
+//        [self showAlertWithMessage:@"Chirality should not be 0"];
+//        return false;
+//    }
+//    else if ([CharitybtnOutlet.text isEqualToString:@""])
+//    {
+//        [self showAlertWithMessage:@"Remarks should not be empty."];
+//        return false;
+//   }
 
     return true;
 }
@@ -926,6 +925,65 @@
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
+-(void)previewImageclicked:(UIImage *)imgPreview{
+    if (imgPreview==nil) {
+        return;
+    }
+    vwBg = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    vwBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [self.view addSubview:vwBg];
+    
+    
+    obj_ZoomViewController=[[ZoomViewController alloc]initWithFrame:CGRectMake(50, (self.view.frame.size.height - 200)/2, self.view.frame.size.width-100,200)];
+    obj_ZoomViewController.imgRecipeView.frame = CGRectMake(0, 0, obj_ZoomViewController.view.frame.size.width,obj_ZoomViewController.view.frame.size.height);
+    obj_ZoomViewController.view.backgroundColor = [UIColor whiteColor];
+    obj_ZoomViewController.imgRecipeView.image = imgPreview;
+    [vwBg addSubview:obj_ZoomViewController.view];
+    vwBg.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    
+    [UIView animateWithDuration:0.4 animations:^
+     {
+         vwBg.transform = CGAffineTransformMakeScale(1.1,1.1);
+     }
+                     completion:^(BOOL complete)
+     {
+         [UIView animateWithDuration:0.4 animations:^
+          {
+              vwBg.transform = CGAffineTransformIdentity;
+          }completion:^(BOOL complete)
+          {
+          }];   }];
+    
+    UIButton *btnCloseZoom = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnCloseZoom.frame = CGRectMake(self.view.frame.size.width-100, (self.view.frame.size.height - 200)/2, 50, 50);
+    [btnCloseZoom addTarget:self action:@selector(btnCloseClicked:) forControlEvents:UIControlEventTouchUpInside];
+    btnCloseZoom.backgroundColor = [UIColor clearColor];
+    [btnCloseZoom setImage:[UIImage imageNamed:@"crossmark.png"] forState:UIControlStateNormal];
+    [vwBg addSubview:btnCloseZoom];
+
+    
+}
+-(void)btnCloseClicked:(UIButton*)btn
+{
+    vwBg.transform = CGAffineTransformMakeScale(1,1);
+    [UIView animateWithDuration:0.3 animations:^
+     {
+         vwBg.transform = CGAffineTransformMakeScale(1.1,1.1);
+     }
+                     completion:^(BOOL complete)
+     {
+         [UIView animateWithDuration:0.4 animations:^
+          {
+              vwBg.transform = CGAffineTransformMakeScale(0.1, 0.1);
+          }completion:^(BOOL complete)
+          {
+              [vwBg removeFromSuperview];
+              vwBg=nil;
+              
+          }];   }];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

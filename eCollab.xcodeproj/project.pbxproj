@@ -189,6 +189,24 @@
 		A770954A1D663B63001C0180 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */; };
 		A770954E1D66751A001C0180 /* ecolablogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954C1D66751A001C0180 /* ecolablogo.png */; };
 		A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954D1D66751A001C0180 /* gvk_whitelogo1.png */; };
+		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
+		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
+		A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */; };
+		A7F9CA6A1D6C2BBD00A2928F /* Legal_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA601D6C2BBD00A2928F /* Legal_menu.png */; };
+		A7F9CA6B1D6C2BBD00A2928F /* myprofile_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA611D6C2BBD00A2928F /* myprofile_menu.png */; };
+		A7F9CA6C1D6C2BBD00A2928F /* projectTracker_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA621D6C2BBD00A2928F /* projectTracker_menu.png */; };
+		A7F9CA6D1D6C2BBD00A2928F /* ReachUs_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA631D6C2BBD00A2928F /* ReachUs_menu.png */; };
+		A7F9CA6E1D6C2BBD00A2928F /* requestquote_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA641D6C2BBD00A2928F /* requestquote_menu.png */; };
+		A7F9CA6F1D6C2BBD00A2928F /* savedrequest_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA651D6C2BBD00A2928F /* savedrequest_menu.png */; };
+		A7F9CA701D6C2BBD00A2928F /* share_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA661D6C2BBD00A2928F /* share_menu.png */; };
+		A7F9CA721D6C2BC500A2928F /* crossmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA711D6C2BC500A2928F /* crossmark.png */; };
+		A7F9CA741D6C2C2B00A2928F /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA731D6C2C2B00A2928F /* BackArrow.png */; };
+		A7F9CA791D6C335B00A2928F /* Legal_discl_Sel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA751D6C335B00A2928F /* Legal_discl_Sel.png */; };
+		A7F9CA7A1D6C335B00A2928F /* Legal_Discl_Unsel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA761D6C335B00A2928F /* Legal_Discl_Unsel.png */; };
+		A7F9CA7B1D6C335B00A2928F /* Privact&Terms_Unsel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA771D6C335B00A2928F /* Privact&Terms_Unsel.png */; };
+		A7F9CA7C1D6C335B00A2928F /* Privacy&Terms_Sel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA781D6C335B00A2928F /* Privacy&Terms_Sel.png */; };
+		A7F9CA8A1D6C514100A2928F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F9CA881D6C514100A2928F /* ZoomViewController.m */; };
+		A7F9CA8B1D6C514100A2928F /* ZoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA891D6C514100A2928F /* ZoomViewController.xib */; };
 		CCE7904A1D65FCD8007A5623 /* btnGreyGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790481D65FCD8007A5623 /* btnGreyGradient.png */; };
 		CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790491D65FCD8007A5623 /* btnRedGradient.png */; };
 		CCE7904E1D65FED7007A5623 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE7904C1D65FED7007A5623 /* down-arrow.png */; };
@@ -259,7 +277,7 @@
 		9E23EE491D373416005D7859 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		9E23EE4C1D37393C005D7859 /* star_favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_favorite.png; sourceTree = "<group>"; };
 		9E23EE4E1D373D35005D7859 /* reachus_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reachus_img.png; sourceTree = "<group>"; };
-		9E25475D1D32677A008A96C9 /* Ecollab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecollab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E25475D1D32677A008A96C9 /* eCollab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCollab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2547611D32677A008A96C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E2547631D32677A008A96C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E2547641D32677A008A96C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -450,6 +468,25 @@
 		A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ecollab-Prefix.pch"; sourceTree = "<group>"; };
 		A770954C1D66751A001C0180 /* ecolablogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ecolablogo.png; sourceTree = "<group>"; };
 		A770954D1D66751A001C0180 /* gvk_whitelogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gvk_whitelogo1.png; sourceTree = "<group>"; };
+		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
+		A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_menu.png; sourceTree = "<group>"; };
+		A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_menu.png; sourceTree = "<group>"; };
+		A7F9CA601D6C2BBD00A2928F /* Legal_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Legal_menu.png; sourceTree = "<group>"; };
+		A7F9CA611D6C2BBD00A2928F /* myprofile_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myprofile_menu.png; sourceTree = "<group>"; };
+		A7F9CA621D6C2BBD00A2928F /* projectTracker_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectTracker_menu.png; sourceTree = "<group>"; };
+		A7F9CA631D6C2BBD00A2928F /* ReachUs_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReachUs_menu.png; sourceTree = "<group>"; };
+		A7F9CA641D6C2BBD00A2928F /* requestquote_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = requestquote_menu.png; sourceTree = "<group>"; };
+		A7F9CA651D6C2BBD00A2928F /* savedrequest_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savedrequest_menu.png; sourceTree = "<group>"; };
+		A7F9CA661D6C2BBD00A2928F /* share_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_menu.png; sourceTree = "<group>"; };
+		A7F9CA711D6C2BC500A2928F /* crossmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossmark.png; sourceTree = "<group>"; };
+		A7F9CA731D6C2C2B00A2928F /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackArrow.png; sourceTree = "<group>"; };
+		A7F9CA751D6C335B00A2928F /* Legal_discl_Sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Legal_discl_Sel.png; sourceTree = "<group>"; };
+		A7F9CA761D6C335B00A2928F /* Legal_Discl_Unsel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Legal_Discl_Unsel.png; sourceTree = "<group>"; };
+		A7F9CA771D6C335B00A2928F /* Privact&Terms_Unsel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Privact&Terms_Unsel.png"; sourceTree = "<group>"; };
+		A7F9CA781D6C335B00A2928F /* Privacy&Terms_Sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Privacy&Terms_Sel.png"; sourceTree = "<group>"; };
+		A7F9CA871D6C514100A2928F /* ZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
+		A7F9CA881D6C514100A2928F /* ZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
+		A7F9CA891D6C514100A2928F /* ZoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoomViewController.xib; sourceTree = "<group>"; };
 		CCE790481D65FCD8007A5623 /* btnGreyGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreyGradient.png; sourceTree = "<group>"; };
 		CCE790491D65FCD8007A5623 /* btnRedGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnRedGradient.png; sourceTree = "<group>"; };
 		CCE7904C1D65FED7007A5623 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
@@ -682,7 +719,7 @@
 		9E25475E1D32677A008A96C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E25475D1D32677A008A96C9 /* Ecollab.app */,
+				9E25475D1D32677A008A96C9 /* eCollab.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -746,6 +783,9 @@
 				CCEAC8881D69D64B0047AD1E /* BiologyDropDownListView.xib */,
 				A76C6CD51D69FFE100679322 /* ShareViewController.h */,
 				A76C6CD61D69FFE100679322 /* ShareViewController.m */,
+				A7F9CA871D6C514100A2928F /* ZoomViewController.h */,
+				A7F9CA881D6C514100A2928F /* ZoomViewController.m */,
+				A7F9CA891D6C514100A2928F /* ZoomViewController.xib */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -945,6 +985,22 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A7F9CA751D6C335B00A2928F /* Legal_discl_Sel.png */,
+				A7F9CA761D6C335B00A2928F /* Legal_Discl_Unsel.png */,
+				A7F9CA771D6C335B00A2928F /* Privact&Terms_Unsel.png */,
+				A7F9CA781D6C335B00A2928F /* Privacy&Terms_Sel.png */,
+				A7F9CA731D6C2C2B00A2928F /* BackArrow.png */,
+				A7F9CA711D6C2BC500A2928F /* crossmark.png */,
+				A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */,
+				A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */,
+				A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */,
+				A7F9CA601D6C2BBD00A2928F /* Legal_menu.png */,
+				A7F9CA611D6C2BBD00A2928F /* myprofile_menu.png */,
+				A7F9CA621D6C2BBD00A2928F /* projectTracker_menu.png */,
+				A7F9CA631D6C2BBD00A2928F /* ReachUs_menu.png */,
+				A7F9CA641D6C2BBD00A2928F /* requestquote_menu.png */,
+				A7F9CA651D6C2BBD00A2928F /* savedrequest_menu.png */,
+				A7F9CA661D6C2BBD00A2928F /* share_menu.png */,
 				A76C6CD31D69FEB200679322 /* linkedinshare.png */,
 				A76C6CD11D69FEA700679322 /* googleplusshare.png */,
 				A76C6CCF1D69FE9F00679322 /* facebookshare.png */,
@@ -1141,9 +1197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E25475C1D32677A008A96C9 /* Ecollab */ = {
+		9E25475C1D32677A008A96C9 /* eCollab */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E2547741D32677A008A96C9 /* Build configuration list for PBXNativeTarget "Ecollab" */;
+			buildConfigurationList = 9E2547741D32677A008A96C9 /* Build configuration list for PBXNativeTarget "eCollab" */;
 			buildPhases = (
 				9E2547591D32677A008A96C9 /* Sources */,
 				9E25475A1D32677A008A96C9 /* Frameworks */,
@@ -1153,9 +1209,9 @@
 			);
 			dependencies = (
 			);
-			name = Ecollab;
+			name = eCollab;
 			productName = Ecollab;
-			productReference = 9E25475D1D32677A008A96C9 /* Ecollab.app */;
+			productReference = 9E25475D1D32677A008A96C9 /* eCollab.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1173,7 +1229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9E2547581D32677A008A96C9 /* Build configuration list for PBXProject "Ecollab" */;
+			buildConfigurationList = 9E2547581D32677A008A96C9 /* Build configuration list for PBXProject "eCollab" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1186,7 +1242,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E25475C1D32677A008A96C9 /* Ecollab */,
+				9E25475C1D32677A008A96C9 /* eCollab */,
 			);
 		};
 /* End PBXProject section */
@@ -1211,6 +1267,7 @@
 				A76EF4271D688A510009FD34 /* FAQTableViewCell.xib in Resources */,
 				9EC27B381D622B24005C4CA6 /* personal.png in Resources */,
 				A76C6CC31D69C22200679322 /* RequestaQuote_red.jpg in Resources */,
+				A7F9CA7A1D6C335B00A2928F /* Legal_Discl_Unsel.png in Resources */,
 				A76C6CA71D6994D500679322 /* 01_1.png in Resources */,
 				9EC27B4F1D623B78005C4CA6 /* slidelegal.png in Resources */,
 				9E2547971D32A4E7008A96C9 /* msg_icon1.png in Resources */,
@@ -1218,6 +1275,7 @@
 				9EBEFF701D6091DA00271E18 /* lock.png in Resources */,
 				9EE80FC21D52F3FC00D894D0 /* savedreq_tab.png in Resources */,
 				9EE80FBE1D52F2B800D894D0 /* requestaquote_red11.jpg in Resources */,
+				A7F9CA6E1D6C2BBD00A2928F /* requestquote_menu.png in Resources */,
 				9E2547981D32A4E7008A96C9 /* pwdimg.png in Resources */,
 				9EC27B481D623B78005C4CA6 /* myprofile.png in Resources */,
 				A76C6CCA1D69D4B500679322 /* SideMenuCustomView.xib in Resources */,
@@ -1227,6 +1285,7 @@
 				9EBEFF591D608BD400271E18 /* 01.png in Resources */,
 				A76C6CBD1D69C1D400679322 /* SavedRequests_black.jpg in Resources */,
 				9E2245231D3894CA0081E4EF /* sampleprofile.jpeg in Resources */,
+				A7F9CA6F1D6C2BBD00A2928F /* savedrequest_menu.png in Resources */,
 				9EC27B511D623EDB005C4CA6 /* btn_submit.png in Resources */,
 				9E23EE4D1D37393C005D7859 /* star_favorite.png in Resources */,
 				9EBEFF621D608CBA00271E18 /* 05.png in Resources */,
@@ -1241,9 +1300,12 @@
 				9EC27B351D622B24005C4CA6 /* about.png in Resources */,
 				CCF87EF11D68619000A2A343 /* orangetracksubnew.png in Resources */,
 				9E47E65C1D4CD5A600A50C2B /* cam2.jpeg in Resources */,
+				A7F9CA741D6C2C2B00A2928F /* BackArrow.png in Resources */,
 				9EC27B371D622B24005C4CA6 /* dis.png in Resources */,
+				A7F9CA6D1D6C2BBD00A2928F /* ReachUs_menu.png in Resources */,
 				9EE74BB81D4376EA00326CC5 /* requestquote.jpg in Resources */,
 				CCEAC8811D69B7040047AD1E /* area_img.png in Resources */,
+				A7F9CA6B1D6C2BBD00A2928F /* myprofile_menu.png in Resources */,
 				9E0C0B7B1D368D0F0039A884 /* requestatracker.png in Resources */,
 				9EBD33781D5F449900DF2760 /* ban.png in Resources */,
 				9EBEFF681D608F0A00271E18 /* biologysaved.png in Resources */,
@@ -1253,9 +1315,11 @@
 				9EE74BB61D43767400326CC5 /* TicIMG.jpeg in Resources */,
 				A77095291D6635F3001C0180 /* calender.png in Resources */,
 				A77095221D661D23001C0180 /* ImageCollectionViewCell.xib in Resources */,
+				A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */,
 				9EBEFF711D6091DA00271E18 /* mail.png in Resources */,
 				A76C6CA91D6994D500679322 /* 03_1.png in Resources */,
 				9E0C0B7F1D368D7B0039A884 /* alerts.png in Resources */,
+				A7F9CA7C1D6C335B00A2928F /* Privacy&Terms_Sel.png in Resources */,
 				A76EF42A1D689ED00009FD34 /* Rate_sel.png in Resources */,
 				9EC27B131D62100D005C4CA6 /* request.png in Resources */,
 				9EBD33741D5F405500DF2760 /* dash-1.png in Resources */,
@@ -1272,6 +1336,7 @@
 				9EBEFF631D608CBA00271E18 /* 06.png in Resources */,
 				9EEE21641D582A8A00A6E943 /* signout.png in Resources */,
 				A76C6CBB1D69C1D400679322 /* Request_a_Quote_black.jpg in Resources */,
+				A7F9CA6C1D6C2BBD00A2928F /* projectTracker_menu.png in Resources */,
 				9EC27B3C1D6236F2005C4CA6 /* radio_btn.png in Resources */,
 				9E47E6581D4CA79800A50C2B /* unselect.png in Resources */,
 				A76C6CAB1D6994D500679322 /* 05_1.png in Resources */,
@@ -1279,6 +1344,7 @@
 				9EC27B471D623B78005C4CA6 /* helps.png in Resources */,
 				A76C6CD41D69FEB200679322 /* linkedinshare.png in Resources */,
 				9EC27B2F1D6224DC005C4CA6 /* new.PNG in Resources */,
+				A7F9CA791D6C335B00A2928F /* Legal_discl_Sel.png in Resources */,
 				CCF87EF31D6861E100A2A343 /* crossred.png in Resources */,
 				9E2547701D32677A008A96C9 /* LaunchScreen.storyboard in Resources */,
 				9EC27B151D621123005C4CA6 /* on-going-1.png in Resources */,
@@ -1288,8 +1354,11 @@
 				9EEA59F31D4E252900C04C29 /* b3.jpg in Resources */,
 				9E23EE4A1D373416005D7859 /* kermit_empty.png in Resources */,
 				9EC27B191D621A95005C4CA6 /* proficon.png in Resources */,
+				A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */,
 				A76C6CCE1D69FE8D00679322 /* twittershare.png in Resources */,
 				A76C6CCC1D69DBF500679322 /* MenuLableTableViewCell.xib in Resources */,
+				A7F9CA721D6C2BC500A2928F /* crossmark.png in Resources */,
+				A7F9CA701D6C2BBD00A2928F /* share_menu.png in Resources */,
 				A77095271D662673001C0180 /* CompundDBCustomView.xib in Resources */,
 				A76C6CC51D69C22200679322 /* SavedRequests_red.jpg in Resources */,
 				9EC27B2D1D62239E005C4CA6 /* 100x80.png in Resources */,
@@ -1299,6 +1368,7 @@
 				9EC27B271D621BA8005C4CA6 /* estmate_new.png in Resources */,
 				9E23EE4F1D373D35005D7859 /* reachus_img.png in Resources */,
 				9EEA59F11D4E252900C04C29 /* b1.JPG in Resources */,
+				A7F9CA6A1D6C2BBD00A2928F /* Legal_menu.png in Resources */,
 				9EC27B221D621AF3005C4CA6 /* expected_new.png in Resources */,
 				9EEE720B1D5C3A8700F54EB4 /* req_img.png in Resources */,
 				9E2245211D3891730081E4EF /* ProfileBG4.jpg in Resources */,
@@ -1309,9 +1379,11 @@
 				CCEAC8841D69B7040047AD1E /* subarea_img.png in Resources */,
 				9EC27B0F1D61FCFF005C4CA6 /* faq.png in Resources */,
 				9E25476D1D32677A008A96C9 /* Assets.xcassets in Resources */,
+				A7F9CA7B1D6C335B00A2928F /* Privact&Terms_Unsel.png in Resources */,
 				9E0C0B791D368CC70039A884 /* myprofile.png in Resources */,
 				A76C6CBA1D69C1D400679322 /* MyProfile_black.jpg in Resources */,
 				9EBEFF4D1D6048C700271E18 /* tick.png in Resources */,
+				A7F9CA8B1D6C514100A2928F /* ZoomViewController.xib in Resources */,
 				9EBEFF6D1D60905D00271E18 /* chemistryserveimg.png in Resources */,
 				CCE7904B1D65FCD8007A5623 /* btnRedGradient.png in Resources */,
 				CCEAC8821D69B7040047AD1E /* assay_img.png in Resources */,
@@ -1333,6 +1405,7 @@
 				CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */,
 				9E1096DF1D33FF9E0081D081 /* sign-in.png in Resources */,
 				A76C6CD01D69FE9F00679322 /* facebookshare.png in Resources */,
+				A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */,
 				9E0C0B831D368F870039A884 /* homebg.png in Resources */,
 				9E47E6541D4CA59900A50C2B /* cam1.jpeg in Resources */,
 				CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */,
@@ -1380,6 +1453,7 @@
 				9E1096EC1D3403E20081D081 /* DashboardViewController.m in Sources */,
 				9E270B001D502D2F00C6A406 /* MenuLableTableViewCell.m in Sources */,
 				9E1362791D36CEC200FFD592 /* ShippingInformationViewController.m in Sources */,
+				A7F9CA8A1D6C514100A2928F /* ZoomViewController.m in Sources */,
 				A76C6CC81D69D49100679322 /* SideMenuCustomView.m in Sources */,
 				9E9567381D376DA500AA76B2 /* SavedRequestsTableViewCell.m in Sources */,
 				9EDA81FA1D56E181003E0BA5 /* ServiceRequester.m in Sources */,
@@ -1516,14 +1590,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nitin Padmawar (SD4BAZYER9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nitin Padmawar (SD4BAZYER9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.capillary.URDoorStep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
+				PRODUCT_NAME = eCollab;
 				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Debug;
@@ -1532,14 +1606,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nitin Padmawar (SD4BAZYER9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nitin Padmawar (SD4BAZYER9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Venkat Narayana Sunkara (KJ4FQM7H5E)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(Ecollab)/Ecollab/Ecollab-Prefix.pch";
 				INFOPLIST_FILE = Ecollab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.capillary.URDoorStep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
+				PRODUCT_NAME = eCollab;
 				PROVISIONING_PROFILE = "5102efa6-189c-4973-af64-616b9d3a3506";
 			};
 			name = Release;
@@ -1547,7 +1621,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E2547581D32677A008A96C9 /* Build configuration list for PBXProject "Ecollab" */ = {
+		9E2547581D32677A008A96C9 /* Build configuration list for PBXProject "eCollab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E2547721D32677A008A96C9 /* Debug */,
@@ -1556,7 +1630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E2547741D32677A008A96C9 /* Build configuration list for PBXNativeTarget "Ecollab" */ = {
+		9E2547741D32677A008A96C9 /* Build configuration list for PBXNativeTarget "eCollab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E2547751D32677A008A96C9 /* Debug */,
