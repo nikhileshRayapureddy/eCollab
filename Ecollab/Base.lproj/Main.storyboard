@@ -5158,8 +5158,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="u3s-7Y-kcN"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="request.png"/>
-                                <state key="selected" backgroundImage="requestquote.jpg"/>
+                                <state key="normal" backgroundImage="Legal_Discl_Unsel.png"/>
+                                <state key="selected" backgroundImage="Legal_discl_Sel.png"/>
                                 <connections>
                                     <action selector="LegalDisclaimerBtnAction:" destination="yoL-L6-7pp" eventType="touchUpInside" id="Yo6-WV-3K2"/>
                                 </connections>
@@ -5170,8 +5170,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="iTG-Qt-SqW"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="on-going-1.png"/>
-                                <state key="selected" backgroundImage="ongoingprojexts.jpg"/>
+                                <state key="normal" backgroundImage="Privact&amp;Terms_Unsel.png"/>
+                                <state key="selected" backgroundImage="Privacy&amp;Terms_Sel.png"/>
                                 <connections>
                                     <action selector="PrivacyAndTermsBtnAction:" destination="yoL-L6-7pp" eventType="touchUpInside" id="pc7-TJ-y1O"/>
                                 </connections>
@@ -5179,8 +5179,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efk-pS-eeZ">
                                 <rect key="frame" x="10" y="125" width="355" height="542"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Legal Disclaimer \n No eCollab user is allowed to use the APP to submit any inquiries about any chemicals the use of which by such user is prohibited or unauthorized under the applicable laws. A user must be solely responsible for all his/her own conducts/acts under the registered account, including without limitation any contents such user submits as well as any subsequent consequences. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S CONDUCTS/ACTS UNDER HIS/HER REGISTERED ACCOUNT. \n All compounds that GVK BIO provides to users are for research purposes only. All users acknowledge that their use of any and all compounds provided by GVK BIO is merely based on their own independent judgement, and they shall bear all the associated risks on their own in this connection. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S USE OF ANY COMPOUNDS PROVIDED BY GVK BIO. \n Once users confirm the acceptance of product, GVK BIO’s obligation under the purchase order (“PO”) shall be deemed to be fulfilled completely, and users shall be responsible for the payment to GVK BIO according to payment term and amount of the PO.\n</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEGAL DISCLAIMER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKd-EK-Aoq">
@@ -5536,6 +5535,10 @@
         <image name="04.png" width="213" height="250"/>
         <image name="05.png" width="213" height="250"/>
         <image name="06.png" width="213" height="250"/>
+        <image name="Legal_Discl_Unsel.png" width="380" height="70"/>
+        <image name="Legal_discl_Sel.png" width="380" height="70"/>
+        <image name="Privact&amp;Terms_Unsel.png" width="380" height="70"/>
+        <image name="Privacy&amp;Terms_Sel.png" width="380" height="70"/>
         <image name="about.png" width="94" height="114"/>
         <image name="area_img.png" width="48" height="48"/>
         <image name="assay_img.png" width="48" height="48"/>
@@ -5568,8 +5571,6 @@
         <image name="mapship.png" width="32" height="32"/>
         <image name="msg_icon1.png" width="24" height="24"/>
         <image name="myprof_tab.png" width="42" height="42"/>
-        <image name="on-going-1.png" width="380" height="70"/>
-        <image name="ongoingprojexts.jpg" width="380" height="70"/>
         <image name="personal.png" width="94" height="114"/>
         <image name="proficon.png" width="512" height="512"/>
         <image name="purity_new.png" width="48" height="48"/>
@@ -5578,8 +5579,6 @@
         <image name="radio_btn.png" width="32" height="32"/>
         <image name="reachus_img.png" width="150" height="154"/>
         <image name="refer_new.png" width="48" height="48"/>
-        <image name="request.png" width="380" height="70"/>
-        <image name="requestquote.jpg" width="380" height="70"/>
         <image name="rightarr.png" width="20" height="20"/>
         <image name="savedreq_tab.png" width="42" height="42"/>
         <image name="service_img.png" width="48" height="48"/>

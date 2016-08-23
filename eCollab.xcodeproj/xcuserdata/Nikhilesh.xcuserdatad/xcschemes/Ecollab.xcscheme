@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-               BuildableName = "Ecollab.app"
-               BlueprintName = "Ecollab"
-               ReferencedContainer = "container:Ecollab.xcodeproj">
+               BuildableName = "eCcollab.app"
+               BlueprintName = "eCollab"
+               ReferencedContainer = "container:eCollab.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "Ecollab.app"
-            BlueprintName = "Ecollab"
-            ReferencedContainer = "container:Ecollab.xcodeproj">
+            BuildableName = "eCcollab.app"
+            BlueprintName = "eCollab"
+            ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "Ecollab.app"
-            BlueprintName = "Ecollab"
-            ReferencedContainer = "container:Ecollab.xcodeproj">
+            BuildableName = "eCcollab.app"
+            BlueprintName = "eCollab"
+            ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9E25475C1D32677A008A96C9"
-            BuildableName = "Ecollab.app"
-            BlueprintName = "Ecollab"
-            ReferencedContainer = "container:Ecollab.xcodeproj">
+            BuildableName = "eCcollab.app"
+            BlueprintName = "eCollab"
+            ReferencedContainer = "container:eCollab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

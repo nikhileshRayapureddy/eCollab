@@ -62,7 +62,7 @@
     }
     else{
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"Password has been sent successfully to the registered email."
+                                                                       message:@"Password has been sent successfully to your registered email."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];

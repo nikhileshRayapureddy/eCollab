@@ -73,7 +73,7 @@
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:@"Added Address successfully."
+                                                                   message:@"Shipping address created successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -151,7 +151,7 @@
 {
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:@"Updated Address successfully."
+                                                                   message:@"Shipping address updated successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:YES];
