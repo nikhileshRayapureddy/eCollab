@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *CancelOutlet;
 - (IBAction)ChangePasswordAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *CancelPasswordAction;
+- (IBAction)CancelPasswordClicked:(UIButton *)sender;
 
 @end
