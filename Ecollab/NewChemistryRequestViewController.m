@@ -536,11 +536,12 @@
 }
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
-    
+    NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+    NSDictionary *dictResponse = [arr objectAtIndex:0];
     [EcollabLoader hideLoaderForView:self.view animated:YES];
-    if ([[aregistrationDict objectForKey:@"SuccessCode"]intValue] != 200) {
+    if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
         
-        [self showAlertWithMessage:[aregistrationDict objectForKey:@"SuccessString"]];
+        [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
     }
     else
     {

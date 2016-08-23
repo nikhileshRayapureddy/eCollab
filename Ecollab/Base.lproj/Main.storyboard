@@ -227,7 +227,7 @@
                                     <action selector="SignUpBtnAction:" destination="wg0-OM-lqe" eventType="touchUpInside" id="18g-eU-y6g"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbiologotxt.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
                                 <rect key="frame" x="88" y="103" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HZe-1k-8X9"/>
@@ -1015,11 +1015,11 @@
                                         </constraints>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
-                                                <fragment content="                      NEW USER">
+                                                <fragment content="NEW USER">
                                                     <attributes>
                                                         <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -5065,7 +5065,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKV-QX-bk6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKV-QX-bk6">
                                 <rect key="frame" x="56" y="224" width="299" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5163,7 +5163,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbiologotxt.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
                                 <rect key="frame" x="88" y="101" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4E3-QX-d30"/>
@@ -5617,7 +5617,6 @@
         <image name="faqbottom.jpg" width="1072" height="128"/>
         <image name="googleplusshare.png" width="401" height="53"/>
         <image name="gvkbg.png" width="640" height="960"/>
-        <image name="gvkbiologotxt.png" width="340" height="88"/>
         <image name="gvklogo1.png" width="200" height="60"/>
         <image name="homebg.png" width="640" height="1136"/>
         <image name="linkedinshare.png" width="401" height="53"/>
