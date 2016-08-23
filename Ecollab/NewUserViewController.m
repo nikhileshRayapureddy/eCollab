@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [FirstNameTextField setDelegate:self];
     [LastNameTextField setDelegate:self];
     [EmailAddressTextField setDelegate:self];
@@ -45,7 +44,7 @@
     imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = imgLogoEcoLab;
     
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
     imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
@@ -55,7 +54,11 @@
     
 }
 
-
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    _scrlVwNewUser.contentSize = CGSizeMake(_scrlVwNewUser.frame.size.width, 611);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -91,7 +94,14 @@
 }
 
 - (IBAction)SignUpBtnAction:(id)sender {
-    
+    [FirstNameTextField resignFirstResponder];
+    [LastNameTextField resignFirstResponder];
+    [EmailAddressTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+    [ConfirmPasswordTextField resignFirstResponder];
+    [CompanyNameTextField resignFirstResponder];
+    [DesignationTextField resignFirstResponder];
+
     if([FirstNameTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Please enter first name."];

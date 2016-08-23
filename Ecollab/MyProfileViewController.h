@@ -42,6 +42,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *AboutUsBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *LogoutBtnOutlet;
 @property (weak, nonatomic) IBOutlet UIButton *btnSaveProfile;
+@property (weak, nonatomic) IBOutlet UIView *vwFirstNam;
+@property (weak, nonatomic) IBOutlet UIView *vwLastName;
+@property (weak, nonatomic) IBOutlet UIView *vwEmailId;
+@property (weak, nonatomic) IBOutlet UIView *vwCompanyName;
+@property (weak, nonatomic) IBOutlet UIView *vwDesignation;
+
 - (IBAction)btnSaveProfileClicked:(UIButton *)sender;
 
 - (IBAction)ChangePasswordBtnAction:(id)sender;

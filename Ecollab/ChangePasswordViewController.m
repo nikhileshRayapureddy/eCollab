@@ -33,7 +33,7 @@
     imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = imgLogoEcoLab;
     
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
     imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
@@ -74,7 +74,9 @@
 
 - (IBAction)ChangePasswordAction:(id)sender {
     
-    
+    [oldPassword resignFirstResponder];
+    [NewPassword resignFirstResponder];
+    [confirmPassword resignFirstResponder];
     if ([oldPassword.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Enter old password."];
@@ -119,7 +121,7 @@
         [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
 
         NSMutableDictionary *ChangePasswordDict = [NSMutableDictionary new];
-        ChangePasswordDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"UID",oldPassword.text,@"OldPassword",confirmPassword.text,@"CPassword",NewPassword.text,@"Password",nil];
+        ChangePasswordDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",oldPassword.text,@"OldPassword",confirmPassword.text,@"CPassword",NewPassword.text,@"Password",nil];
         if ([confirmPassword.text isEqualToString:NewPassword.text])
         {
             ServiceRequester *request = [ServiceRequester new];
@@ -139,5 +141,9 @@
     }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
+}
+- (IBAction)CancelPasswordClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 @end

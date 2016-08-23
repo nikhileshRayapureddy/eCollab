@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,42 +11,42 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mGh-2A-hkL" id="YJ2-eD-3fG">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IfS-6u-R41">
-                        <rect key="frame" x="8" y="7" width="33" height="28"/>
+                        <rect key="frame" x="8" y="11" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="33" id="2ju-p4-Tsb"/>
-                            <constraint firstAttribute="height" constant="28" id="VB6-8N-R98"/>
+                            <constraint firstAttribute="width" constant="20" id="Wr8-WF-A0R"/>
+                            <constraint firstAttribute="height" constant="20" id="w6K-6y-ehf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0N-Cw-CUe">
-                        <rect key="frame" x="290" y="0.0" width="30" height="43.5"/>
+                        <rect key="frame" x="290" y="0.0" width="30" height="42"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="9ad-Kf-Ima"/>
+                            <constraint firstAttribute="width" constant="30" id="cmf-g6-O6N"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fs-ru-ZB1">
-                        <rect key="frame" x="49" y="0.0" width="241" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="36" y="0.0" width="254" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="IfS-6u-R41" firstAttribute="centerY" secondItem="YJ2-eD-3fG" secondAttribute="centerY" id="2mb-DZ-5PM"/>
-                    <constraint firstAttribute="trailing" secondItem="j0N-Cw-CUe" secondAttribute="trailing" id="3Ja-4w-xok"/>
-                    <constraint firstItem="8fs-ru-ZB1" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="8UR-Vq-bej"/>
-                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="leading" secondItem="8fs-ru-ZB1" secondAttribute="trailing" id="BPT-4g-n3b"/>
-                    <constraint firstAttribute="bottom" secondItem="j0N-Cw-CUe" secondAttribute="bottom" id="Caf-sa-PBG"/>
-                    <constraint firstItem="IfS-6u-R41" firstAttribute="leading" secondItem="YJ2-eD-3fG" secondAttribute="leading" constant="8" id="Nqb-RN-bjc"/>
-                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="Ow5-Ir-cis"/>
-                    <constraint firstItem="8fs-ru-ZB1" firstAttribute="leading" secondItem="IfS-6u-R41" secondAttribute="trailing" constant="8" id="e98-qm-cBs"/>
-                    <constraint firstAttribute="bottom" secondItem="8fs-ru-ZB1" secondAttribute="bottom" id="q24-i0-pfC"/>
+                    <constraint firstAttribute="bottom" secondItem="j0N-Cw-CUe" secondAttribute="bottom" constant="1" id="19P-gh-hSC"/>
+                    <constraint firstItem="8fs-ru-ZB1" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="5ha-Cm-Ek2"/>
+                    <constraint firstItem="8fs-ru-ZB1" firstAttribute="leading" secondItem="IfS-6u-R41" secondAttribute="trailing" constant="8" id="6bH-mn-54x"/>
+                    <constraint firstAttribute="bottom" secondItem="8fs-ru-ZB1" secondAttribute="bottom" id="Bz8-UY-kjB"/>
+                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="HqH-n9-cdg"/>
+                    <constraint firstItem="IfS-6u-R41" firstAttribute="leading" secondItem="YJ2-eD-3fG" secondAttribute="leading" constant="8" id="Ydv-Dm-dAD"/>
+                    <constraint firstAttribute="trailing" secondItem="j0N-Cw-CUe" secondAttribute="trailing" id="bgR-7u-0Ea"/>
+                    <constraint firstItem="j0N-Cw-CUe" firstAttribute="leading" secondItem="8fs-ru-ZB1" secondAttribute="trailing" id="kWO-0t-aYz"/>
+                    <constraint firstItem="IfS-6u-R41" firstAttribute="centerY" secondItem="YJ2-eD-3fG" secondAttribute="centerY" id="mmt-kc-N8V"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
