@@ -27,7 +27,6 @@
 @synthesize strServiceIDFinal;
 @synthesize strAreaIDFinal;
 @synthesize strSubAreaIDFinal;
-@synthesize strModelIdIDFinal;
 @synthesize strMultipleModelIdIDFinal;
 @synthesize shouldUpdateRequest;
 @synthesize strRIDForSavedRequest;
@@ -177,7 +176,7 @@
     strServiceIDFinal = [dict objectForKey:@"ServiceID"];
     strAreaIDFinal = [dict objectForKey:@"AreaID"];
     strSubAreaIDFinal = [dict objectForKey:@"SubAreaID"];
-    strModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
+    strMultipleModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
     
     self.imgServiceDownArrow.hidden = YES;
     self.imgAreaDownArrow.hidden = YES;
@@ -225,7 +224,7 @@
     strServiceIDFinal = [dict objectForKey:@"ServiceID"];
     strAreaIDFinal = [dict objectForKey:@"AreaID"];
     strSubAreaIDFinal = [dict objectForKey:@"SubAreaID"];
-    strModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
+    strMultipleModelIdIDFinal = [dict objectForKey:@"MultipleModelIDs"];
 }
 
 -(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
@@ -321,30 +320,17 @@
     [dictRequest setValue:strServiceIDFinal forKey:@"ServiceID"];
     [dictRequest setValue:strAreaIDFinal forKey:@"AreaID"];
     [dictRequest setValue:strSubAreaIDFinal forKey:@"SubAreaID"];
-    if ([strModelIdIDFinal isKindOfClass:[NSNull class]] || strModelIdIDFinal == nil)
-    {
-        [dictRequest setObject:@"" forKey:@"MultipleModelIDS"];
-    }
-    else
-    {
-        [dictRequest setValue:strModelIdIDFinal forKey:@"MultipleModelIDS"];
-    }
-    [dictRequest setObject:@"" forKey:@"ModelID"];
+    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
+    [dictRequest setObject:@"0" forKey:@"ModelID"];
     [dictRequest setObject:@"1" forKey:@"ISSubmit"];
-    [dictRequest setObject:@"" forKey:@"Status"];
+    [dictRequest setObject:@"1" forKey:@"Status"];
     [dictRequest setObject:strUserId forKey:@"CreatedBy"];
-//    [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
     if(shouldUpdateRequest == YES)
     {
         [dictRequest setValue:strRIDForSavedRequest forKey:@"RID"];
     }
-    else
-    {
-        [dictRequest setObject:@"" forKey:@"RID"];
-    }
     
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-    //    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopInsertBiologyRequestService:dictRequest];
@@ -360,21 +346,11 @@
     [dictRequest setValue:strServiceIDFinal forKey:@"ServiceID"];
     [dictRequest setValue:strAreaIDFinal forKey:@"AreaID"];
     [dictRequest setValue:strSubAreaIDFinal forKey:@"SubAreaID"];
-    if ([strModelIdIDFinal isKindOfClass:[NSNull class]] || strModelIdIDFinal == nil)
-    {
-        [dictRequest setObject:@"" forKey:@"ModelID"];
-    }
-    else
-    {
-        [dictRequest setValue:strModelIdIDFinal forKey:@"ModelID"];
-    }
-    
+    [dictRequest setObject:@"0" forKey:@"ModelID"];
     [dictRequest setObject:@"0" forKey:@"ISSubmit"];
-    [dictRequest setObject:@"" forKey:@"Status"];
+    [dictRequest setObject:@"1" forKey:@"Status"];
     [dictRequest setObject:strUserId forKey:@"CreatedBy"];
     [dictRequest setObject:strMultipleModelIdIDFinal.length?strMultipleModelIdIDFinal:@"" forKey:@"MultipleModelIDS"];
-    
-    //    NSMutableDictionary *inputDick = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"RID",@"1",@"UID",@"0",@"ServiceID",@"0",@"AreaID",@"0",@"SubAreaID",@"0",@"ModelID",@"0",@"PurityID",@"0",@"ISSubmit",@"0",@"Status",@"",@"Image",@"1",@"MultipleModelIDS",nil];
     
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
@@ -387,8 +363,6 @@
     }
     else
     {
-        [dictRequest setObject:@"" forKey:@"RID"];
-        
         [request requestForopInsertBiologyRequestService:dictRequest];
     }
 
@@ -783,7 +757,7 @@
         {
             strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
         }
-        
+
         if(strSelectedModels.length)
         {
             strSelectedModels = [NSString stringWithFormat:@"%@,%@",strSelectedModels,[dict objectForKey:@"Description"]];

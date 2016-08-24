@@ -46,7 +46,6 @@
 @property (strong, nonatomic) NSString *strServiceIDFinal;
 @property (strong, nonatomic) NSString *strAreaIDFinal;
 @property (strong, nonatomic) NSString *strSubAreaIDFinal;
-@property (strong, nonatomic) NSString *strModelIdIDFinal;
 @property (strong, nonatomic) NSString *strMultipleModelIdIDFinal;
 
 @property (assign, nonatomic) BOOL shouldUpdateRequest;

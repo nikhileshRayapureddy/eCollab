@@ -142,7 +142,7 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 950)];
+    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 1100)];
 }
 - (void) tapped
 {
@@ -955,12 +955,16 @@
           {
           }];   }];
     
+    UIView *VwCrossBg = [[UIView alloc]initWithFrame:CGRectMake(50, (self.view.frame.size.height - 200)/2 -50, self.view.frame.size.width-100,50)];
+    VwCrossBg.backgroundColor = [UIColor whiteColor];
+    [vwBg addSubview:VwCrossBg];
+    
     UIButton *btnCloseZoom = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnCloseZoom.frame = CGRectMake(self.view.frame.size.width-100, (self.view.frame.size.height - 200)/2, 50, 50);
+    btnCloseZoom.frame = CGRectMake(VwCrossBg.frame.size.width-50, 0, 50, 50);
     [btnCloseZoom addTarget:self action:@selector(btnCloseClicked:) forControlEvents:UIControlEventTouchUpInside];
     btnCloseZoom.backgroundColor = [UIColor clearColor];
     [btnCloseZoom setImage:[UIImage imageNamed:@"crossmark.png"] forState:UIControlStateNormal];
-    [vwBg addSubview:btnCloseZoom];
+    [VwCrossBg addSubview:btnCloseZoom];
 
     
 }
