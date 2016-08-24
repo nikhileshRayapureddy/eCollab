@@ -35,23 +35,70 @@
     self.navigationItem.hidesBackButton = NO;
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
     
     UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvklogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
+    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnBack.frame = CGRectMake(0, 0, 80, 44);
+    btnBack.backgroundColor = [UIColor clearColor];
+    [btnBack setTitle:@"  SIGN UP" forState:UIControlStateNormal];
+    [btnBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnBack setImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
+    btnBack.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btnBack addTarget:self action:@selector(btnBackClicked:) forControlEvents:UIControlEventTouchUpInside];
+ 
+    UIView *vwLeftItem = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+    vwLeftItem.backgroundColor = [UIColor clearColor];
+    [vwLeftItem addSubview:btnBack];
+    
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:vwLeftItem];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+
+    
+}
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == FirstNameTextField || textField == LastNameTextField)
+    {
+        if(range.length + range.location > textField.text.length)
+        {
+            return NO;
+        }
+        
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        if(newLength == 20)
+        {
+            if (textField == FirstNameTextField)
+            {
+            [self showAlertWithMessage:@"First name should be less than 20 characters."];
+            }
+            else
+            {
+                [self showAlertWithMessage:@"Last name should be less than 20 characters."];
+            }
+        }
+        return newLength <= 20;
+    }
+    return YES;
+}
+
+- (void)btnBackClicked:(UIButton*)sender {
+    [FirstNameTextField resignFirstResponder];
+    [LastNameTextField resignFirstResponder];
+    [EmailAddressTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+    [ConfirmPasswordTextField resignFirstResponder];
+    [CompanyNameTextField resignFirstResponder];
+    [DesignationTextField resignFirstResponder];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewDidLayoutSubviews

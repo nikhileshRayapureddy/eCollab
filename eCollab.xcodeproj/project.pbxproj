@@ -189,6 +189,7 @@
 		A770954A1D663B63001C0180 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */; };
 		A770954E1D66751A001C0180 /* ecolablogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954C1D66751A001C0180 /* ecolablogo.png */; };
 		A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954D1D66751A001C0180 /* gvk_whitelogo1.png */; };
+		A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A77431C51D6CB2C1008AF551 /* btnBack.png */; };
 		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
 		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
 		A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */; };
@@ -468,6 +469,7 @@
 		A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ecollab-Prefix.pch"; sourceTree = "<group>"; };
 		A770954C1D66751A001C0180 /* ecolablogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ecolablogo.png; sourceTree = "<group>"; };
 		A770954D1D66751A001C0180 /* gvk_whitelogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gvk_whitelogo1.png; sourceTree = "<group>"; };
+		A77431C51D6CB2C1008AF551 /* btnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBack.png; sourceTree = "<group>"; };
 		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
 		A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_menu.png; sourceTree = "<group>"; };
 		A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_menu.png; sourceTree = "<group>"; };
@@ -985,6 +987,7 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A77431C51D6CB2C1008AF551 /* btnBack.png */,
 				A7F9CA751D6C335B00A2928F /* Legal_discl_Sel.png */,
 				A7F9CA761D6C335B00A2928F /* Legal_Discl_Unsel.png */,
 				A7F9CA771D6C335B00A2928F /* Privact&Terms_Unsel.png */,
@@ -1403,6 +1406,7 @@
 				9E0C0B871D36913C0039A884 /* faqbottom.jpg in Resources */,
 				CCEAC8891D69D64B0047AD1E /* BiologyDropDownListView.xib in Resources */,
 				CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */,
+				A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */,
 				9E1096DF1D33FF9E0081D081 /* sign-in.png in Resources */,
 				A76C6CD01D69FE9F00679322 /* facebookshare.png in Resources */,
 				A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */,

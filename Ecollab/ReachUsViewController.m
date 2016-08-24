@@ -7,7 +7,7 @@
 //
 
 #import "ReachUsViewController.h"
-
+#import "DashboardViewController.h"
 @interface ReachUsViewController ()
 {
     float CustomerRating;
@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     self.rateView.notSelectedImage = [UIImage imageNamed:@"kermit_empty.png"];
     self.rateView.halfSelectedImage = [UIImage imageNamed:@"kermit_half.png"];
     self.rateView.fullSelectedImage = [UIImage imageNamed:@"star_favorite.png"];
@@ -33,7 +32,12 @@
     _vwCommentsBg.layer.borderWidth = 1.0;
     _vwCommentsBg.layer.borderColor = [UIColor redColor].CGColor;
     [self designNavBar];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
     
+    [self.view addGestureRecognizer:tapGesture];
+
 }
 //method for rating functionality
 - (void)rateView:(RateView *)rateView ratingDidChange:(int)rating {
@@ -53,8 +57,21 @@
                                                                    message:@"Rating Submitted successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self.navigationController popViewControllerAnimated:YES];
         
+        {
+            DashboardViewController *vcDashboardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
+            
+            
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[DashboardViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:YES];
+                        return;
+                    }
+                }
+            [self.navigationController pushViewController:vcDashboardViewController animated:NO];
+        }
     }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -69,6 +86,14 @@
     [request requestForopSaveUserRatingsService:inputDick];
     request =  nil;
     
+}
+-(void)hideKeyBoard
+{
+    [CommentTf resignFirstResponder];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 @end

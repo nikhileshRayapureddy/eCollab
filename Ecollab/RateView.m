@@ -30,7 +30,7 @@
     _editable = NO;    
     _imageViews = [[NSMutableArray alloc] init];
     _maxRating = 5;
-    _midMargin = 5;
+    _midMargin = 0;
     _leftMargin = 0;
     _minImageSize = CGSizeMake(5, 5);
     _delegate = nil;    
@@ -71,13 +71,14 @@
     if (self.notSelectedImage == nil) return;
     
     float desiredImageWidth = (self.frame.size.width - (self.leftMargin*2) - (self.midMargin*self.imageViews.count)) / self.imageViews.count;
+    desiredImageWidth = desiredImageWidth - 8;
     float imageWidth = MAX(self.minImageSize.width, desiredImageWidth);
     float imageHeight = MAX(self.minImageSize.height, self.frame.size.height);
     
     for (int i = 0; i < self.imageViews.count; ++i) {
         
         UIImageView *imageView = [self.imageViews objectAtIndex:i];
-        CGRect imageFrame = CGRectMake(self.leftMargin + i*(self.midMargin+imageWidth), 0, imageWidth, imageHeight);
+        CGRect imageFrame = CGRectMake(self.leftMargin +(_maxRating * 4) + i*(self.midMargin+imageWidth), 0, imageWidth, imageHeight);
         imageView.frame = imageFrame;
         
     }    

@@ -337,7 +337,7 @@
     }
     cell.MenuImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[menuImagesArray objectAtIndex:indexPath.row]]];
     cell.DisplayLabel.text = [NSString stringWithFormat:@"%@",[menuArray objectAtIndex:indexPath.row]];
-    
+    cell.DisplayLabel.adjustsFontSizeToFitWidth = YES;
     if (indexPath.row == 7)
     {
         cell.lblCount.hidden = NO;
