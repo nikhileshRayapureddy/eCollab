@@ -34,13 +34,13 @@
     [FAQTableview setDataSource: self];
     [FAQTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [FAQTableview setSeparatorColor:[UIColor clearColor]];
-    generalDataArray = [[NSMutableArray alloc] initWithObjects:@"1. Who can use GVKBIO's eCollab ?",@"2. What is a CAS number ?",@"3. What is an MDL number ?",@"4. What can I find in the reference coumpound database ?", nil];
+    generalDataArray = [[NSMutableArray alloc] initWithObjects:@"1. Who can use GVKBIO's eCollab?",@"2. What is a CAS number?",@"3. What is an MDL number?",@"4. What can I find in the reference coumpound database?", nil];
     
     generalDataAnsArray = [[NSMutableArray alloc] initWithObjects:@"Anyone wanting to request a compound synthesis or interested in biology services can use the app to conveniently raise inquiries, get quotes and track the progress of their projects.",@"It is a unique numerical identifier assigned by Chemical Abstracts Service (CAS) to every chemical substance described in the open scientific literature. All CAS numbers are maintained in a CAS registry database to allow unique and convenient search options for the scientific community. Many search engines are available to locate a chemical/reagents based on its CAS number.",@"An MDL number is a unique identification number for each reaction and variation. The format is RXXXnnnnnnnn, where R indicates a reaction, XXX indicates the database containing the reaction record, and ‘nnnnnnnn’ is an 8-digit number.",@"It is a database with various structures linked to their known therapeutic usage as per literature. The structures need to be ordered and can be selected based on therapeutic area of interest.", nil];
     
     
     
-    orderingAndTrackinDataArray =[[NSMutableArray alloc] initWithObjects:@"1. How can I request a quote ?",@"2. what happens once I raise a request ?",@"3. How do I submit a chemistry request ?",@"4. How do I submit a biology request ?",@"5. How many structure images can I upload for a chemisty request ?",@"6. How do I know about services offered in biology",@"7. Can I enter additional information while making a request ?",@"8. Can I place a request on phone or email ?",@"9. How do I track the statu of my request",@"10. How do I get any alerts for my request ?",@"11. How do I edit a request ?",@"12. Do I have to reener the complete details if I have not submitted a requests ?",@"13. How do I place my order ?",@"14. How do I check the status of the request ?", nil];
+    orderingAndTrackinDataArray =[[NSMutableArray alloc] initWithObjects:@"1. How can I request a quote?",@"2. what happens once I raise a request?",@"3. How do I submit a chemistry request?",@"4. How do I submit a biology request?",@"5. How many structure images can I upload for a chemisty request?",@"6. How do I know about services offered in biology",@"7. Can I enter additional information while making a request?",@"8. Can I place a request on phone or email?",@"9. How do I track the statu of my request",@"10. How do I get any alerts for my request?",@"11. How do I edit a request?",@"12. Do I have to reener the complete details if I have not submitted a requests?",@"13. How do I place my order?",@"14. How do I check the status of the request?", nil];
     
     
     
@@ -48,7 +48,7 @@
     
     
     
-    DeliveryAndPaymentDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How is my compound shipped ?",@"2. What are the safety measures while shipping compounds ?",@"3. How do I make a paymen ?",@"4. Can I save multiple address ?",@"5 How can add shipping address",@"6. Can I change Edit my shipping address ?", nil];
+    DeliveryAndPaymentDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How is my compound shipped?",@"2. What are the safety measures while shipping compounds?",@"3. How do I make a payment?",@"4. Can I save multiple addresses?",@"5 How can add shipping address?",@"6. Can I change Edit my shipping address?", nil];
 
     
     
@@ -60,7 +60,7 @@
     
     
     
-    myAccountDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How do I create my account ?",@"2. I forgot my password ?",@"3. Can I change my password ?",@"4. How to tell my friend about the app ?",@"5. How can I change my user name ?", nil];
+    myAccountDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How do I create my account?",@"2. I forgot my password?",@"3. Can I change my password?",@"4. How to tell my friend about the app?",@"5. How can I change my user name?", nil];
    
     ///////////
     myAccountDataAnsArray = [[NSMutableArray alloc] initWithObjects:@"Go to the eCollab App and click ‘New User’. Enter your registration details and authenticate via the link sent by the app on your mail id. Viola! It’s done. Please check.",@"Click on ‘Forgot Password’ from the login page and enter your registered email address. An email will be sent to your to help you reset your password.",@"Yes, the password can be changed by choosing ‘Change Password’ from your profile. ",@"Share your app with your friends on either Twitter, Facebook, LinkedIn or Google Plus by choosing share from the contextual menu that pops us on clicking three horizontal bars icon.",@"No, you can only edit personal details like first name, last name, company and designation from ‘My Profile’.", nil];
@@ -146,19 +146,79 @@
     }
     else
     {
-    if ([arrSelHeader containsObject:[NSString stringWithFormat:@"0"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]) {
-        return generalDataArray.count;
-    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"1"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
-        return orderingAndTrackinDataArray.count;
-    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"2"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
-        return DeliveryAndPaymentDataArray.count;
-    }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"3"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
-        return myAccountDataArray.count;
-    }
-    else
-    {
-        return 0;
-    }
+        if ([arrSelHeader containsObject:[NSString stringWithFormat:@"0"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]) {
+            if (section == 0)
+            {
+                return generalDataArray.count;
+            }
+            else if (section == 1)
+            {
+                return orderingAndTrackinDataArray.count;
+            }
+            else if (section == 2)
+            {
+                return DeliveryAndPaymentDataArray.count;
+            }
+            else
+            {
+                return myAccountDataArray.count;
+            }
+        }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"1"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
+            if (section == 0)
+            {
+                return generalDataArray.count;
+            }
+            else if (section == 1)
+            {
+                return orderingAndTrackinDataArray.count;
+            }
+            else if (section == 2)
+            {
+                return DeliveryAndPaymentDataArray.count;
+            }
+            else
+            {
+                return myAccountDataArray.count;
+            }
+        }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"2"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
+            if (section == 0)
+            {
+                return generalDataArray.count;
+            }
+            else if (section == 1)
+            {
+                return orderingAndTrackinDataArray.count;
+            }
+            else if (section == 2)
+            {
+                return DeliveryAndPaymentDataArray.count;
+            }
+            else
+            {
+                return myAccountDataArray.count;
+            }
+        }else if ([arrSelHeader containsObject:[NSString stringWithFormat:@"3"]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)section]]){
+            if (section == 0)
+            {
+                return generalDataArray.count;
+            }
+            else if (section == 1)
+            {
+                return orderingAndTrackinDataArray.count;
+            }
+            else if (section == 2)
+            {
+                return DeliveryAndPaymentDataArray.count;
+            }
+            else
+            {
+                return myAccountDataArray.count;
+            }
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -258,6 +318,7 @@
     {
         cell.lblTitle.text = [myAccountDataArray objectAtIndex:indexPath.row];
         [cell.btnDetail setAttributedTitle:[self setFontForTitlesForText:[myAccountDataAnsArray objectAtIndex:indexPath.row]] forState:UIControlStateNormal];
+
     }
     
     if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])

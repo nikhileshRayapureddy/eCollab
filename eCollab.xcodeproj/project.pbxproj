@@ -190,6 +190,8 @@
 		A770954E1D66751A001C0180 /* ecolablogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954C1D66751A001C0180 /* ecolablogo.png */; };
 		A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954D1D66751A001C0180 /* gvk_whitelogo1.png */; };
 		A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A77431C51D6CB2C1008AF551 /* btnBack.png */; };
+		A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */; };
+		A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */; };
 		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
 		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
 		A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */; };
@@ -470,6 +472,9 @@
 		A770954C1D66751A001C0180 /* ecolablogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ecolablogo.png; sourceTree = "<group>"; };
 		A770954D1D66751A001C0180 /* gvk_whitelogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gvk_whitelogo1.png; sourceTree = "<group>"; };
 		A77431C51D6CB2C1008AF551 /* btnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBack.png; sourceTree = "<group>"; };
+		A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiologyDropDownListTableViewCell.h; sourceTree = "<group>"; };
+		A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiologyDropDownListTableViewCell.m; sourceTree = "<group>"; };
+		A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiologyDropDownListTableViewCell.xib; sourceTree = "<group>"; };
 		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
 		A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_menu.png; sourceTree = "<group>"; };
 		A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_menu.png; sourceTree = "<group>"; };
@@ -788,6 +793,9 @@
 				A7F9CA871D6C514100A2928F /* ZoomViewController.h */,
 				A7F9CA881D6C514100A2928F /* ZoomViewController.m */,
 				A7F9CA891D6C514100A2928F /* ZoomViewController.xib */,
+				A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */,
+				A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */,
+				A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -1309,6 +1317,7 @@
 				9EE74BB81D4376EA00326CC5 /* requestquote.jpg in Resources */,
 				CCEAC8811D69B7040047AD1E /* area_img.png in Resources */,
 				A7F9CA6B1D6C2BBD00A2928F /* myprofile_menu.png in Resources */,
+				A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */,
 				9E0C0B7B1D368D0F0039A884 /* requestatracker.png in Resources */,
 				9EBD33781D5F449900DF2760 /* ban.png in Resources */,
 				9EBEFF681D608F0A00271E18 /* biologysaved.png in Resources */,
@@ -1450,6 +1459,7 @@
 				9EC27B0D1D61F15E005C4CA6 /* DiscussQuoteViewController.m in Sources */,
 				A77095451D663B63001C0180 /* IQTitleBarButtonItem.m in Sources */,
 				9E1362521D36C60D00FFD592 /* RequestOrProjectTrackerViewController.m in Sources */,
+				A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */,
 				9E13625F1D36C86B00FFD592 /* ReachUsViewController.m in Sources */,
 				CCE790961D675940007A5623 /* EcollabLoader.m in Sources */,
 				9E270AFC1D502A5D00C6A406 /* MenuProfileTableViewCell.m in Sources */,

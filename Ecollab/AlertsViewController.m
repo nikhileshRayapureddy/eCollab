@@ -151,7 +151,7 @@
                 NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
                 
                 [dictRequest setObject:[[DetailsManager sharedManager] rID] forKey:@"uid"];
-                [dictRequest setObject:[dict objectForKey:@"OrderID"] forKey:@"rid"];
+                [dictRequest setObject:[dict objectForKey:@"RID"] forKey:@"rid"];
                 [dictRequest setObject:@"2" forKey:@"Type"];
                 NSLog(@"%d",indexPath.row);
                 ServiceRequester *request = [ServiceRequester new];

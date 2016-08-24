@@ -7,7 +7,7 @@
 //
 
 #import "BiologyDropDownListView.h"
-
+#import "BiologyDropDownListTableViewCell.h"
 @implementation BiologyDropDownListView
 @synthesize arrTitles;
 @synthesize tableViewTag;
@@ -56,23 +56,27 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
     static NSString *CellIdentifier = @"REJECTREASONS";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    BiologyDropDownListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(cell==nil)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"BiologyDropDownListTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+        cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
-   
+
     NSDictionary *dict = [arrTitles objectAtIndex:indexPath.row];
     switch (tableViewTag) {
         case 10:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]];
+            cell.lblTitle.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Service"]];
             break;
         case 20:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
+            cell.lblTitle.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
             break;
         case 30:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
+            cell.lblTitle.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
             break;
         case 40:
             if ([arrCellSelected containsObject:indexPath])
@@ -84,7 +88,7 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 
             }
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
+            cell.lblTitle.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
             
             break;
         default:
