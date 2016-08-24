@@ -131,7 +131,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
     CharitybtnOutlet.text = @"1";
     QuantityTextField.text = @"1";
     [self designTabBar];
@@ -195,7 +195,7 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[myPicker date]];
     [[self.view viewWithTag:123456] removeFromSuperview];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 
 }
 - (void)pickerChanged:(id)sender
@@ -209,7 +209,7 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[sender date]];
     [[self.view viewWithTag:123456] removeFromSuperview];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 }
 - (IBAction)ChoseFromReferenceCompounDBBtnAction:(id)sender {
 
@@ -621,7 +621,7 @@
         [btnDone removeFromSuperview];
 
         NSDictionary *dic =[purityArray objectAtIndex:indexPath.row];
-        Purity = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Purity"]];
+        Purity = [NSString stringWithFormat:@" %@",[dic objectForKey:@"Purity"]];
         //RID
         PurityID =[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]];
         [PuritybtnOutlet setTitle:Purity forState:UIControlStateNormal];
@@ -670,7 +670,7 @@
     
     [imageTabelview reloadData];
     NSDictionary *dic =[purityArray objectAtIndex:0];
-    Purity = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Purity"]];
+    Purity = [NSString stringWithFormat:@" %@",[dic objectForKey:@"Purity"]];
     PurityID =[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]];
     [PuritybtnOutlet setTitle:Purity forState:UIControlStateNormal];
     [PuritybtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -696,7 +696,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:expdate];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
    
     
     NSNumber *qty = [dictData valueForKey:@"Quantity"];
@@ -729,7 +729,7 @@
         KGBtnOutlet.selected = YES;
     }
     
-    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    [PuritybtnOutlet setTitle:[NSString stringWithFormat:@" %@",[dictData objectForKey:@"PurityValue"]] forState:UIControlStateNormal];
     CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
     RemarksTextField.text = [dictData objectForKey:@"Comments"];
     if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])
@@ -769,7 +769,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:expdate];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
     
     
     NSNumber *qty = [dictData valueForKey:@"Quantity"];
@@ -802,7 +802,7 @@
         KGBtnOutlet.selected = YES;
     }
     
-    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    [PuritybtnOutlet setTitle:[NSString stringWithFormat:@" %@",[dictData objectForKey:@"PurityValue"]] forState:UIControlStateNormal];
     CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
     RemarksTextField.text = [dictData objectForKey:@"Comments"];
     if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])

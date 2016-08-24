@@ -24,28 +24,40 @@
 -(void)designNavBar
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-   self.navigationItem.hidesBackButton = NO;
+    self.navigationItem.hidesBackButton = NO;
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0];
     
     UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
     imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
+    imgLogoGVK.image = [UIImage imageNamed:@"gvklogo1.png"];
     imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
+    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnBack.frame = CGRectMake(0, 0, 180, 44);
+    btnBack.backgroundColor = [UIColor clearColor];
+    [btnBack setTitle:@"  FORGOT PASSWORD" forState:UIControlStateNormal];
+    [btnBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnBack setImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
+    btnBack.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btnBack addTarget:self action:@selector(btnBackClicked:) forControlEvents:UIControlEventTouchUpInside];
+    btnBack.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    UIView *vwLeftItem = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 180, 44)];
+    vwLeftItem.backgroundColor = [UIColor clearColor];
+    [vwLeftItem addSubview:btnBack];
+    
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:vwLeftItem];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
+    
 }
-
+- (void)btnBackClicked:(UIButton*)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

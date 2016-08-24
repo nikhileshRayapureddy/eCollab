@@ -20,13 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [EmailTextField setDelegate:self];
     [PasswordTextField setDelegate:self];
-    EmailTextField.text = @"p.venkat.it@gmail.com";
-    PasswordTextField.text = @"Gvkbio@1";
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    EmailTextField.text = @"p.venkat.it@gmail.com";//@"";
+    PasswordTextField.text = @"Gvkbio@1";//@"";
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -41,12 +45,6 @@
     return YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
 -(void)viewDidDisappear:(BOOL)animated
 {
     [self.view endEditing:YES];
@@ -55,32 +53,6 @@
 {
     [self.view endEditing:YES];
 }
-// Called when the view is dismissed, covered or otherwise hidden. Default does nothing
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
-#pragma mark - keyboard movements
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = -65.0f;  //set the -215.0f to your required value
-        self.view.frame = f;
-    }];
-}
-
--(void)keyboardWillHide:(NSNotification *)notification
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = 0.0f;
-        self.view.frame = f;
-    }];
-}
-
 -(void)showAlertWithMessage:(NSString*)strMsg
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
@@ -93,7 +65,9 @@
 }
 
 - (IBAction)SignInBtnAction:(id)sender {
-    
+    [EmailTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+
     if ([EmailTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Please enter email address."];
@@ -109,8 +83,6 @@
     }
     else
     {
-        [EmailTextField resignFirstResponder];
-        [PasswordTextField resignFirstResponder];
         NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",EmailTextField.text],@"EmailID",[NSString stringWithFormat:@"%@",PasswordTextField.text],@"Password",@"0",@"ISGvkEmployee", nil];
         [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
@@ -154,27 +126,18 @@
 
 
 - (IBAction)NewUserBtnAction:(id)sender {
+    [EmailTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+
     NewUserViewController *NUVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"NewUserViewController"];
     [self.navigationController pushViewController:NUVCtrlObj animated:YES];
 }
 
 - (IBAction)ForgotPassworBtnAction:(id)sender {
+    [EmailTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+
     ForgotPasswordViewController *FPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
     [self.navigationController pushViewController:FPVCtrlObj animated:YES];
 }
-
-/*
- - (void)viewDidLoad
- 
- - (void)viewWillAppear:(BOOL)animated
- 
- - (void)viewDidAppear:(BOOL)animated
- 
- - (void)viewWillDisappear:(BOOL)animated
- 
- - (void)viewDidDisappear:(BOOL)animated
- 
- - (void)viewDidUnload
-
- */
 @end

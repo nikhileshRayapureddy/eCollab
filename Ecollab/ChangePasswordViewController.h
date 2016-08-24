@@ -17,8 +17,13 @@
 - (IBAction)ChangePasswordAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *CancelPasswordAction;
 - (IBAction)CancelPasswordClicked:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UILabel *lblOldStar;
-@property (weak, nonatomic) IBOutlet UILabel *lblNewStar;
-@property (weak, nonatomic) IBOutlet UILabel *lblCNFNeedStar;
+@property (weak, nonatomic) IBOutlet UIView *vwNewPwdStrenngth;
+@property (weak, nonatomic) IBOutlet UILabel *lblNewPwdStrenngth;
+@property (weak, nonatomic) IBOutlet UIView *vwCNFNewPwdStrenngth;
+@property (weak, nonatomic) IBOutlet UILabel *lblCNFNewPwdStrenngth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *conslblNewPwdStrenngthHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constlblCNFNewPwdStrenngthHeight;
+
 
 @end

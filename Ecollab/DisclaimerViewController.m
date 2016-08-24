@@ -37,7 +37,7 @@
 - (IBAction)PrivacyAndTermsBtnAction:(id)sender {
     
     UIButton *btn = (UIButton*)sender;
-    _lblTitile.text = @"PPRIVACY POLICY AND TERMS OF USE";
+    _lblTitile.text = @"PRIVACY POLICY AND TERMS OF USE";
     PrivacyAndTermsBtnOutlet.selected = NO;
     LegalDisclaimerBtnOutlet.selected = NO;
     btn.selected = YES;
