@@ -85,7 +85,8 @@
     tapScroll.cancelsTouchesInView = NO;
     [BackgrounScrollview addGestureRecognizer:tapScroll];
     [BackgrounScrollview setShowsVerticalScrollIndicator:NO];
-    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopLoadMasterService];
@@ -136,13 +137,13 @@
     QuantityTextField.text = @"1";
     [self designTabBar];
     [self setSelected:0];
-
+    RemarksTextField.placeholder = @"Remarks";
 
 }
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 1100)];
+    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 1130)];
 }
 - (void) tapped
 {
@@ -220,6 +221,8 @@
     request =  nil;
 }
 -(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+
     NSLog(@"%@",aregistrationDict);
     NSLog(@"%@",[aregistrationDict objectForKey:@"SuccessCode"]);
     
@@ -539,6 +542,41 @@
         request =  nil;
     }
 }
+-(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
+// show alert controller and navigare back
+NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+NSDictionary *dictResponse = [arr objectAtIndex:0];
+[EcollabLoader hideLoaderForView:self.view animated:YES];
+if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
+    
+    [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
+}
+else
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:@"Chemistry request saveed successfully."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                           {
+                                                                               [self.navigationController popToViewController:vc animated:YES];
+                                                                           }
+                                                                           
+                                                                           
+                                                                           
+                                                                       }
+                                                                   }];
+    
+    
+    [alert addAction:PhotoFromGalleryAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+}
+
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
     NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];

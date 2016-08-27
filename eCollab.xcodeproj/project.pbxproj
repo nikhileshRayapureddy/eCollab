@@ -192,6 +192,7 @@
 		A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A77431C51D6CB2C1008AF551 /* btnBack.png */; };
 		A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */; };
 		A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */; };
+		A7F565FD1D7146C6000D4CFF /* SAMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F565FC1D7146C6000D4CFF /* SAMTextView.m */; };
 		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
 		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
 		A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */; };
@@ -475,6 +476,8 @@
 		A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiologyDropDownListTableViewCell.h; sourceTree = "<group>"; };
 		A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiologyDropDownListTableViewCell.m; sourceTree = "<group>"; };
 		A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiologyDropDownListTableViewCell.xib; sourceTree = "<group>"; };
+		A7F565FB1D7146C6000D4CFF /* SAMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMTextView.h; sourceTree = "<group>"; };
+		A7F565FC1D7146C6000D4CFF /* SAMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMTextView.m; sourceTree = "<group>"; };
 		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
 		A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_menu.png; sourceTree = "<group>"; };
 		A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_menu.png; sourceTree = "<group>"; };
@@ -775,6 +778,8 @@
 				A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */,
 				CCE790941D675940007A5623 /* EcollabLoader.h */,
 				CCE790951D675940007A5623 /* EcollabLoader.m */,
+				A7F565FB1D7146C6000D4CFF /* SAMTextView.h */,
+				A7F565FC1D7146C6000D4CFF /* SAMTextView.m */,
 				CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */,
 				CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */,
 				CCEAC8781D69751B0047AD1E /* RejectedReasonsCustomView.h */,
@@ -1442,6 +1447,7 @@
 				9E1362671D36C93800FFD592 /* FAQVCViewController.m in Sources */,
 				9E2547791D3267DE008A96C9 /* PageContentViewController.m in Sources */,
 				9EC27B031D61A965005C4CA6 /* StatusViewModeViewController.m in Sources */,
+				A7F565FD1D7146C6000D4CFF /* SAMTextView.m in Sources */,
 				CCEAC87A1D69751B0047AD1E /* RejectedReasonsCustomView.m in Sources */,
 				9E25478A1D328281008A96C9 /* LogInViewController.m in Sources */,
 				9E13625B1D36C77A00FFD592 /* MyProfileViewController.m in Sources */,

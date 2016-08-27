@@ -11,6 +11,7 @@
 #import "ImageCollectionViewCell.h"
 #import "DetailsManager.h"
 #import "BaseViewController.h"
+#import "SAMTextView.h"
 @interface NewChemistryRequestViewController : BaseViewController<UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,ServiceRequesterProtocol,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableDictionary *OtherViewsDataDictionary;
 
@@ -34,7 +35,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *PuritybtnOutlet;
 @property (strong, nonatomic) IBOutlet UITextField *CharitybtnOutlet;
-@property (strong, nonatomic) IBOutlet UITextField *RemarksTextField;
+@property (strong, nonatomic) IBOutlet SAMTextView *RemarksTextField;
 @property (strong, nonatomic) IBOutlet UIButton *SubmitBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *SaveForLaterBtnOutlet;
 
