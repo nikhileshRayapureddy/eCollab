@@ -76,6 +76,7 @@
 -(void)requestReceivedopCreatedUserResponce:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopForgotPasswordResponce:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict;
+-(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopGetUserDetailsResponce:(NSMutableDictionary *)aregistrationDict;
 //opSaveUserDetails
 -(void)requestReceivedopSaveUserDetailsResponce:(NSMutableDictionary *)aregistrationDict;
