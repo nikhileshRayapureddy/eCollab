@@ -189,6 +189,10 @@
 		A770954A1D663B63001C0180 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77095401D663B63001C0180 /* UIWindow+Hierarchy.m */; };
 		A770954E1D66751A001C0180 /* ecolablogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954C1D66751A001C0180 /* ecolablogo.png */; };
 		A770954F1D66751A001C0180 /* gvk_whitelogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = A770954D1D66751A001C0180 /* gvk_whitelogo1.png */; };
+		A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A77431C51D6CB2C1008AF551 /* btnBack.png */; };
+		A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */; };
+		A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */; };
+		A7F565FD1D7146C6000D4CFF /* SAMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F565FC1D7146C6000D4CFF /* SAMTextView.m */; };
 		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
 		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
 		A7F9CA691D6C2BBD00A2928F /* home_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */; };
@@ -470,6 +474,12 @@
 		A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ecollab-Prefix.pch"; sourceTree = "<group>"; };
 		A770954C1D66751A001C0180 /* ecolablogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ecolablogo.png; sourceTree = "<group>"; };
 		A770954D1D66751A001C0180 /* gvk_whitelogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gvk_whitelogo1.png; sourceTree = "<group>"; };
+		A77431C51D6CB2C1008AF551 /* btnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBack.png; sourceTree = "<group>"; };
+		A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiologyDropDownListTableViewCell.h; sourceTree = "<group>"; };
+		A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiologyDropDownListTableViewCell.m; sourceTree = "<group>"; };
+		A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiologyDropDownListTableViewCell.xib; sourceTree = "<group>"; };
+		A7F565FB1D7146C6000D4CFF /* SAMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMTextView.h; sourceTree = "<group>"; };
+		A7F565FC1D7146C6000D4CFF /* SAMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMTextView.m; sourceTree = "<group>"; };
 		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
 		A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_menu.png; sourceTree = "<group>"; };
 		A7F9CA5F1D6C2BBD00A2928F /* home_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_menu.png; sourceTree = "<group>"; };
@@ -773,6 +783,8 @@
 				A770954B1D665B50001C0180 /* Ecollab-Prefix.pch */,
 				CCE790941D675940007A5623 /* EcollabLoader.h */,
 				CCE790951D675940007A5623 /* EcollabLoader.m */,
+				A7F565FB1D7146C6000D4CFF /* SAMTextView.h */,
+				A7F565FC1D7146C6000D4CFF /* SAMTextView.m */,
 				CCF87EF41D687EAA00A2A343 /* SelectAddressViewController.h */,
 				CCF87EF51D687EAA00A2A343 /* SelectAddressViewController.m */,
 				CCEAC8781D69751B0047AD1E /* RejectedReasonsCustomView.h */,
@@ -794,6 +806,9 @@
 				CCB3E1FF1D6D41B9004AB04A /* BiologyDropDownListCustomCell.h */,
 				CCB3E2001D6D41B9004AB04A /* BiologyDropDownListCustomCell.m */,
 				CCE62DD31D751B3500D937FA /* BiologyDropDownListCustomCell.xib */,
+				A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */,
+				A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */,
+				A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */,
 			);
 			path = Ecollab;
 			sourceTree = "<group>";
@@ -993,6 +1008,7 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A77431C51D6CB2C1008AF551 /* btnBack.png */,
 				A7F9CA751D6C335B00A2928F /* Legal_discl_Sel.png */,
 				A7F9CA761D6C335B00A2928F /* Legal_Discl_Unsel.png */,
 				A7F9CA771D6C335B00A2928F /* Privact&Terms_Unsel.png */,
@@ -1315,6 +1331,7 @@
 				9EE74BB81D4376EA00326CC5 /* requestquote.jpg in Resources */,
 				CCEAC8811D69B7040047AD1E /* area_img.png in Resources */,
 				A7F9CA6B1D6C2BBD00A2928F /* myprofile_menu.png in Resources */,
+				A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */,
 				9E0C0B7B1D368D0F0039A884 /* requestatracker.png in Resources */,
 				9EBD33781D5F449900DF2760 /* ban.png in Resources */,
 				9EBEFF681D608F0A00271E18 /* biologysaved.png in Resources */,
@@ -1412,6 +1429,7 @@
 				9E0C0B871D36913C0039A884 /* faqbottom.jpg in Resources */,
 				CCEAC8891D69D64B0047AD1E /* BiologyDropDownListView.xib in Resources */,
 				CCF87EF81D687EDE00A2A343 /* mapship.png in Resources */,
+				A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */,
 				9E1096DF1D33FF9E0081D081 /* sign-in.png in Resources */,
 				A76C6CD01D69FE9F00679322 /* facebookshare.png in Resources */,
 				A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */,
@@ -1438,6 +1456,7 @@
 				9E1362671D36C93800FFD592 /* FAQVCViewController.m in Sources */,
 				9E2547791D3267DE008A96C9 /* PageContentViewController.m in Sources */,
 				9EC27B031D61A965005C4CA6 /* StatusViewModeViewController.m in Sources */,
+				A7F565FD1D7146C6000D4CFF /* SAMTextView.m in Sources */,
 				CCEAC87A1D69751B0047AD1E /* RejectedReasonsCustomView.m in Sources */,
 				9E25478A1D328281008A96C9 /* LogInViewController.m in Sources */,
 				CCB3E2011D6D41B9004AB04A /* BiologyDropDownListCustomCell.m in Sources */,
@@ -1456,6 +1475,7 @@
 				9EC27B0D1D61F15E005C4CA6 /* DiscussQuoteViewController.m in Sources */,
 				A77095451D663B63001C0180 /* IQTitleBarButtonItem.m in Sources */,
 				9E1362521D36C60D00FFD592 /* RequestOrProjectTrackerViewController.m in Sources */,
+				A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */,
 				9E13625F1D36C86B00FFD592 /* ReachUsViewController.m in Sources */,
 				CCE790961D675940007A5623 /* EcollabLoader.m in Sources */,
 				9E270AFC1D502A5D00C6A406 /* MenuProfileTableViewCell.m in Sources */,

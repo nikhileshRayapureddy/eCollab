@@ -31,6 +31,8 @@
     NSMutableArray *DataArray = [inputDataDictionary objectForKey:@"RequestedQuoteList"];
     LocalDataDictionary = [DataArray objectAtIndex:0];
     [self dataDisplaying];
+    LabelFour.adjustsFontSizeToFitWidth = YES;
+    LabelFive.adjustsFontSizeToFitWidth = YES;
 }
 -(void)dataDisplaying{
     LabelOne.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];

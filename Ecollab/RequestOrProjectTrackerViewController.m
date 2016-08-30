@@ -331,12 +331,23 @@
 
 - (IBAction)RequestedQuotesBtnAction:(id)sender {
     TableFlag = 0;
+    
+    _StatusLabelOne.text = @"RECEIVED";
+    _StatusLabelTwo.text = @"UNDER PROCESS";
+    _StatusLabelThree.text = @"QUOTE SENT";
+    _StatusLabelFour.text = @"ACCEPTANCE";
+
     [RequestOrProjectTableView reloadData];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
 }
 
 - (IBAction)OnGoingProjectsBtnAction:(id)sender {
+    _StatusLabelOne.text = @"INITIATED";
+    _StatusLabelTwo.text = @"RAW MATERIALS";
+    _StatusLabelThree.text = @"SYNTHESIS";
+    _StatusLabelFour.text = @"SHIPPED";
+
     TableFlag = 1;
     [RequestOrProjectTableView reloadData];
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];

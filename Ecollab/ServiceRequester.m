@@ -102,7 +102,14 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
 -(void)requestForopCreateChemistryRequestService:(NSDictionary *)dict{
     ServiceInterface *service = [[ServiceInterface alloc] init];
     service.theDelegate = self;
-    service.theSuccessMethod = @selector(responseopCreateChemistryRequestService:);
+    if ([[dict valueForKey:@"ISSubmit"] isEqualToString:@"0"])
+    {
+        service.theSuccessMethod = @selector(responseopSaveChemistryRequestService:);
+    }
+    else
+    {
+        service.theSuccessMethod = @selector(responseopCreateChemistryRequestService:);
+    }
     service.theFailureMethod = @selector(requestFailedWithError:);
     [self addServiceInterfaceToServiceStack:service];
     NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opCreateChemistryRequest"]];
@@ -565,6 +572,15 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
     NSLog(@"Parsed JSON Data: %@", jsonDict);
     [serviceRequesterDelegate requestReceivedopCreateChemistryRequestResponce:jsonDict];
+    // alert =  nil;
+}
+-(void)responseopSaveChemistryRequestService:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopSaveChemistryRequestResponce:jsonDict];
     // alert =  nil;
 }
 

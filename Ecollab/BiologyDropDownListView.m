@@ -89,9 +89,7 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 
             }
-            cell.accessoryView.backgroundColor = [UIColor clearColor];
             cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
-            
             break;
         default:
             break;

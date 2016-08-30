@@ -8,7 +8,7 @@
 
 #import "ChangePasswordViewController.h"
 
-@interface ChangePasswordViewController ()
+@interface ChangePasswordViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self designNavBar];
+    self.NewPassword.delegate = self;
+    self.confirmPassword.delegate = self;
     NSMutableAttributedString *text =
     [[NSMutableAttributedString alloc]
      initWithAttributedString: [[NSAttributedString alloc]initWithString:@"OLD PASSWORD *"]];
@@ -48,7 +50,10 @@
     
     confirmPassword.attributedPlaceholder = text;
     
-
+    _conslblNewPwdStrenngthHeight.constant = 0;
+    _vwNewPwdStrenngth.hidden = YES;
+    _constlblCNFNewPwdStrenngthHeight.constant = 0;
+    _vwCNFNewPwdStrenngth.hidden = YES;
 }
 -(void)designNavBar
 {
@@ -177,4 +182,172 @@
     [self.navigationController popViewControllerAnimated:YES];
 
 }
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == NewPassword)
+    {
+        if(range.length + range.location > textField.text.length)
+        {
+            return NO;
+        }
+        
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        if(newLength == 2 || newLength == 1)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : WEAK"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 4)];
+            
+            _lblNewPwdStrenngth.attributedText = text;
+            _conslblNewPwdStrenngthHeight.constant = 30;
+            _vwNewPwdStrenngth.hidden = NO;
+        }
+        else if (newLength >2 && newLength <= 8)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : MEDIUM"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 6)];
+            
+            _lblNewPwdStrenngth.attributedText = text;
+            _conslblNewPwdStrenngthHeight.constant = 30;
+            _vwNewPwdStrenngth.hidden = NO;
+        }
+        else if(newLength > 8 && newLength <12)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : STRONG"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 6)];
+            
+            _lblNewPwdStrenngth.attributedText = text;
+            _vwNewPwdStrenngth.hidden = NO;
+            _conslblNewPwdStrenngthHeight.constant = 30;
+        }
+        else if(newLength >= 12)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : Password Max Length Reached"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 27)];
+            
+            _lblNewPwdStrenngth.attributedText = text;
+            _conslblNewPwdStrenngthHeight.constant = 30;
+            _vwNewPwdStrenngth.hidden = NO;
+            
+        }
+
+        else
+        {
+            _conslblNewPwdStrenngthHeight.constant = 0;
+            _vwNewPwdStrenngth.hidden = YES;
+//            _vwCNFNewPwdStrenngth.hidden = YES;
+
+        }
+        return newLength <= 12;
+    }
+    else if (textField == confirmPassword)
+    {
+        if(range.length + range.location > textField.text.length)
+        {
+            return NO;
+        }
+        
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        if(newLength == 2 || newLength == 1)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : WEAK"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 4)];
+            
+            _lblCNFNewPwdStrenngth.attributedText = text;
+            _constlblCNFNewPwdStrenngthHeight.constant = 30;
+            _vwCNFNewPwdStrenngth.hidden = NO;
+        }
+        else if (newLength >2 && newLength <= 8)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : MEDIUM"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 6)];
+            
+            _lblCNFNewPwdStrenngth.attributedText = text;
+            _constlblCNFNewPwdStrenngthHeight.constant = 30;
+            _vwCNFNewPwdStrenngth.hidden = NO;
+        }
+        else if(newLength > 8 && newLength <12)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : STRONG"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 6)];
+            
+            _lblCNFNewPwdStrenngth.attributedText = text;
+            _vwCNFNewPwdStrenngth.hidden = NO;
+            _constlblCNFNewPwdStrenngthHeight.constant = 30;
+        }
+        else if(newLength >= 12)
+        {
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:@"STRENGTH : Password Max Length Reached"]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor greenColor]
+                         range:NSMakeRange(11, 27)];
+            
+            _lblCNFNewPwdStrenngth.attributedText = text;
+            _constlblCNFNewPwdStrenngthHeight.constant = 30;
+            _vwCNFNewPwdStrenngth.hidden = NO;
+            
+        }
+        
+        else
+        {
+            _constlblCNFNewPwdStrenngthHeight.constant = 0;
+            _vwCNFNewPwdStrenngth.hidden = YES;
+            
+        }
+        return newLength <= 12;
+    }
+    return YES;
+}
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if (textField == NewPassword)
+    {
+        _conslblNewPwdStrenngthHeight.constant = 0;
+        _vwNewPwdStrenngth.hidden = YES;
+    }
+    else if (textField == confirmPassword)
+    {
+        _constlblCNFNewPwdStrenngthHeight.constant = 0;
+        _vwCNFNewPwdStrenngth.hidden = YES;
+    }
+    return YES;
+}
+
 @end

@@ -99,9 +99,9 @@
         
         // based on type assign related image
         if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biology.png"];
         }else{
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistry.png"];
         }
         
         if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 1)
@@ -151,7 +151,7 @@
                 NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
                 
                 [dictRequest setObject:[[DetailsManager sharedManager] rID] forKey:@"uid"];
-                [dictRequest setObject:[dict objectForKey:@"OrderID"] forKey:@"rid"];
+                [dictRequest setObject:[dict objectForKey:@"RID"] forKey:@"rid"];
                 [dictRequest setObject:@"2" forKey:@"Type"];
                 NSLog(@"%d",indexPath.row);
                 ServiceRequester *request = [ServiceRequester new];

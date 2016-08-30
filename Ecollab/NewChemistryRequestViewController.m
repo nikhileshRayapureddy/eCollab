@@ -85,7 +85,8 @@
     tapScroll.cancelsTouchesInView = NO;
     [BackgrounScrollview addGestureRecognizer:tapScroll];
     [BackgrounScrollview setShowsVerticalScrollIndicator:NO];
-    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopLoadMasterService];
@@ -131,18 +132,18 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
     CharitybtnOutlet.text = @"1";
     QuantityTextField.text = @"1";
     [self designTabBar];
     [self setSelected:0];
-
+    RemarksTextField.placeholder = @"Remarks";
 
 }
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 950)];
+    [self.BackgrounScrollview setContentSize:CGSizeMake(BackgrounScrollview.contentSize.width, 1130)];
 }
 - (void) tapped
 {
@@ -195,7 +196,7 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[myPicker date]];
     [[self.view viewWithTag:123456] removeFromSuperview];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 
 }
 - (void)pickerChanged:(id)sender
@@ -209,7 +210,7 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[sender date]];
     [[self.view viewWithTag:123456] removeFromSuperview];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 }
 - (IBAction)ChoseFromReferenceCompounDBBtnAction:(id)sender {
 
@@ -220,6 +221,8 @@
     request =  nil;
 }
 -(void)requestReceivedopLoadMasterResponce:(NSMutableDictionary *)aregistrationDict{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+
     NSLog(@"%@",aregistrationDict);
     NSLog(@"%@",[aregistrationDict objectForKey:@"SuccessCode"]);
     
@@ -546,6 +549,41 @@
         request =  nil;
     }
 }
+-(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
+// show alert controller and navigare back
+NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+NSDictionary *dictResponse = [arr objectAtIndex:0];
+[EcollabLoader hideLoaderForView:self.view animated:YES];
+if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
+    
+    [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
+}
+else
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:@"Chemistry request saveed successfully."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                           {
+                                                                               [self.navigationController popToViewController:vc animated:YES];
+                                                                           }
+                                                                           
+                                                                           
+                                                                           
+                                                                       }
+                                                                   }];
+    
+    
+    [alert addAction:PhotoFromGalleryAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+}
+
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
     // show alert controller and navigare back
     NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
@@ -628,7 +666,7 @@
         [btnDone removeFromSuperview];
 
         NSDictionary *dic =[purityArray objectAtIndex:indexPath.row];
-        Purity = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Purity"]];
+        Purity = [NSString stringWithFormat:@" %@",[dic objectForKey:@"Purity"]];
         //RID
         PurityID =[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]];
         [PuritybtnOutlet setTitle:Purity forState:UIControlStateNormal];
@@ -677,7 +715,7 @@
     
     [imageTabelview reloadData];
     NSDictionary *dic =[purityArray objectAtIndex:0];
-    Purity = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Purity"]];
+    Purity = [NSString stringWithFormat:@" %@",[dic objectForKey:@"Purity"]];
     PurityID =[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]];
     [PuritybtnOutlet setTitle:Purity forState:UIControlStateNormal];
     [PuritybtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -703,7 +741,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:expdate];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
    
     
     NSNumber *qty = [dictData valueForKey:@"Quantity"];
@@ -736,7 +774,7 @@
         KGBtnOutlet.selected = YES;
     }
     
-    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    [PuritybtnOutlet setTitle:[NSString stringWithFormat:@" %@",[dictData objectForKey:@"PurityValue"]] forState:UIControlStateNormal];
     CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
     RemarksTextField.text = [dictData objectForKey:@"Comments"];
     if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])
@@ -776,7 +814,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:expdate];
-    [ExpectedDeleveryDateBtnOutlet setTitle:date forState:UIControlStateNormal];
+    [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
     
     
     NSNumber *qty = [dictData valueForKey:@"Quantity"];
@@ -809,7 +847,7 @@
         KGBtnOutlet.selected = YES;
     }
     
-    [PuritybtnOutlet setTitle:[dictData objectForKey:@"PurityValue"] forState:UIControlStateNormal];
+    [PuritybtnOutlet setTitle:[NSString stringWithFormat:@" %@",[dictData objectForKey:@"PurityValue"]] forState:UIControlStateNormal];
     CharitybtnOutlet.text = [dictData objectForKey:@"Chirality"];
     RemarksTextField.text = [dictData objectForKey:@"Comments"];
     if([[dictData objectForKey:@"ProductTypeValue"] isEqualToString:@"Image From DB"])
@@ -962,12 +1000,16 @@
           {
           }];   }];
     
+    UIView *VwCrossBg = [[UIView alloc]initWithFrame:CGRectMake(50, (self.view.frame.size.height - 200)/2 -50, self.view.frame.size.width-100,50)];
+    VwCrossBg.backgroundColor = [UIColor whiteColor];
+    [vwBg addSubview:VwCrossBg];
+    
     UIButton *btnCloseZoom = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnCloseZoom.frame = CGRectMake(self.view.frame.size.width-100, (self.view.frame.size.height - 200)/2, 50, 50);
+    btnCloseZoom.frame = CGRectMake(VwCrossBg.frame.size.width-50, 0, 50, 50);
     [btnCloseZoom addTarget:self action:@selector(btnCloseClicked:) forControlEvents:UIControlEventTouchUpInside];
     btnCloseZoom.backgroundColor = [UIColor clearColor];
     [btnCloseZoom setImage:[UIImage imageNamed:@"crossmark.png"] forState:UIControlStateNormal];
-    [vwBg addSubview:btnCloseZoom];
+    [VwCrossBg addSubview:btnCloseZoom];
 
     
 }
