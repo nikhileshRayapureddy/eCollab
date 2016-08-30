@@ -35,6 +35,13 @@
     LabelFive.adjustsFontSizeToFitWidth = YES;
     [self designNavBar];
 }
+
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    StatusScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 625);
+}
+
     -(void)designNavBar
     {
         self.navigationController.navigationBar.hidden = NO;

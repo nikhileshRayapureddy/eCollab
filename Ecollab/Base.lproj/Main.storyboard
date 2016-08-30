@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -713,7 +713,7 @@
                                         <rect key="frame" x="0.0" y="1" width="600" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jn-ad-Irb" id="bwj-dD-bIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chemistry.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-Qc-z2O">
@@ -1226,7 +1226,7 @@ project is waiting to be initiated.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jac-ZB-5q0" id="m3d-jS-vIr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-yn-Grq">
@@ -3247,7 +3247,7 @@ project is waiting to be initiated.</string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUe-wS-dii">
-                                                <rect key="frame" x="20" y="565" width="270" height="40"/>
+                                                <rect key="frame" x="20" y="570" width="270" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0b5-e7-9SX"/>
                                                 </constraints>
@@ -3259,7 +3259,7 @@ project is waiting to be initiated.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hux-4r-0Wh">
-                                                <rect key="frame" x="310" y="565" width="270" height="40"/>
+                                                <rect key="frame" x="310" y="570" width="270" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="UrK-RP-E0b"/>
                                                 </constraints>
@@ -3302,14 +3302,14 @@ project is waiting to be initiated.</string>
                                             <constraint firstItem="Mv5-Dn-wBK" firstAttribute="top" secondItem="4AK-PB-ys7" secondAttribute="bottom" constant="10" id="c7a-YW-exN"/>
                                             <constraint firstItem="Ds4-8Z-Q4l" firstAttribute="top" secondItem="12V-AV-olL" secondAttribute="bottom" constant="10" id="dbl-ub-FYw"/>
                                             <constraint firstItem="lm4-dZ-1bh" firstAttribute="top" secondItem="vM0-97-Xyl" secondAttribute="bottom" constant="10" id="eEX-zB-ued"/>
-                                            <constraint firstItem="sUe-wS-dii" firstAttribute="top" secondItem="Hla-ez-xOE" secondAttribute="bottom" constant="5" id="edy-DI-bGo"/>
+                                            <constraint firstItem="sUe-wS-dii" firstAttribute="top" secondItem="Hla-ez-xOE" secondAttribute="bottom" constant="10" id="edy-DI-bGo"/>
                                             <constraint firstAttribute="trailing" secondItem="Mv5-Dn-wBK" secondAttribute="trailing" id="f8Z-Lq-mne"/>
                                             <constraint firstItem="nBD-Nw-UDq" firstAttribute="top" secondItem="A8G-Kh-qyG" secondAttribute="bottom" constant="10" id="g6q-QC-2Y3"/>
                                             <constraint firstItem="nBD-Nw-UDq" firstAttribute="leading" secondItem="df1-m0-s5M" secondAttribute="leading" id="gCW-Kl-xuS"/>
                                             <constraint firstItem="12V-AV-olL" firstAttribute="leading" secondItem="df1-m0-s5M" secondAttribute="leading" id="h8k-xL-AtX"/>
                                             <constraint firstItem="hux-4r-0Wh" firstAttribute="leading" secondItem="sUe-wS-dii" secondAttribute="trailing" constant="20" id="hg2-jo-tQN"/>
                                             <constraint firstItem="f3m-ri-PzO" firstAttribute="leading" secondItem="df1-m0-s5M" secondAttribute="leading" id="i6x-Ra-v5I"/>
-                                            <constraint firstItem="hux-4r-0Wh" firstAttribute="top" secondItem="Hla-ez-xOE" secondAttribute="bottom" constant="5" id="idb-hf-rPH"/>
+                                            <constraint firstItem="hux-4r-0Wh" firstAttribute="top" secondItem="Hla-ez-xOE" secondAttribute="bottom" constant="10" id="idb-hf-rPH"/>
                                             <constraint firstItem="Mv5-Dn-wBK" firstAttribute="top" secondItem="4AK-PB-ys7" secondAttribute="bottom" constant="10" id="jUH-dy-NMB"/>
                                             <constraint firstAttribute="trailing" secondItem="12V-AV-olL" secondAttribute="trailing" id="kAP-N1-W4g"/>
                                             <constraint firstItem="A8G-Kh-qyG" firstAttribute="top" secondItem="lm4-dZ-1bh" secondAttribute="bottom" constant="10" id="pAq-KH-dWT"/>
@@ -3624,6 +3624,10 @@ project is waiting to be initiated.</string>
                         <outlet property="labelSeven" destination="NJG-ae-qf1" id="JAC-Kk-eVh"/>
                         <outlet property="labelThree" destination="N7F-2r-0YJ" id="iTF-lD-91y"/>
                         <outlet property="labelTwo" destination="3fp-HJ-N7D" id="zGs-wZ-WoJ"/>
+                        <outlet property="viewArea" destination="Hgg-Ib-ilx" id="73x-tk-Sxf"/>
+                        <outlet property="viewAssays" destination="s0f-xc-osS" id="eYg-S3-HO1"/>
+                        <outlet property="viewService" destination="tRH-52-w8M" id="l30-ec-6J3"/>
+                        <outlet property="viewSubArea" destination="tFh-xd-WU6" id="fwc-e2-hzW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5D-fO-DKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3749,6 +3753,7 @@ project is waiting to be initiated.</string>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="K8K-Id-mnF"/>
                                                         </constraints>
+                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Solubility">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -3798,6 +3803,7 @@ project is waiting to be initiated.</string>
                                                             <constraint firstAttribute="height" constant="40" id="PXu-kh-NeF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="SELECT ASSAYS/MODELS">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -5558,7 +5564,7 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="height" constant="40" id="SFc-dA-HrB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="UPDATE" backgroundImage="btnRedGradient.png">
+                                <state key="normal" title="SUBMIT" backgroundImage="btnRedGradient.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

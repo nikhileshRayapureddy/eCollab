@@ -76,6 +76,10 @@
     [ModelsBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
     modelflag = 0;
     
+    ServiceBtnOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
+    AreaOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
+    SubAreaBtnOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
+
 //    serviceArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
 //    areaArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
 //    subAreaArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
@@ -711,6 +715,9 @@
             //*Type,*SubID,*ModelID;  //RID Service
             SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             ModelID = [NSMutableString stringWithFormat:@"0"];
+            [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
+            strMultipleModelIdIDFinal = @"";
+            [arrAssaysSelected removeAllObjects];
             [self GetDependencyDetails];
         }
             break;

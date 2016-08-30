@@ -67,7 +67,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
+    cell.textLabel.numberOfLines = 2;
     NSDictionary *dict = [arrTitles objectAtIndex:indexPath.row];
     switch (tableViewTag) {
         case 10:

@@ -99,18 +99,18 @@
         
         // based on type assign related image
         if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biology.png"];
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
         }else{
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistry.png"];
+            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
         }
         
-        if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 1)
+        if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 0 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 2 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 3)
         {
-            cell.imgRightArrow.hidden = YES;
+            cell.imgRightArrow.hidden = NO;
         }
         else
         {
-            cell.imgRightArrow.hidden = NO;
+            cell.imgRightArrow.hidden = YES;
         }
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
         tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -183,6 +183,7 @@
         NSLog(@"long press on table view but not on a row");
     } else {
         NSLog(@"%d",indexPath.row);
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         NSMutableDictionary *dict =[notificationListArray objectAtIndex:indexPath.row];
         NSMutableString *Type = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderType"]];
         OrderStatus = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"OrderStatus"]];
@@ -259,7 +260,7 @@
 {
     // Note please navigate with data dictionary
     {
-        
+        [EcollabLoader hideLoaderForView:self.view animated:YES];
         if(OrderType.intValue == 0)
         {
             switch (OrderStatus.intValue) {

@@ -29,5 +29,9 @@
 @property (assign, nonatomic) BOOL isRjectOrRegretted;
 @property (strong, nonatomic) NSString *strRequestRID;
 - (IBAction)DiscussBtnAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewService;
+@property (weak, nonatomic) IBOutlet UIView *viewArea;
+@property (weak, nonatomic) IBOutlet UIView *viewSubArea;
+@property (weak, nonatomic) IBOutlet UIView *viewAssays;
 
 @end
