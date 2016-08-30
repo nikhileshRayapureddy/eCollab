@@ -54,7 +54,7 @@
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:@"Rating Submitted successfully."
+                                                                   message:@"Rating saved successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         

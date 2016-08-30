@@ -248,13 +248,28 @@
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
                                                 context:nil];
-        if (indexPath.row == 0)
+        if (indexPath.section == 3)
         {
-            return 52 + ceilf(rect.size.height) + 35;
+            if (indexPath.row == 3 || indexPath.row == 2 || indexPath.row == 0)
+            {
+                return 52 + ceilf(rect.size.height) + 35;
+            }
+            else
+            {
+                return 52 + ceilf(rect.size.height) + 25;
+            }
+
         }
         else
         {
-            return 52 + ceilf(rect.size.height) + 25;
+            if (indexPath.row == 0)
+            {
+                return 52 + ceilf(rect.size.height) + 35;
+            }
+            else
+            {
+                return 52 + ceilf(rect.size.height) + 25;
+            }
         }
     }
     else
@@ -371,9 +386,9 @@
 }
 -(void)btnDetailClicked:(UIButton*)sender
 {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"https://www.gvkbio.com"]])
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"http://www.gvkbio.com"]])
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.gvkbio.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.gvkbio.com"]];
     }
 
 }
@@ -416,7 +431,7 @@
     for (NSString *word in blueSmallWords) {
         NSRange range=[text rangeOfString:word];
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:19.0/255.0 green:157.0/255.0 blue:255.0/255.0 alpha:1.0] range:range];
-        [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:range];
+        [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:8] range:range];
         [string addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
         
     }
