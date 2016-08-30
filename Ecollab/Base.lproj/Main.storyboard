@@ -1350,11 +1350,11 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="width" constant="30" id="Vvb-pF-T8s"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-7f-oCA">
-                                <rect key="frame" x="51" y="126" width="66" height="6"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-7f-oCA">
+                                <rect key="frame" x="51" y="127" width="66" height="3"/>
+                                <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="ne5-zy-Tdr"/>
+                                    <constraint firstAttribute="height" constant="3" id="ne5-zy-Tdr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1367,11 +1367,11 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="width" constant="30" id="mhM-GK-4gM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeS-2B-lpt">
-                                <rect key="frame" x="147" y="126" width="81" height="6"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeS-2B-lpt">
+                                <rect key="frame" x="147" y="127" width="81" height="3"/>
+                                <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="xMW-KH-zE2"/>
+                                    <constraint firstAttribute="height" constant="3" id="xMW-KH-zE2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1391,11 +1391,11 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="width" constant="30" id="hqp-vT-Flk"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="169-Wv-4cm">
-                                <rect key="frame" x="258" y="126" width="66" height="6"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="169-Wv-4cm">
+                                <rect key="frame" x="258" y="127" width="66" height="3"/>
+                                <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="uyY-6Q-Mfq"/>
+                                    <constraint firstAttribute="height" constant="3" id="uyY-6Q-Mfq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1441,7 +1441,7 @@ project is waiting to be initiated.</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="161" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-ox-cEG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="161" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-ox-cEG">
                                 <rect key="frame" x="0.0" y="177" width="375" height="440"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1449,7 +1449,7 @@ project is waiting to be initiated.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5B9-uC-iJB" id="AHg-QW-KSa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-Pd-ag2">
@@ -1487,10 +1487,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPM-1P-mDN">
-                                                    <rect key="frame" x="51" y="110" width="67" height="6"/>
+                                                    <rect key="frame" x="51" y="111" width="67" height="3"/>
                                                     <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="6" id="u30-md-H4M"/>
+                                                        <constraint firstAttribute="height" constant="3" id="u30-md-H4M"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1504,10 +1504,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-hy-eU3">
-                                                    <rect key="frame" x="148" y="110" width="80" height="6"/>
+                                                    <rect key="frame" x="148" y="111" width="80" height="3"/>
                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="6" id="f8i-qg-6dq"/>
+                                                        <constraint firstAttribute="height" constant="3" id="f8i-qg-6dq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1528,10 +1528,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-68-Lbo">
-                                                    <rect key="frame" x="258" y="110" width="66" height="6"/>
+                                                    <rect key="frame" x="258" y="111" width="66" height="3"/>
                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="6" id="pRY-Ph-nNh"/>
+                                                        <constraint firstAttribute="height" constant="3" id="pRY-Ph-nNh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1594,6 +1594,13 @@ project is waiting to be initiated.</string>
                                                     <color key="textColor" red="0.50980392156862742" green="0.62745098039215685" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-v4-jV6">
+                                                    <rect key="frame" x="0.0" y="159" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="O30-f9-JC6"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KJ0-TW-LVa" firstAttribute="centerY" secondItem="qLN-h9-vf7" secondAttribute="centerY" id="1if-0Y-rYb"/>
@@ -1617,16 +1624,19 @@ project is waiting to be initiated.</string>
                                                 <constraint firstItem="8fG-wd-hmV" firstAttribute="centerY" secondItem="AHg-QW-KSa" secondAttribute="centerY" constant="-7.75" id="Zhs-Vv-tze"/>
                                                 <constraint firstItem="aje-m9-sYD" firstAttribute="leading" secondItem="bCq-hy-eU3" secondAttribute="trailing" id="ajq-c4-rOj"/>
                                                 <constraint firstItem="aje-m9-sYD" firstAttribute="top" secondItem="8fG-wd-hmV" secondAttribute="bottom" constant="13" id="cAm-dr-C8H"/>
+                                                <constraint firstItem="Cvd-v4-jV6" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" id="fa1-uW-qgf"/>
                                                 <constraint firstItem="KJ0-TW-LVa" firstAttribute="leading" secondItem="aje-m9-sYD" secondAttribute="trailing" constant="-55" id="fuy-iz-PqC"/>
                                                 <constraint firstItem="tdc-TU-g0q" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" constant="21" id="igp-23-0du"/>
                                                 <constraint firstItem="Ziz-Z9-GZz" firstAttribute="top" secondItem="AHg-QW-KSa" secondAttribute="top" constant="17" id="isN-zw-LkE"/>
                                                 <constraint firstAttribute="trailing" secondItem="qLN-h9-vf7" secondAttribute="trailing" constant="20" id="j2A-yV-NRN"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cvd-v4-jV6" secondAttribute="bottom" id="ldp-T8-mBj"/>
                                                 <constraint firstItem="uPj-68-Lbo" firstAttribute="leading" secondItem="aje-m9-sYD" secondAttribute="trailing" id="mhs-eV-viV"/>
                                                 <constraint firstItem="qLN-h9-vf7" firstAttribute="top" secondItem="ILL-WH-iK5" secondAttribute="bottom" constant="2" id="pAQ-nP-2Av"/>
                                                 <constraint firstItem="lPM-1P-mDN" firstAttribute="leading" secondItem="tdc-TU-g0q" secondAttribute="trailing" id="q1r-1t-kW4"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ziz-Z9-GZz" secondAttribute="trailing" constant="15" id="sKY-tE-Jeu"/>
                                                 <constraint firstItem="gRZ-uO-jrA" firstAttribute="leading" secondItem="TLy-Pd-ag2" secondAttribute="trailing" constant="8" id="tAh-IP-aqD"/>
                                                 <constraint firstItem="FL1-Cm-ggY" firstAttribute="top" secondItem="8fG-wd-hmV" secondAttribute="bottom" constant="13" id="v0I-NW-NRX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cvd-v4-jV6" secondAttribute="trailing" id="vZv-FR-fcc"/>
                                                 <constraint firstItem="tdc-TU-g0q" firstAttribute="centerY" secondItem="FL1-Cm-ggY" secondAttribute="centerY" id="x7b-Ct-WUY"/>
                                                 <constraint firstItem="ILL-WH-iK5" firstAttribute="centerY" secondItem="aje-m9-sYD" secondAttribute="centerY" id="xrH-VG-f7N"/>
                                                 <constraint firstItem="6KV-gq-dEi" firstAttribute="centerY" secondItem="8fG-wd-hmV" secondAttribute="centerY" constant="-0.5" id="yx8-MA-3s2"/>
@@ -1654,8 +1664,8 @@ project is waiting to be initiated.</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHW-Qp-ub1">
-                                <rect key="frame" x="20" y="168" width="335" height="2"/>
-                                <color key="backgroundColor" red="1" green="0.077250666859999997" blue="0.26599716029999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="168" width="375" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Yj8-GD-nwV"/>
                                 </constraints>
@@ -1667,7 +1677,7 @@ project is waiting to be initiated.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FeS-2B-lpt" firstAttribute="centerY" secondItem="cR3-TR-oxG" secondAttribute="centerY" id="0Lq-kl-Pzd"/>
-                            <constraint firstAttribute="trailing" secondItem="pHW-Qp-ub1" secondAttribute="trailing" constant="20" id="0jQ-JN-HpF"/>
+                            <constraint firstAttribute="trailing" secondItem="pHW-Qp-ub1" secondAttribute="trailing" id="0jQ-JN-HpF"/>
                             <constraint firstAttribute="trailing" secondItem="7ez-ox-cEG" secondAttribute="trailing" id="2Vt-gu-2i2"/>
                             <constraint firstItem="ulD-KX-zhv" firstAttribute="top" secondItem="mF8-Tu-rsj" secondAttribute="bottom" constant="10" id="2vD-pN-Ovr"/>
                             <constraint firstItem="3Vr-Fq-3At" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" constant="20" id="3Cg-Og-EYT"/>
@@ -1698,7 +1708,7 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="2rQ-Tn-QpA" firstAttribute="centerY" secondItem="STz-ku-PuU" secondAttribute="centerY" id="gcd-IB-UBZ"/>
                             <constraint firstItem="cR3-TR-oxG" firstAttribute="centerX" secondItem="4uC-RV-xUJ" secondAttribute="trailing" multiplier="0.646667" id="kyM-Lr-Ioz"/>
                             <constraint firstItem="STz-ku-PuU" firstAttribute="leading" secondItem="gz1-7f-oCA" secondAttribute="trailing" id="l1P-44-mRQ"/>
-                            <constraint firstItem="pHW-Qp-ub1" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" constant="20" id="lUk-Kd-W5s"/>
+                            <constraint firstItem="pHW-Qp-ub1" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" id="lUk-Kd-W5s"/>
                             <constraint firstItem="Z3T-3Q-QJl" firstAttribute="leading" secondItem="169-Wv-4cm" secondAttribute="trailing" id="m0E-Lm-Q2i"/>
                             <constraint firstItem="ulD-KX-zhv" firstAttribute="leading" secondItem="ptV-kp-qMI" secondAttribute="trailing" id="mPj-0d-NyJ"/>
                             <constraint firstItem="7ez-ox-cEG" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" id="qSE-AD-4EN"/>
@@ -2332,6 +2342,9 @@ project is waiting to be initiated.</string>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="YkA-mg-4Mj" id="cFk-1l-CqQ"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2428,6 +2441,9 @@ project is waiting to be initiated.</string>
                                                         <rect key="frame" x="5" y="0.0" width="350" height="35"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="YkA-mg-4Mj" id="9s7-Eg-DFg"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
