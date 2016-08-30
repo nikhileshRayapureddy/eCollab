@@ -3906,7 +3906,9 @@ project is waiting to be initiated.</string>
                         <outlet property="lblRequestTitle" destination="Nh7-9p-Ssv" id="kDJ-hW-5vY"/>
                         <outlet property="scrollView" destination="BcJ-tC-Sg1" id="afy-LA-pQN"/>
                         <outlet property="viewAssays" destination="XHc-eu-1qZ" id="Q6V-UB-JVP"/>
+                        <outlet property="viewAssaysHeightConstraint" destination="Fkj-Hn-Axv" id="Ugm-KF-EeC"/>
                         <outlet property="viewSubArea" destination="DgQ-5L-Sbh" id="U98-zN-xcr"/>
+                        <outlet property="viewSubAreaHeightConstraint" destination="59E-hx-Ibb" id="nGR-6w-wpn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSY-JF-36j" userLabel="First Responder" sceneMemberID="firstResponder"/>
