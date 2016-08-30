@@ -273,6 +273,7 @@
         cell.StatusStageFourLabel.text = [NSMutableString stringWithFormat:@"SHIPPED"];
         
     }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
         
     }
@@ -338,7 +339,7 @@
     _StatusLabelFour.text = @"ACCEPTANCE";
 
     [RequestOrProjectTableView reloadData];
-    [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.jpg"] forState:UIControlStateNormal];
+    [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.png"] forState:UIControlStateNormal];
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
 }
 

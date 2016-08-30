@@ -211,6 +211,7 @@
 		A7F9CA7C1D6C335B00A2928F /* Privacy&Terms_Sel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA781D6C335B00A2928F /* Privacy&Terms_Sel.png */; };
 		A7F9CA8A1D6C514100A2928F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F9CA881D6C514100A2928F /* ZoomViewController.m */; };
 		A7F9CA8B1D6C514100A2928F /* ZoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA891D6C514100A2928F /* ZoomViewController.xib */; };
+		CC5AC52B1D752CCF0084F622 /* requestquote.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5AC52A1D752CCF0084F622 /* requestquote.png */; };
 		CCB3E2011D6D41B9004AB04A /* BiologyDropDownListCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB3E2001D6D41B9004AB04A /* BiologyDropDownListCustomCell.m */; };
 		CCE62DD41D751B3500D937FA /* BiologyDropDownListCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE62DD31D751B3500D937FA /* BiologyDropDownListCustomCell.xib */; };
 		CCE7904A1D65FCD8007A5623 /* btnGreyGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE790481D65FCD8007A5623 /* btnGreyGradient.png */; };
@@ -499,6 +500,7 @@
 		A7F9CA871D6C514100A2928F /* ZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		A7F9CA881D6C514100A2928F /* ZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
 		A7F9CA891D6C514100A2928F /* ZoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoomViewController.xib; sourceTree = "<group>"; };
+		CC5AC52A1D752CCF0084F622 /* requestquote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = requestquote.png; path = Ecollab/requestquote.png; sourceTree = "<group>"; };
 		CCB3E1FF1D6D41B9004AB04A /* BiologyDropDownListCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiologyDropDownListCustomCell.h; sourceTree = "<group>"; };
 		CCB3E2001D6D41B9004AB04A /* BiologyDropDownListCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiologyDropDownListCustomCell.m; sourceTree = "<group>"; };
 		CCE62DD31D751B3500D937FA /* BiologyDropDownListCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiologyDropDownListCustomCell.xib; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 		9E2547541D32677A008A96C9 = {
 			isa = PBXGroup;
 			children = (
+				CC5AC52A1D752CCF0084F622 /* requestquote.png */,
 				CCEAC87D1D69B7040047AD1E /* area_img.png */,
 				CCEAC87E1D69B7040047AD1E /* assay_img.png */,
 				CCEAC87F1D69B7040047AD1E /* service_img.png */,
@@ -1284,6 +1287,7 @@
 				9EBEFF651D608DE500271E18 /* logo.png in Resources */,
 				9EBD33761D5F434300DF2760 /* dash-2.png in Resources */,
 				CCEAC87C1D6975300047AD1E /* RejectedReasonsCustomView.xib in Resources */,
+				CC5AC52B1D752CCF0084F622 /* requestquote.png in Resources */,
 				9EBEFF691D608F0A00271E18 /* chemistrysaved.png in Resources */,
 				A76EF42B1D689ED00009FD34 /* Rate_Unsel.png in Resources */,
 				9EC27B211D621AF3005C4CA6 /* cmnts_new.png in Resources */,
