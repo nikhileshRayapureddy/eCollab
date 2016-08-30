@@ -7,6 +7,7 @@
 //
 
 #import "BiologyDropDownListView.h"
+#import "BiologyDropDownListCustomCell.h"
 
 @implementation BiologyDropDownListView
 @synthesize arrTitles;
@@ -27,6 +28,7 @@
     return self;
 }
 
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -45,6 +47,9 @@
     {
         _btnDone.hidden = YES;
     }
+    
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)]];
+
     [self.tableView reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,13 +61,13 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"REJECTREASONS";
-    
+    static NSString *CellIdentifier = @"BIOLOGYCELL";
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-   
+
     NSDictionary *dict = [arrTitles objectAtIndex:indexPath.row];
     switch (tableViewTag) {
         case 10:
@@ -84,6 +89,7 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 
             }
+            cell.accessoryView.backgroundColor = [UIColor clearColor];
             cell.textLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Description"]];
             
             break;

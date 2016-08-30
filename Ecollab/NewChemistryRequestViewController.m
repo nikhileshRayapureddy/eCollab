@@ -443,19 +443,26 @@
 
 - (void)IMGSubmitAction:(id)sender {
     
-    NSMutableDictionary *tempDic = [collectionImageDataArray objectAtIndex:selCell];
-    base64StringForReq = [NSMutableString stringWithFormat:@"%@",[tempDic objectForKey:@"Base64Image"]];
-    ImageData = [[NSData alloc]initWithBase64EncodedString:base64StringForReq options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    [self.imgVwReferenceComp setImage:[UIImage imageWithData:ImageData]];
-    b64EncStr = nil;
-    ProductID = [tempDic objectForKey:@"RID"];//RID
-
-    b64EncStr = base64StringForReq;
-    ProductType =[NSMutableString stringWithFormat:@"2"];
-    [vwCompundDBCustomView removeFromSuperview];
-    ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
-    TakeOrChoosePhotoBtnOutlet.selected = NO;
-    _imgVwTakeOrChoose.image = [UIImage imageNamed:@"chemistryserveimg.png"];
+    if(selCell == -1)
+    {
+        
+    }
+    else
+    {
+        NSMutableDictionary *tempDic = [collectionImageDataArray objectAtIndex:selCell];
+        base64StringForReq = [NSMutableString stringWithFormat:@"%@",[tempDic objectForKey:@"Base64Image"]];
+        ImageData = [[NSData alloc]initWithBase64EncodedString:base64StringForReq options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        [self.imgVwReferenceComp setImage:[UIImage imageWithData:ImageData]];
+        b64EncStr = nil;
+        ProductID = [tempDic objectForKey:@"RID"];//RID
+        
+        b64EncStr = base64StringForReq;
+        ProductType =[NSMutableString stringWithFormat:@"2"];
+        [vwCompundDBCustomView removeFromSuperview];
+        ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
+        TakeOrChoosePhotoBtnOutlet.selected = NO;
+        _imgVwTakeOrChoose.image = [UIImage imageNamed:@"chemistryserveimg.png"];
+    }
 
 
 }
