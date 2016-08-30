@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
 @interface ChangePasswordViewController : UIViewController<ServiceRequesterProtocol>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrlVwChangePwd;
+
 @property (strong, nonatomic) IBOutlet UITextField *oldPassword;
 @property (strong, nonatomic) IBOutlet UITextField *NewPassword;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPassword;

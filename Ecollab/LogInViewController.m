@@ -27,8 +27,8 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    EmailTextField.text = @"p.venkat.it@gmail.com";//@"";
-    PasswordTextField.text = @"Gvkbio@1";//@"";
+    EmailTextField.text = @"";//@"p.venkat.it@gmail.com";
+    PasswordTextField.text =@"";//@"Gvkbio@1";
     
 }
 - (void)didReceiveMemoryWarning {

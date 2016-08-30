@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *AddressTwoLabel;
 @property (strong, nonatomic) IBOutlet UILabel *PinCodeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *EditAddressBtnOutlet;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSep;
 
 @end
