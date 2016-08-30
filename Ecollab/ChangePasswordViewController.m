@@ -155,7 +155,7 @@
     }
     else if (![NewPassword.text isEqualToString:confirmPassword.text])
     {
-        [self showAlertWithMessage:@"Old Password and new password doesn't match."];
+        [self showAlertWithMessage:@"Old Password and new password should not be same."];
     }
     else{
         [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];

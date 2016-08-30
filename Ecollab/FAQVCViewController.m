@@ -44,7 +44,7 @@
     
     
     
-    orderingAndTrackinDataAnsArray =[[NSMutableArray alloc] initWithObjects:@"To request a quote click ‘Request/ Project Tracker’ from home page, Click on Chemistry/Biology, fill in and submit the details.",@"Chemistry Process\n\n Request – Quotation – Order Placement – Project Initiation – Synthesis – Delivery - Payment\n\nBiology Process \n\nRequest – Information Sharing – Discussion – Project Initiation",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Chemistry’ and choose various options\n*Upload a picture of the molecular structure or,\n*Select a molecular structure from our ‘Reference Database’ or,\n*Provide a ‘CAS’ number or the ‘MDL’ number of the compound and \n*One of the above option is mandatory and more than one is accepted for accuracy.\n\nFill and submit other details. Some details like Purity, Chirality, and UOM are mandatory while others are recommended for accuracy and quick response. ",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Biology’ and then select the Service, Area, Sub-Area, and Assay/Model combination and submit the request. We will facilitate the necessary information and initiate a discussion.",@"Only one image can be uploaded. This image can either be clicked from a mobile camera, selected from gallery or chosen from the reference compound database.",@"We have listed all kinds of services by combining values from dropdown lists. You can select any service offered by us and initiate a discussion.",@"Yes, the additional information can be entered in the text space provided for remarks.",@"Yes, our executive will accept the requests on both phone and email. If you want this information to be entered in the system, an executive can do that on your behalf.",@"The request status can be tracked from ‘Request/Project Tracker’. The request will appear under the ‘Requested Quotes’ tab until you have not confirmed your order. Once the order is confirmed the request will also be available under ‘On Going Projects’ tab. We have included exhaustive status messages to keep you updated with the progress of your request.",@"Yes. We continuously update you through alerts whenever an action is taken on your request or it moves in the project lifecycle.",@"A request cannot be edited after submission. You can however send a mail to mobilesupport@gvkbio.com or call us directly to request any changes.",@"No. You can always save your request any number of times by using ‘Save for later’ option and can resume from where you left off by choosing the request from ‘Saved Requests’. Once you are satisfied with the details, you can submit the request.",@"You can either place your order by clicking on the alert sent to you or by clicking the request status ‘Acceptance’ to view the quotation details and then by clicking the ‘Place Order’ button.",@"You can go to the ‘Request/Project tracker’ to check the progress of your request. The tool shows the status of your projects by default. You need to choose the ‘Requested Quotes’ tab to locate your new requests. Once your order is confirmed, these requests are converted to projects and their status can be tracked through ‘On going Projects’ tab.", nil];
+    orderingAndTrackinDataAnsArray =[[NSMutableArray alloc] initWithObjects:@"To request a quote click ‘Request/ Project Tracker’ from home page, Click on Chemistry/Biology, fill in and submit the details.",@"Chemistry Process\n\n Request – Quotation – Order Placement – Project Initiation – Synthesis – Delivery - Payment\n\nBiology Process \n\nRequest – Information Sharing – Discussion – Project Initiation",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Chemistry’ and choose various options\n.Upload a picture of the molecular structure or,\n.Select a molecular structure from our ‘Reference Database’ or,\n.Provide a ‘CAS’ number or the ‘MDL’ number of the compound and \n*One of the above option is mandatory and more than one is accepted for accuracy.\n\nFill and submit other details. Some details like Purity, Chirality, and UOM are mandatory while others are recommended for accuracy and quick response. ",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Biology’ and then select the Service, Area, Sub-Area, and Assay/Model combination and submit the request. We will facilitate the necessary information and initiate a discussion.",@"Only one image can be uploaded. This image can either be clicked from a mobile camera, selected from gallery or chosen from the reference compound database.",@"We have listed all kinds of services by combining values from dropdown lists. You can select any service offered by us and initiate a discussion.",@"Yes, the additional information can be entered in the text space provided for remarks.",@"Yes, our executive will accept the requests on both phone and email. If you want this information to be entered in the system, an executive can do that on your behalf.",@"The request status can be tracked from ‘Request/Project Tracker’. The request will appear under the ‘Requested Quotes’ tab until you have not confirmed your order. Once the order is confirmed the request will also be available under ‘On Going Projects’ tab. We have included exhaustive status messages to keep you updated with the progress of your request.",@"Yes. We continuously update you through alerts whenever an action is taken on your request or it moves in the project lifecycle.",@"A request cannot be edited after submission. You can however send a mail to mobilesupport@gvkbio.com or call us directly to request any changes.",@"No. You can always save your request any number of times by using ‘Save for later’ option and can resume from where you left off by choosing the request from ‘Saved Requests’. Once you are satisfied with the details, you can submit the request.",@"You can either place your order by clicking on the alert sent to you or by clicking the request status ‘Acceptance’ to view the quotation details and then by clicking the ‘Place Order’ button.",@"You can go to the ‘Request/Project tracker’ to check the progress of your request. The tool shows the status of your projects by default. You need to choose the ‘Requested Quotes’ tab to locate your new requests. Once your order is confirmed, these requests are converted to projects and their status can be tracked through ‘On going Projects’ tab.", nil];
     
     
     
@@ -260,6 +260,22 @@
             }
 
         }
+        else if (indexPath.section == 1)
+        {
+            if (indexPath.row == 0)
+            {
+                return 52 + ceilf(rect.size.height) + 35;
+            }
+            else if (indexPath.row == 2)
+            {
+                return 52 + ceilf(rect.size.height) + 75;
+            }
+            else
+            {
+                return 52 + ceilf(rect.size.height) + 25;
+            }
+            
+        }
         else
         {
             if (indexPath.row == 0)
@@ -319,9 +335,14 @@
         {
             [cell.btnDetail addTarget:self action:@selector(btnDetailClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else
+        else if (indexPath.row == 2)
         {
-            
+            NSMutableAttributedString *longString = [self setFontForTitlesForText:[orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row]];
+            [longString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:25] range:NSMakeRange(97,1)];
+            [longString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:25] range:NSMakeRange(146,1)];
+            [longString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:25] range:NSMakeRange(210,1)];
+            [cell.btnDetail setAttributedTitle:longString forState:UIControlStateNormal];
+
         }
     }
     else if (indexPath.section == 2)
@@ -431,7 +452,7 @@
     for (NSString *word in blueSmallWords) {
         NSRange range=[text rangeOfString:word];
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:19.0/255.0 green:157.0/255.0 blue:255.0/255.0 alpha:1.0] range:range];
-        [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:8] range:range];
+        [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:9] range:range];
         [string addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
         
     }
