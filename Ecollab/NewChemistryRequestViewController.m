@@ -133,8 +133,8 @@
     [dateFormat setDateFormat:@"MM-dd-yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
     [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
-    CharitybtnOutlet.text = @"1";
-    QuantityTextField.text = @"1";
+//    CharitybtnOutlet.text = @"1";
+//    QuantityTextField.text = @"1";
     [self designTabBar];
     [self setSelected:0];
     RemarksTextField.placeholder = @"Remarks";
@@ -691,6 +691,22 @@ else
     return YES;
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == QuantityTextField || textField == CharitybtnOutlet)
+    {
+        if(range.length + range.location > textField.text.length)
+        {
+            return NO;
+        }
+        
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return newLength <= 10;
+    }
+    return YES;
+}
+
+
 -(void)showCompoundDBCustomView
 {
     
@@ -917,46 +933,46 @@ else
 //        [self showAlertWithMessage:@"Please select expected delivery date."];
 //        return false;
 //    }
-//    else if ([QuantityTextField.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"Quantity should not be empty."];
-//        return false;
-//    }
-//    else if ([QuantityTextField.text isEqualToString:@"0"])
-//    {
-//        [self showAlertWithMessage:@"Quantity should not be 0"];
-//        return false;
-//    }
-//    else if ([QuantityTextField.text isEqualToString:@"."])
-//    {
-//        [self showAlertWithMessage:@"Please enter quantity"];
-//        return false;
-//    }
-//    else if (QuantityTextField.text.length > 10)
-//    {
-//        [self showAlertWithMessage:@"Quantity must be less than 10 digits."];
-//        return false;
-//    }
-//    else if ([CharitybtnOutlet.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"Chirality should not be empty."];
-//        return false;
-//    }
-//    else if ([CharitybtnOutlet.text isEqualToString:@"."])
-//    {
-//        [self showAlertWithMessage:@"Please enter chirality."];
-//        return false;
-//    }
-//    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
-//    {
-//        [self showAlertWithMessage:@"Chirality should not be 0"];
-//        return false;
-//    }
-//    else if ([CharitybtnOutlet.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"Remarks should not be empty."];
-//        return false;
-//   }
+    else if ([QuantityTextField.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Quantity should not be empty."];
+        return false;
+    }
+    else if ([QuantityTextField.text isEqualToString:@"0"])
+    {
+        [self showAlertWithMessage:@"Quantity should not be 0"];
+        return false;
+    }
+    else if ([QuantityTextField.text isEqualToString:@"."])
+    {
+        [self showAlertWithMessage:@"Please enter quantity"];
+        return false;
+    }
+    else if (QuantityTextField.text.length > 10)
+    {
+        [self showAlertWithMessage:@"Quantity must be less than 10 digits."];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@""])
+    {
+        [self showAlertWithMessage:@"Chirality should not be empty."];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@"."])
+    {
+        [self showAlertWithMessage:@"Please enter chirality."];
+        return false;
+    }
+    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
+    {
+        [self showAlertWithMessage:@"Chirality should not be 0"];
+        return false;
+    }
+    else if (CharitybtnOutlet.text.length > 10)
+    {
+        [self showAlertWithMessage:@"Chirality must be less than 10 digits."];
+        return false;
+   }
 
     return true;
 }

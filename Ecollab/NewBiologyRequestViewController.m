@@ -629,11 +629,11 @@
         modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
         if(modelArray.count != 0)
         {
-            NSDictionary *dict= [modelArray objectAtIndex:0];
-            [ModelsBtnOutlet setTitle:[dict valueForKey:@"Description"] forState:UIControlStateNormal];
-            strMultipleModelIdIDFinal = @"";
-            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-
+//            NSDictionary *dict= [modelArray objectAtIndex:0];
+//            [ModelsBtnOutlet setTitle:[dict valueForKey:@"Description"] forState:UIControlStateNormal];
+//            strMultipleModelIdIDFinal = @"";
+//            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+//
             [self showViewAssays:YES];
         }
         else
