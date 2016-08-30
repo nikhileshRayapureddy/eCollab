@@ -561,7 +561,7 @@ if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
 else
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"Chemistry request saveed successfully."
+                                                                   message:@"Chemistry request saved successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault

@@ -92,10 +92,10 @@
     NSDictionary *dictAddress = [arrAddresses objectAtIndex:indexPath.row];
     // Set the data for this cell:
     
-        cell.NameLabel.text = [dictAddress valueForKey:@"Name"];
-        cell.AddressLabel.text = [dictAddress valueForKey:@"Address"];
-        cell.AddressTwoLabel.text = [NSString stringWithFormat:@"%@ %@",[dictAddress valueForKey:@"City"],[dictAddress valueForKey:@"State"]];
-        cell.PinCodeLabel.text = [NSString stringWithFormat:@"%@ %@ %@",[dictAddress valueForKey:@"Pincode"],[dictAddress valueForKey:@"Country"],[dictAddress valueForKey:@"MobileNumber"]];
+    cell.NameLabel.text = [dictAddress valueForKey:@"Name"];
+    cell.AddressLabel.text = [dictAddress valueForKey:@"Address"];
+    cell.AddressTwoLabel.text = [NSString stringWithFormat:@"%@ %@",[dictAddress valueForKey:@"City"],[dictAddress valueForKey:@"State"]];
+    cell.PinCodeLabel.text = [NSString stringWithFormat:@"%@ %@ %@",[dictAddress valueForKey:@"Pincode"],[dictAddress valueForKey:@"Country"],[dictAddress valueForKey:@"MobileNumber"]];
     cell.EditAddressBtnOutlet.tag = 100+indexPath.row;
     [cell.EditAddressBtnOutlet addTarget:self action:@selector(btnEditClicked:) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
@@ -111,7 +111,15 @@
     [cell addGestureRecognizer:lpgr];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if (indexPath.row == arrAddresses.count - 1)
+    {
+        cell.imgSep.hidden = YES;
+    }
+    else
+    {
+        cell.imgSep.hidden = NO;
+        
+    }
     return cell;
 }
 
