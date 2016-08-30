@@ -39,6 +39,20 @@
     self.LabelFour.text = [DataDict objectForKey:@"Area"];
     self.LabelSix.text = [DataDict objectForKey:@"SubArea"];
     self.LabelEight.text = [DataDict objectForKey:@"MultipleModelValues"];
+    
+    self.LabelEight.adjustsFontSizeToFitWidth = YES;
+    self.LabelSix.adjustsFontSizeToFitWidth = YES;
+    self.LabelFour.adjustsFontSizeToFitWidth = YES;
+    self.labelTwo.adjustsFontSizeToFitWidth = YES;
+    
+    if(!self.LabelEight.text.length)
+    {
+        self.viewAssays.hidden = YES;
+    }
+    if(!self.LabelSix.text.length)
+    {
+        self.viewSubArea.hidden = YES;
+    }
     if(placeOrder.intValue == 0)
     {
         _DiscussBtnOutlet.hidden = NO;

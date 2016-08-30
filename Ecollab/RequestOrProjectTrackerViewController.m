@@ -22,14 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    TableFlag = 1;
     [RequestOrProjectTableView setDelegate:self];
     [RequestOrProjectTableView setDataSource:self];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];//requestquote.jpg
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];//ongoingprojexts.jpg
     [self designNavBar];
     [self designTabBar];
-    [self setSelected:2];
 
 }
 
@@ -37,7 +35,8 @@
 {
     [super viewWillAppear:animated];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-    
+    TableFlag = 1;
+    [self setSelected:2];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestFopGetProjectTrackerDetailsService];
@@ -286,7 +285,7 @@
     }
     else
     {
-
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSMutableDictionary *inputDick;
     if (TableFlag == 0) {

@@ -34,6 +34,12 @@
     LabelFour.adjustsFontSizeToFitWidth = YES;
     LabelFive.adjustsFontSizeToFitWidth = YES;
 }
+
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    StatusScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 625);
+}
 -(void)dataDisplaying{
     LabelOne.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];
 //    labelTwo.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Quantity"]];

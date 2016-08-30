@@ -127,6 +127,9 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"CHEMISTRY REQUEST DETAILS"
                                                                               attributes:underlineAttribute];
+        
+        SubmitBtnOutlet.hidden = YES;
+        SaveForLaterBtnOutlet.hidden = YES;
     }
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -561,7 +564,7 @@ if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
 else
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"Chemistry request saveed successfully."
+                                                                   message:@"Chemistry request saved successfully."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
@@ -920,7 +923,7 @@ else
 {
     if ([CASTextField.text isEqualToString:@""] && [MDLTextField.text isEqualToString:@""] && b64EncStr == nil)
     {
-        [self showAlertWithMessage:@"Provide one or more input(s) from the 'Upload structure Image', 'Choose from reference compound database', 'CAS ID' or 'MDL ID'"];
+        [self showAlertWithMessage:@"Provide one or more input(s) from the 'Upload structure Image', 'Choose from reference compound database', 'CAS ID' or 'MDL ID'."];
         return false;
    }
 //    else if ([MDLTextField.text isEqualToString:@""])
@@ -935,17 +938,17 @@ else
 //    }
     else if ([QuantityTextField.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Quantity should not be empty."];
+        [self showAlertWithMessage:@"Please enter quantity."];
         return false;
     }
     else if ([QuantityTextField.text isEqualToString:@"0"])
     {
-        [self showAlertWithMessage:@"Quantity should not be 0"];
+        [self showAlertWithMessage:@"Quantity should not be 0."];
         return false;
     }
     else if ([QuantityTextField.text isEqualToString:@"."])
     {
-        [self showAlertWithMessage:@"Please enter quantity"];
+        [self showAlertWithMessage:@"Please enter quantity."];
         return false;
     }
     else if (QuantityTextField.text.length > 10)
@@ -955,7 +958,7 @@ else
     }
     else if ([CharitybtnOutlet.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Chirality should not be empty."];
+        [self showAlertWithMessage:@"Please enter chirality."];
         return false;
     }
     else if ([CharitybtnOutlet.text isEqualToString:@"."])
@@ -965,7 +968,7 @@ else
     }
     else if ([CharitybtnOutlet.text isEqualToString:@"0"])
     {
-        [self showAlertWithMessage:@"Chirality should not be 0"];
+        [self showAlertWithMessage:@"Chirality should not be 0."];
         return false;
     }
     else if (CharitybtnOutlet.text.length > 10)
