@@ -94,6 +94,7 @@
     ProductType = [NSMutableString stringWithFormat:@"0"];
     ProductID = [NSMutableString stringWithFormat:@"0"];
     
+    
     QuantityID= @"1";
     
     UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -133,7 +134,7 @@
     }
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"MM-dd-yyyy"];
+    [dateFormat setDateFormat:@"MM/dd/yyyy"];
     date = [dateFormat stringFromDate:[NSDate date]];
     [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 //    CharitybtnOutlet.text = @"1";
@@ -487,7 +488,8 @@
 
 - (IBAction)SaveForLaterBtnAction:(id)sender {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-        [dict setValue:[[DetailsManager sharedManager]rID] forKey:@"UID"];
+    NSString *UID = [[DetailsManager sharedManager]rID];
+        [dict setObject:UID forKey:@"UID"];
         [dict setValue:ProductType forKey:@"ProductType"];
         if ([ProductType isEqualToString:@"1"])
         {
@@ -500,9 +502,10 @@
         [dict setValue:ProductID forKey:@"ProductID"];
         [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
         [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
-        [dict setValue:QuantityTextField.text forKey:@"Quantity"];
+    [dict setValue:QuantityTextField.text.length?QuantityTextField.text:@"0" forKey:@"Quantity"];
         [dict setValue:QuantityID forKey:@"QuantityID"];
         [dict setValue:Purity forKey:@"Purity"];
+
         [dict setValue:PurityID forKey:@"PurityID"];
         [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
         [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
@@ -913,7 +916,7 @@ else
     PuritybtnOutlet.userInteractionEnabled = NO;
     TakeOrChoosePhotoBtnOutlet.hidden = YES;
     ChoseFromReferenceCompounDBBtnOutlet.hidden = YES;
-
+    RemarksTextField.userInteractionEnabled = NO;
     SubmitBtnOutlet.hidden = YES;
     SaveForLaterBtnOutlet.hidden = YES;
     

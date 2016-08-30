@@ -207,12 +207,23 @@
 
     cell.StatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ReqStatus"]];
     cell.StatusLabel.adjustsFontSizeToFitWidth = YES;
-    cell.StatusTimeLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"CreatedDate"]];
+    cell.StatusTimeLabel.text = [NSMutableString stringWithFormat:@"%@",[self convertDateFormat:[tempDict objectForKey:@"CreatedDate"]]];
     if (TableDataArray.count-1 == indexPath.row) {
         [cell.StatusProcessIndecatorLabel setHidden:YES];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(NSString*)convertDateFormat:(NSString*)strDate
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    NSDate *expdate = [df dateFromString:strDate];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MMM/yyyy hh:mm:ss a"];
+    NSLog(@"%@",[dateFormat stringFromDate:expdate]);
+    return [dateFormat stringFromDate:expdate];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
