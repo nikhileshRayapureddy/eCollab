@@ -946,7 +946,7 @@ else
     }
     else if ([QuantityTextField.text isEqualToString:@"0"])
     {
-        [self showAlertWithMessage:@"Quantity should not be 0."];
+        [self showAlertWithMessage:@"Please enter quantity."];
         return false;
     }
     else if ([QuantityTextField.text isEqualToString:@"."])
