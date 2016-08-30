@@ -60,7 +60,7 @@
     {
         // show some message unable to get usre details
     }else{
-        _lblUserName.text = [dic objectForKey:@"FirstName"];
+        _lblUserName.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"FirstName"],[dic objectForKey:@"LastName"]];
         _lblEmail.text = [dic objectForKey:@"EmailID"];
         _txtFldFirstName.text = [dic objectForKey:@"FirstName"];
         _txtFldLastName.text =[dic objectForKey:@"LastName"];
