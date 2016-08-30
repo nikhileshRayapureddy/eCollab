@@ -9,7 +9,9 @@
 #import "AddNewShippingAddressViewController.h"
 
 @interface AddNewShippingAddressViewController ()<UITextFieldDelegate>
-
+{
+    BOOL isValidPincode;
+}
 @end
 
 @implementation AddNewShippingAddressViewController
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    isValidPincode = NO;
     if (_isEdit)
     {
         [self bindData];
@@ -63,6 +65,7 @@
     Country.text = [self.dictAddress valueForKey:@"Country"];
     Phone.text = [self.dictAddress valueForKey:@"MobileNumber"];
     Landmark.text = [self.dictAddress valueForKey:@"LandMark"];
+    [self.SubmitOutlet setTitle:@"UPDATE" forState:UIControlStateNormal];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -96,6 +99,10 @@
     else if (Pincode.text.length < 6 || Pincode.text.length > 6)
     {
         [self showAlertWithMessage:@"Length of pin code must equal to 6 digits."];
+    }
+    else if (!isValidPincode)
+    {
+        [self showAlertWithMessage:@"Please enter valid pin code."];
     }
     else if(Address.text.length == 0)
     {
@@ -215,6 +222,15 @@
 {
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     NSArray *arr = [aregistrationDict objectForKey:@"Data"];
+    if (arr.count == 0)
+    {
+        isValidPincode = NO;
+    }
+    else
+    {
+        isValidPincode = YES;
+
+    }
     NSDictionary *dictAddress = [arr lastObject];
     City.text = [dictAddress objectForKey:@"Address"];
     State.text = [dictAddress objectForKey:@"State"];
