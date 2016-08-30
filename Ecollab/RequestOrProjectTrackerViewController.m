@@ -130,7 +130,7 @@
         if ([[tempDict objectForKey:@"ISRegretted"] intValue] == 1) {
             cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RegrettedStatus"]];
         }else if ([[tempDict objectForKey:@"ISRejected"] intValue] == 1) {
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RejectComments"]];
+            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RejectedStatus"]];
         }else{
             cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"QuoteStatusDesc"]];
         }

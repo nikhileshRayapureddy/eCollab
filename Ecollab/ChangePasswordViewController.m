@@ -78,7 +78,11 @@
     self.navigationItem.rightBarButtonItem = rightBtn;
     
 }
-
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrlVwChangePwd.contentSize = CGSizeMake(self.scrlVwChangePwd.frame.size.width, 500);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
