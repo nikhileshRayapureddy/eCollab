@@ -71,19 +71,36 @@
 -(void)dataDisplaying{
     LabelOne.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];
 //    labelTwo.text = [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Quantity"]];
-    
-    self.lblQuantityValue.text = [NSMutableString stringWithFormat:@"%@ %@",[LocalDataDictionary objectForKey:@"Quantity"],[LocalDataDictionary objectForKey:@"QuantityValue"]];
+    NSString *strQuantityUnit = @"";
+    if([[LocalDataDictionary objectForKey:@"QuantityID"] integerValue] == 0 || [[LocalDataDictionary objectForKey:@"QuantityID"] integerValue] == 1)
+    {
+        strQuantityUnit = @"mg";
+    }
+    else if([[LocalDataDictionary objectForKey:@"QuantityID"] integerValue] == 2)
+    {
+        strQuantityUnit = @"g";
+    }
+    else if([[LocalDataDictionary objectForKey:@"QuantityID"] integerValue] == 3)
+    {
+        strQuantityUnit = @"kg";
+    }
+        
+    self.lblQuantityValue.text = [NSMutableString stringWithFormat:@"%@ %@",[LocalDataDictionary objectForKey:@"Quantity"],strQuantityUnit];
     LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"PurityValue"]];
 
     LabelSix.text= [NSMutableString stringWithFormat:@"REMARKS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
     Labelseven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
     LabelEight.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"jonuralref"]];
+    if(!LabelEight.text.length)
+    {
+        LabelEight.text = @"JOURNAL REFERENCE";
+    }
     Labelnine.text= [NSMutableString stringWithFormat:@"PRICE(%@)",[LocalDataDictionary objectForKey:@"Currency"]];
     LabelTen.text= [NSMutableString stringWithFormat:@"QUOTATION COMMENTS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@""]];
     LabelEleven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"AdminComments"]];
 //    LabelFourTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Exp_Delivery_Date"]];
-    NSString *strExpected = [LocalDataDictionary objectForKey:@"Exp_Delivery_Date"];
-    NSString *strEstimated = [LocalDataDictionary objectForKey:@"EstimatedDelivaryDate"];
+    NSString *strExpected = [self convertDateFormat:[LocalDataDictionary objectForKey:@"Exp_Delivery_Date"]] ;
+    NSString *strEstimated = [self convertDateFormat:[LocalDataDictionary objectForKey:@"EstimatedDelivaryDate"]];
     NSArray *arrExpected = [strExpected componentsSeparatedByString:@" "];
     NSArray *arrEstimated = [strEstimated componentsSeparatedByString:@" "];
     if(arrExpected.count > 0)
@@ -120,6 +137,17 @@
         PlaceOrderBtnOutlet.hidden = YES;
         RejectQuoteBtnOutlet.hidden = YES;
     }
+}
+
+-(NSString*)convertDateFormat:(NSString*)strDate
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    NSDate *expdate = [df dateFromString:strDate];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MMM/yyyy"];
+    NSLog(@"%@",[dateFormat stringFromDate:expdate]);
+    return [dateFormat stringFromDate:expdate];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

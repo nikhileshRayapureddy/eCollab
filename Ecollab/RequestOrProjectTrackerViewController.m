@@ -35,6 +35,13 @@
 {
     [super viewWillAppear:animated];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    
+    _StatusLabelOne.text = @"INITIATED";
+    _StatusLabelTwo.text = @"RAW MATERIALS";
+    _StatusLabelThree.text = @"SYNTHESIS";
+    _StatusLabelFour.text = @"SHIPPED";
+    
+    self.QuotationProcessOrProjectsCycleLabel.text = @"PROJECT CYCLE";
     TableFlag = 1;
     [self setSelected:2];
     ServiceRequester *request = [ServiceRequester new];
@@ -267,7 +274,7 @@
             
         }
         cell.StatusStageOneLabel.text = [NSMutableString stringWithFormat:@"INITIATED"];
-        cell.StatusStageTwoLabel.text = [NSMutableString stringWithFormat:@"RAW METERIALS"];
+        cell.StatusStageTwoLabel.text = [NSMutableString stringWithFormat:@"RAW MATERIALS"];
         cell.StatusStageThreeLabel.text = [NSMutableString stringWithFormat:@"SYNTHESIS"];
         cell.StatusStageFourLabel.text = [NSMutableString stringWithFormat:@"SHIPPED"];
         
@@ -336,7 +343,7 @@
     _StatusLabelTwo.text = @"UNDER PROCESS";
     _StatusLabelThree.text = @"QUOTE SENT";
     _StatusLabelFour.text = @"ACCEPTANCE";
-
+    self.QuotationProcessOrProjectsCycleLabel.text = @"QUOTATION PROCESS";
     [RequestOrProjectTableView reloadData];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"requestquote.png"] forState:UIControlStateNormal];
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"on-going-1.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
@@ -347,7 +354,7 @@
     _StatusLabelTwo.text = @"RAW MATERIALS";
     _StatusLabelThree.text = @"SYNTHESIS";
     _StatusLabelFour.text = @"SHIPPED";
-
+    self.QuotationProcessOrProjectsCycleLabel.text = @"PROJECT CYCLE";
     TableFlag = 1;
     [RequestOrProjectTableView reloadData];
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];
