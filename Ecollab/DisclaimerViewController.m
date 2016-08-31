@@ -67,4 +67,7 @@
     }
     [self.DiscTextview setAttributedText:string];
 }
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

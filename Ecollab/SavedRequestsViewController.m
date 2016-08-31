@@ -252,4 +252,7 @@
 }
 
 
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

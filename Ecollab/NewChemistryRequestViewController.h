@@ -64,5 +64,6 @@
 
 @property (assign, nonatomic) BOOL isFromTracking;
 @property (weak, nonatomic) IBOutlet UIView *scrollViewInnerView;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

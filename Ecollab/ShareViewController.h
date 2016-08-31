@@ -13,5 +13,6 @@
 - (IBAction)btnFbClicked:(UIButton *)sender;
 - (IBAction)btnLinkedInClicked:(UIButton *)sender;
 - (IBAction)btnGooglPlusClicked:(UIButton *)sender;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

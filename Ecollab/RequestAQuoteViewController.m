@@ -64,4 +64,8 @@
     FAQVCViewController *FAQVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"FAQVCViewController"];
     [self.navigationController pushViewController:FAQVCtrlObj animated:YES];
 }
+
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

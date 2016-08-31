@@ -13,7 +13,8 @@
 #import "NewChemistryRequestViewController.h"
 #import "NewBiologyRequestViewController.h"
 #import "DiscussQuoteViewController.h"
-@interface TrackingStatusViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+@interface TrackingStatusViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
 {
     BOOL rejectOrRegrett;
     NSString *strRequestRID;
@@ -25,5 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblRequestNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UIImageView *imgRightArrow;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

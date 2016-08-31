@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
 #import "RejectedReasonsCustomView.h"
-@interface StatusViewModeViewController : UIViewController<ServiceRequesterProtocol,RejectedReasonsCustomView_Delegate>
+#import "BaseViewController.h"
+@interface StatusViewModeViewController : BaseViewController<ServiceRequesterProtocol,RejectedReasonsCustomView_Delegate>
 {
     RejectedReasonsCustomView *rejectView;
 }
@@ -52,6 +53,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewCommentsValue;
 @property (weak, nonatomic) IBOutlet UILabel *lblQuantityValue;
 
+- (IBAction)btnBackClicked:(UIButton *)sender;
 @property (strong, nonatomic) NSString *strRequestRID;
 @property (assign, nonatomic) BOOL isRegrettedOrRejected;
 @end

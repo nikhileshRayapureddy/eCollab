@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
-@interface ChangePasswordViewController : UIViewController<ServiceRequesterProtocol>
+#import "BaseViewController.h"
+@interface ChangePasswordViewController : BaseViewController<ServiceRequesterProtocol>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrlVwChangePwd;
 
 @property (strong, nonatomic) IBOutlet UITextField *oldPassword;
@@ -27,5 +28,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constlblCNFNewPwdStrenngthHeight;
 
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

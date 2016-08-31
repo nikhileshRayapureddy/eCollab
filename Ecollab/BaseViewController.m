@@ -44,7 +44,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.hidesBackButton = YES;
-    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 60,25);
+    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 50,25);
     UIButton *lefttBarBtn = [[UIButton alloc] initWithFrame:frameimg2];
     lefttBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [lefttBarBtn setImage:leftBarbtnImage forState:UIControlStateNormal];

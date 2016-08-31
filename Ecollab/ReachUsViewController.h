@@ -17,5 +17,6 @@
 - (IBAction)CommentAndRateBtnActio:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *CommentTf;
 @property (weak, nonatomic) IBOutlet UIView *vwCommentsBg;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

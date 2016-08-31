@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress2;
 - (IBAction)btnSubmitClicked:(UIButton *)sender;
 @property (strong, nonatomic) NSString *strRequestRID;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end
