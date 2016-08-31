@@ -15,5 +15,6 @@
 
 @interface SavedRequestsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UITableView *SavedRequestsTableView;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

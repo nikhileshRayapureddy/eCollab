@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AboutUsViewController : UIViewController
+#import "BaseViewController.h"
+@interface AboutUsViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UITextView *DisplayText;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

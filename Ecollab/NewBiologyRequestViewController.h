@@ -61,5 +61,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgAreaDownArrow;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

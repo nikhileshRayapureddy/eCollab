@@ -96,4 +96,7 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

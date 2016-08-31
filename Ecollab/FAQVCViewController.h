@@ -12,5 +12,6 @@
 
 @interface FAQVCViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *FAQTableview;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

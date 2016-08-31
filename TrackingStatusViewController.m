@@ -52,51 +52,42 @@
     [self designNavBar];
 }
 
--(void)designNavBar
-{
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-}
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super numberOfSectionsInTableView:tableView];
+    }
+    else
+    {
     return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    // If you're serving data from an array, return the length of the array:
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
     return TableDataArray.count;
+    }
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+
     static NSString *CellIdentifier = @"TrackingStatusTableViewCellID";
     
     TrackingStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -213,6 +204,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+    }
 }
 
 -(NSString*)convertDateFormat:(NSString*)strDate
@@ -226,37 +218,44 @@
     return [dateFormat stringFromDate:expdate];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSMutableDictionary *inputDict ;
-    ProjectStatus = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ProjectStatus"];
-    PlaceOrder = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"PlaceOrder"];
-    NSNumber *regret = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRegretted"];
-    NSNumber *reject = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRejected"];
-    
-    if(regret.boolValue == YES || reject.boolValue == YES)
+    if (tableView == self.vwSideMenuCustomView.menuTable)
     {
-        rejectOrRegrett = YES;
+        return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
     else
     {
-        rejectOrRegrett = NO;
-    }
-    NSDictionary * tempDict = [TableDataArray objectAtIndex:indexPath.row];
-    
-    
-    inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[tempDict objectForKey:@"RID"],@"RID",ItemType,@"Type", nil];
-    
-    if ([ProjectStatus intValue] == 3)
-    {
-        [self OrderDetails:inputDict];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSMutableDictionary *inputDict ;
+        ProjectStatus = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ProjectStatus"];
+        PlaceOrder = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"PlaceOrder"];
+        NSNumber *regret = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRegretted"];
+        NSNumber *reject = [[TableDataArray objectAtIndex:indexPath.row] objectForKey:@"ISRejected"];
         
-    }else if ([ProjectStatus intValue] == 2)
-    {
-        [self OrderDetails:inputDict];
-
-    }else
-    {
-        [self OrderDetails:inputDict];
+        if(regret.boolValue == YES || reject.boolValue == YES)
+        {
+            rejectOrRegrett = YES;
+        }
+        else
+        {
+            rejectOrRegrett = NO;
+        }
+        NSDictionary * tempDict = [TableDataArray objectAtIndex:indexPath.row];
+        
+        
+        inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[tempDict objectForKey:@"RID"],@"RID",ItemType,@"Type", nil];
+        
+        if ([ProjectStatus intValue] == 3)
+        {
+            [self OrderDetails:inputDict];
+            
+        }else if ([ProjectStatus intValue] == 2)
+        {
+            [self OrderDetails:inputDict];
+            
+        }else
+        {
+            [self OrderDetails:inputDict];
+        }
     }
 }
 -(void)OrderDetails:(NSMutableDictionary *)inputDict {
@@ -372,5 +371,8 @@
                 break;
         }
     }
+}
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

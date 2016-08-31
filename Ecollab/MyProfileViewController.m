@@ -238,6 +238,10 @@
     
 }
 
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     b64EncStr = nil;
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];

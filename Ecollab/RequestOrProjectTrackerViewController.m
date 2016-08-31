@@ -360,4 +360,8 @@
     [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];
 }
+
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
-@interface AddNewShippingAddressViewController : UIViewController<ServiceRequesterProtocol>
+#import "BaseViewController.h"
+@interface AddNewShippingAddressViewController : BaseViewController<ServiceRequesterProtocol>
 @property(strong,nonatomic)NSMutableDictionary *dictAddress;
 @property(nonatomic,assign)BOOL isEdit;
 @property (strong, nonatomic) IBOutlet UITextField *Name;
@@ -23,5 +24,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *SubmitOutlet;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrlVw;
 - (IBAction)SubmitBtnAction:(id)sender;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end
