@@ -341,7 +341,14 @@
     if (indexPath.row == 7)
     {
         cell.lblCount.hidden = NO;
-        cell.lblCount.text = [NSString stringWithFormat:@"%li",(long)alertsCount];
+        if (alertsCount>0)
+        {
+            cell.lblCount.text = [NSString stringWithFormat:@"%li",(long)alertsCount];
+        }
+        else
+        {
+            cell.lblCount.text = @"";
+        }
     }
     else{
         cell.lblCount.hidden = YES;

@@ -180,7 +180,7 @@
     }
     else if ([ConfirmPasswordTextField.text isEqualToString:@""])
     {
-        [self showAlertWithMessage:@"Please enter confirm password. Or Enter confirm password."];
+        [self showAlertWithMessage:@"Please enter confirm password."];
     }
     else if (ConfirmPasswordTextField.text.length < 8)
     {

@@ -60,22 +60,24 @@
                             </collectionViewFlowLayout>
                             <cells/>
                         </collectionView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-Pg-bc6">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-Pg-bc6">
                             <rect key="frame" x="8" y="299" width="150" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="kBD-ij-4ZI"/>
                             </constraints>
-                            <state key="normal" title="SUBMIT" backgroundImage="sign-in.png">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="SUBMIT" backgroundImage="btnRedGradient.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QER-zl-y0c">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QER-zl-y0c">
                             <rect key="frame" x="172" y="299" width="150" height="36"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="7nI-ev-oA4"/>
                             </constraints>
-                            <state key="normal" title="CANCEL">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="CANCEL" backgroundImage="btnGreyGradient.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -124,7 +126,8 @@
         </view>
     </objects>
     <resources>
+        <image name="btnGreyGradient.png" width="540" height="90"/>
+        <image name="btnRedGradient.png" width="540" height="90"/>
         <image name="down-arrow.png" width="15" height="15"/>
-        <image name="sign-in.png" width="260" height="46"/>
     </resources>
 </document>
