@@ -944,17 +944,13 @@ else
     {
         [self showAlertWithMessage:@"Provide one or more input(s) from the 'Upload structure Image', 'Choose from reference compound database', 'CAS ID' or 'MDL ID'."];
         return false;
-   }
-//    else if ([MDLTextField.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"MDL should not be empty."];
-//        return false;
-//    }
-// if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"Please select expected delivery date."];
-//        return false;
-//    }
+    }
+    else if (![self isDateValid:date])
+    {
+        [self showAlertWithMessage:@"Expected delivery date should fall on or after current date."];
+        return false;
+    }
+    
     else if ([QuantityTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Please enter quantity."];
@@ -994,11 +990,29 @@ else
     {
         [self showAlertWithMessage:@"Chirality must be less than 10 digits."];
         return false;
-   }
-
+    }
+    
     return true;
 }
+-(BOOL)isDateValid:(NSString*)string
+{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd-yyyy"];
+    NSDate *enddate = [formatter dateFromString:string];
+    NSDate* currentdate = [formatter dateFromString:[formatter stringFromDate:[NSDate date]]];
+    NSLog(@"enddate : %@,currentdate : %@",enddate,currentdate);
 
+    if ([currentdate compare:enddate] == NSOrderedDescending) {
+        NSLog(@"date1 is later than date2");
+        return NO;
+    } else if ([currentdate compare:enddate] == NSOrderedAscending) {
+        NSLog(@"date1 is earlier than date2");
+        return YES;
+    } else {
+        NSLog(@"dates are the same");
+        return YES;
+    }
+}
 -(void)showAlertWithMessage:(NSString*)strMsg
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"

@@ -25,7 +25,7 @@
     [RequestOrProjectTableView setDelegate:self];
     [RequestOrProjectTableView setDataSource:self];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];//requestquote.jpg
-    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];//ongoingprojexts.jpg
+    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.png"] forState:UIControlStateNormal];//ongoingprojexts.jpg
     [self designNavBar];
     [self designTabBar];
 
@@ -36,12 +36,14 @@
     [super viewWillAppear:animated];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     
-    _StatusLabelOne.text = @"INITIATED";
-    _StatusLabelTwo.text = @"RAW MATERIALS";
-    _StatusLabelThree.text = @"SYNTHESIS";
-    _StatusLabelFour.text = @"SHIPPED";
+//    _StatusLabelOne.text = @"INITIATED";
+//    _StatusLabelTwo.text = @"RAW MATERIALS";
+//    _StatusLabelThree.text = @"SYNTHESIS";
+//    _StatusLabelFour.text = @"SHIPPED";
+//    
+//    self.QuotationProcessOrProjectsCycleLabel.text = @"PROJECT CYCLE";
     
-    self.QuotationProcessOrProjectsCycleLabel.text = @"PROJECT CYCLE";
+    [self OnGoingProjectsBtnAction:_OnGoingProjectsBtnOutlet];
     TableFlag = 1;
     [self setSelected:2];
     ServiceRequester *request = [ServiceRequester new];
@@ -124,21 +126,51 @@
         
         if ([[tempDict objectForKey:@"ItemType"] intValue]==0) {
             cell.RequestOrProjectType.image = [UIImage imageNamed:@"chemistrysaved.png"];
-//            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"CHEMISTRY"];
         }else{
             cell.RequestOrProjectType.image = [UIImage imageNamed:@"biologysaved.png"];
-//            cell.RequestOrProjectNameLabel.text = [NSMutableString stringWithFormat:@"BIOLOGY"];
         }
         
         cell.RequestOrProjectIDLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"OrderNumber"]];
         
         
         if ([[tempDict objectForKey:@"ISRegretted"] intValue] == 1) {
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RegrettedStatus"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"RegrettedStatus"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
         }else if ([[tempDict objectForKey:@"ISRejected"] intValue] == 1) {
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RejectedStatus"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"RejectedStatus"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
+
         }else{
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"QuoteStatusDesc"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"QuoteStatusDesc"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
+
         }
         //orangecircle.png
         //tick.png
@@ -234,11 +266,44 @@
         cell.RequestOrProjectIDLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"OrderNumber"]];
         
         if ([[tempDict objectForKey:@"ISRegretted"] intValue] == 1) {
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RegrettedStatus"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"RegrettedStatus"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
+
         }else if ([[tempDict objectForKey:@"ISRejected"] intValue] == 1) {
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"RejectComments"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"RejectComments"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
+
         }else{
-            cell.RequestOrProjectStatusLabel.text = [NSMutableString stringWithFormat:@"%@",[tempDict objectForKey:@"ProjectStatusDesc"]];
+            NSMutableAttributedString *text =
+            [[NSMutableAttributedString alloc]
+             initWithAttributedString: [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"STATUS : %@",[tempDict objectForKey:@"ProjectStatusDesc"]]]];
+            
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(0, 9)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont boldSystemFontOfSize:10]
+                         range:NSMakeRange(0, 9)];
+            cell.RequestOrProjectStatusLabel.attributedText = text;
+
         }
         
         if ([[tempDict objectForKey:@"ProjectStatus"] intValue]== 0) {
@@ -357,7 +422,7 @@
     self.QuotationProcessOrProjectsCycleLabel.text = @"PROJECT CYCLE";
     TableFlag = 1;
     [RequestOrProjectTableView reloadData];
-    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];
+    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.png"] forState:UIControlStateNormal];
     [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];
 }
 
