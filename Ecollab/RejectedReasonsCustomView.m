@@ -149,7 +149,7 @@
             {
                 if(self.delegate != nil && [self.delegate respondsToSelector:@selector(showAlert:)])
                 {
-                    [self.delegate showAlert:@"Please enter comments"];
+                    [self.delegate showAlert:@"Please enter comments."];
                 }
             }
         }
@@ -158,7 +158,7 @@
     {
         if(self.delegate != nil && [self.delegate respondsToSelector:@selector(showAlert:)])
         {
-            [self.delegate showAlert:@"Please select atleast one reason for rejection."];
+            [self.delegate showAlert:@"Please provide a reason for rejection."];
         }
     }
     

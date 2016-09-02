@@ -2265,10 +2265,10 @@ project is waiting to be initiated.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2X-Gp-d2b">
-                                                <rect key="frame" x="10" y="552" width="355" height="60"/>
+                                                <rect key="frame" x="10" y="552" width="357" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kye-BS-kkc">
-                                                        <rect key="frame" x="219" y="0.0" width="51" height="60"/>
+                                                        <rect key="frame" x="226" y="0.0" width="51" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="51" id="Mnt-bZ-JZp"/>
@@ -2283,10 +2283,10 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKc-R8-ZiG">
-                                                        <rect key="frame" x="305" y="0.0" width="50" height="60"/>
+                                                        <rect key="frame" x="312" y="0.0" width="45" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="zn1-JG-ega"/>
+                                                            <constraint firstAttribute="width" constant="45" id="zn1-JG-ega"/>
                                                         </constraints>
                                                         <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title=" kg" image="radio-off.png">
@@ -2298,7 +2298,7 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWz-Pe-hYD">
-                                                        <rect key="frame" x="270" y="0.0" width="35" height="60"/>
+                                                        <rect key="frame" x="277" y="0.0" width="35" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="HRf-ur-6wk"/>
@@ -2313,10 +2313,10 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bel-Zd-gFH">
-                                                        <rect key="frame" x="0.0" y="12" width="211" height="35"/>
+                                                        <rect key="frame" x="0.0" y="12" width="218" height="35"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGr-8k-1an">
-                                                                <rect key="frame" x="5" y="0.0" width="206" height="35"/>
+                                                                <rect key="frame" x="5" y="0.0" width="213" height="35"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
@@ -2544,7 +2544,7 @@ project is waiting to be initiated.</string>
                                             <constraint firstItem="EuJ-4x-3NL" firstAttribute="top" secondItem="d6y-u0-NYe" secondAttribute="bottom" constant="8" id="fHg-H6-9v4"/>
                                             <constraint firstItem="5pi-HN-AWG" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="4" id="ghF-oh-CEW"/>
                                             <constraint firstAttribute="trailing" secondItem="GKh-m8-bcK" secondAttribute="trailing" constant="8" id="hM9-tb-too"/>
-                                            <constraint firstAttribute="trailing" secondItem="z2X-Gp-d2b" secondAttribute="trailing" constant="10" id="jdU-Z4-Jlc"/>
+                                            <constraint firstAttribute="trailing" secondItem="z2X-Gp-d2b" secondAttribute="trailing" constant="8" id="jdU-Z4-Jlc"/>
                                             <constraint firstItem="jZH-pW-r7l" firstAttribute="leading" secondItem="CXY-0W-dRo" secondAttribute="leading" constant="10" id="jep-lR-NRk"/>
                                             <constraint firstAttribute="trailing" secondItem="7nk-Ja-hSQ" secondAttribute="trailing" constant="8" id="jnb-hC-jFy"/>
                                             <constraint firstItem="Ecv-xy-JsV" firstAttribute="width" secondItem="jZH-pW-r7l" secondAttribute="width" id="lMH-Q9-4YM"/>

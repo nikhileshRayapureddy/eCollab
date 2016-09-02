@@ -590,7 +590,7 @@ else
     else
     {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"New chemistry request created successfully."
+                                                                       message:@"“Chemistry request details updated successfully."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
@@ -668,6 +668,7 @@ else
             // Configure the cell...
             cell.textLabel.text =[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:indexPath.row] objectForKey:@"Category"]];
         }
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
         return cell;
  
     }
@@ -717,6 +718,14 @@ else
 {
     if (textField == QuantityTextField || textField == CharitybtnOutlet)
     {
+        if(range.location==0)
+            {
+                if ([string hasPrefix:@"0"])
+                {
+                    return NO;
+                }
+            }
+            
         if(textField.text.length == 10 && string.length != 0)
         {
             return NO;
@@ -1007,7 +1016,7 @@ else
     }
     else if ([CharitybtnOutlet.text isEqualToString:@"0"])
     {
-        [self showAlertWithMessage:@"Chirality should not be 0."];
+        [self showAlertWithMessage:@"Please enter chirality."];
         return false;
     }
     else if (CharitybtnOutlet.text.length > 10)
