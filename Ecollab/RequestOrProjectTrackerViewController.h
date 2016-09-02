@@ -27,5 +27,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *StatusLabelFour;
 - (IBAction)RequestedQuotesBtnAction:(id)sender;
 - (IBAction)OnGoingProjectsBtnAction:(id)sender;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

@@ -19,6 +19,7 @@
 - (IBAction)BiologyBtnAction:(id)sender;
 - (IBAction)FAQBtnAction:(id)sender;
 
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 
 @end

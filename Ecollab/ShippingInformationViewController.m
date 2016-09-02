@@ -36,29 +36,7 @@
     request =  nil;
 
 }
--(void)designNavBar
-{
-    self.navigationItem.hidesBackButton = NO;
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:237.0/255.0 green:27.0/255.0 blue:36.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-}
+
 
 -(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict
 {
@@ -70,18 +48,36 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    else
+    {
     return 120;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    // If you're serving data from an array, return the length of the array:
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
     return arrAddresses.count;
+    }
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    else
+    {
+
     static NSString *CellIdentifier = @"ShippingInformationTableViewCell";
     
     ShippingInformationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -121,6 +117,7 @@
         
     }
     return cell;
+    }
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)longPress
@@ -226,6 +223,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else
+    {
+        
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(isFromTracking == YES)
     {
@@ -247,7 +252,7 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }
-    
+    }
 
 }
 
@@ -287,4 +292,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

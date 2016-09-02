@@ -17,4 +17,5 @@
 - (IBAction)LegalDisclaimerBtnAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitile;
 
+- (IBAction)btnBackClicked:(UIButton *)sender;
 @end

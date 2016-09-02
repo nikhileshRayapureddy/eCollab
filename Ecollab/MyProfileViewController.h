@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditPersonalDetailsViewController.h"
 #import "ShippingInformationViewController.h"
 #import "DisclaimerViewController.h"
 #import "AboutUsViewController.h"
@@ -57,5 +56,6 @@
 - (IBAction)LogoutBtnAction:(id)sender;
 - (IBAction)btnProfileImageClicked:(UIButton *)sender;
 
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

@@ -21,5 +21,6 @@
     NSString *strRequestRID;
 }
 @property (strong, nonatomic) IBOutlet UITableView *AlertsTableView;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

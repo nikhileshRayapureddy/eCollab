@@ -97,19 +97,6 @@
     
     QuantityID= @"1";
     
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
 
     if(self.isFromRequestAQuote == YES)
     {
@@ -142,6 +129,7 @@
     [self designTabBar];
     [self setSelected:0];
     RemarksTextField.placeholder = @"Remarks";
+    [self designNavBar];
 
 }
 -(void)viewDidLayoutSubviews
@@ -627,19 +615,39 @@ else
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return  [super numberOfSectionsInTableView:tableView];
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == purityTableView ) {
-        return purityArray.count;
-    }else{
-        return CategoryMasterArray.count;
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return  [super tableView:tableView numberOfRowsInSection:section];
+    }
+    else
+    {
+        if (tableView == purityTableView ) {
+            return purityArray.count;
+        }else{
+            return CategoryMasterArray.count;
+        }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return  [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    else
+    {
 
         static NSString *CellIdentifier = @"Cell";
         
@@ -662,10 +670,18 @@ else
         }
         return cell;
  
-  
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return  [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
+    else
+    {
+        
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView == purityTableView ) {
         UIButton *btnDone = [self.view viewWithTag:479];
@@ -686,7 +702,7 @@ else
         [self ImagesDisplay:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
 
     }
-
+    }
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
@@ -952,17 +968,13 @@ else
     {
         [self showAlertWithMessage:@"Provide one or more input(s) from the 'Upload structure Image', 'Choose from reference compound database', 'CAS ID' or 'MDL ID'."];
         return false;
-   }
-//    else if ([MDLTextField.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"MDL should not be empty."];
-//        return false;
-//    }
-// if ([ExpectedDeleveryDateBtnOutlet.titleLabel.text isEqualToString:@""])
-//    {
-//        [self showAlertWithMessage:@"Please select expected delivery date."];
-//        return false;
-//    }
+    }
+    else if (![self isDateValid:date])
+    {
+        [self showAlertWithMessage:@"Expected delivery date should fall on or after current date."];
+        return false;
+    }
+    
     else if ([QuantityTextField.text isEqualToString:@""])
     {
         [self showAlertWithMessage:@"Please enter quantity."];
@@ -1002,11 +1014,29 @@ else
     {
         [self showAlertWithMessage:@"Chirality must be less than 10 digits."];
         return false;
-   }
-
+    }
+    
     return true;
 }
+-(BOOL)isDateValid:(NSString*)string
+{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd-yyyy"];
+    NSDate *enddate = [formatter dateFromString:string];
+    NSDate* currentdate = [formatter dateFromString:[formatter stringFromDate:[NSDate date]]];
+    NSLog(@"enddate : %@,currentdate : %@",enddate,currentdate);
 
+    if ([currentdate compare:enddate] == NSOrderedDescending) {
+        NSLog(@"date1 is later than date2");
+        return NO;
+    } else if ([currentdate compare:enddate] == NSOrderedAscending) {
+        NSLog(@"date1 is earlier than date2");
+        return YES;
+    } else {
+        NSLog(@"dates are the same");
+        return YES;
+    }
+}
 -(void)showAlertWithMessage:(NSString*)strMsg
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
@@ -1083,5 +1113,8 @@ else
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

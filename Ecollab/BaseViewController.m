@@ -44,7 +44,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.hidesBackButton = YES;
-    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 60,25);
+    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 50,25);
     UIButton *lefttBarBtn = [[UIButton alloc] initWithFrame:frameimg2];
     lefttBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [lefttBarBtn setImage:leftBarbtnImage forState:UIControlStateNormal];
@@ -341,7 +341,14 @@
     if (indexPath.row == 7)
     {
         cell.lblCount.hidden = NO;
-        cell.lblCount.text = [NSString stringWithFormat:@"%li",(long)alertsCount];
+        if (alertsCount>0)
+        {
+            cell.lblCount.text = [NSString stringWithFormat:@"%li",(long)alertsCount];
+        }
+        else
+        {
+            cell.lblCount.text = @"";
+        }
     }
     else{
         cell.lblCount.hidden = YES;

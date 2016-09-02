@@ -64,5 +64,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewModelsButtonBorder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewModelsButtonHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *modelsButtonHeightConstraint;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

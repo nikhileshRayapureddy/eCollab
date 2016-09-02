@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ShippingInformationTableViewCell.h"
 #import "AddNewShippingAddressViewController.h"
-@interface ShippingInformationViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
+#import "BaseViewController.h"
+@interface ShippingInformationViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,ServiceRequesterProtocol>
 @property (strong, nonatomic) IBOutlet UITableView *ShippingInformationTableview;
 @property (strong, nonatomic) IBOutlet UIButton *AddNewAddressOutlet;
 - (IBAction)AddNewAddressBtnAction:(id)sender;
 
 @property (assign, nonatomic) BOOL isFromTracking;
+- (IBAction)btnBackClicked:(UIButton *)sender;
 
 @end

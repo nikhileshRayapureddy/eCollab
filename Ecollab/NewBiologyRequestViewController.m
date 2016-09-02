@@ -45,26 +45,7 @@
     [self designTabBar];
     [self setSelected:0];
     arrAssaysSelected = [[NSMutableArray alloc]init];
-    // Do any additional setup after loading the view.
-    /*
-     [FAQLabelOutlet.layer setBorderWidth: 1.0];
-     [FAQLabelOutlet.layer setCornerRadius:10.0f];
-     [FAQLabelOutlet.layer setMasksToBounds:YES];
-     [FAQLabelOutlet.layer setBorderColor:[[UIColor blackColor] CGColor]];
-     */
-    UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    imgLogoEcoLab.backgroundColor = [UIColor clearColor];
-    imgLogoEcoLab.image = [UIImage imageNamed:@"ecolablogo.png"];
-    imgLogoEcoLab.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = imgLogoEcoLab;
-    
-    UIImageView *imgLogoGVK = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
-    imgLogoGVK.backgroundColor = [UIColor clearColor];
-    imgLogoGVK.image = [UIImage imageNamed:@"gvk_whitelogo1.png"];
-    imgLogoGVK.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:imgLogoGVK];
-    self.navigationItem.rightBarButtonItem = rightBtn;
+    [self designNavBar];
 
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [ServiceBtnOutlet.layer setBorderWidth: 1.0];
@@ -88,10 +69,6 @@
     AreaOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
     SubAreaBtnOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
 
-//    serviceArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
-//    areaArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
-//    subAreaArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
-//    modelArray = [NSMutableArray arrayWithObjects:@"abc",@"bcd",@"cde",@"def", nil];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopLoadMasterService];
@@ -835,4 +812,7 @@
     [self removeSelectionPopUp];
 }
 
+- (IBAction)btnBackClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

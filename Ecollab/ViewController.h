@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageContentViewController.h"
 #import "LogInViewController.h"
 
 @interface ViewController : UIViewController<UIScrollViewDelegate>
