@@ -61,5 +61,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgAreaDownArrow;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *viewModelsButtonBorder;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewModelsButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *modelsButtonHeightConstraint;
 
 @end

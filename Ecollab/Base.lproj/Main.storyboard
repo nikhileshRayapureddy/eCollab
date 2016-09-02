@@ -1587,7 +1587,7 @@ project is waiting to be initiated.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAITING FOR INFORMATION" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fG-wd-hmV">
-                                                    <rect key="frame" x="129" y="58" width="238" height="26"/>
+                                                    <rect key="frame" x="129" y="58" width="246" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="rec-Yp-pmq"/>
                                                     </constraints>
@@ -1632,7 +1632,7 @@ project is waiting to be initiated.</string>
                                                 <constraint firstItem="8fG-wd-hmV" firstAttribute="leading" secondItem="6KV-gq-dEi" secondAttribute="trailing" constant="3" id="ure-34-oix"/>
                                                 <constraint firstItem="Cvd-v4-jV6" firstAttribute="top" secondItem="3HY-Te-SIs" secondAttribute="bottom" constant="8" symbolic="YES" id="v9I-1n-gOd"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cvd-v4-jV6" secondAttribute="trailing" id="vZv-FR-fcc"/>
-                                                <constraint firstAttribute="trailing" secondItem="8fG-wd-hmV" secondAttribute="trailing" constant="8" id="wrR-l8-gi2"/>
+                                                <constraint firstAttribute="trailing" secondItem="8fG-wd-hmV" secondAttribute="trailing" id="wrR-l8-gi2"/>
                                                 <constraint firstItem="tdc-TU-g0q" firstAttribute="centerY" secondItem="FL1-Cm-ggY" secondAttribute="centerY" id="x7b-Ct-WUY"/>
                                                 <constraint firstItem="ILL-WH-iK5" firstAttribute="centerY" secondItem="aje-m9-sYD" secondAttribute="centerY" id="xrH-VG-f7N"/>
                                                 <constraint firstItem="3HY-Te-SIs" firstAttribute="centerX" secondItem="tdc-TU-g0q" secondAttribute="centerX" id="ym0-I5-J5H"/>
@@ -3797,40 +3797,51 @@ project is waiting to be initiated.</string>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6J-Xv-VH2">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pH-ux-Gib">
                                                         <rect key="frame" x="0.0" y="30" width="335" height="40"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6J-Xv-VH2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="315" height="40"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="2uE-P7-lNY"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="SELECT ASSAYS/MODELS">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="ModelsBtnAction:" destination="nGS-tA-l2E" eventType="touchUpInside" id="sFi-UJ-ZAR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="D86-Dr-Gvr">
+                                                                <rect key="frame" x="315" y="14" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="12" id="QCK-DA-Dm0"/>
+                                                                    <constraint firstAttribute="height" constant="12" id="T8v-3E-Nnv"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="PXu-kh-NeF"/>
+                                                            <constraint firstItem="C6J-Xv-VH2" firstAttribute="top" secondItem="5pH-ux-Gib" secondAttribute="top" id="94O-P1-rWc"/>
+                                                            <constraint firstItem="D86-Dr-Gvr" firstAttribute="leading" secondItem="C6J-Xv-VH2" secondAttribute="trailing" id="D4v-DI-hVX"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Qo3-sx-zxV"/>
+                                                            <constraint firstItem="C6J-Xv-VH2" firstAttribute="leading" secondItem="5pH-ux-Gib" secondAttribute="leading" id="Xr3-bK-Wc3"/>
+                                                            <constraint firstAttribute="trailing" secondItem="D86-Dr-Gvr" secondAttribute="trailing" constant="8" id="vKH-Jh-CD3"/>
+                                                            <constraint firstItem="D86-Dr-Gvr" firstAttribute="top" secondItem="5pH-ux-Gib" secondAttribute="top" constant="14" id="we3-AF-Gdl"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
-                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="SELECT ASSAYS/MODELS">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="ModelsBtnAction:" destination="nGS-tA-l2E" eventType="touchUpInside" id="sFi-UJ-ZAR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="D86-Dr-Gvr">
-                                                        <rect key="frame" x="315" y="45" width="12" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="GI8-2m-8Lq"/>
-                                                            <constraint firstAttribute="width" constant="12" id="Rin-s6-J89"/>
-                                                        </constraints>
-                                                    </imageView>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="5pH-ux-Gib" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="25F-Zq-tWX"/>
                                                     <constraint firstAttribute="trailing" secondItem="Nqu-b1-LFr" secondAttribute="trailing" id="3t5-pz-c4j"/>
-                                                    <constraint firstItem="C6J-Xv-VH2" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="10" id="5VY-rp-nMD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="D86-Dr-Gvr" secondAttribute="trailing" constant="8" id="7f1-rZ-iRs"/>
                                                     <constraint firstAttribute="height" constant="70" id="Fkj-Hn-Axv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="C6J-Xv-VH2" secondAttribute="trailing" id="K2m-cX-nsu"/>
-                                                    <constraint firstItem="C6J-Xv-VH2" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="heo-b5-V1q"/>
+                                                    <constraint firstItem="5pH-ux-Gib" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="10" id="PKj-QG-Xo6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5pH-ux-Gib" secondAttribute="trailing" id="fn7-Rf-BwN"/>
                                                     <constraint firstItem="Nqu-b1-LFr" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="k73-7M-7Lu"/>
-                                                    <constraint firstItem="D86-Dr-Gvr" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="25" id="xnz-8m-JKC"/>
                                                     <constraint firstItem="Nqu-b1-LFr" firstAttribute="top" secondItem="XHc-eu-1qZ" secondAttribute="top" id="y66-s0-Z1c"/>
                                                 </constraints>
                                             </view>
@@ -3930,9 +3941,12 @@ project is waiting to be initiated.</string>
                         <outlet property="imgServiceDownArrow" destination="aOM-JS-0wl" id="LYM-Vd-6vP"/>
                         <outlet property="imgSubAreaDownArrow" destination="naf-dV-gnn" id="Wpb-a8-Wyi"/>
                         <outlet property="lblRequestTitle" destination="Nh7-9p-Ssv" id="kDJ-hW-5vY"/>
+                        <outlet property="modelsButtonHeightConstraint" destination="2uE-P7-lNY" id="bwo-YX-9hM"/>
                         <outlet property="scrollView" destination="BcJ-tC-Sg1" id="afy-LA-pQN"/>
                         <outlet property="viewAssays" destination="XHc-eu-1qZ" id="Q6V-UB-JVP"/>
                         <outlet property="viewAssaysHeightConstraint" destination="Fkj-Hn-Axv" id="Ugm-KF-EeC"/>
+                        <outlet property="viewModelsButtonBorder" destination="5pH-ux-Gib" id="7m9-Sd-nTf"/>
+                        <outlet property="viewModelsButtonHeightConstraint" destination="Qo3-sx-zxV" id="NXe-5O-Dcu"/>
                         <outlet property="viewSubArea" destination="DgQ-5L-Sbh" id="U98-zN-xcr"/>
                         <outlet property="viewSubAreaHeightConstraint" destination="59E-hx-Ibb" id="nGR-6w-wpn"/>
                     </connections>

@@ -701,17 +701,41 @@ else
 {
     if (textField == QuantityTextField || textField == CharitybtnOutlet)
     {
-        if(range.length + range.location > textField.text.length)
+        if(textField.text.length == 10 && string.length != 0)
         {
             return NO;
         }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        return newLength <= 10;
+        else
+        {
+            if([textField.text containsString:@"."] && [string isEqualToString:@"."])
+            {
+                return NO;
+            }
+            else
+            {
+                return YES;
+            }
+            return YES;
+        }
+//        if(range.length + range.location > textField.text.length)
+//        {
+//            return NO;
+//        }
+//        
+//        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+//        return newLength <= 10;
     }
     return YES;
 }
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (isFromTracking)
+    {
+        return NO;
+    }
+    return YES;
+}
 
 -(void)showCompoundDBCustomView
 {

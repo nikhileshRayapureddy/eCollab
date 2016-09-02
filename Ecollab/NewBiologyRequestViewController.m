@@ -34,6 +34,11 @@
 
 @synthesize isFromTracking;
 
+@synthesize viewModelsButtonBorder;
+@synthesize viewModelsButtonHeightConstraint;
+@synthesize modelsButtonHeightConstraint;
+@synthesize viewAssaysHeightConstraint;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,11 +76,14 @@
     [SubAreaBtnOutlet.layer setBorderWidth: 1.0];
     [SubAreaBtnOutlet.layer setMasksToBounds:YES];
     [SubAreaBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
-    [ModelsBtnOutlet.layer setBorderWidth: 1.0];
-    [ModelsBtnOutlet.layer setMasksToBounds:YES];
-    [ModelsBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
+//    [ModelsBtnOutlet.layer setBorderWidth: 1.0];
+//    [ModelsBtnOutlet.layer setMasksToBounds:YES];
+//    [ModelsBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];
     modelflag = 0;
-    
+    [self.viewModelsButtonBorder.layer setBorderWidth: 1.0];
+    [self.viewModelsButtonBorder.layer setMasksToBounds:YES];
+    [self.viewModelsButtonBorder.layer setBorderColor:[[UIColor redColor] CGColor]];
+
     ServiceBtnOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
     AreaOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
     SubAreaBtnOutlet.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -117,6 +125,9 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"BIOLOGY REQUEST DETAILS"
                                                                               attributes:underlineAttribute];
+        
+        SubmitBtnOutlet.hidden = YES;
+        SaveForLaterBtnOutlet.hidden = YES;
     }
 }
 
@@ -124,7 +135,7 @@
 {
     if(shouldShow == YES)
     {
-        self.viewAssaysHeightConstraint.constant = 60;
+        self.viewAssaysHeightConstraint.constant = 70;
         self.viewAssays.hidden = NO;
     }
     else
@@ -146,6 +157,13 @@
         self.viewSubAreaHeightConstraint.constant = 0;
         self.viewSubArea.hidden = YES;
     }
+}
+
+-(void)resetModelsAssaysConstraints
+{
+    viewAssaysHeightConstraint.constant = 70;
+    modelsButtonHeightConstraint.constant = 40;
+    viewModelsButtonHeightConstraint.constant = 40;
 }
 
 -(void)bindOrderDetailsFromTracking:(NSMutableDictionary *)dict
@@ -715,6 +733,7 @@
             //*Type,*SubID,*ModelID;  //RID Service
             SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self resetModelsAssaysConstraints];
             [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
             strMultipleModelIdIDFinal = @"";
             [arrAssaysSelected removeAllObjects];
@@ -731,6 +750,11 @@
             SubID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             AreaID = [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
             ModelID = [NSMutableString stringWithFormat:@"0"];
+            [self resetModelsAssaysConstraints];
+            [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
+            strMultipleModelIdIDFinal = @"";
+            [arrAssaysSelected removeAllObjects];
+
             [self GetDependencyDetails];
         }
             break;
@@ -743,7 +767,12 @@
             strSubAreaIDFinal = [dict objectForKey:@"RID"];
             Type = [NSMutableString stringWithFormat:@"3"];
             SubID = [NSMutableString stringWithFormat:@"%@",AreaID];
+            [self resetModelsAssaysConstraints];
             ModelID =  [NSMutableString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            [ModelsBtnOutlet setTitle:@"SELECT ASSAYS/MODELS" forState:UIControlStateNormal];
+            strMultipleModelIdIDFinal = @"";
+            [arrAssaysSelected removeAllObjects];
+
             [self GetDependencyDetails];
         }
             break;
@@ -789,8 +818,19 @@
     }
     else
     {
-        ModelsBtnOutlet.titleLabel.numberOfLines = 2;
+        
+        CGRect rect = [strSelectedModels boundingRectWithSize:CGSizeMake(ModelsBtnOutlet.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0]} context:nil];
+        float height = ceilf(rect.size.height);
+        NSLog(@"---%f",height);
+        
+        ModelsBtnOutlet.titleLabel.numberOfLines = height/14;
         [ModelsBtnOutlet setTitle:strSelectedModels forState:UIControlStateNormal];
+        if (height/14 > 2)
+        {
+            modelsButtonHeightConstraint.constant = (height/14) * 15;
+            viewAssaysHeightConstraint.constant = (height/14) * 15 + 30;
+            viewModelsButtonHeightConstraint.constant = (height/14) * 15;
+        }
     }
     [self removeSelectionPopUp];
 }
