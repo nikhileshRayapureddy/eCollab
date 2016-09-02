@@ -44,6 +44,7 @@
     Phone.text = [self.dictAddress valueForKey:@"MobileNumber"];
     Landmark.text = [self.dictAddress valueForKey:@"LandMark"];
     [self.SubmitOutlet setTitle:@"UPDATE" forState:UIControlStateNormal];
+    isValidPincode = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -96,11 +97,11 @@
     }
     else if (Country.text.length == 0)
     {
-        [self showAlertWithMessage:@"Please enter your Country."];
+        [self showAlertWithMessage:@"Please enter your country."];
     }
     else if (Phone.text.length == 0)
     {
-        [self showAlertWithMessage:@"Please enter your Phone number."];
+        [self showAlertWithMessage:@"Please enter your phone number."];
     }
     else if (Phone.text.length < 10 || Phone.text.length > 10)
     {
@@ -156,6 +157,7 @@
 {
     if (textField == Pincode)
     {
+        isValidPincode = NO;
         if(range.length + range.location > textField.text.length)
         {
             return NO;

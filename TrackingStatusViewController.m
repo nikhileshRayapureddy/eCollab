@@ -200,6 +200,7 @@
     cell.StatusLabel.adjustsFontSizeToFitWidth = YES;
         cell.StatusTimeLabel.adjustsFontSizeToFitWidth = YES;
     cell.StatusTimeLabel.text = [NSMutableString stringWithFormat:@"%@",[self convertDateFormat:[tempDict objectForKey:@"CreatedDate"]]];
+    cell.StatusTimeLabel.adjustsFontSizeToFitWidth = YES;
     if (TableDataArray.count-1 == indexPath.row) {
         [cell.StatusProcessIndecatorLabel setHidden:YES];
     }

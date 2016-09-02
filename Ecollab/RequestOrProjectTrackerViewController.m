@@ -35,6 +35,8 @@
 {
     [super viewWillAppear:animated];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    [_OnGoingProjectsBtnOutlet setBackgroundImage:[UIImage imageNamed:@"ongoingprojexts.jpg"] forState:UIControlStateNormal];
+    [_RequestedQuotesBtnOutlet setBackgroundImage:[UIImage imageNamed:@"request.png"] forState:UIControlStateNormal];
     
 //    _StatusLabelOne.text = @"INITIATED";
 //    _StatusLabelTwo.text = @"RAW MATERIALS";
@@ -308,7 +310,17 @@
         
         if ([[tempDict objectForKey:@"ProjectStatus"] intValue]== 0) {
             // orange image
-            cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
+            
+            if([[tempDict valueForKey:@"ISRegretted"] intValue] == 1 || [[tempDict valueForKey:@"ISRejected"] intValue] == 1)
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"crossred.png"];
+            }
+            else
+            {
+                cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
+            }
+            
+//            cell.StatuImageOne.image = [UIImage imageNamed:@"orangecircle.png"];
             
             cell.StatusImageTwo.image = [UIImage imageNamed:@"graycircle.png"];
             cell.StatusImageThree.image = [UIImage imageNamed:@"graycircle.png"];

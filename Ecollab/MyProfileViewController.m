@@ -92,23 +92,6 @@
 
 }
 - (IBAction)btnSaveProfileClicked:(UIButton *)sender {
-    NSMutableDictionary *dictUser = [[NSMutableDictionary alloc]init];
-    if (![_txtFldFirstName.text isEqualToString:@""]) {
-        [dictUser setObject:_txtFldFirstName.text forKey:@"FirstName"];
-    }
-    if (![_txtFldLastName.text isEqualToString:@""]){
-        [dictUser setObject:_txtFldLastName.text forKey:@"LastName"];
-    }
-    if (![_txtFldEmail.text isEqualToString:@""]){
-        [dictUser setObject:_txtFldEmail.text forKey:@"EmailID"];
-    }
-    if (![_txtFldComapnyName.text isEqualToString:@""]){
-        [dictUser setObject:_txtFldComapnyName.text forKey:@"CompanyName"];
-    }
-    if (![_txtFldDesignation.text isEqualToString:@""]){
-        [dictUser setObject:_txtFldDesignation.text forKey:@"Designation"];
-    }
-    
     if(_txtFldFirstName.isFirstResponder)
     {
         [_txtFldFirstName resignFirstResponder];
@@ -125,18 +108,31 @@
     {
         [_txtFldDesignation resignFirstResponder];
     }
-    
-    [dictUser setObject:@"0" forKey:@"ISMobileUser"];
-    //ISGvkEmployee
-    [dictUser setObject:@"0" forKey:@"ISGvkEmployee"];
-    [dictUser setObject:[[DetailsManager sharedManager]rID] forKey:@"RID"];
-    [dictUser setObject:@"" forKey:@"Image"];
 
-    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-    ServiceRequester *request = [ServiceRequester new];
-    request.serviceRequesterDelegate =  self;
-    [request requestForopSaveUserDetailsService:dictUser];
-    request =  nil;
+    NSMutableDictionary *dictUser = [[NSMutableDictionary alloc]init];
+    if ([_txtFldFirstName.text isEqualToString:@""]) {
+        [self showAlert:@"Please enter first name."];
+    }
+    else if ([_txtFldLastName.text isEqualToString:@""]){
+        [self showAlert:@"Please enter last name."];
+    }
+    else
+    {
+        [dictUser setObject:_txtFldFirstName.text forKey:@"FirstName"];
+        [dictUser setObject:_txtFldLastName.text forKey:@"LastName"];
+        [dictUser setObject:_txtFldEmail.text forKey:@"EmailID"];
+        [dictUser setObject:_txtFldComapnyName.text forKey:@"CompanyName"];
+        [dictUser setObject:_txtFldDesignation.text forKey:@"Designation"];
+        [dictUser setObject:@"0" forKey:@"ISMobileUser"];
+        [dictUser setObject:@"0" forKey:@"ISGvkEmployee"];
+        [dictUser setObject:[[DetailsManager sharedManager]rID] forKey:@"RID"];
+        [dictUser setObject:@"" forKey:@"Image"];
+        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+        ServiceRequester *request = [ServiceRequester new];
+        request.serviceRequesterDelegate =  self;
+        [request requestForopSaveUserDetailsService:dictUser];
+        request =  nil;
+    }
 }
 -(void)requestReceivedopSaveUserDetailsResponce:(NSMutableDictionary *)aregistrationDict{
     
@@ -156,7 +152,18 @@
 
     // show a message success or not
 }
+-(void)showAlert:(NSString*)strMsg
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                   message:strMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 
+}
 
 - (IBAction)ChangePasswordBtnAction:(id)sender {
     ChangePasswordViewController *CPVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
@@ -179,8 +186,16 @@
 }
 
 - (IBAction)LogoutBtnAction:(id)sender {
-    [self.navigationController popToViewController:[[self.navigationController viewControllers]objectAtIndex:1] animated:YES];
-
+    
+    LogInViewController *loginController=[self.storyboard instantiateViewControllerWithIdentifier:@"LogInViewController"];
+    for (UIViewController *vc in self.navigationController.viewControllers)
+    {
+        if([vc isKindOfClass:[LogInViewController class]])
+        {
+            [self.navigationController popToViewController:loginController animated:YES];
+        }
+    }
+    [self.navigationController pushViewController:loginController animated:YES];
 }
 
 - (IBAction)btnProfileImageClicked:(UIButton *)sender {

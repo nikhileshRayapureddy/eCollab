@@ -1710,10 +1710,10 @@ project is waiting to be initiated.</string>
                                                         <constraint firstAttribute="height" constant="1" id="O30-f9-JC6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fG-wd-hmV">
-                                                    <rect key="frame" x="10" y="63" width="355" height="26"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAITING FOR INFORMATION" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fG-wd-hmV">
+                                                    <rect key="frame" x="10" y="58" width="355" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="26" id="qb5-BN-jX6"/>
+                                                        <constraint firstAttribute="height" constant="26" id="pFM-2g-CNw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.82050107760000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1723,7 +1723,6 @@ project is waiting to be initiated.</string>
                                             <constraints>
                                                 <constraint firstItem="qLN-h9-vf7" firstAttribute="top" secondItem="ILL-WH-iK5" secondAttribute="bottom" constant="2" id="1F5-2S-XuC"/>
                                                 <constraint firstAttribute="trailing" secondItem="ILL-WH-iK5" secondAttribute="trailing" constant="21" id="2ZY-WT-ALB"/>
-                                                <constraint firstItem="8fG-wd-hmV" firstAttribute="top" secondItem="TLy-Pd-ag2" secondAttribute="bottom" constant="5" id="3E6-nD-W93"/>
                                                 <constraint firstItem="lPM-1P-mDN" firstAttribute="baseline" secondItem="bCq-hy-eU3" secondAttribute="baseline" id="3r6-cg-4hg"/>
                                                 <constraint firstItem="bCq-hy-eU3" firstAttribute="centerY" secondItem="aje-m9-sYD" secondAttribute="centerY" id="4Z5-dW-vxV"/>
                                                 <constraint firstItem="gRZ-uO-jrA" firstAttribute="top" secondItem="AHg-QW-KSa" secondAttribute="topMargin" constant="9" id="6Ic-F7-jfd"/>
@@ -1733,13 +1732,14 @@ project is waiting to be initiated.</string>
                                                 <constraint firstItem="3HY-Te-SIs" firstAttribute="top" secondItem="tdc-TU-g0q" secondAttribute="bottom" constant="2" id="BvR-j1-03c"/>
                                                 <constraint firstItem="uPj-68-Lbo" firstAttribute="centerY" secondItem="aje-m9-sYD" secondAttribute="centerY" id="Cr6-eC-lh0"/>
                                                 <constraint firstItem="TLy-Pd-ag2" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" constant="13" id="D75-QM-T7o"/>
+                                                <constraint firstAttribute="trailing" secondItem="8fG-wd-hmV" secondAttribute="trailing" constant="10" id="DBv-ND-v18"/>
+                                                <constraint firstItem="8fG-wd-hmV" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" constant="10" id="DPS-DF-XpJ"/>
                                                 <constraint firstItem="ILL-WH-iK5" firstAttribute="leading" secondItem="uPj-68-Lbo" secondAttribute="trailing" id="Kpa-wR-JxL"/>
-                                                <constraint firstAttribute="trailing" secondItem="8fG-wd-hmV" secondAttribute="trailing" constant="10" id="LaE-Vk-2tC"/>
                                                 <constraint firstItem="FL1-Cm-ggY" firstAttribute="leading" secondItem="lPM-1P-mDN" secondAttribute="trailing" constant="1" id="Pm2-3D-8SM"/>
                                                 <constraint firstItem="bCq-hy-eU3" firstAttribute="leading" secondItem="FL1-Cm-ggY" secondAttribute="trailing" id="TaP-Ca-dFz"/>
                                                 <constraint firstItem="hI6-70-8EM" firstAttribute="centerX" secondItem="FL1-Cm-ggY" secondAttribute="centerX" id="Vg2-Ho-cev"/>
+                                                <constraint firstItem="8fG-wd-hmV" firstAttribute="top" secondItem="TLy-Pd-ag2" secondAttribute="bottom" id="Z9g-ez-ECc"/>
                                                 <constraint firstItem="aje-m9-sYD" firstAttribute="leading" secondItem="bCq-hy-eU3" secondAttribute="trailing" constant="-1" id="ajq-c4-rOj"/>
-                                                <constraint firstItem="8fG-wd-hmV" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" constant="10" id="c4G-9X-9qf"/>
                                                 <constraint firstItem="KJ0-TW-LVa" firstAttribute="centerX" secondItem="aje-m9-sYD" secondAttribute="centerX" id="f01-RZ-gRO"/>
                                                 <constraint firstItem="KJ0-TW-LVa" firstAttribute="top" secondItem="aje-m9-sYD" secondAttribute="bottom" constant="2" id="f6W-SQ-K4t"/>
                                                 <constraint firstItem="Cvd-v4-jV6" firstAttribute="leading" secondItem="AHg-QW-KSa" secondAttribute="leading" id="fa1-uW-qgf"/>
@@ -2265,10 +2265,10 @@ project is waiting to be initiated.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2X-Gp-d2b">
-                                                <rect key="frame" x="10" y="552" width="355" height="60"/>
+                                                <rect key="frame" x="10" y="552" width="357" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kye-BS-kkc">
-                                                        <rect key="frame" x="219" y="0.0" width="51" height="60"/>
+                                                        <rect key="frame" x="226" y="0.0" width="51" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="51" id="Mnt-bZ-JZp"/>
@@ -2283,10 +2283,10 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKc-R8-ZiG">
-                                                        <rect key="frame" x="305" y="0.0" width="50" height="60"/>
+                                                        <rect key="frame" x="312" y="0.0" width="45" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="zn1-JG-ega"/>
+                                                            <constraint firstAttribute="width" constant="45" id="zn1-JG-ega"/>
                                                         </constraints>
                                                         <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title=" kg" image="radio-off.png">
@@ -2298,7 +2298,7 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWz-Pe-hYD">
-                                                        <rect key="frame" x="270" y="0.0" width="35" height="60"/>
+                                                        <rect key="frame" x="277" y="0.0" width="35" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="HRf-ur-6wk"/>
@@ -2313,10 +2313,10 @@ project is waiting to be initiated.</string>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bel-Zd-gFH">
-                                                        <rect key="frame" x="0.0" y="12" width="211" height="35"/>
+                                                        <rect key="frame" x="0.0" y="12" width="218" height="35"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGr-8k-1an">
-                                                                <rect key="frame" x="5" y="0.0" width="206" height="35"/>
+                                                                <rect key="frame" x="5" y="0.0" width="213" height="35"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
@@ -2544,7 +2544,7 @@ project is waiting to be initiated.</string>
                                             <constraint firstItem="EuJ-4x-3NL" firstAttribute="top" secondItem="d6y-u0-NYe" secondAttribute="bottom" constant="8" id="fHg-H6-9v4"/>
                                             <constraint firstItem="5pi-HN-AWG" firstAttribute="top" secondItem="h5k-ae-U6h" secondAttribute="bottom" constant="4" id="ghF-oh-CEW"/>
                                             <constraint firstAttribute="trailing" secondItem="GKh-m8-bcK" secondAttribute="trailing" constant="8" id="hM9-tb-too"/>
-                                            <constraint firstAttribute="trailing" secondItem="z2X-Gp-d2b" secondAttribute="trailing" constant="10" id="jdU-Z4-Jlc"/>
+                                            <constraint firstAttribute="trailing" secondItem="z2X-Gp-d2b" secondAttribute="trailing" constant="8" id="jdU-Z4-Jlc"/>
                                             <constraint firstItem="jZH-pW-r7l" firstAttribute="leading" secondItem="CXY-0W-dRo" secondAttribute="leading" constant="10" id="jep-lR-NRk"/>
                                             <constraint firstAttribute="trailing" secondItem="7nk-Ja-hSQ" secondAttribute="trailing" constant="8" id="jnb-hC-jFy"/>
                                             <constraint firstItem="Ecv-xy-JsV" firstAttribute="width" secondItem="jZH-pW-r7l" secondAttribute="width" id="lMH-Q9-4YM"/>
@@ -3842,40 +3842,51 @@ project is waiting to be initiated.</string>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6J-Xv-VH2">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pH-ux-Gib">
                                                         <rect key="frame" x="0.0" y="30" width="335" height="40"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6J-Xv-VH2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="315" height="40"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="2uE-P7-lNY"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="SELECT ASSAYS/MODELS">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="ModelsBtnAction:" destination="nGS-tA-l2E" eventType="touchUpInside" id="sFi-UJ-ZAR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="D86-Dr-Gvr">
+                                                                <rect key="frame" x="315" y="14" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="12" id="QCK-DA-Dm0"/>
+                                                                    <constraint firstAttribute="height" constant="12" id="T8v-3E-Nnv"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="PXu-kh-NeF"/>
+                                                            <constraint firstItem="C6J-Xv-VH2" firstAttribute="top" secondItem="5pH-ux-Gib" secondAttribute="top" id="94O-P1-rWc"/>
+                                                            <constraint firstItem="D86-Dr-Gvr" firstAttribute="leading" secondItem="C6J-Xv-VH2" secondAttribute="trailing" id="D4v-DI-hVX"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Qo3-sx-zxV"/>
+                                                            <constraint firstItem="C6J-Xv-VH2" firstAttribute="leading" secondItem="5pH-ux-Gib" secondAttribute="leading" id="Xr3-bK-Wc3"/>
+                                                            <constraint firstAttribute="trailing" secondItem="D86-Dr-Gvr" secondAttribute="trailing" constant="8" id="vKH-Jh-CD3"/>
+                                                            <constraint firstItem="D86-Dr-Gvr" firstAttribute="top" secondItem="5pH-ux-Gib" secondAttribute="top" constant="14" id="we3-AF-Gdl"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
-                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="SELECT ASSAYS/MODELS">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="ModelsBtnAction:" destination="nGS-tA-l2E" eventType="touchUpInside" id="sFi-UJ-ZAR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="D86-Dr-Gvr">
-                                                        <rect key="frame" x="315" y="45" width="12" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="GI8-2m-8Lq"/>
-                                                            <constraint firstAttribute="width" constant="12" id="Rin-s6-J89"/>
-                                                        </constraints>
-                                                    </imageView>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="5pH-ux-Gib" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="25F-Zq-tWX"/>
                                                     <constraint firstAttribute="trailing" secondItem="Nqu-b1-LFr" secondAttribute="trailing" id="3t5-pz-c4j"/>
-                                                    <constraint firstItem="C6J-Xv-VH2" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="10" id="5VY-rp-nMD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="D86-Dr-Gvr" secondAttribute="trailing" constant="8" id="7f1-rZ-iRs"/>
                                                     <constraint firstAttribute="height" constant="70" id="Fkj-Hn-Axv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="C6J-Xv-VH2" secondAttribute="trailing" id="K2m-cX-nsu"/>
-                                                    <constraint firstItem="C6J-Xv-VH2" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="heo-b5-V1q"/>
+                                                    <constraint firstItem="5pH-ux-Gib" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="10" id="PKj-QG-Xo6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5pH-ux-Gib" secondAttribute="trailing" id="fn7-Rf-BwN"/>
                                                     <constraint firstItem="Nqu-b1-LFr" firstAttribute="leading" secondItem="XHc-eu-1qZ" secondAttribute="leading" id="k73-7M-7Lu"/>
-                                                    <constraint firstItem="D86-Dr-Gvr" firstAttribute="top" secondItem="Nqu-b1-LFr" secondAttribute="bottom" constant="25" id="xnz-8m-JKC"/>
                                                     <constraint firstItem="Nqu-b1-LFr" firstAttribute="top" secondItem="XHc-eu-1qZ" secondAttribute="top" id="y66-s0-Z1c"/>
                                                 </constraints>
                                             </view>
@@ -3978,9 +3989,12 @@ project is waiting to be initiated.</string>
                         <outlet property="imgServiceDownArrow" destination="aOM-JS-0wl" id="LYM-Vd-6vP"/>
                         <outlet property="imgSubAreaDownArrow" destination="naf-dV-gnn" id="Wpb-a8-Wyi"/>
                         <outlet property="lblRequestTitle" destination="Nh7-9p-Ssv" id="kDJ-hW-5vY"/>
+                        <outlet property="modelsButtonHeightConstraint" destination="2uE-P7-lNY" id="bwo-YX-9hM"/>
                         <outlet property="scrollView" destination="BcJ-tC-Sg1" id="afy-LA-pQN"/>
                         <outlet property="viewAssays" destination="XHc-eu-1qZ" id="Q6V-UB-JVP"/>
                         <outlet property="viewAssaysHeightConstraint" destination="Fkj-Hn-Axv" id="Ugm-KF-EeC"/>
+                        <outlet property="viewModelsButtonBorder" destination="5pH-ux-Gib" id="7m9-Sd-nTf"/>
+                        <outlet property="viewModelsButtonHeightConstraint" destination="Qo3-sx-zxV" id="NXe-5O-Dcu"/>
                         <outlet property="viewSubArea" destination="DgQ-5L-Sbh" id="U98-zN-xcr"/>
                         <outlet property="viewSubAreaHeightConstraint" destination="59E-hx-Ibb" id="nGR-6w-wpn"/>
                     </connections>

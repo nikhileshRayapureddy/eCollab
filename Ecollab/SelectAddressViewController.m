@@ -10,6 +10,7 @@
 #import "ShippingInformationViewController.h"
 #import "RequestOrProjectTrackerViewController.h"
 #import "DashboardViewController.h"
+#import "AddNewShippingAddressViewController.h"
 
 @interface SelectAddressViewController ()
 
@@ -44,25 +45,34 @@
     NSMutableArray *arrAddresses = [aregistrationDict valueForKey:@"UserAddressDetailsResult"];
     [EcollabLoader hideLoaderForView:self.view animated:YES];
     BOOL isFound = NO;
-    for (NSDictionary *dictAddress in arrAddresses)
+    if(arrAddresses.count != 0)
     {
-        NSNumber *ISDefault = [dictAddress valueForKey:@"ISDefault"];
-        BOOL defaultAddress = ISDefault.boolValue;
-        if(defaultAddress == YES)
+        for (NSDictionary *dictAddress in arrAddresses)
         {
-            isFound = YES;
-            dictDefaultAddress = dictAddress;
-            break;
+            NSNumber *ISDefault = [dictAddress valueForKey:@"ISDefault"];
+            BOOL defaultAddress = ISDefault.boolValue;
+            if(defaultAddress == YES)
+            {
+                isFound = YES;
+                dictDefaultAddress = dictAddress;
+                break;
+            }
         }
-    }
-    if(isFound == YES)
-    {
-        [self bindDefaultAddress];
+        if(isFound == YES)
+        {
+            [self bindDefaultAddress];
+        }
+        else
+        {
+            ShippingInformationViewController *SIVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ShippingInformationViewController"];
+            SIVCtrlObj.isFromTracking = YES;
+            [self.navigationController pushViewController:SIVCtrlObj animated:NO];
+        }
     }
     else
     {
-        ShippingInformationViewController *SIVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ShippingInformationViewController"];
-        SIVCtrlObj.isFromTracking = YES;
+        AddNewShippingAddressViewController *SIVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"AddNewShippingAddressViewController"];
+        SIVCtrlObj.isEdit = NO;
         [self.navigationController pushViewController:SIVCtrlObj animated:NO];
     }
 }

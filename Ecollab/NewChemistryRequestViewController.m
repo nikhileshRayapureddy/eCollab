@@ -590,7 +590,7 @@ else
     else
     {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"New chemistry request created successfully."
+                                                                       message:@"“Chemistry request details updated successfully."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
@@ -668,6 +668,7 @@ else
             // Configure the cell...
             cell.textLabel.text =[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:indexPath.row] objectForKey:@"Category"]];
         }
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
         return cell;
  
     }
@@ -717,17 +718,49 @@ else
 {
     if (textField == QuantityTextField || textField == CharitybtnOutlet)
     {
-        if(range.length + range.location > textField.text.length)
+        if(range.location==0)
+            {
+                if ([string hasPrefix:@"0"])
+                {
+                    return NO;
+                }
+            }
+            
+        if(textField.text.length == 10 && string.length != 0)
         {
             return NO;
         }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        return newLength <= 10;
+        else
+        {
+            if([textField.text containsString:@"."] && [string isEqualToString:@"."])
+            {
+                return NO;
+            }
+            else
+            {
+                return YES;
+            }
+            return YES;
+        }
+//        if(range.length + range.location > textField.text.length)
+//        {
+//            return NO;
+//        }
+//        
+//        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+//        return newLength <= 10;
     }
     return YES;
 }
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (isFromTracking)
+    {
+        return NO;
+    }
+    return YES;
+}
 
 -(void)showCompoundDBCustomView
 {
@@ -983,7 +1016,7 @@ else
     }
     else if ([CharitybtnOutlet.text isEqualToString:@"0"])
     {
-        [self showAlertWithMessage:@"Chirality should not be 0."];
+        [self showAlertWithMessage:@"Please enter chirality."];
         return false;
     }
     else if (CharitybtnOutlet.text.length > 10)
