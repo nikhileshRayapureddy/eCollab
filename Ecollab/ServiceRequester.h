@@ -66,6 +66,7 @@
 -(void)requestFopUserAlertsOrNotificationsServiceForSideMenu;
 -(void)responseopUserAlertsOrNotificationsServiceForSideMenu:(NSData *)data;
 -(void)requestForopDeleteRequest:(NSMutableDictionary *)detailDictionary;
+-(void)requestForopUpdateChemistryRequestService:(NSDictionary *)dict;
 @end
 
 #pragma mark - ServiceRequesterProtocol
