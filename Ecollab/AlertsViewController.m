@@ -24,13 +24,34 @@
     // Do any additional setup after loading the view.
     [AlertsTableView setDelegate: self];
     [AlertsTableView setDataSource: self];
+    [self designNavBar];
+    [self designTabBar];
+    [self setSelected:-1];
+    
+    //http://183.82.107.118:55666/eCollab/GvkWCF.svc/opGetUserNotified?uid=2&rid=286976&isviewed=1
+
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getAllAlerts];
+}
+-(void)getAllAlerts
+{
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestFopUserAlertsOrNotificationsService];
     request =  nil;
-    [self designNavBar];
 
+}
+-(void)sendAlertViewedToServer:(NSString*)strRID
+{
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request sendAlertViewedToServerWithRID:strRID];
+    request =  nil;
 }
 -(void)requestReceivedopUserAlertsOrNotificationsResponce:(NSMutableDictionary *)aregistrationDict{
     [EcollabLoader hideLoaderForView:self.view animated:YES];
@@ -117,10 +138,30 @@
             if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 0 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 2 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 3)
             {
                 cell.imgRightArrow.hidden = NO;
+                NSNumber *ISViewed = [dict valueForKey:@"ISViewed"];
+
+                if (ISViewed.intValue == 0)
+                {
+                    cell.imgRightArrow.image = [UIImage imageNamed:@"redarrowup.png"];
+                }
+                else
+                {
+                    cell.imgRightArrow.image = [UIImage imageNamed:@"eyeIcon.png"];
+                }
             }
             else
             {
-                cell.imgRightArrow.hidden = YES;
+                cell.imgRightArrow.hidden = NO;
+                NSNumber *ISViewed = [dict valueForKey:@"ISViewed"];
+
+                if (ISViewed.intValue == 0)
+                {
+                    cell.imgRightArrow.image = [UIImage imageNamed:@""];
+                }
+                else
+                {
+                    cell.imgRightArrow.image = [UIImage imageNamed:@"eyeIcon.png"];
+                }
             }
         }
         
@@ -222,6 +263,7 @@
             isRegretReject = NO;
         }
         strRequestRID = [dict objectForKey:@"OrderID"];
+        strViewedRID = [dict objectForKey:@"RID"];
         [self OrderDetails:inputDict];
     }
     
@@ -276,6 +318,7 @@
 {
     // Note please navigate with data dictionary
     {
+        [self sendAlertViewedToServer:strViewedRID];
         [EcollabLoader hideLoaderForView:self.view animated:YES];
         if(OrderType.intValue == 0)
         {
@@ -297,7 +340,8 @@
                     break;
                 case 1:
                 {
-                    
+                    [self getAllAlerts];
+
                 }
                     break;
                 case 2:
@@ -321,6 +365,8 @@
                 }
                     break;
                 default:
+                    [self getAllAlerts];
+
                     break;
             }
         }
@@ -344,7 +390,7 @@
                     break;
                 case 1:
                 {
-                    
+                    [self getAllAlerts];
                 }
                     break;
                 case 2:
@@ -378,6 +424,7 @@
                 }
                     break;
                 default:
+                    [self getAllAlerts];
                     break;
             }
         }

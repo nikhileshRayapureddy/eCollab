@@ -105,12 +105,17 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"NEW CHEMISTRY REQUEST"
                                                                               attributes:underlineAttribute];
+        [self designTabBar];
+        [self setSelected:0];
+
     }
     else
     {
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
                                                                               attributes:underlineAttribute];
+        [_btnBack setTitle:@"EDIT CHEMISTRY REQUEST" forState:UIControlStateNormal];
+
     }
     if(isFromTracking == YES)
     {
@@ -120,6 +125,8 @@
         
         SubmitBtnOutlet.hidden = YES;
         SaveForLaterBtnOutlet.hidden = YES;
+        [_btnBack setTitle:@"REQUEST DETAILS" forState:UIControlStateNormal];
+
     }
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -128,8 +135,6 @@
     [ExpectedDeleveryDateBtnOutlet setTitle:[NSString stringWithFormat:@" %@",date] forState:UIControlStateNormal];
 //    CharitybtnOutlet.text = @"1";
 //    QuantityTextField.text = @"1";
-    [self designTabBar];
-    [self setSelected:0];
     RemarksTextField.placeholder = @"Remarks";
     [self designNavBar];
 
@@ -562,7 +567,7 @@
 }
 -(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
 // show alert controller and navigare back
-NSArray *arr = [aregistrationDict objectForKey:@"UpdateChemistryRequestResult"];
+NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
 NSDictionary *dictResponse = [arr objectAtIndex:0];
 [EcollabLoader hideLoaderForView:self.view animated:YES];
 if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {

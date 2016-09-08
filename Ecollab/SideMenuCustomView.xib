@@ -31,7 +31,7 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgK-nw-LIr">
                             <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
-                            <color key="backgroundColor" red="0.1333333333" green="0.2156862745" blue="0.41960784309999999" alpha="0.30421653370000001" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.035294117647058823" green="0.062745098039215685" blue="0.2196078431372549" alpha="0.65115248226950351" colorSpace="calibratedRGB"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile1.png" translatesAutoresizingMaskIntoConstraints="NO" id="EB7-mZ-VlH">
                             <rect key="frame" x="113" y="30" width="100" height="100"/>
@@ -100,10 +100,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKC-55-PyW">
                     <rect key="frame" x="0.0" y="200" width="325" height="467"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-FG-pLw">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-FG-pLw">
                             <rect key="frame" x="0.0" y="0.0" width="325" height="467"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -141,6 +141,7 @@
                 <outlet property="lblEmailID" destination="NHt-v8-6ce" id="MD3-BW-04p"/>
                 <outlet property="lblUserName" destination="f0Z-tL-pNt" id="wQZ-eO-eKk"/>
                 <outlet property="menuTable" destination="bhI-FG-pLw" id="clV-dx-px5"/>
+                <outlet property="vwBlurr" destination="ZgK-nw-LIr" id="2Jz-lJ-axG"/>
             </connections>
             <point key="canvasLocation" x="330.5" y="134.5"/>
         </view>

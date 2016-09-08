@@ -40,15 +40,15 @@
     
     
     
-    orderingAndTrackinDataArray =[[NSMutableArray alloc] initWithObjects:@"1. How can I request a quote?",@"2. What happens once I raise a request?",@"3. How do I submit a chemistry request?",@"4. How do I submit a biology request?",@"5. How many structure images can I upload for a chemisty request?",@"6. How do I know about services offered in biology?",@"7. Can I enter additional information while making a request?",@"8. Can I place a request on phone or email?",@"9. How do I track the status of my request?",@"10. Do I get any alerts for my request?",@"11. How do I edit a request?",@"12. Do I have to reenter the complete details if I have not submitted a request?",@"13. How do I accept a quote and place my order?",@"14. How do I check the status of the request?", nil];
+    orderingAndTrackinDataArray =[[NSMutableArray alloc] initWithObjects:@"1. How can I request a quote?",@"2. What happens once I raise a request?",@"3. How do I submit a chemistry request?",@"4. How do I submit a biology request?",@"5. How many structure images can I upload for a chemisty request?",@"6. How do I know about services offered in biology?",@"7. Can I enter additional information while making a request?",@"8. Can I place a request on phone or email?",@"9. How do I track the status of my request?",@"10. Do I get any alerts for my requests?",@"11. How do I edit a request?",@"12. Do I have to reenter the complete details if I have not submitted a request?",@"13. How do I accept a quote and place my order?",@"14. How do I check the status of the request?", nil];
     
     
     
-    orderingAndTrackinDataAnsArray =[[NSMutableArray alloc] initWithObjects:@"To request a quote click ‘Request/ Project Tracker’ from home page, Click on Chemistry/Biology, fill in and submit the details.",@"Chemistry Process\n\n Request – Quotation – Order Placement – Project Initiation – Synthesis – Delivery - Payment\n\nBiology Process \n\nRequest – Information Sharing – Discussion – Project Initiation",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Chemistry’ and choose various options\n.Upload a picture of the molecular structure or,\n.Select a molecular structure from our ‘Reference Database’ or,\n.Provide a ‘CAS’ number or the ‘MDL’ number of the compound and \n*One of the above option is mandatory and more than one is accepted for accuracy.\n\nFill and submit other details. Some details like Purity, Chirality, and UOM are mandatory while others are recommended for accuracy and quick response. ",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Biology’ and then select the Service, Area, Sub-Area, and Assay/Model combination and submit the request. We will facilitate the necessary information and initiate a discussion.",@"Only one image can be uploaded. This image can either be clicked from a mobile camera, selected from gallery or chosen from the reference compound database.",@"We have listed all kinds of services by combining values from dropdown lists. You can select any service offered by us and initiate a discussion.",@"Yes, the additional information can be entered in the text space provided for remarks.                                                                 ",@"Yes, our executive will accept the requests on both phone and email. If you want this information to be entered in the system, an executive can do that on your behalf.",@"The request status can be tracked from ‘Request/Project Tracker’. The request will appear under the ‘Requested Quotes’ tab until you have not confirmed your order. Once the order is confirmed the request will also be available under ‘On Going Projects’ tab. We have included exhaustive status messages to keep you updated with the progress of your request.",@"Yes. We continuously update you through alerts whenever an action is taken on your request or it moves in the project lifecycle.",@"A request cannot be edited after submission. You can however send a mail to mobilesupport@gvkbio.com or call us directly to request any changes.",@"No. You can always save your request any number of times by using ‘Save for later’ option and can resume from where you left off by choosing the request from ‘Saved Requests’. Once you are satisfied with the details, you can submit the request.",@"You can either place your order by clicking on the alert sent to you or by clicking the request status ‘Acceptance’ to view the quotation details and then by clicking the ‘Place Order’ button.",@"You can go to the ‘Request/Project tracker’ to check the progress of your request. The tool shows the status of your projects by default. You need to choose the ‘Requested Quotes’ tab to locate your new requests. Once your order is confirmed, these requests are converted to projects and their status can be tracked through ‘On going Projects’ tab.", nil];
+    orderingAndTrackinDataAnsArray =[[NSMutableArray alloc] initWithObjects:@"To request a quote click ‘Request/ Project Tracker’ from home page, Click on Chemistry/Biology, fill in and submit the details.",@"We follow different cycles for processing Chemistry and Biology requests\n\nChemistry Process\n\n Request – Quotation – Order Placement – Project Initiation – Synthesis – Delivery - Payment\n\nBiology Process \n\nRequest – Information Sharing – Discussion – Project Initiation",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Chemistry’ and choose various options\n.Upload a picture of the molecular structure or,\n.Select a molecular structure from our ‘Reference Database’ or,\n.Provide a ‘CAS’ number or the ‘MDL’ number of the compound and \n*One of the above option is mandatory and more than one is accepted for accuracy.\n\nFill and submit other details. Some details like Purity, Chirality, and UOM are mandatory while others are recommended for accuracy and quick response. ",@"Click ‘Request/ Project Tracker’ from home screen, select ‘Biology’ and then select the Service, Area, Sub-Area, and Assay/Model combination and submit the request. We will facilitate the necessary information and initiate a discussion.",@"Only one image can be uploaded. This image can either be clicked from a mobile camera, selected from gallery or chosen from the reference compound database.",@"We have listed all kinds of services by combining values from dropdown lists. You can select any service offered by us and initiate a discussion.",@"Yes, the additional information can be entered in the text space provided for remarks.                                                                 ",@"Yes, our executive will accept the requests on both phone and email. If you want this information to be entered in the system, an executive can do that on your behalf.",@"The request status can be tracked from ‘Request/Project Tracker’. The request will appear under the ‘Requested Quotes’ tab until you have not confirmed your order. Once the order is confirmed the request will also be available under ‘On Going Projects’ tab. We have included exhaustive status messages to keep you updated with the progress of your request.",@"Yes. We continuously update you through alerts whenever an action is taken on your request or it moves in the project lifecycle.",@"A request cannot be edited after submission. You can however send a mail to mobilesupport@gvkbio.com or call us directly to request any changes.",@"No. You can always save your request any number of times by using ‘Save for later’ option and can resume from where you left off by choosing the request from ‘Saved Requests’. Once you are satisfied with the details, you can submit the request.",@"You can either place your order by clicking on the alert sent to you or by clicking the request status ‘Acceptance’ to view the quotation details and then by clicking the ‘Place Order’ button.",@"You can go to the ‘Request/Project tracker’ to check the progress of your request. The tool shows the status of your projects by default. You need to choose the ‘Requested Quotes’ tab to locate your new requests. Once your order is confirmed, these requests are converted to projects and their status can be tracked through ‘On going Projects’ tab.", nil];
     
     
     
-    DeliveryAndPaymentDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How is my compound shipped?",@"2. What are the safety measures while shipping compounds?",@"3. How do I make a payment?",@"4. Can I save multiple addresses?",@"5 How can add shipping address?",@"6. Can I change Edit my shipping address?", nil];
+    DeliveryAndPaymentDataArray = [[NSMutableArray alloc] initWithObjects:@"1. How is my compound shipped?",@"2. What are the safety measures while shipping compounds?",@"3. How do I make a payment?",@"4. Can I save multiple addresses?",@"5. How can add shipping address?",@"6. Can I change Edit my shipping address?", nil];
 
     
     
@@ -229,73 +229,84 @@
     }
     else
     {
-   
-    if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
-    {
-        NSString *strRowTitle = @"";
-        if (indexPath.section == 0) {
-            strRowTitle =  [generalDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 1){
-            strRowTitle =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
-        }else if (indexPath.section == 2){
-            strRowTitle =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
-        }else{
-            strRowTitle =  [myAccountDataAnsArray objectAtIndex:indexPath.row];
-        }
         
-        
-        CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 28, 1000)
-                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
-                                                context:nil];
-        if (indexPath.section == 3)
+        if ([arrSelRow containsObject:[NSString stringWithFormat:@"%li-%li",(long)indexPath.row,(long)indexPath.section]] && [arrSelHeader containsObject:[NSString stringWithFormat:@"%li",(long)indexPath.section]])
         {
-            if (indexPath.row == 3 || indexPath.row == 2 || indexPath.row == 0)
-            {
-                return 52 + ceilf(rect.size.height) + 35;
-            }
-            else
-            {
-                return 52 + ceilf(rect.size.height) + 25;
-            }
-
-        }
-        else if (indexPath.section == 1)
-        {
-            if (indexPath.row == 0)
-            {
-                return 52 + ceilf(rect.size.height) + 35;
-            }
-            else if (indexPath.row == 2)
-            {
-                return 52 + ceilf(rect.size.height) + 75;
-            }
-            else if (indexPath.row == 6)
-            {
-                return 52 + ceilf(rect.size.height) + 30;
-            }
-            else
-            {
-                return 52 + ceilf(rect.size.height) + 25;
+            NSString *strRowTitle = @"";
+            if (indexPath.section == 0) {
+                strRowTitle =  [generalDataAnsArray objectAtIndex:indexPath.row];
+            }else if (indexPath.section == 1){
+                strRowTitle =  [orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row];
+            }else if (indexPath.section == 2){
+                strRowTitle =  [DeliveryAndPaymentDataAnsArray objectAtIndex:indexPath.row];
+            }else{
+                strRowTitle =  [myAccountDataAnsArray objectAtIndex:indexPath.row];
             }
             
+            
+            CGRect rect = [strRowTitle boundingRectWithSize:CGSizeMake(tableView.frame.size.width - 28, 1000)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:14]}
+                                                    context:nil];
+            if (indexPath.section == 3)
+            {
+                if (indexPath.row == 3 || indexPath.row == 2 || indexPath.row == 0)
+                {
+                    return 52 + ceilf(rect.size.height) + 35;
+                }
+                else
+                {
+                    return 52 + ceilf(rect.size.height) + 25;
+                }
+                
+            }
+            else if (indexPath.section == 1)
+            {
+                if (indexPath.row == 0)
+                {
+                    return 52 + ceilf(rect.size.height) + 35;
+                }
+                else if (indexPath.row == 2)
+                {
+                    return 52 + ceilf(rect.size.height) + 75;
+                }
+                else if (indexPath.row == 6)
+                {
+                    return 52 + ceilf(rect.size.height) + 30;
+                }
+                else if (indexPath.row == 11)
+                {
+                    return 52 + ceilf(rect.size.height) + 50;
+                }
+                else
+                {
+                    return 52 + ceilf(rect.size.height) + 25;
+                }
+                
+            }
+            else
+            {
+                if (indexPath.row == 0)
+                {
+                    return 52 + ceilf(rect.size.height) + 35;
+                }
+                else
+                {
+                    return 52 + ceilf(rect.size.height) + 25;
+                }
+            }
         }
         else
         {
-            if (indexPath.row == 0)
+            if (indexPath.section == 1)
             {
-                return 52 + ceilf(rect.size.height) + 35;
+                if (indexPath.row == 11)
+                {
+                    return 52 + 25;
+                }
             }
-            else
-            {
-                return 52 + ceilf(rect.size.height) + 25;
-            }
+                return 52;
         }
-    }
-    else
-    {
-        return 52;
-    }
     }
 
 }
@@ -339,6 +350,11 @@
         {
             [cell.btnDetail addTarget:self action:@selector(btnDetailClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
+        else if (indexPath.row == 11)
+        {
+            cell.constHeightVwTitle.constant = 75;
+        }
+
         else if (indexPath.row == 2)
         {
             NSMutableAttributedString *longString = [self setFontForTitlesForText:[orderingAndTrackinDataAnsArray objectAtIndex:indexPath.row]];
@@ -450,7 +466,6 @@
         NSRange range=[text rangeOfString:word];
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:19.0/255.0 green:157.0/255.0 blue:255.0/255.0 alpha:1.0] range:range];
         [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];
-        [string addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
 
     }
     for (NSString *word in blueSmallWords) {

@@ -89,12 +89,17 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"NEW BIOLOGY REQUEST"
                                                                  attributes:underlineAttribute];
+        [self designTabBar];
+        [self setSelected:0];
+
     }
     else if(shouldUpdateRequest == YES)
     {
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT BIOLOGY REQUEST"
                                                                  attributes:underlineAttribute];
+        
+        [_btnBack setTitle:@"EDIT BIOLOGY REQUEST" forState:UIControlStateNormal];
     }
     else if(isFromTracking == YES)
     {
@@ -104,6 +109,8 @@
         
         SubmitBtnOutlet.hidden = YES;
         SaveForLaterBtnOutlet.hidden = YES;
+        [_btnBack setTitle:@"REQUEST DETAILS" forState:UIControlStateNormal];
+
     }
 }
 
@@ -413,8 +420,17 @@
             NSString *strStatusCode = [dictResponse objectForKey:@"SuccessCode"];
             if([strStatusCode  isEqual: @"200"])
             {
+                NSString *strMsg;
+                if(shouldUpdateRequest == YES)
+                {
+                    strMsg = @"Biology request details updated successfully.";
+                }
+                else
+                {
+                    strMsg = [dictResponse objectForKey:@"SuccessString"];
+                }
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                               message:[dictResponse objectForKey:@"SuccessString"]
+                                                                               message:strMsg
                                                                         preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     for (UIViewController *vc in self.navigationController.viewControllers) {

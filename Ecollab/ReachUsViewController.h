@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RateView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ServiceRequester.h"
 #import "BaseViewController.h"
-@interface ReachUsViewController : BaseViewController<RateViewDelegate,ServiceRequesterProtocol>
-@property (weak, nonatomic) IBOutlet RateView *rateView;
+@interface ReachUsViewController : BaseViewController<ServiceRequesterProtocol>
+@property (weak, nonatomic) IBOutlet UIView *rateView;
 
 - (IBAction)CommentAndRateBtnActio:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *CommentTf;
 @property (weak, nonatomic) IBOutlet UIView *vwCommentsBg;
 - (IBAction)btnBackClicked:(UIButton *)sender;
+- (IBAction)btnRatingSelected:(UIButton *)sender;
 
 @end

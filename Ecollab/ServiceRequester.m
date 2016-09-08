@@ -414,6 +414,31 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
 
     
 }
+-(void)sendAlertViewedToServerWithRID:(NSString*)strRID{
+    //http://183.82.107.118:55666/eCollab/GvkWCF.svc/opGetUserNotified?uid=2&rid=286976&isviewed=1
+
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    service.theSuccessMethod = @selector(responseopUserAlertsOrNotificationsService:);
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opGetUserNotified?uid=%@&rid=%@&isviewed=1",[[DetailsManager sharedManager] rID],strRID]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    [service startWithURL:url];
+    service = nil;
+}
+
+-(void)AlertViewedResponse:(NSData *)data
+{
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    NSError *e = nil;
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSLog(@"Parsed JSON Data: %@", jsonDict);
+    [serviceRequesterDelegate requestReceivedopUserAlertsViewed:jsonDict];
+    // alert =  nil;
+}
+
+
 //opInsertBiologyRequest
 -(void)requestForopInsertBiologyRequestService:(NSMutableDictionary *)detailDictionary{
         ServiceInterface *service = [[ServiceInterface alloc] init];

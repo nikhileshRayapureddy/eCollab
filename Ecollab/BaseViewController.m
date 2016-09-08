@@ -44,14 +44,17 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.hidesBackButton = YES;
-    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];   CGRect frameimg2 = CGRectMake(0,0, 50,25);
+    UIImage *leftBarbtnImage = [UIImage imageNamed:@"menu.png"];
+    CGRect frameimg2 = CGRectMake(0,0, 50,25);
     UIButton *lefttBarBtn = [[UIButton alloc] initWithFrame:frameimg2];
     lefttBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [lefttBarBtn setImage:leftBarbtnImage forState:UIControlStateNormal];
     [lefttBarBtn addTarget:self action:@selector(btnMenuClicked:)
           forControlEvents:UIControlEventTouchUpInside];
+    lefttBarBtn.titleEdgeInsets = UIEdgeInsetsMake(23, 0, 0, 0);
     UIBarButtonItem *leftBarBtnItem =[[UIBarButtonItem alloc] initWithCustomView:lefttBarBtn];
     self.navigationItem.leftBarButtonItem =leftBarBtnItem;
+    
 
     UIImageView *imgLogoEcoLab = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
     imgLogoEcoLab.backgroundColor = [UIColor clearColor];
@@ -99,29 +102,22 @@
             
             UIButton *btnTab = [UIButton buttonWithType:UIButtonTypeCustom];
             
+            btnTab.adjustsImageWhenHighlighted = NO;
             
             [btnTab addTarget:self action:@selector(btnTabClicked:) forControlEvents:UIControlEventTouchUpInside];
             switch(i)
             {
                 case 0 :
                     btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
-                    [btnTab setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
-                    [btnTab setImage:[UIImage imageNamed:@"RequestaQuote_red.jpg"] forState:UIControlStateSelected];
                     break;
                 case 1 :
                     btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
-                    [btnTab setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
-                    [btnTab setImage:[UIImage imageNamed:@"SavedRequests_red.jpg"] forState:UIControlStateSelected];
                     break;
                 case 2 :
                     btnTab.frame = CGRectMake(x, 0,width-1, vwBase.frame.size.height);
-                    [btnTab setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
-                    [btnTab setImage:[UIImage imageNamed:@"RequestProjectTracker_red.jpg"] forState:UIControlStateSelected];
                    break;
                 case 3 :
                     btnTab.frame = CGRectMake(x, 0,width, vwBase.frame.size.height);
-                    [btnTab setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
-                    [btnTab setImage:[UIImage imageNamed:@"MyProfile_red.jpg"] forState:UIControlStateSelected];
                     break;
                 default :
                     break;
@@ -239,32 +235,41 @@
     
     if(Vc == 0)
     {
-        [self setTabbarImages:btn1];
+        
+        [btn1 setImage:[UIImage imageNamed:@"RequestaQuote_red.jpg"] forState:UIControlStateNormal];
+        [btn2 setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
+        [btn3 setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
+        [btn4 setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
+
     }
     else if(Vc == 1)
     {
-        [self setTabbarImages:btn2];
+        [btn1 setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
+        [btn2 setImage:[UIImage imageNamed:@"SavedRequests_red.jpg"] forState:UIControlStateNormal];
+        [btn3 setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
+        [btn4 setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
     }
     else if(Vc == 2)
     {
-        [self setTabbarImages:btn3];
+        [btn1 setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
+        [btn2 setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
+        [btn3 setImage:[UIImage imageNamed:@"RequestProjectTracker_red.jpg"] forState:UIControlStateNormal];
+        [btn4 setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
     }
     else if(Vc == 3)
     {
-        [self setTabbarImages:btn4];
+        [btn1 setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
+        [btn2 setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
+        [btn3 setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
+        [btn4 setImage:[UIImage imageNamed:@"MyProfile_red.jpg"] forState:UIControlStateNormal];
     }
-}
--(void)setTabbarImages:(UIButton*)sender
-{
-    UIView *vwBase = (UIView*)[self.view viewWithTag:1875];
-    
-    for (int i=0; i<4; i++)
+    else
     {
-        UIButton *btn = (UIButton*)[vwBase viewWithTag:TAG_BOTTOM_BAR+i];
-        btn.selected = NO;
-        
+        [btn1 setImage:[UIImage imageNamed:@"Request_a_Quote_black.jpg"] forState:UIControlStateNormal];
+        [btn2 setImage:[UIImage imageNamed:@"SavedRequests_black.jpg"] forState:UIControlStateNormal];
+        [btn3 setImage:[UIImage imageNamed:@"RequestProjectTracker_black.jpg"] forState:UIControlStateNormal];
+        [btn4 setImage:[UIImage imageNamed:@"MyProfile_black.jpg"] forState:UIControlStateNormal];
     }
-    sender.selected = YES;
 }
 -(void)initialiseSideMenu
 {
@@ -273,7 +278,7 @@
     NSArray *arr  = [userData objectForKey:@"Login"];
     NSDictionary *dic = [arr objectAtIndex:0];
     
-    vwSideMenuCustomView.imgProfile.layer.borderColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0].CGColor;
+    vwSideMenuCustomView.imgProfile.layer.borderColor = [UIColor colorWithRed:150.0/255.0 green:150.0/255.0 blue:150.0/255.0 alpha:1.0].CGColor;
     vwSideMenuCustomView.imgProfile.layer.borderWidth = 4.0;
     vwSideMenuCustomView.lblUserName.text = [dic objectForKey:@"Name"];
     vwSideMenuCustomView.lblEmailID.text = [dic objectForKey:@"EmailID"];
@@ -314,7 +319,17 @@
 -(void)requestReceivedopUserAlertsOrNotificationsForSideMenuResponce:(NSMutableDictionary *)aregistrationDict
 {
     NSArray *alerts = [aregistrationDict objectForKey:@"NotificationsOrAlertsResult"];
-    alertsCount = alerts.count;
+    int Count = 0;
+    for (NSDictionary *dict in alerts) {
+        NSNumber *ISViewed = [dict valueForKey:@"ISViewed"];
+        if (ISViewed.intValue == 0)
+        {
+            Count ++;
+        }
+    }
+    
+
+    alertsCount = Count;
     [vwSideMenuCustomView.menuTable reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -635,7 +650,7 @@
 }
 -(UIView*)tableViewFooterView
 {
-    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(0, 0, vwSideMenuCustomView.menuTable.frame.size.width, 44)];
+    UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(0, 0, vwSideMenuCustomView.menuTable.frame.size.width-50, 44)];
     vw.backgroundColor = [UIColor clearColor];
     
     UIButton *btnSignOut = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -643,10 +658,26 @@
     [btnSignOut setBackgroundImage:[UIImage imageNamed:@"btnRedGradient.png"] forState:UIControlStateNormal];
     [btnSignOut setTitle:@"SIGN OUT" forState:UIControlStateNormal];
     [btnSignOut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btnSignOut.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-    btnSignOut.frame = CGRectMake(0, 0, 80, 30);
-    btnSignOut.center = CGPointMake((vwSideMenuCustomView.menuTable.frame.size.width - 80)/2, vw.center.y);
-    [btnSignOut addTarget:self action:@selector(btnSignOutClicked:) forControlEvents:UIControlEventTouchUpInside];
+    btnSignOut.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+    btnSignOut.layer.cornerRadius = 5;
+    btnSignOut.layer.masksToBounds = YES;
+
+    if ([[UIScreen mainScreen] bounds].size.width > 320)
+    {
+        if ([[UIScreen mainScreen] bounds].size.width > 375)
+        {
+            btnSignOut.frame = CGRectMake(142, 7, 80, 30);
+        }
+        else
+        {
+            btnSignOut.frame = CGRectMake(122.5, 7, 80, 30);
+        }
+    }
+    else
+    {
+        btnSignOut.frame = CGRectMake(95, 7, 80, 30);
+    }
+     [btnSignOut addTarget:self action:@selector(btnSignOutClicked:) forControlEvents:UIControlEventTouchUpInside];
     [vw addSubview:btnSignOut];
     return vw;
 }

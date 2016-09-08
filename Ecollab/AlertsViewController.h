@@ -19,6 +19,8 @@
 {
     BOOL isRegretReject;
     NSString *strRequestRID;
+    NSString *strViewedRID;
+
 }
 @property (strong, nonatomic) IBOutlet UITableView *AlertsTableView;
 - (IBAction)btnBackClicked:(UIButton *)sender;

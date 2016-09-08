@@ -39,18 +39,28 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xi1-Ey-lR3">
+                        <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="nMS-Fu-cVA"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="j0N-Cw-CUe" secondAttribute="bottom" constant="1" id="19P-gh-hSC"/>
+                    <constraint firstAttribute="trailing" secondItem="xi1-Ey-lR3" secondAttribute="trailing" id="2pN-ea-EgG"/>
                     <constraint firstItem="8fs-ru-ZB1" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="5ha-Cm-Ek2"/>
                     <constraint firstItem="8fs-ru-ZB1" firstAttribute="leading" secondItem="IfS-6u-R41" secondAttribute="trailing" constant="8" id="6bH-mn-54x"/>
                     <constraint firstAttribute="bottom" secondItem="8fs-ru-ZB1" secondAttribute="bottom" id="Bz8-UY-kjB"/>
                     <constraint firstItem="j0N-Cw-CUe" firstAttribute="top" secondItem="YJ2-eD-3fG" secondAttribute="top" id="HqH-n9-cdg"/>
                     <constraint firstItem="IfS-6u-R41" firstAttribute="leading" secondItem="YJ2-eD-3fG" secondAttribute="leading" constant="8" id="Ydv-Dm-dAD"/>
                     <constraint firstAttribute="trailing" secondItem="j0N-Cw-CUe" secondAttribute="trailing" id="bgR-7u-0Ea"/>
+                    <constraint firstItem="xi1-Ey-lR3" firstAttribute="leading" secondItem="YJ2-eD-3fG" secondAttribute="leading" id="cxO-xK-a0j"/>
                     <constraint firstItem="j0N-Cw-CUe" firstAttribute="leading" secondItem="8fs-ru-ZB1" secondAttribute="trailing" id="kWO-0t-aYz"/>
                     <constraint firstItem="IfS-6u-R41" firstAttribute="centerY" secondItem="YJ2-eD-3fG" secondAttribute="centerY" id="mmt-kc-N8V"/>
+                    <constraint firstAttribute="bottom" secondItem="xi1-Ey-lR3" secondAttribute="bottom" id="yVS-W9-ARk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

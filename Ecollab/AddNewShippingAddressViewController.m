@@ -24,6 +24,7 @@
     if (_isEdit)
     {
         [self bindData];
+        [_btnBack setTitle:@"EDIT SHIPPING ADDRESS" forState:UIControlStateNormal];
     }
     [self designNavBar];
 }

@@ -191,6 +191,7 @@
 		A77431C61D6CB2C1008AF551 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A77431C51D6CB2C1008AF551 /* btnBack.png */; };
 		A7AECA171D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */; };
 		A7AECA181D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */; };
+		A7D99D7F1D818E6A00AB4393 /* eyeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7D99D7E1D818E6A00AB4393 /* eyeIcon.png */; };
 		A7F565FD1D7146C6000D4CFF /* SAMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F565FC1D7146C6000D4CFF /* SAMTextView.m */; };
 		A7F9CA671D6C2BBD00A2928F /* Alerts_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */; };
 		A7F9CA681D6C2BBD00A2928F /* help_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F9CA5E1D6C2BBD00A2928F /* help_menu.png */; };
@@ -474,6 +475,7 @@
 		A7AECA141D6D7CC50017A919 /* BiologyDropDownListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiologyDropDownListTableViewCell.h; sourceTree = "<group>"; };
 		A7AECA151D6D7CC50017A919 /* BiologyDropDownListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiologyDropDownListTableViewCell.m; sourceTree = "<group>"; };
 		A7AECA161D6D7CC50017A919 /* BiologyDropDownListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiologyDropDownListTableViewCell.xib; sourceTree = "<group>"; };
+		A7D99D7E1D818E6A00AB4393 /* eyeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeIcon.png; sourceTree = "<group>"; };
 		A7F565FB1D7146C6000D4CFF /* SAMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMTextView.h; sourceTree = "<group>"; };
 		A7F565FC1D7146C6000D4CFF /* SAMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMTextView.m; sourceTree = "<group>"; };
 		A7F9CA5D1D6C2BBD00A2928F /* Alerts_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_menu.png; sourceTree = "<group>"; };
@@ -982,6 +984,7 @@
 		9EC27B091D61B9D2005C4CA6 /* test&real imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A7D99D7E1D818E6A00AB4393 /* eyeIcon.png */,
 				A7696B111D772F5200B414C8 /* requestquote.png */,
 				A7696B0D1D772CB300B414C8 /* request.png */,
 				A7696B0B1D772C6400B414C8 /* on-going-1.png */,
@@ -1415,6 +1418,7 @@
 				9E47E6541D4CA59900A50C2B /* cam1.jpeg in Resources */,
 				CCE7904F1D65FED7007A5623 /* down-arrow@2x.png in Resources */,
 				9EC27B241D621AF3005C4CA6 /* quantity_new.png in Resources */,
+				A7D99D7F1D818E6A00AB4393 /* eyeIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1604,7 +1608,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = eCollab;
-				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
+				PROVISIONING_PROFILE = "48e72a31-e9a3-4bde-99d5-ebc7b82703df";
 			};
 			name = Debug;
 		};
@@ -1620,7 +1624,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = eCollab;
-				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
+				PROVISIONING_PROFILE = "48e72a31-e9a3-4bde-99d5-ebc7b82703df";
 			};
 			name = Release;
 		};

@@ -51,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIView *vwRemarksTxtFldBg;
 @property (strong, nonatomic) NSString *strRidForSavedRequest;
 @property (assign, nonatomic) BOOL shouldUpdateRequest;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
 
 
 - (IBAction)SaveForLaterBtnAction:(id)sender;

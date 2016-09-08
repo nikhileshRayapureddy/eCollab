@@ -25,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrlVw;
 - (IBAction)SubmitBtnAction:(id)sender;
 - (IBAction)btnBackClicked:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
 
 @end
