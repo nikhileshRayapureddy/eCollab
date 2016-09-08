@@ -49,6 +49,8 @@
 @property (weak, nonatomic) IBOutlet UIView *vwQtyBg;
 @property (weak, nonatomic) IBOutlet UIView *vwChiralityTxtFldBg;
 @property (weak, nonatomic) IBOutlet UIView *vwRemarksTxtFldBg;
+@property (strong, nonatomic) NSString *strRidForSavedRequest;
+@property (assign, nonatomic) BOOL shouldUpdateRequest;
 
 
 - (IBAction)SaveForLaterBtnAction:(id)sender;

@@ -226,8 +226,10 @@
             NSMutableDictionary *dict = [arr objectAtIndex:0];
             NCRVCtrlObj.dictSavedChemestryData = dict;
         }
-        NCRVCtrlObj.isFromRequestAQuote = NO;
+        NCRVCtrlObj.strRidForSavedRequest = [dictSelectedRequest objectForKey:@"RID"];
 
+        NCRVCtrlObj.isFromRequestAQuote = NO;
+        NCRVCtrlObj.shouldUpdateRequest = YES;
         [self.navigationController pushViewController:NCRVCtrlObj animated:YES];
         
     }else{

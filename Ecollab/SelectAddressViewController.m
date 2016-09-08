@@ -18,10 +18,11 @@
 
 @implementation SelectAddressViewController
 @synthesize strRequestRID;
+@synthesize dictDefaultAddress;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dictDefaultAddress = [[NSMutableDictionary alloc]init];
     // Do any additional setup after loading the view.
+    [self designNavBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,12 +33,18 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-    ServiceRequester *request = [ServiceRequester new];
-    request.serviceRequesterDelegate =  self;
-    [request requestForopGetShippingAddressDetailsService];
-    request =  nil;
+//    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+//    ServiceRequester *request = [ServiceRequester new];
+//    request.serviceRequesterDelegate =  self;
+//    [request requestForopGetShippingAddressDetailsService];
+//    request =  nil;
     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self bindDefaultAddress];
 }
 
 -(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict
@@ -82,7 +89,15 @@
     self.lblName.text = [dictDefaultAddress objectForKey:@"Name"];
     self.lblNumber.text = [dictDefaultAddress objectForKey:@"MobileNumber"];
     self.lblAddress1.text = [NSString stringWithFormat:@"%@ %@ %@",[dictDefaultAddress objectForKey:@"Address"],[dictDefaultAddress objectForKey:@"Address1"],[dictDefaultAddress objectForKey:@"City"]];
-    self.lblAddress2.text = [NSString stringWithFormat:@"%@ %@ %@",[dictDefaultAddress objectForKey:@"State"],[dictDefaultAddress objectForKey:@"Country"],[dictDefaultAddress objectForKey:@"Pincode"]];
+    NSString *str = [dictDefaultAddress objectForKey:@"PinCode"];
+    if (str.length)
+    {
+        self.lblAddress2.text = [NSString stringWithFormat:@"%@ %@ %@",[dictDefaultAddress objectForKey:@"State"],[dictDefaultAddress objectForKey:@"Country"],[dictDefaultAddress objectForKey:@"PinCode"]];
+    }
+    else
+    {
+        self.lblAddress2.text = [NSString stringWithFormat:@"%@ %@ %@",[dictDefaultAddress objectForKey:@"State"],[dictDefaultAddress objectForKey:@"Country"],[dictDefaultAddress objectForKey:@"Pincode"]];
+    }
 }
 /*
 #pragma mark - Navigation

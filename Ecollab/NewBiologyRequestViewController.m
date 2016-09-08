@@ -172,6 +172,21 @@
     [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //    isFromRequestAQuote = YES;
     
+    CGRect rect = [modelIds boundingRectWithSize:CGSizeMake(ModelsBtnOutlet.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0]} context:nil];
+    float height = ceilf(rect.size.height);
+    NSLog(@"---%f",height);
+    
+    ModelsBtnOutlet.titleLabel.numberOfLines = height/14;
+    [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
+    [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    if (height/14 > 2)
+    {
+        modelsButtonHeightConstraint.constant = (height/14) * 15;
+        viewAssaysHeightConstraint.constant = (height/14) * 15 + 30;
+        viewModelsButtonHeightConstraint.constant = (height/14) * 15;
+    }
+    
     strServiceIDFinal = [dict objectForKey:@"ServiceID"];
     strAreaIDFinal = [dict objectForKey:@"AreaID"];
     strSubAreaIDFinal = [dict objectForKey:@"SubAreaID"];
@@ -215,9 +230,27 @@
     [SubAreaBtnOutlet setTitle:subArea forState:UIControlStateNormal];
     [SubAreaBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    ModelsBtnOutlet.titleLabel.numberOfLines = 2;
+    
+    CGRect rect = [modelIds boundingRectWithSize:CGSizeMake(ModelsBtnOutlet.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0]} context:nil];
+    float height = ceilf(rect.size.height);
+    NSLog(@"---%f",height);
+    
+    ModelsBtnOutlet.titleLabel.numberOfLines = height/14;
     [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
     [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    if (height/14 > 2)
+    {
+        modelsButtonHeightConstraint.constant = (height/14) * 15;
+        viewAssaysHeightConstraint.constant = (height/14) * 15 + 30;
+        viewModelsButtonHeightConstraint.constant = (height/14) * 15;
+    }
+    
+    
+    
+//    ModelsBtnOutlet.titleLabel.numberOfLines = 2;
+//    [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
+//    [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     isFromRequestAQuote = YES;
     
     strServiceIDFinal = [dict objectForKey:@"ServiceID"];
@@ -594,16 +627,8 @@
         }
         else
         {
-            if(shouldUpdateRequest == YES)
-            {
-                [self bindSavedOrderDetails:dictSavedOrderDetails];
-            }
-            if(isFromTracking == YES)
-            {
-                [self bindOrderDetailsFromTracking:dictSavedOrderDetails];
-            }
             modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
-            
+
             if(modelArray.count == 0)
             {
                 [self showViewAssays:NO];
@@ -612,10 +637,36 @@
             {
                 [self showViewAssays:YES];
             }
+            
+            if(shouldUpdateRequest == YES)
+            {
+                [self bindSavedOrderDetails:dictSavedOrderDetails];
+            }
+            if(isFromTracking == YES)
+            {
+                [self bindOrderDetailsFromTracking:dictSavedOrderDetails];
+            }
+            
             modelflag = 0;
         }
     }
     else if (serFlag == 2){
+        modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
+
+        if(modelArray.count != 0)
+        {
+            //            NSDictionary *dict= [modelArray objectAtIndex:0];
+            //            [ModelsBtnOutlet setTitle:[dict valueForKey:@"Description"] forState:UIControlStateNormal];
+            //            strMultipleModelIdIDFinal = @"";
+            //            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
+            //
+            [self showViewAssays:YES];
+        }
+        else
+        {
+            [self showViewAssays:NO];
+        }
+
         if(shouldUpdateRequest == YES)
         {
             [self bindSavedOrderDetails:dictSavedOrderDetails];
@@ -625,20 +676,6 @@
             [self bindOrderDetailsFromTracking:dictSavedOrderDetails];
         }
         
-        modelArray = [aregistrationDict objectForKey:@"DependencyDetailsResult"];
-        if(modelArray.count != 0)
-        {
-//            NSDictionary *dict= [modelArray objectAtIndex:0];
-//            [ModelsBtnOutlet setTitle:[dict valueForKey:@"Description"] forState:UIControlStateNormal];
-//            strMultipleModelIdIDFinal = @"";
-//            strMultipleModelIdIDFinal = [NSString stringWithFormat:@"%@",[dict objectForKey:@"RID"]];
-//
-            [self showViewAssays:YES];
-        }
-        else
-        {
-            [self showViewAssays:NO];
-        }
     }
 }
 

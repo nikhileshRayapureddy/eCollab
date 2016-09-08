@@ -2,7 +2,8 @@
 
 #import "ServiceRequester.h"
 #define kApplicationBaseURL [[NSBundle mainBundle] objectForInfoDictionaryKey:@"ApplicationBaseURL"]
-NSString *const kBase_URL = @"http://183.82.107.118:55666/eCollab/GvkWCF.svc";
+//NSString *const kBase_URL = @"http://183.82.107.118:55666/eCollab/GvkWCF.svc";
+NSString *const kBase_URL = @"http://ecollab.gvkbio.com/GvkWCF.svc";
 //NSString *const kBase_URLWithHttps = @"https://115.119.121.188:8081/MobileService/services";
 NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
 
@@ -113,6 +114,31 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     service.theFailureMethod = @selector(requestFailedWithError:);
     [self addServiceInterfaceToServiceStack:service];
     NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opCreateChemistryRequest"]];
+    NSURL* url = [NSURL URLWithString:stringURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    request.HTTPBody = requestBodyData;
+    request.HTTPMethod = @"POST";
+    [request setValue:kBase_Content_Type forHTTPHeaderField:@"Content-Type"];
+    NSLog(@"request  %@",request);
+    [service startWithRequest:request];
+    service = nil;
+}
+
+-(void)requestForopUpdateChemistryRequestService:(NSDictionary *)dict{
+    ServiceInterface *service = [[ServiceInterface alloc] init];
+    service.theDelegate = self;
+    if ([[dict valueForKey:@"ISSubmit"] isEqualToString:@"0"])
+    {
+        service.theSuccessMethod = @selector(responseopSaveChemistryRequestService:);
+    }
+    else
+    {
+        service.theSuccessMethod = @selector(responseopCreateChemistryRequestService:);
+    }
+    service.theFailureMethod = @selector(requestFailedWithError:);
+    [self addServiceInterfaceToServiceStack:service];
+    NSString* stringURL    = [kBase_URL stringByAppendingString:[NSString stringWithFormat:@"/opUpdateChemistryRequest"]];
     NSURL* url = [NSURL URLWithString:stringURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSData *requestBodyData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];

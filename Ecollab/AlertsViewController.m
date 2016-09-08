@@ -94,23 +94,35 @@
             cell = [[AlertsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        cell.ProjectNameLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderNumber"];
-        cell.PojectStatuLabel.text =[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"Notification"];
+        NSDictionary *dict = [notificationListArray objectAtIndex:indexPath.row];
         
-        // based on type assign related image
-        if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
-        }else{
-            cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
-        }
-        
-        if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 0 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 2 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 3)
+        if (![[dict valueForKey:@"OrderNumber"] isKindOfClass:[NSNull class]])
         {
-            cell.imgRightArrow.hidden = NO;
+            cell.ProjectNameLabel.text =[dict valueForKey:@"OrderNumber"];
         }
-        else
+        if (![[dict valueForKey:@"Notification"] isKindOfClass:[NSNull class]])
         {
-            cell.imgRightArrow.hidden = YES;
+            cell.PojectStatuLabel.text =[dict valueForKey:@"Notification"];
+        }
+        if (![[dict valueForKey:@"OrderType"] isKindOfClass:[NSNull class]])
+        {
+            // based on type assign related image
+            if ([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderType"] intValue] == 1) {
+                cell.ProjectTypeImageView.image = [UIImage imageNamed:@"biologysaved.png"];
+            }else{
+                cell.ProjectTypeImageView.image = [UIImage imageNamed:@"chemistrysaved.png"];
+            }
+        }
+        if (![[dict valueForKey:@"OrderStatus"] isKindOfClass:[NSNull class]])
+        {
+            if([[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 0 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 2 || [[[notificationListArray objectAtIndex:indexPath.row]objectForKey:@"OrderStatus"] intValue] == 3)
+            {
+                cell.imgRightArrow.hidden = NO;
+            }
+            else
+            {
+                cell.imgRightArrow.hidden = YES;
+            }
         }
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
         tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -125,7 +137,7 @@
         [cell addGestureRecognizer:lpgr];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
         return cell;
     }
 }
