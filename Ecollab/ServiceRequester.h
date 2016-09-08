@@ -67,6 +67,8 @@
 -(void)responseopUserAlertsOrNotificationsServiceForSideMenu:(NSData *)data;
 -(void)requestForopDeleteRequest:(NSMutableDictionary *)detailDictionary;
 -(void)requestForopUpdateChemistryRequestService:(NSDictionary *)dict;
+-(void)sendAlertViewedToServerWithRID:(NSString*)strRID;
+
 @end
 
 #pragma mark - ServiceRequesterProtocol
@@ -111,10 +113,10 @@
 -(void)requestReceivedopPlaceChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict;
 //opGetUserAddressListRequest
 -(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict;
-
 -(void)requestReceivedopProfileImageUploadRequestResponse:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedGetAddressFromPinCodeRequestResponse:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopUserAlertsOrNotificationsForSideMenuResponce:(NSMutableDictionary *)aregistrationDict;
+-(void)requestReceivedopUserAlertsViewed:(NSMutableDictionary *)aregistrationDict;
 -(void)requestReceivedopDeleteReqestResponce:(NSMutableDictionary *)aregistrationDict;
 
 @end

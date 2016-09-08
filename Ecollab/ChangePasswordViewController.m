@@ -325,7 +325,7 @@
     }
     else if (textField == confirmPassword)
     {
-        _constlblCNFNewPwdStrenngthHeight.constant = 0;
+        _constlblCNFNewPwdStrenngthHeight.constant = 30;
         _vwCNFNewPwdStrenngth.hidden = YES;
     }
     return YES;

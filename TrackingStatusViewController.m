@@ -77,7 +77,18 @@
     return TableDataArray.count;
     }
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.vwSideMenuCustomView.menuTable)
+    {
+        return 44;
+    }
+    else
+    {
+        return 65;
+    }
 
+}
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.vwSideMenuCustomView.menuTable)
@@ -208,16 +219,6 @@
     }
 }
 
--(NSString*)convertDateFormat:(NSString*)strDate
-{
-    NSDateFormatter *df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
-    NSDate *expdate = [df dateFromString:strDate];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd/MMM/yyyy hh:mm:ss a"];
-    NSLog(@"%@",[dateFormat stringFromDate:expdate]);
-    return [dateFormat stringFromDate:expdate];
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.vwSideMenuCustomView.menuTable)
     {
@@ -259,6 +260,17 @@
         }
     }
 }
+-(NSString*)convertDateFormat:(NSString*)strDate
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    NSDate *expdate = [df dateFromString:strDate];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MMM/yyyy hh:mm:ss a"];
+    NSLog(@"%@",[dateFormat stringFromDate:expdate]);
+    return [dateFormat stringFromDate:expdate];
+}
+
 -(void)OrderDetails:(NSMutableDictionary *)inputDict {
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;

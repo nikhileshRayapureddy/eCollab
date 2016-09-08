@@ -136,9 +136,8 @@
 }
 -(void)requestReceivedopSaveUserDetailsResponce:(NSMutableDictionary *)aregistrationDict{
     
-    
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:@"Profile saved Successfully."
+                                                                   message:[aregistrationDict objectForKey:@"SuccessString"]
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         ServiceRequester *request = [ServiceRequester new];

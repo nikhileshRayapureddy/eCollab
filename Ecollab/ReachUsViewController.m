@@ -22,13 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.rateView.notSelectedImage = [UIImage imageNamed:@"kermit_empty.png"];
-    self.rateView.halfSelectedImage = [UIImage imageNamed:@"kermit_half.png"];
-    self.rateView.fullSelectedImage = [UIImage imageNamed:@"star_favorite.png"];
-    self.rateView.rating = 0;
-    self.rateView.editable = YES;
-    self.rateView.maxRating = 5;
-    self.rateView.delegate = self;
     _vwCommentsBg.layer.borderWidth = 1.0;
     _vwCommentsBg.layer.borderColor = [UIColor redColor].CGColor;
     [self designNavBar];
@@ -37,13 +30,12 @@
                                            action:@selector(hideKeyBoard)];
     
     [self.view addGestureRecognizer:tapGesture];
+    UIButton *btnrate = [rateView viewWithTag:100];
+    [self btnRatingSelected:btnrate];
+
 
 }
 //method for rating functionality
-- (void)rateView:(RateView *)rateView ratingDidChange:(int)rating {
-    //self.statusLabel.text = [NSString stringWithFormat:@"Rating: %d", rating];
-    CustomerRating = rating;
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -98,5 +90,18 @@
 
 - (IBAction)btnBackClicked:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)btnRatingSelected:(UIButton *)sender {
+    
+    for (int i=0; i<5; i++) {
+        UIButton *btnrate = [rateView viewWithTag:101+i];
+        [btnrate setImage:[UIImage imageNamed:@"kermit_empty.png"] forState:UIControlStateNormal];
+    }
+    for (int i=0; i<=(sender.tag - 100); i++) {
+        UIButton *btnrate = [rateView viewWithTag:100+i];
+        [btnrate setImage:[UIImage imageNamed:@"star_favorite.png"] forState:UIControlStateNormal];
+    }
+    CustomerRating = sender.tag-100;
 }
 @end
