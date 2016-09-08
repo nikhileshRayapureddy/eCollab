@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ServiceRequester.h"
 
-@interface SelectAddressViewController : UIViewController<ServiceRequesterProtocol>
+@interface SelectAddressViewController : BaseViewController<ServiceRequesterProtocol>
 {
-    NSDictionary *dictDefaultAddress;
 }
 - (IBAction)btnChangeAddressClicked:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
@@ -21,5 +20,5 @@
 - (IBAction)btnSubmitClicked:(UIButton *)sender;
 @property (strong, nonatomic) NSString *strRequestRID;
 - (IBAction)btnBackClicked:(UIButton *)sender;
-
+@property (strong, nonatomic) NSDictionary *dictDefaultAddress;
 @end

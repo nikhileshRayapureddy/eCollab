@@ -141,7 +141,7 @@
         [cell addGestureRecognizer:lpgr];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
         return cell;
     }
 }

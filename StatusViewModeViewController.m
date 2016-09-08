@@ -11,6 +11,7 @@
 #import "RequestOrProjectTrackerViewController.h"
 @interface StatusViewModeViewController (){
     NSMutableDictionary *LocalDataDictionary;
+    NSDictionary *dictLocalDefaultAddress;
 }
 
 @end
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     NSLog(@"%@",PlaceOrder);
     NSLog(@"%@",inputDataDictionary);
+    dictLocalDefaultAddress = [[NSDictionary alloc]init];
     NSMutableArray *DataArray = [inputDataDictionary objectForKey:@"RequestedQuoteList"];
     LocalDataDictionary = [DataArray objectAtIndex:0];
     [self dataDisplaying];
@@ -142,9 +144,83 @@
  */
     //[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"OrderNumber"]];
  // NSMutableDictionary  *inputDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[tempDict objectForKey:@"RID"],@"RID",ItemType,@"Type", nil];
+    
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    [request requestForopGetShippingAddressDetailsService];
+    request =  nil;
+    
+    
+    
+}
+
+-(void)requestReceivedopGetUserAddressListRequestResponce:(NSMutableDictionary *)aregistrationDict
+{
+    NSMutableArray *arrAddresses = [aregistrationDict valueForKey:@"UserAddressDetailsResult"];
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    BOOL isFound = NO;
+    if(arrAddresses.count != 0)
+    {
+        for (NSDictionary *dictAddress in arrAddresses)
+        {
+            NSNumber *ISDefault = [dictAddress valueForKey:@"ISDefault"];
+            BOOL defaultAddress = ISDefault.boolValue;
+            if(defaultAddress == YES)
+            {
+                isFound = YES;
+                SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
+                SAVCtrlObj.strRequestRID = strRequestRID;
+                SAVCtrlObj.dictDefaultAddress = dictAddress;
+                [self.navigationController pushViewController:SAVCtrlObj animated:NO];
+                break;
+            }
+        }
+        if(isFound == YES)
+        {
+//            [self bindDefaultAddress];
+        }
+        else
+        {
+            if (arrAddresses.count ==1)
+            {
+                
+                [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+                NSDictionary *dictAddress = [arrAddresses objectAtIndex:0];
+// here check you input validation
+                NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",[dictAddress valueForKey:@"Address"],@"Address",[dictAddress valueForKey:@"Address1"],@"Address1",[dictAddress valueForKey:@"City"],@"City",[dictAddress valueForKey:@"Country"],@"Country",[dictAddress valueForKey:@"State"],@"State",[dictAddress valueForKey:@"Pincode"],@"PinCode",@"1",@"ISDefault",[dictAddress valueForKey:@"LandMark"],@"LandMark",[dictAddress valueForKey:@"Name"],@"Name",[dictAddress valueForKey:@"MobileNumber"],@"MobileNumber",[dictAddress valueForKey:@"RID"],@"RID", nil];
+                ServiceRequester *request = [ServiceRequester new];
+                request.serviceRequesterDelegate =  self;
+                dictLocalDefaultAddress = dictAddress;
+                [request requestForopUpdateShippingAddressDetailsService:inputDick];
+                request =  nil;
+            }
+            else
+            {
+                ShippingInformationViewController *SIVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"ShippingInformationViewController"];
+                SIVCtrlObj.isFromTracking = YES;
+                SIVCtrlObj.strRequestRID = strRequestRID;
+                [self.navigationController pushViewController:SIVCtrlObj animated:NO];
+            }
+            
+        }
+    }
+    else
+    {
+        AddNewShippingAddressViewController *SIVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"AddNewShippingAddressViewController"];
+        SIVCtrlObj.isEdit = NO;
+        [self.navigationController pushViewController:SIVCtrlObj animated:NO];
+    }
+}
+
+-(void)requestReceivedopUpdateShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
+{
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
     SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
     SAVCtrlObj.strRequestRID = strRequestRID;
-    [self.navigationController pushViewController:SAVCtrlObj animated:YES];
+    SAVCtrlObj.dictDefaultAddress = dictLocalDefaultAddress;
+    [self.navigationController pushViewController:SAVCtrlObj animated:NO];
+    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)RejectQuoteBtnAction:(id)sender {

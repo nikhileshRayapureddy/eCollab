@@ -11,6 +11,7 @@
 @interface AddNewShippingAddressViewController ()<UITextFieldDelegate>
 {
     BOOL isValidPincode;
+    UITextField *currentTextField;
 }
 @end
 
@@ -67,6 +68,7 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     
+    [currentTextField resignFirstResponder];
     if(Name.text.length == 0)
     {
         [self showAlertWithMessage:@"Please enter your name."];
@@ -151,6 +153,12 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    currentTextField = textField;
+    return  YES;
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

@@ -35,6 +35,8 @@
 @synthesize OtherViewsDataDictionary;
 @synthesize dictSavedChemestryData;
 @synthesize isFromTracking;
+@synthesize strRidForSavedRequest;
+@synthesize shouldUpdateRequest;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -501,11 +503,20 @@
         [dict setValue:@"1" forKey:@"Status"];
         [dict setValue:CASTextField.text forKey:@"CAS"];
         [dict setValue:MDLTextField.text forKey:@"MDL"];
-        [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-        ServiceRequester *request = [ServiceRequester new];
-        request.serviceRequesterDelegate =  self;
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+    ServiceRequester *request = [ServiceRequester new];
+    request.serviceRequesterDelegate =  self;
+    
+    if (shouldUpdateRequest == YES)
+    {
+        [dict setValue:strRidForSavedRequest forKey:@"RID"];
+        [request requestForopUpdateChemistryRequestService:dict];
+    }
+    else
+    {
         [request requestForopCreateChemistryRequestService:dict];
-        request =  nil;
+    }
+    request =  nil;
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
@@ -536,6 +547,12 @@
         [dict setValue:@"1" forKey:@"Status"];
         [dict setValue:CASTextField.text forKey:@"CAS"];
         [dict setValue:MDLTextField.text forKey:@"MDL"];
+        if(shouldUpdateRequest == YES)
+        {
+            [dict setValue:strRidForSavedRequest forKey:@"RID"];
+        }
+        
+
         [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
@@ -545,7 +562,7 @@
 }
 -(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
 // show alert controller and navigare back
-NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+NSArray *arr = [aregistrationDict objectForKey:@"UpdateChemistryRequestResult"];
 NSDictionary *dictResponse = [arr objectAtIndex:0];
 [EcollabLoader hideLoaderForView:self.view animated:YES];
 if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
@@ -555,7 +572,7 @@ if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
 else
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:@"Chemistry request saved successfully."
+                                                                   message:[dictResponse objectForKey:@"SuccessString"]
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
@@ -965,7 +982,7 @@ else
     PuritybtnOutlet.userInteractionEnabled = NO;
     TakeOrChoosePhotoBtnOutlet.hidden = YES;
     ChoseFromReferenceCompounDBBtnOutlet.hidden = YES;
-    RemarksTextField.userInteractionEnabled = NO;
+    RemarksTextField.editable = NO;
     SubmitBtnOutlet.hidden = YES;
     SaveForLaterBtnOutlet.hidden = YES;
     

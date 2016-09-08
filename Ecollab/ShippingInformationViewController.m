@@ -7,6 +7,7 @@
 //
 
 #import "ShippingInformationViewController.h"
+#import "SelectAddressViewController.h"
 
 @interface ShippingInformationViewController ()
 {
@@ -17,12 +18,13 @@
 @implementation ShippingInformationViewController
 @synthesize ShippingInformationTableview,AddNewAddressOutlet;
 @synthesize isFromTracking;
+@synthesize strRequestRID;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     arrAddresses = [[NSMutableArray alloc]init];
-    
+    dictDefaultAddressSelected = [[NSDictionary alloc]init];
     [self designNavBar];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -136,17 +138,31 @@
                                                                            message:@"Do you want to delete?"
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-                NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
                 NSMutableDictionary *dict =[arrAddresses objectAtIndex:indexPath.row];
-                
-                
-                [dictRequest setObject:[dict objectForKey:@"RID"] forKey:@"ADDRESSID"];
-                NSLog(@"%d",indexPath.row);
-                ServiceRequester *request = [ServiceRequester new];
-                request.serviceRequesterDelegate =  self;
-                [request requestForopDeleteRequest:dictRequest];
-                request =  nil;
+                NSNumber *ISDefault = [dict valueForKey:@"ISDefault"];
+                BOOL defaultAddress = ISDefault.boolValue;
+                if(defaultAddress == YES)
+                {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+                                                                                   message:@"Default Address Can't be Deleted."
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+                    
+                    [alert addAction:cancelAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+                else
+                {
+                    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
+                    NSMutableDictionary *dictRequest = [[NSMutableDictionary alloc]init];
+                    [dictRequest setObject:[dict objectForKey:@"RID"] forKey:@"ADDRESSID"];
+                    NSLog(@"%d",indexPath.row);
+                    ServiceRequester *request = [ServiceRequester new];
+                    request.serviceRequesterDelegate =  self;
+                    [request requestForopDeleteRequest:dictRequest];
+                    request =  nil;
+                }
                 
             }];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -261,7 +277,7 @@
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         // here check you input validation
         NSMutableDictionary *inputDick =[NSMutableDictionary dictionaryWithObjectsAndKeys:[[DetailsManager sharedManager]rID],@"UID",[dictAddress valueForKey:@"Address"],@"Address",[dictAddress valueForKey:@"Address1"],@"Address1",[dictAddress valueForKey:@"City"],@"City",[dictAddress valueForKey:@"Country"],@"Country",[dictAddress valueForKey:@"State"],@"State",[dictAddress valueForKey:@"Pincode"],@"PinCode",@"1",@"ISDefault",[dictAddress valueForKey:@"LandMark"],@"LandMark",[dictAddress valueForKey:@"Name"],@"Name",[dictAddress valueForKey:@"MobileNumber"],@"MobileNumber",[dictAddress valueForKey:@"RID"],@"RID", nil];
-        
+    dictDefaultAddressSelected = inputDick;
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
         [request requestForopUpdateShippingAddressDetailsService:inputDick];
@@ -271,7 +287,11 @@
 -(void)requestReceivedopUpdateShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
 {
     [EcollabLoader hideLoaderForView:self.view animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
+    SAVCtrlObj.strRequestRID = strRequestRID;
+    SAVCtrlObj.dictDefaultAddress = dictDefaultAddressSelected;
+    [self.navigationController pushViewController:SAVCtrlObj animated:NO];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)btnEditClicked:(UIButton*)sender
 {
