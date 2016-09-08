@@ -636,7 +636,7 @@
 -(UIView*)tableViewFooterView
 {
     UIView *vw = [[UIView alloc]initWithFrame:CGRectMake(0, 0, vwSideMenuCustomView.menuTable.frame.size.width, 44)];
-    vw.backgroundColor = [UIColor whiteColor];
+    vw.backgroundColor = [UIColor clearColor];
     
     UIButton *btnSignOut = [UIButton buttonWithType:UIButtonTypeCustom];
     btnSignOut.backgroundColor = [UIColor clearColor];
