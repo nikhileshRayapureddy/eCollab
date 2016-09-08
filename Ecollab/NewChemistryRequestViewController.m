@@ -607,7 +607,7 @@ else
     else
     {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"“Chemistry request details updated successfully."
+                                                                       message:@"Chemistry request details updated successfully."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault

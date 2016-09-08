@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscussQuoteViewController : UIViewController<ServiceRequesterProtocol>
+@interface DiscussQuoteViewController : BaseViewController<ServiceRequesterProtocol>
 
 @property (strong, nonatomic) NSMutableDictionary *DataDict;
 

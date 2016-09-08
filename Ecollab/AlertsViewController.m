@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [AlertsTableView setDelegate: self];
     [AlertsTableView setDataSource: self];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
@@ -124,6 +123,11 @@
                 cell.imgRightArrow.hidden = YES;
             }
         }
+        
+        
+        
+
+        
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
         tapGestureRecognizer.numberOfTapsRequired = 1;
         tapGestureRecognizer.numberOfTouchesRequired = 1;

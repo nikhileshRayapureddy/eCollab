@@ -29,7 +29,6 @@
     NSLog(@"%@",PlaceOrder);
     NSLog(@"%@",inputDataDictionary);
     dictLocalDefaultAddress = [[NSDictionary alloc]init];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     NSMutableArray *DataArray = [inputDataDictionary objectForKey:@"RequestedQuoteList"];
     LocalDataDictionary = [DataArray objectAtIndex:0];
     [self dataDisplaying];

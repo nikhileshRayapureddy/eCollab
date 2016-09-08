@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,6 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="G35-kq-4yZ">
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gQ-r3-9wW">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
@@ -74,7 +78,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="EB7-mZ-VlH" firstAttribute="top" secondItem="KwJ-Jt-FuL" secondAttribute="top" constant="30" id="0tM-RX-0pv"/>
                         <constraint firstItem="ZgK-nw-LIr" firstAttribute="leading" secondItem="KwJ-Jt-FuL" secondAttribute="leading" id="2Vp-BM-005"/>
@@ -102,7 +106,7 @@
                             <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="bhI-FG-pLw" secondAttribute="bottom" id="Bv6-cv-DLA"/>
                         <constraint firstItem="bhI-FG-pLw" firstAttribute="leading" secondItem="BKC-55-PyW" secondAttribute="leading" id="aOq-db-CI6"/>
@@ -114,16 +118,20 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="2gQ-r3-9wW" secondAttribute="trailing" id="253-8z-1O9"/>
+                <constraint firstItem="G35-kq-4yZ" firstAttribute="top" secondItem="3IY-Wo-Gmm" secondAttribute="top" id="2g7-D9-WW0"/>
                 <constraint firstItem="2gQ-r3-9wW" firstAttribute="leading" secondItem="3IY-Wo-Gmm" secondAttribute="leading" id="9CM-mp-Cph"/>
                 <constraint firstAttribute="trailing" secondItem="BKC-55-PyW" secondAttribute="trailing" constant="50" id="GvT-d2-tp3"/>
+                <constraint firstItem="G35-kq-4yZ" firstAttribute="leading" secondItem="3IY-Wo-Gmm" secondAttribute="leading" id="HOO-KL-JXc"/>
                 <constraint firstAttribute="bottom" secondItem="2gQ-r3-9wW" secondAttribute="bottom" id="Icp-h7-hl1"/>
                 <constraint firstAttribute="bottom" secondItem="BKC-55-PyW" secondAttribute="bottom" id="Ndc-yv-ngq"/>
                 <constraint firstItem="KwJ-Jt-FuL" firstAttribute="leading" secondItem="3IY-Wo-Gmm" secondAttribute="leading" id="OAz-0k-GrH"/>
+                <constraint firstAttribute="bottom" secondItem="G35-kq-4yZ" secondAttribute="bottom" id="Z01-Rv-GTQ"/>
                 <constraint firstItem="BKC-55-PyW" firstAttribute="leading" secondItem="3IY-Wo-Gmm" secondAttribute="leading" id="eHA-sh-cnc"/>
                 <constraint firstAttribute="trailing" secondItem="KwJ-Jt-FuL" secondAttribute="trailing" constant="50" id="l5l-VP-FdQ"/>
                 <constraint firstItem="BKC-55-PyW" firstAttribute="top" secondItem="KwJ-Jt-FuL" secondAttribute="bottom" id="msx-TJ-WAb"/>
                 <constraint firstItem="KwJ-Jt-FuL" firstAttribute="top" secondItem="3IY-Wo-Gmm" secondAttribute="top" id="uXw-ww-bL8"/>
                 <constraint firstItem="2gQ-r3-9wW" firstAttribute="top" secondItem="3IY-Wo-Gmm" secondAttribute="top" id="vdT-ok-uyF"/>
+                <constraint firstAttribute="trailing" secondItem="G35-kq-4yZ" secondAttribute="trailing" constant="50" id="yLz-vn-m0B"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
@@ -139,5 +147,6 @@
     </objects>
     <resources>
         <image name="default_profile1.png" width="163" height="148"/>
+        <image name="gvkbg.png" width="640" height="960"/>
     </resources>
 </document>
