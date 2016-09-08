@@ -47,7 +47,6 @@
     arrAssaysSelected = [[NSMutableArray alloc]init];
     [self designNavBar];
 
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     [ServiceBtnOutlet.layer setBorderWidth: 1.0];
     [ServiceBtnOutlet.layer setMasksToBounds:YES];
     [ServiceBtnOutlet.layer setBorderColor:[[UIColor redColor] CGColor]];

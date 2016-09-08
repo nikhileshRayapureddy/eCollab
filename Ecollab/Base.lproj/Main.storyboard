@@ -48,7 +48,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-W0-PGx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-jL-rSn">
                                                 <rect key="frame" x="88" y="40" width="200" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Uca-3g-RHg"/>
@@ -589,6 +589,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yce-MN-1cI">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-X1-owD">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -717,12 +720,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yce-MN-1cI" firstAttribute="leading" secondItem="EwJ-r1-Wvu" secondAttribute="leading" id="Cdw-cf-Gog"/>
                             <constraint firstItem="xZg-X1-owD" firstAttribute="top" secondItem="m0P-qt-XdK" secondAttribute="bottom" id="E4o-A0-jjp"/>
+                            <constraint firstItem="Yce-MN-1cI" firstAttribute="top" secondItem="m0P-qt-XdK" secondAttribute="bottom" id="Lyt-Pe-pWr"/>
                             <constraint firstItem="6Ql-N5-QhR" firstAttribute="top" secondItem="xZg-X1-owD" secondAttribute="bottom" id="Lzn-mr-CxA"/>
+                            <constraint firstItem="cZa-Rh-6yg" firstAttribute="top" secondItem="Yce-MN-1cI" secondAttribute="bottom" id="NUX-5c-26F"/>
                             <constraint firstAttribute="trailing" secondItem="6Ql-N5-QhR" secondAttribute="trailing" id="biT-eI-QZs"/>
                             <constraint firstItem="cZa-Rh-6yg" firstAttribute="top" secondItem="6Ql-N5-QhR" secondAttribute="bottom" id="fE4-Mm-85v"/>
                             <constraint firstItem="xZg-X1-owD" firstAttribute="leading" secondItem="EwJ-r1-Wvu" secondAttribute="leading" id="jcM-DH-95U"/>
                             <constraint firstAttribute="trailing" secondItem="xZg-X1-owD" secondAttribute="trailing" id="pnE-6V-u9m"/>
+                            <constraint firstAttribute="trailing" secondItem="Yce-MN-1cI" secondAttribute="trailing" id="usQ-w3-esq"/>
                             <constraint firstItem="6Ql-N5-QhR" firstAttribute="leading" secondItem="EwJ-r1-Wvu" secondAttribute="leading" id="wCT-Rw-HJ8"/>
                         </constraints>
                     </view>
@@ -741,14 +748,17 @@
                         <viewControllerLayoutGuide type="bottom" id="FKq-G2-3nc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EgK-Ud-X9s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-jE-rAW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAu-iD-EKQ">
-                                <rect key="frame" x="0.0" y="20" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eug-Li-rTA">
-                                        <rect key="frame" x="15" y="0.0" width="305" height="30"/>
+                                        <rect key="frame" x="15" y="0.0" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="ALERTS" image="btnBack.png">
@@ -769,61 +779,69 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Wd-oT-uNy">
-                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlertsTableViewCellID" rowHeight="83" id="5jn-ad-Irb" customClass="AlertsTableViewCell">
-                                        <rect key="frame" x="0.0" y="1" width="320" height="83"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jn-ad-Irb" id="bwj-dD-bIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biologysaved.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-Qc-z2O">
                                                     <rect key="frame" x="8" y="11" width="60" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="6xL-wz-m4a"/>
-                                                        <constraint firstAttribute="width" constant="60" id="nOh-HX-uG8"/>
+                                                        <constraint firstAttribute="width" constant="60" id="7gY-bi-0di"/>
+                                                        <constraint firstAttribute="height" constant="60" id="YRK-Nf-iYs"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRJB220400949408" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-jg-kev">
-                                                    <rect key="frame" x="78" y="10" width="486" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-jg-kev">
+                                                    <rect key="frame" x="78" y="10" width="287" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="cNC-55-c10"/>
+                                                        <constraint firstAttribute="height" constant="20" id="x30-pB-j0J"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-0V-MRv">
-                                                    <rect key="frame" x="78" y="36" width="486" height="38"/>
-                                                    <string key="text">project is waiting to be initiated.
-project is waiting to be initiated.</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-0V-MRv">
+                                                    <rect key="frame" x="78" y="36" width="273" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarr.png" translatesAutoresizingMaskIntoConstraints="NO" id="DuC-GY-LEy">
-                                                    <rect key="frame" x="570" y="31" width="20" height="20"/>
+                                                    <rect key="frame" x="355" y="31" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="WFi-5k-Kif"/>
-                                                        <constraint firstAttribute="height" constant="20" id="slW-jI-kv3"/>
+                                                        <constraint firstAttribute="width" constant="20" id="G1O-3x-2Kg"/>
+                                                        <constraint firstAttribute="height" constant="20" id="jYV-kx-vRo"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hrb-y3-5ur">
+                                                    <rect key="frame" x="0.0" y="81" width="375" height="1"/>
+                                                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="pmz-t4-rIm"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="dAa-0V-MRv" secondAttribute="bottom" constant="8" id="3qA-xk-iRf"/>
-                                                <constraint firstItem="DuC-GY-LEy" firstAttribute="leading" secondItem="v7E-jg-kev" secondAttribute="trailing" constant="6" id="9Lv-kF-F8g"/>
-                                                <constraint firstItem="DuC-GY-LEy" firstAttribute="centerY" secondItem="bwj-dD-bIW" secondAttribute="centerY" id="HHD-Lg-4Je"/>
-                                                <constraint firstItem="v7E-jg-kev" firstAttribute="top" secondItem="bwj-dD-bIW" secondAttribute="top" constant="10" id="MoL-hm-80O"/>
-                                                <constraint firstItem="2Gt-Qc-z2O" firstAttribute="leading" secondItem="bwj-dD-bIW" secondAttribute="leading" constant="8" id="QaL-bs-ikb"/>
-                                                <constraint firstItem="dAa-0V-MRv" firstAttribute="leading" secondItem="2Gt-Qc-z2O" secondAttribute="trailing" constant="10" id="UI2-sm-RWR"/>
-                                                <constraint firstItem="2Gt-Qc-z2O" firstAttribute="centerY" secondItem="bwj-dD-bIW" secondAttribute="centerY" id="ci2-lf-SN4"/>
-                                                <constraint firstItem="dAa-0V-MRv" firstAttribute="top" secondItem="v7E-jg-kev" secondAttribute="bottom" constant="6" id="kDA-hQ-ky7"/>
-                                                <constraint firstAttribute="trailing" secondItem="DuC-GY-LEy" secondAttribute="trailing" constant="-270" id="lKG-Tb-hfp"/>
-                                                <constraint firstItem="DuC-GY-LEy" firstAttribute="leading" secondItem="dAa-0V-MRv" secondAttribute="trailing" constant="6" id="naa-2o-Njv"/>
-                                                <constraint firstItem="v7E-jg-kev" firstAttribute="leading" secondItem="2Gt-Qc-z2O" secondAttribute="trailing" constant="10" id="wCQ-OT-DfB"/>
+                                                <constraint firstItem="dAa-0V-MRv" firstAttribute="top" secondItem="v7E-jg-kev" secondAttribute="bottom" constant="6" id="3r2-pp-Si5"/>
+                                                <constraint firstAttribute="trailing" secondItem="v7E-jg-kev" secondAttribute="trailing" constant="10" id="4fp-Md-OCF"/>
+                                                <constraint firstItem="dAa-0V-MRv" firstAttribute="leading" secondItem="2Gt-Qc-z2O" secondAttribute="trailing" constant="10" id="8TH-2F-wam"/>
+                                                <constraint firstItem="hrb-y3-5ur" firstAttribute="leading" secondItem="bwj-dD-bIW" secondAttribute="leading" id="AGz-Qf-Ur3"/>
+                                                <constraint firstAttribute="bottom" secondItem="dAa-0V-MRv" secondAttribute="bottom" constant="8" id="E6J-zq-Sj9"/>
+                                                <constraint firstItem="2Gt-Qc-z2O" firstAttribute="centerY" secondItem="bwj-dD-bIW" secondAttribute="centerY" id="IXM-gz-6zn"/>
+                                                <constraint firstAttribute="trailing" secondItem="DuC-GY-LEy" secondAttribute="trailing" id="JcT-Tf-cTW"/>
+                                                <constraint firstAttribute="bottom" secondItem="hrb-y3-5ur" secondAttribute="bottom" id="PJk-g2-q2T"/>
+                                                <constraint firstAttribute="trailing" secondItem="hrb-y3-5ur" secondAttribute="trailing" id="QcN-Hk-kkZ"/>
+                                                <constraint firstItem="DuC-GY-LEy" firstAttribute="centerY" secondItem="bwj-dD-bIW" secondAttribute="centerY" id="R5N-8B-YPi"/>
+                                                <constraint firstItem="DuC-GY-LEy" firstAttribute="leading" secondItem="dAa-0V-MRv" secondAttribute="trailing" constant="4" id="Scu-KU-Hpk"/>
+                                                <constraint firstItem="v7E-jg-kev" firstAttribute="top" secondItem="bwj-dD-bIW" secondAttribute="top" constant="10" id="SoO-P5-9ut"/>
+                                                <constraint firstItem="v7E-jg-kev" firstAttribute="leading" secondItem="2Gt-Qc-z2O" secondAttribute="trailing" constant="10" id="mdm-16-5BU"/>
+                                                <constraint firstItem="2Gt-Qc-z2O" firstAttribute="leading" secondItem="bwj-dD-bIW" secondAttribute="leading" constant="8" id="wTO-yC-y7y"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -840,14 +858,18 @@ project is waiting to be initiated.</string>
                         <constraints>
                             <constraint firstItem="SAu-iD-EKQ" firstAttribute="leading" secondItem="EgK-Ud-X9s" secondAttribute="leading" id="0hO-Sb-ofU"/>
                             <constraint firstItem="8Wd-oT-uNy" firstAttribute="top" secondItem="EgK-Ud-X9s" secondAttribute="top" constant="50" id="8mc-Q8-a2l"/>
+                            <constraint firstItem="FKq-G2-3nc" firstAttribute="top" secondItem="I3A-jE-rAW" secondAttribute="bottom" id="FiH-z0-EbF"/>
+                            <constraint firstAttribute="trailing" secondItem="I3A-jE-rAW" secondAttribute="trailing" id="HJy-fH-tAn"/>
                             <constraint firstItem="8Wd-oT-uNy" firstAttribute="leading" secondItem="EgK-Ud-X9s" secondAttribute="leading" id="JKW-ND-6gk"/>
                             <constraint firstAttribute="trailing" secondItem="SAu-iD-EKQ" secondAttribute="trailing" id="LEb-EM-ofu"/>
+                            <constraint firstItem="I3A-jE-rAW" firstAttribute="leading" secondItem="EgK-Ud-X9s" secondAttribute="leading" id="Q68-ge-jZm"/>
                             <constraint firstItem="SAu-iD-EKQ" firstAttribute="top" secondItem="4ho-cX-6qH" secondAttribute="bottom" id="Wc4-8Z-PVB"/>
                             <constraint firstItem="FKq-G2-3nc" firstAttribute="top" secondItem="8Wd-oT-uNy" secondAttribute="bottom" id="XLZ-AB-hS9"/>
+                            <constraint firstItem="I3A-jE-rAW" firstAttribute="top" secondItem="4ho-cX-6qH" secondAttribute="bottom" id="mx6-Bm-dUR"/>
                             <constraint firstAttribute="trailing" secondItem="8Wd-oT-uNy" secondAttribute="trailing" id="pmK-nR-9lx"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="AlertsTableView" destination="8Wd-oT-uNy" id="sOD-V0-Fz7"/>
                     </connections>
@@ -948,8 +970,8 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="width" constant="100" id="Wu0-Oi-3J4"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-il-Iao">
-                                <rect key="frame" x="30" y="120" width="260" height="58"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-il-Iao">
+                                <rect key="frame" x="30" y="72" width="260" height="58"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="0d0-uX-gd7"/>
@@ -957,7 +979,7 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-46-rlP">
-                                <rect key="frame" x="10" y="212" width="300" height="243"/>
+                                <rect key="frame" x="10" y="164" width="300" height="243"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1I-Vx-b9o">
                                         <rect key="frame" x="10" y="0.0" width="280" height="45"/>
@@ -1132,7 +1154,7 @@ project is waiting to be initiated.</string>
                             <constraint firstAttribute="trailing" secondItem="Elr-yM-n4y" secondAttribute="trailing" id="FuC-7G-JEY"/>
                             <constraint firstAttribute="trailing" secondItem="hZ1-46-rlP" secondAttribute="trailing" constant="10" id="OYq-dE-pHH"/>
                             <constraint firstItem="Elr-yM-n4y" firstAttribute="leading" secondItem="XUR-v9-EAO" secondAttribute="leading" id="TnB-G2-3Bc"/>
-                            <constraint firstItem="Ssz-il-Iao" firstAttribute="top" secondItem="VLF-Bi-3VY" secondAttribute="bottom" constant="68" id="UKw-H1-dU2"/>
+                            <constraint firstItem="Ssz-il-Iao" firstAttribute="top" secondItem="VLF-Bi-3VY" secondAttribute="bottom" constant="20" id="UKw-H1-dU2"/>
                             <constraint firstItem="hZ1-46-rlP" firstAttribute="top" secondItem="Ssz-il-Iao" secondAttribute="bottom" constant="34" id="bAM-1E-2b8"/>
                             <constraint firstItem="Ssz-il-Iao" firstAttribute="centerX" secondItem="XUR-v9-EAO" secondAttribute="centerX" id="iBd-fX-Pkx"/>
                             <constraint firstItem="hZ1-46-rlP" firstAttribute="leading" secondItem="XUR-v9-EAO" secondAttribute="leading" constant="10" id="lrc-Vk-aO6"/>
@@ -1301,6 +1323,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sna-Xe-XCb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDL-m7-0Zf">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -1325,7 +1350,7 @@ project is waiting to be initiated.</string>
                                     <constraint firstAttribute="trailing" secondItem="a9y-VU-ncR" secondAttribute="trailing" id="nb2-BT-SpO"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sGL-Ug-CFW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sGL-Ug-CFW">
                                 <rect key="frame" x="0.0" y="50" width="375" height="567"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1333,29 +1358,36 @@ project is waiting to be initiated.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jac-ZB-5q0" id="m3d-jS-vIr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biology.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-yn-Grq">
-                                                    <rect key="frame" x="10" y="2" width="60" height="60"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biologysaved.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-yn-Grq">
+                                                    <rect key="frame" x="10" y="3" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="2FU-Oo-g0S"/>
                                                         <constraint firstAttribute="width" constant="60" id="WED-Dx-ZRN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456788990987645*&amp;@$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1D-CW-ne7">
-                                                    <rect key="frame" x="80" y="0.0" width="285" height="65"/>
+                                                    <rect key="frame" x="80" y="0.0" width="285" height="66"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarr.png" translatesAutoresizingMaskIntoConstraints="NO" id="C9l-5U-Ecz">
-                                                    <rect key="frame" x="345" y="22" width="20" height="20"/>
+                                                    <rect key="frame" x="345" y="23" width="20" height="20"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="2qy-QP-PWm"/>
                                                         <constraint firstAttribute="height" constant="20" id="dCQ-LC-mCK"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hhk-tt-Rn3">
+                                                    <rect key="frame" x="0.0" y="65" width="375" height="1"/>
+                                                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="qp3-qq-yrV"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -1364,6 +1396,9 @@ project is waiting to be initiated.</string>
                                                 <constraint firstItem="Y1D-CW-ne7" firstAttribute="leading" secondItem="pxO-yn-Grq" secondAttribute="trailing" constant="10" id="EPY-8A-Ybz"/>
                                                 <constraint firstItem="Y1D-CW-ne7" firstAttribute="top" secondItem="m3d-jS-vIr" secondAttribute="top" id="Kk4-rZ-nmv"/>
                                                 <constraint firstItem="pxO-yn-Grq" firstAttribute="centerY" secondItem="m3d-jS-vIr" secondAttribute="centerY" id="Ngw-nT-j12"/>
+                                                <constraint firstAttribute="bottom" secondItem="hhk-tt-Rn3" secondAttribute="bottom" id="QZj-m7-UM5"/>
+                                                <constraint firstAttribute="trailing" secondItem="hhk-tt-Rn3" secondAttribute="trailing" id="YS7-7z-Ayc"/>
+                                                <constraint firstItem="hhk-tt-Rn3" firstAttribute="leading" secondItem="m3d-jS-vIr" secondAttribute="leading" id="eVp-lT-f0b"/>
                                                 <constraint firstAttribute="trailing" secondItem="Y1D-CW-ne7" secondAttribute="trailing" constant="10" id="hfs-mk-WOR"/>
                                                 <constraint firstAttribute="trailing" secondItem="C9l-5U-Ecz" secondAttribute="trailing" constant="10" id="oG2-zY-ioA"/>
                                                 <constraint firstAttribute="bottom" secondItem="Y1D-CW-ne7" secondAttribute="bottom" id="rb1-ru-HfC"/>
@@ -1385,9 +1420,13 @@ project is waiting to be initiated.</string>
                             <constraint firstAttribute="bottom" secondItem="sGL-Ug-CFW" secondAttribute="bottom" constant="50" id="85e-aY-hPg"/>
                             <constraint firstAttribute="trailing" secondItem="sGL-Ug-CFW" secondAttribute="trailing" id="bXU-WN-oQb"/>
                             <constraint firstItem="PDL-m7-0Zf" firstAttribute="leading" secondItem="K95-3e-E6H" secondAttribute="leading" id="gOa-V2-Eh5"/>
+                            <constraint firstAttribute="trailing" secondItem="Sna-Xe-XCb" secondAttribute="trailing" id="iNK-13-Xas"/>
                             <constraint firstItem="sGL-Ug-CFW" firstAttribute="top" secondItem="PDL-m7-0Zf" secondAttribute="bottom" id="jcq-vr-6Hg"/>
                             <constraint firstAttribute="trailing" secondItem="PDL-m7-0Zf" secondAttribute="trailing" id="kMY-Id-ebi"/>
+                            <constraint firstItem="Sna-Xe-XCb" firstAttribute="top" secondItem="cIR-5D-g2M" secondAttribute="bottom" id="njV-uu-G1g"/>
                             <constraint firstItem="PDL-m7-0Zf" firstAttribute="top" secondItem="cIR-5D-g2M" secondAttribute="bottom" id="oGx-7X-a3o"/>
+                            <constraint firstItem="UMZ-zL-gqk" firstAttribute="top" secondItem="Sna-Xe-XCb" secondAttribute="bottom" id="tnq-Bt-cVy"/>
+                            <constraint firstItem="Sna-Xe-XCb" firstAttribute="leading" secondItem="K95-3e-E6H" secondAttribute="leading" id="xls-gg-yVY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="SAVED REQ" image="savedreq_tab.png" id="dco-07-w3U"/>
@@ -1412,6 +1451,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-x3-Kcc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2R-i8-toW">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -1480,10 +1522,10 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-7f-oCA">
-                                <rect key="frame" x="51" y="157" width="71" height="3"/>
+                                <rect key="frame" x="51" y="156" width="71" height="5"/>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="ne5-zy-Tdr"/>
+                                    <constraint firstAttribute="height" constant="5" id="ne5-zy-Tdr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1497,10 +1539,10 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeS-2B-lpt">
-                                <rect key="frame" x="152" y="157" width="71" height="3"/>
+                                <rect key="frame" x="152" y="156" width="71" height="5"/>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="xMW-KH-zE2"/>
+                                    <constraint firstAttribute="height" constant="5" id="xMW-KH-zE2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1521,10 +1563,10 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="169-Wv-4cm">
-                                <rect key="frame" x="253" y="157" width="71" height="3"/>
+                                <rect key="frame" x="253" y="156" width="71" height="5"/>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="uyY-6Q-Mfq"/>
+                                    <constraint firstAttribute="height" constant="5" id="uyY-6Q-Mfq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1596,10 +1638,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPM-1P-mDN">
-                                                    <rect key="frame" x="51" y="111" width="71" height="3"/>
+                                                    <rect key="frame" x="51" y="110" width="71" height="5"/>
                                                     <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="3" id="u30-md-H4M"/>
+                                                        <constraint firstAttribute="height" constant="5" id="u30-md-H4M"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1613,10 +1655,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-hy-eU3">
-                                                    <rect key="frame" x="153" y="111" width="71" height="3"/>
+                                                    <rect key="frame" x="153" y="110" width="71" height="5"/>
                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="3" id="f8i-qg-6dq"/>
+                                                        <constraint firstAttribute="height" constant="5" id="f8i-qg-6dq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1637,10 +1679,10 @@ project is waiting to be initiated.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-68-Lbo">
-                                                    <rect key="frame" x="253" y="111" width="71" height="3"/>
+                                                    <rect key="frame" x="253" y="110" width="71" height="5"/>
                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="3" id="pRY-Ph-nNh"/>
+                                                        <constraint firstAttribute="height" constant="5" id="pRY-Ph-nNh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1804,6 +1846,7 @@ project is waiting to be initiated.</string>
                             <constraint firstAttribute="trailing" secondItem="7ez-ox-cEG" secondAttribute="trailing" id="2Vt-gu-2i2"/>
                             <constraint firstItem="ulD-KX-zhv" firstAttribute="top" secondItem="mF8-Tu-rsj" secondAttribute="bottom" constant="40" id="2vD-pN-Ovr"/>
                             <constraint firstItem="3Vr-Fq-3At" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" constant="18" id="3Cg-Og-EYT"/>
+                            <constraint firstAttribute="trailing" secondItem="sbX-x3-Kcc" secondAttribute="trailing" id="4Sh-Nw-fSI"/>
                             <constraint firstItem="Dwm-hp-vr1" firstAttribute="centerX" secondItem="STz-ku-PuU" secondAttribute="centerX" id="4hL-XX-iob"/>
                             <constraint firstItem="gz1-7f-oCA" firstAttribute="centerY" secondItem="STz-ku-PuU" secondAttribute="centerY" id="5nb-Uf-x5z"/>
                             <constraint firstItem="cR3-TR-oxG" firstAttribute="leading" secondItem="FeS-2B-lpt" secondAttribute="trailing" id="6bU-kQ-e4F"/>
@@ -1816,6 +1859,7 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="7ez-ox-cEG" firstAttribute="top" secondItem="pHW-Qp-ub1" secondAttribute="bottom" constant="7" id="DfA-Ix-ek6"/>
                             <constraint firstItem="7ez-ox-cEG" firstAttribute="centerX" secondItem="4uC-RV-xUJ" secondAttribute="centerX" id="DwB-tF-0cx"/>
                             <constraint firstItem="2rQ-Tn-QpA" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" constant="21" id="LH6-84-bEY"/>
+                            <constraint firstItem="sbX-x3-Kcc" firstAttribute="top" secondItem="mF8-Tu-rsj" secondAttribute="bottom" id="LPJ-WX-gpl"/>
                             <constraint firstItem="zqS-dN-84W" firstAttribute="centerX" secondItem="4uC-RV-xUJ" secondAttribute="centerX" id="MkK-jw-9DN"/>
                             <constraint firstItem="zqS-dN-84W" firstAttribute="top" secondItem="ulD-KX-zhv" secondAttribute="bottom" constant="20" id="Ne5-cU-xwQ"/>
                             <constraint firstItem="PH8-Jy-Rcs" firstAttribute="centerX" secondItem="cR3-TR-oxG" secondAttribute="centerX" constant="5" id="Oxg-zK-zg1"/>
@@ -1829,6 +1873,8 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="ptV-kp-qMI" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" constant="20" id="X3E-ye-dbo"/>
                             <constraint firstItem="pHW-Qp-ub1" firstAttribute="top" secondItem="IWG-Gc-3N7" secondAttribute="bottom" constant="1" id="XWZ-7g-fSS"/>
                             <constraint firstItem="2rQ-Tn-QpA" firstAttribute="centerY" secondItem="STz-ku-PuU" secondAttribute="centerY" id="gcd-IB-UBZ"/>
+                            <constraint firstItem="iuh-TB-CbP" firstAttribute="top" secondItem="sbX-x3-Kcc" secondAttribute="bottom" id="hap-IJ-bLe"/>
+                            <constraint firstItem="sbX-x3-Kcc" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" id="jFb-jZ-fI0"/>
                             <constraint firstItem="cR3-TR-oxG" firstAttribute="centerX" secondItem="4uC-RV-xUJ" secondAttribute="trailing" multiplier="0.646667" constant="-4.500124999999997" id="kyM-Lr-Ioz"/>
                             <constraint firstItem="STz-ku-PuU" firstAttribute="leading" secondItem="gz1-7f-oCA" secondAttribute="trailing" id="l1P-44-mRQ"/>
                             <constraint firstItem="pHW-Qp-ub1" firstAttribute="leading" secondItem="4uC-RV-xUJ" secondAttribute="leading" id="lUk-Kd-W5s"/>
@@ -1878,9 +1924,12 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="PEp-6g-bij">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pex-iq-aBO">
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">GVK Biosciences (GVK BIO) is one of Asia’s leading Discovery Research and Development organizations with over a decade of rich experience. At GVK BIO, we blend science with people and technology to help accelerate research and development for over 350 clients globally. Our clients include the world’s top 10 corporations in the field of Pharmaceutical, Agrochemical, Electronics, Biotechnology and Academics. Our distinctiveness comes from our expertise in the breadth and depth of services that we provide in drug development. GVK BIO’s capabilities include Integrated Programs, Discovery Services, Development Services, Contract Manufacturing and Formulation R&amp;D Services. GVK BIO is a 2000 people strong company, which includes a large pool of 1700 scientists who are passionate about enhancing the quality of human life, striving each day to address the unmet global healthcare challenges. Lower costs, superior infrastructure, boosted efficiencies and an infusion of fresh ideas make GVK BIO an ideal research partner.
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1913,10 +1962,14 @@ project is waiting to be initiated.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PEp-6g-bij" firstAttribute="top" secondItem="bP3-Fv-t6T" secondAttribute="bottom" id="5gy-vu-yjX"/>
                             <constraint firstItem="Rgo-t8-x2w" firstAttribute="top" secondItem="bP3-Fv-t6T" secondAttribute="bottom" id="8Cp-QA-qxP"/>
+                            <constraint firstItem="n0e-a4-dH3" firstAttribute="top" secondItem="PEp-6g-bij" secondAttribute="bottom" id="8fa-ig-MvM"/>
+                            <constraint firstItem="PEp-6g-bij" firstAttribute="leading" secondItem="aHN-7p-Kzv" secondAttribute="leading" id="DpW-b1-haz"/>
                             <constraint firstItem="Rgo-t8-x2w" firstAttribute="leading" secondItem="aHN-7p-Kzv" secondAttribute="leading" id="H5O-LW-Gxu"/>
                             <constraint firstAttribute="trailing" secondItem="Rgo-t8-x2w" secondAttribute="trailing" id="Ha8-nl-wLg"/>
                             <constraint firstItem="n0e-a4-dH3" firstAttribute="top" secondItem="Pex-iq-aBO" secondAttribute="bottom" id="LWt-Kt-cYm"/>
+                            <constraint firstAttribute="trailing" secondItem="PEp-6g-bij" secondAttribute="trailing" id="Vc6-OZ-Bo6"/>
                             <constraint firstItem="Pex-iq-aBO" firstAttribute="leading" secondItem="aHN-7p-Kzv" secondAttribute="leading" id="bo5-Wg-rPD"/>
                             <constraint firstAttribute="trailing" secondItem="Pex-iq-aBO" secondAttribute="trailing" id="cIx-lN-Tbs"/>
                             <constraint firstItem="Pex-iq-aBO" firstAttribute="top" secondItem="Rgo-t8-x2w" secondAttribute="bottom" id="zTE-De-WPK"/>
@@ -2652,14 +2705,17 @@ project is waiting to be initiated.</string>
                         <viewControllerLayoutGuide type="bottom" id="qha-El-nae"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vp5-lf-vXT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="YqE-NO-ttb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tH-BR-Ads">
-                                <rect key="frame" x="0.0" y="20" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVh-Wr-jre">
-                                        <rect key="frame" x="15" y="0.0" width="305" height="30"/>
+                                        <rect key="frame" x="15" y="0.0" width="360" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="TRACKING STATUS" image="btnBack.png">
@@ -2680,7 +2736,7 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pai-LB-BzS">
-                                <rect key="frame" x="0.0" y="50" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o3m-N4-Kus">
                                         <rect key="frame" x="5" y="10" width="40" height="40"/>
@@ -2700,7 +2756,7 @@ project is waiting to be initiated.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUOTE SENT" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jj-gt-Ylz">
-                                        <rect key="frame" x="238" y="18" width="77" height="21"/>
+                                        <rect key="frame" x="238" y="18" width="132" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XZE-7q-Vxo"/>
                                         </constraints>
@@ -2722,14 +2778,14 @@ project is waiting to be initiated.</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BxR-Bh-TkB">
-                                <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="539"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackingStatusTableViewCellID" rowHeight="75" id="Ix2-6q-VQr" customClass="TrackingStatusTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="75"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ix2-6q-VQr" id="TfN-YU-550">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Ka-iE-Neg">
@@ -2761,7 +2817,7 @@ project is waiting to be initiated.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1h-iv-uGf">
-                                                    <rect key="frame" x="156" y="6" width="148" height="21"/>
+                                                    <rect key="frame" x="156" y="6" width="203" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Cz9-HQ-Vke"/>
@@ -2771,7 +2827,7 @@ project is waiting to be initiated.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarr.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eba-2R-XHf">
-                                                    <rect key="frame" x="304" y="10" width="13" height="13"/>
+                                                    <rect key="frame" x="359" y="10" width="13" height="13"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="gpf-xn-Zw5"/>
@@ -2808,7 +2864,10 @@ project is waiting to be initiated.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="YqE-NO-ttb" firstAttribute="leading" secondItem="vp5-lf-vXT" secondAttribute="leading" id="AZD-kF-TWl"/>
                             <constraint firstAttribute="trailing" secondItem="3tH-BR-Ads" secondAttribute="trailing" id="C6o-yr-fkf"/>
+                            <constraint firstItem="YqE-NO-ttb" firstAttribute="top" secondItem="y4b-El-KLm" secondAttribute="bottom" id="CI0-fm-b0A"/>
+                            <constraint firstItem="qha-El-nae" firstAttribute="top" secondItem="YqE-NO-ttb" secondAttribute="bottom" id="DhS-a3-eio"/>
                             <constraint firstItem="3tH-BR-Ads" firstAttribute="leading" secondItem="vp5-lf-vXT" secondAttribute="leading" id="EzL-np-dVK"/>
                             <constraint firstItem="pai-LB-BzS" firstAttribute="top" secondItem="3tH-BR-Ads" secondAttribute="bottom" id="HFZ-Qe-baK"/>
                             <constraint firstAttribute="trailing" secondItem="pai-LB-BzS" secondAttribute="trailing" id="JCu-UB-Dzp"/>
@@ -2818,9 +2877,10 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="3tH-BR-Ads" firstAttribute="top" secondItem="y4b-El-KLm" secondAttribute="bottom" id="XCt-ey-BR0"/>
                             <constraint firstItem="qha-El-nae" firstAttribute="top" secondItem="BxR-Bh-TkB" secondAttribute="bottom" id="dVh-9I-9Zd"/>
                             <constraint firstItem="BxR-Bh-TkB" firstAttribute="leading" secondItem="vp5-lf-vXT" secondAttribute="leading" id="loP-ja-VQp"/>
+                            <constraint firstAttribute="trailing" secondItem="YqE-NO-ttb" secondAttribute="trailing" id="xct-9B-G7G"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="StatusTableview" destination="BxR-Bh-TkB" id="4ru-kQ-7Xc"/>
                         <outlet property="imgRequestLogo" destination="o3m-N4-Kus" id="kRv-xK-Kha"/>
@@ -2844,6 +2904,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="xo2-EK-uGG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eu5-wo-Mix">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -3275,6 +3338,7 @@ project is waiting to be initiated.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0b5-e7-9SX"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="PLACE ORDER" backgroundImage="btnRedGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -3287,6 +3351,7 @@ project is waiting to be initiated.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="UrK-RP-E0b"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="REJECT QUOTE" backgroundImage="btnGreyGradient.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -3373,12 +3438,16 @@ project is waiting to be initiated.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DxK-Ys-ivw" secondAttribute="trailing" id="6tw-og-QFr"/>
+                            <constraint firstItem="xo2-EK-uGG" firstAttribute="top" secondItem="GOV-Aq-wtn" secondAttribute="bottom" id="Ao2-VV-W0w"/>
                             <constraint firstItem="DxK-Ys-ivw" firstAttribute="top" secondItem="eu5-wo-Mix" secondAttribute="bottom" id="Ieb-PH-RYg"/>
                             <constraint firstItem="DxK-Ys-ivw" firstAttribute="leading" secondItem="xZi-Lt-vx0" secondAttribute="leading" id="JIC-79-NfL"/>
                             <constraint firstItem="eu5-wo-Mix" firstAttribute="top" secondItem="GOV-Aq-wtn" secondAttribute="bottom" id="Ky7-0T-7gl"/>
+                            <constraint firstAttribute="trailing" secondItem="xo2-EK-uGG" secondAttribute="trailing" id="NR9-IU-2XK"/>
                             <constraint firstItem="df1-m0-s5M" firstAttribute="width" secondItem="xZi-Lt-vx0" secondAttribute="width" id="Qr8-xJ-Qfw"/>
                             <constraint firstAttribute="trailing" secondItem="eu5-wo-Mix" secondAttribute="trailing" id="SUt-G7-vhk"/>
+                            <constraint firstItem="Zpl-t6-QIV" firstAttribute="top" secondItem="xo2-EK-uGG" secondAttribute="bottom" id="Ukq-DJ-b2K"/>
                             <constraint firstItem="Zpl-t6-QIV" firstAttribute="top" secondItem="DxK-Ys-ivw" secondAttribute="bottom" id="Y4N-ba-MJZ"/>
+                            <constraint firstItem="xo2-EK-uGG" firstAttribute="leading" secondItem="xZi-Lt-vx0" secondAttribute="leading" id="wnm-fR-PUe"/>
                             <constraint firstItem="eu5-wo-Mix" firstAttribute="leading" secondItem="xZi-Lt-vx0" secondAttribute="leading" id="x5r-uZ-hrb"/>
                         </constraints>
                     </view>
@@ -3429,11 +3498,39 @@ project is waiting to be initiated.</string>
                         <viewControllerLayoutGuide type="bottom" id="ccN-i4-Dds"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5H6-gs-kB1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jp9-LU-15q">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvF-Xw-K1i">
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzw-9A-z0e">
+                                        <rect key="frame" x="15" y="0.0" width="360" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="DISCUSS QUOTE" image="btnBack.png">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnBackClicked:" destination="hIB-ro-49E" eventType="touchUpInside" id="cj5-FD-Eru"/>
+                                            <action selector="btnBackClicked:" destination="6nZ-P0-Ofo" eventType="touchUpInside" id="mhJ-Og-YGV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hzw-9A-z0e" secondAttribute="trailing" id="HdJ-Hv-ghA"/>
+                                    <constraint firstAttribute="height" constant="30" id="ibo-39-Wda"/>
+                                    <constraint firstItem="hzw-9A-z0e" firstAttribute="top" secondItem="RvF-Xw-K1i" secondAttribute="top" id="nBY-Jd-dd6"/>
+                                    <constraint firstAttribute="bottom" secondItem="hzw-9A-z0e" secondAttribute="bottom" id="ovi-0f-ARN"/>
+                                    <constraint firstItem="hzw-9A-z0e" firstAttribute="leading" secondItem="RvF-Xw-K1i" secondAttribute="leading" constant="15" id="yDh-XP-tUI"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRH-52-w8M">
-                                <rect key="frame" x="0.0" y="50" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="service_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="pg1-uR-2YE">
                                         <rect key="frame" x="14" y="8" width="24" height="24"/>
@@ -3442,22 +3539,19 @@ project is waiting to be initiated.</string>
                                             <constraint firstAttribute="height" constant="24" id="z9n-Ur-tjt"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fp-HJ-N7D">
+                                        <rect key="frame" x="200" y="2" width="170" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SERVICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmi-rf-z21">
                                         <rect key="frame" x="46" y="9" width="100" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Oor-Zf-M00"/>
                                             <constraint firstAttribute="width" constant="100" id="XC4-a5-Psc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fp-HJ-N7D">
-                                        <rect key="frame" x="147" y="2" width="433" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="lM8-bV-Q6W"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3466,16 +3560,17 @@ project is waiting to be initiated.</string>
                                 <constraints>
                                     <constraint firstItem="pg1-uR-2YE" firstAttribute="top" secondItem="tRH-52-w8M" secondAttribute="top" constant="8" id="1iN-8b-7nO"/>
                                     <constraint firstItem="pg1-uR-2YE" firstAttribute="leading" secondItem="tRH-52-w8M" secondAttribute="leading" constant="14" id="6gI-BD-vEu"/>
-                                    <constraint firstItem="3fp-HJ-N7D" firstAttribute="top" secondItem="tRH-52-w8M" secondAttribute="top" constant="2" id="EIf-Bh-9Xo"/>
                                     <constraint firstItem="rmi-rf-z21" firstAttribute="top" secondItem="tRH-52-w8M" secondAttribute="top" constant="9" id="PDL-Ki-FTB"/>
-                                    <constraint firstItem="3fp-HJ-N7D" firstAttribute="leading" secondItem="rmi-rf-z21" secondAttribute="trailing" constant="1" id="RZS-zt-SiP"/>
-                                    <constraint firstAttribute="trailing" secondItem="3fp-HJ-N7D" secondAttribute="trailing" constant="20" id="TMH-n3-ga0"/>
+                                    <constraint firstItem="3fp-HJ-N7D" firstAttribute="leading" secondItem="rmi-rf-z21" secondAttribute="trailing" constant="54" id="Q9M-4i-9NO"/>
                                     <constraint firstAttribute="height" constant="40" id="aHZ-Uz-wUL"/>
+                                    <constraint firstAttribute="bottom" secondItem="3fp-HJ-N7D" secondAttribute="bottom" constant="2" id="bkB-kp-AbE"/>
                                     <constraint firstItem="rmi-rf-z21" firstAttribute="leading" secondItem="pg1-uR-2YE" secondAttribute="trailing" constant="8" id="bqZ-4b-UiF"/>
+                                    <constraint firstAttribute="trailing" secondItem="3fp-HJ-N7D" secondAttribute="trailing" constant="5" id="mX8-lQ-EuZ"/>
+                                    <constraint firstItem="3fp-HJ-N7D" firstAttribute="top" secondItem="tRH-52-w8M" secondAttribute="top" constant="2" id="s4n-CV-Pz7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgg-Ib-ilx">
-                                <rect key="frame" x="0.0" y="100" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="area_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="sLI-eI-grP">
                                         <rect key="frame" x="14" y="10" width="24" height="24"/>
@@ -3490,34 +3585,32 @@ project is waiting to be initiated.</string>
                                             <constraint firstAttribute="height" constant="21" id="d1N-nz-Ucz"/>
                                             <constraint firstAttribute="width" constant="100" id="hGw-6T-wKa"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD4-hM-fcU">
-                                        <rect key="frame" x="147" y="2" width="433" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="yxF-8g-ufv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD4-hM-fcU">
+                                        <rect key="frame" x="200" y="2" width="170" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.92156862745098034" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="xD4-hM-fcU" firstAttribute="leading" secondItem="N7F-2r-0YJ" secondAttribute="trailing" constant="54" id="5tg-sI-RSl"/>
                                     <constraint firstItem="sLI-eI-grP" firstAttribute="leading" secondItem="Hgg-Ib-ilx" secondAttribute="leading" constant="14" id="8dC-1a-kUj"/>
+                                    <constraint firstItem="xD4-hM-fcU" firstAttribute="top" secondItem="Hgg-Ib-ilx" secondAttribute="top" constant="2" id="BiX-33-Mh1"/>
+                                    <constraint firstAttribute="bottom" secondItem="xD4-hM-fcU" secondAttribute="bottom" constant="2" id="DC7-Br-VG3"/>
                                     <constraint firstItem="N7F-2r-0YJ" firstAttribute="top" secondItem="Hgg-Ib-ilx" secondAttribute="top" constant="9" id="M4F-HM-DkX"/>
-                                    <constraint firstAttribute="trailing" secondItem="xD4-hM-fcU" secondAttribute="trailing" constant="20" id="QPw-ph-Xjs"/>
-                                    <constraint firstItem="xD4-hM-fcU" firstAttribute="leading" secondItem="N7F-2r-0YJ" secondAttribute="trailing" constant="1" id="X6g-1r-qte"/>
                                     <constraint firstItem="sLI-eI-grP" firstAttribute="top" secondItem="Hgg-Ib-ilx" secondAttribute="top" constant="10" id="ep4-ti-ux1"/>
-                                    <constraint firstItem="xD4-hM-fcU" firstAttribute="top" secondItem="Hgg-Ib-ilx" secondAttribute="top" constant="2" id="jGd-ea-Jjg"/>
+                                    <constraint firstAttribute="trailing" secondItem="xD4-hM-fcU" secondAttribute="trailing" constant="5" id="jSU-Nx-y84"/>
                                     <constraint firstAttribute="height" constant="40" id="vOS-pV-Iq6"/>
                                     <constraint firstItem="N7F-2r-0YJ" firstAttribute="leading" secondItem="sLI-eI-grP" secondAttribute="trailing" constant="8" id="z0g-yZ-ON7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFh-xd-WU6">
-                                <rect key="frame" x="0.0" y="150" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="170" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subarea_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfT-Tz-P6l">
                                         <rect key="frame" x="14" y="6" width="24" height="24"/>
@@ -3532,34 +3625,32 @@ project is waiting to be initiated.</string>
                                             <constraint firstAttribute="height" constant="21" id="Rct-Pc-4ri"/>
                                             <constraint firstAttribute="width" constant="100" id="zyT-UE-Phg"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-EQ-ZNk">
-                                        <rect key="frame" x="147" y="2" width="433" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="hlh-CH-TWo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-EQ-ZNk">
+                                        <rect key="frame" x="200" y="2" width="170" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6Xa-EQ-ZNk" secondAttribute="bottom" constant="2" id="GD1-QB-dcl"/>
                                     <constraint firstItem="mfT-Tz-P6l" firstAttribute="top" secondItem="tFh-xd-WU6" secondAttribute="top" constant="6" id="HEP-fT-9CA"/>
+                                    <constraint firstItem="6Xa-EQ-ZNk" firstAttribute="top" secondItem="tFh-xd-WU6" secondAttribute="top" constant="2" id="NTf-ZP-RxN"/>
                                     <constraint firstItem="mfT-Tz-P6l" firstAttribute="leading" secondItem="tFh-xd-WU6" secondAttribute="leading" constant="14" id="PmT-NY-jCo"/>
                                     <constraint firstItem="gAl-l1-XNO" firstAttribute="top" secondItem="tFh-xd-WU6" secondAttribute="top" constant="9" id="ROd-Fd-3cO"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Xa-EQ-ZNk" secondAttribute="trailing" constant="20" id="aDD-Ei-aiR"/>
-                                    <constraint firstItem="6Xa-EQ-ZNk" firstAttribute="top" secondItem="tFh-xd-WU6" secondAttribute="top" constant="2" id="cTf-0s-3dM"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Xa-EQ-ZNk" secondAttribute="trailing" constant="5" id="Veb-rY-3Zc"/>
                                     <constraint firstItem="gAl-l1-XNO" firstAttribute="leading" secondItem="mfT-Tz-P6l" secondAttribute="trailing" constant="8" id="clv-eq-MCj"/>
-                                    <constraint firstItem="6Xa-EQ-ZNk" firstAttribute="leading" secondItem="gAl-l1-XNO" secondAttribute="trailing" constant="1" id="iJc-9V-7Jj"/>
                                     <constraint firstAttribute="height" constant="40" id="rRd-GE-jlJ"/>
+                                    <constraint firstItem="6Xa-EQ-ZNk" firstAttribute="leading" secondItem="gAl-l1-XNO" secondAttribute="trailing" constant="54" id="vu4-xQ-9C4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0f-xc-osS">
-                                <rect key="frame" x="0.0" y="200" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assay_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="ijY-UQ-9DQ">
                                         <rect key="frame" x="14" y="8" width="24" height="24"/>
@@ -3574,37 +3665,36 @@ project is waiting to be initiated.</string>
                                             <constraint firstAttribute="height" constant="21" id="CFC-WU-rJk"/>
                                             <constraint firstAttribute="width" constant="100" id="LEo-Wg-g90"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfM-SG-g3a">
-                                        <rect key="frame" x="147" y="2" width="433" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="3h6-71-wjI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfM-SG-g3a">
+                                        <rect key="frame" x="200" y="2" width="170" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.92156862745098034" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="JfM-SG-g3a" firstAttribute="top" secondItem="s0f-xc-osS" secondAttribute="top" constant="2" id="1ng-VL-CfP"/>
                                     <constraint firstItem="ijY-UQ-9DQ" firstAttribute="leading" secondItem="s0f-xc-osS" secondAttribute="leading" constant="14" id="Dxq-VJ-iGP"/>
+                                    <constraint firstAttribute="trailing" secondItem="JfM-SG-g3a" secondAttribute="trailing" constant="5" id="J5X-6b-Sf4"/>
                                     <constraint firstItem="NJG-ae-qf1" firstAttribute="leading" secondItem="ijY-UQ-9DQ" secondAttribute="trailing" constant="8" id="JBG-b6-nLU"/>
                                     <constraint firstItem="ijY-UQ-9DQ" firstAttribute="top" secondItem="s0f-xc-osS" secondAttribute="top" constant="8" id="OGx-WF-nf1"/>
-                                    <constraint firstAttribute="trailing" secondItem="JfM-SG-g3a" secondAttribute="trailing" constant="20" id="RxO-fH-01K"/>
-                                    <constraint firstItem="JfM-SG-g3a" firstAttribute="top" secondItem="s0f-xc-osS" secondAttribute="top" constant="2" id="jPW-Pl-7Gf"/>
                                     <constraint firstAttribute="height" constant="40" id="lAU-xU-Ytv"/>
+                                    <constraint firstItem="JfM-SG-g3a" firstAttribute="leading" secondItem="NJG-ae-qf1" secondAttribute="trailing" constant="54" id="lhP-de-HfU"/>
+                                    <constraint firstAttribute="bottom" secondItem="JfM-SG-g3a" secondAttribute="bottom" constant="2" id="nlz-Uj-Pbn"/>
                                     <constraint firstItem="NJG-ae-qf1" firstAttribute="top" secondItem="s0f-xc-osS" secondAttribute="top" constant="9" id="rwX-YP-Gje"/>
-                                    <constraint firstItem="JfM-SG-g3a" firstAttribute="leading" secondItem="NJG-ae-qf1" secondAttribute="trailing" constant="1" id="zo4-TC-pXF"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-Ii-9nx">
-                                <rect key="frame" x="20" y="280" width="560" height="42"/>
+                                <rect key="frame" x="20" y="300" width="335" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="5Tz-c3-JN2"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="DISCUSS" backgroundImage="btnRedGradient.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3615,23 +3705,31 @@ project is waiting to be initiated.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ccN-i4-Dds" firstAttribute="top" secondItem="jp9-LU-15q" secondAttribute="bottom" id="2JI-KV-eHE"/>
                             <constraint firstItem="s0f-xc-osS" firstAttribute="top" secondItem="tFh-xd-WU6" secondAttribute="bottom" constant="10" id="3X9-gC-Dap"/>
+                            <constraint firstItem="RvF-Xw-K1i" firstAttribute="top" secondItem="FVM-1y-zj9" secondAttribute="bottom" id="3Xp-za-gPh"/>
                             <constraint firstItem="Hgg-Ib-ilx" firstAttribute="top" secondItem="tRH-52-w8M" secondAttribute="bottom" constant="10" id="4vo-DS-h5O"/>
                             <constraint firstAttribute="trailing" secondItem="Hgg-Ib-ilx" secondAttribute="trailing" id="75e-u1-gAA"/>
                             <constraint firstItem="tRH-52-w8M" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="A3b-5I-Toy"/>
+                            <constraint firstAttribute="trailing" secondItem="RvF-Xw-K1i" secondAttribute="trailing" id="DUH-Yl-OlT"/>
                             <constraint firstAttribute="trailing" secondItem="3Fv-Ii-9nx" secondAttribute="trailing" constant="20" id="Dx7-NA-fGd"/>
+                            <constraint firstItem="jp9-LU-15q" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="F7R-Ju-0Cl"/>
+                            <constraint firstItem="tRH-52-w8M" firstAttribute="top" secondItem="RvF-Xw-K1i" secondAttribute="bottom" constant="20" id="FBf-He-arZ"/>
                             <constraint firstItem="3Fv-Ii-9nx" firstAttribute="top" secondItem="s0f-xc-osS" secondAttribute="bottom" constant="40" id="Jbs-7c-j6b"/>
                             <constraint firstItem="Hgg-Ib-ilx" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="Qn1-a1-EZK"/>
                             <constraint firstItem="tFh-xd-WU6" firstAttribute="top" secondItem="Hgg-Ib-ilx" secondAttribute="bottom" constant="10" id="ZIk-sc-J24"/>
                             <constraint firstAttribute="trailing" secondItem="tFh-xd-WU6" secondAttribute="trailing" id="aJz-mt-Si5"/>
                             <constraint firstItem="tFh-xd-WU6" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="aOd-MA-cy3"/>
                             <constraint firstAttribute="trailing" secondItem="s0f-xc-osS" secondAttribute="trailing" id="b0g-Im-tnS"/>
-                            <constraint firstItem="tRH-52-w8M" firstAttribute="top" secondItem="FVM-1y-zj9" secondAttribute="bottom" constant="30" id="faI-oZ-D2e"/>
+                            <constraint firstAttribute="trailing" secondItem="jp9-LU-15q" secondAttribute="trailing" id="j8G-Kh-L4x"/>
+                            <constraint firstItem="jp9-LU-15q" firstAttribute="top" secondItem="FVM-1y-zj9" secondAttribute="bottom" id="nbe-Vv-SWH"/>
                             <constraint firstItem="s0f-xc-osS" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="pDD-Ac-oDQ"/>
+                            <constraint firstItem="RvF-Xw-K1i" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" id="qjl-At-oh8"/>
                             <constraint firstItem="3Fv-Ii-9nx" firstAttribute="leading" secondItem="5H6-gs-kB1" secondAttribute="leading" constant="20" id="sAt-8N-piH"/>
                             <constraint firstAttribute="trailing" secondItem="tRH-52-w8M" secondAttribute="trailing" id="t8K-us-2VQ"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="DiscussBtnOutlet" destination="3Fv-Ii-9nx" id="F6X-FX-4HL"/>
                         <outlet property="LabelEight" destination="JfM-SG-g3a" id="hLl-Ts-deD"/>
@@ -3654,7 +3752,7 @@ project is waiting to be initiated.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5D-fO-DKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5133" y="-183"/>
+            <point key="canvasLocation" x="5132.5" y="-183.5"/>
         </scene>
         <!--New Biology Request View Controller-->
         <scene sceneID="EB3-gs-aNr">
@@ -3668,6 +3766,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="fsu-fd-cDf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIk-id-ESa">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -3970,10 +4071,14 @@ project is waiting to be initiated.</string>
                             <constraint firstAttribute="trailing" secondItem="nIk-id-ESa" secondAttribute="trailing" id="0to-IP-e1q"/>
                             <constraint firstItem="BcJ-tC-Sg1" firstAttribute="leading" secondItem="rDi-Nc-9u9" secondAttribute="leading" id="1r5-Ch-bgc"/>
                             <constraint firstItem="nIk-id-ESa" firstAttribute="top" secondItem="thp-2d-plZ" secondAttribute="bottom" id="6eM-6G-723"/>
+                            <constraint firstItem="Wh2-qi-RuW" firstAttribute="top" secondItem="fsu-fd-cDf" secondAttribute="bottom" id="8O6-i4-pBf"/>
                             <constraint firstItem="Wh2-qi-RuW" firstAttribute="top" secondItem="BcJ-tC-Sg1" secondAttribute="bottom" constant="50" id="QjY-qk-qc5"/>
                             <constraint firstItem="BcJ-tC-Sg1" firstAttribute="top" secondItem="nIk-id-ESa" secondAttribute="bottom" id="Sm6-5l-w0w"/>
                             <constraint firstItem="nIk-id-ESa" firstAttribute="leading" secondItem="rDi-Nc-9u9" secondAttribute="leading" id="idC-v7-oyr"/>
+                            <constraint firstItem="fsu-fd-cDf" firstAttribute="leading" secondItem="rDi-Nc-9u9" secondAttribute="leading" id="kyw-hn-sxQ"/>
                             <constraint firstAttribute="trailing" secondItem="BcJ-tC-Sg1" secondAttribute="trailing" id="qCO-o2-klL"/>
+                            <constraint firstAttribute="trailing" secondItem="fsu-fd-cDf" secondAttribute="trailing" id="tU4-JG-UEs"/>
+                            <constraint firstItem="fsu-fd-cDf" firstAttribute="top" secondItem="thp-2d-plZ" secondAttribute="bottom" id="usW-Hf-XME"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -4015,6 +4120,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="z1J-uM-IQv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-46-gAh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -4217,13 +4325,17 @@ project is waiting to be initiated.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Ae-uy-GLB" firstAttribute="top" secondItem="z1J-uM-IQv" secondAttribute="bottom" id="1xx-oH-5xJ"/>
+                            <constraint firstItem="z1J-uM-IQv" firstAttribute="top" secondItem="VwR-88-H7p" secondAttribute="bottom" id="JS5-yt-bgc"/>
                             <constraint firstItem="h0x-cl-Hds" firstAttribute="leading" secondItem="bkD-Pk-jDB" secondAttribute="leading" id="P4R-y6-ayC"/>
                             <constraint firstItem="IZE-46-gAh" firstAttribute="leading" secondItem="bkD-Pk-jDB" secondAttribute="leading" id="TGX-M7-edE"/>
                             <constraint firstItem="h0x-cl-Hds" firstAttribute="top" secondItem="IZE-46-gAh" secondAttribute="bottom" id="W1d-YP-JDB"/>
                             <constraint firstAttribute="trailing" secondItem="h0x-cl-Hds" secondAttribute="trailing" id="gzy-mn-kYK"/>
                             <constraint firstItem="9Ae-uy-GLB" firstAttribute="top" secondItem="h0x-cl-Hds" secondAttribute="bottom" id="hOQ-8q-KS8"/>
                             <constraint firstAttribute="trailing" secondItem="IZE-46-gAh" secondAttribute="trailing" id="n2r-6E-Hmv"/>
+                            <constraint firstItem="z1J-uM-IQv" firstAttribute="leading" secondItem="bkD-Pk-jDB" secondAttribute="leading" id="n6E-B3-lCF"/>
                             <constraint firstItem="IZE-46-gAh" firstAttribute="top" secondItem="VwR-88-H7p" secondAttribute="bottom" id="t9n-kA-QkZ"/>
+                            <constraint firstAttribute="trailing" secondItem="z1J-uM-IQv" secondAttribute="trailing" id="v9u-hB-5MP"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -4810,6 +4922,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="go8-Gz-DQ3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GK-Vl-Adn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -5309,10 +5424,14 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="4GK-Vl-Adn" firstAttribute="leading" secondItem="p9L-kR-ImF" secondAttribute="leading" id="9hW-c6-ms5"/>
                             <constraint firstItem="iUe-VD-zL4" firstAttribute="top" secondItem="4GK-Vl-Adn" secondAttribute="bottom" id="AfB-yD-2zJ"/>
                             <constraint firstAttribute="bottom" secondItem="iUe-VD-zL4" secondAttribute="bottom" constant="50" id="JAH-FO-Zkc"/>
+                            <constraint firstItem="go8-Gz-DQ3" firstAttribute="top" secondItem="giY-wl-sLA" secondAttribute="bottom" id="L8h-iz-abR"/>
+                            <constraint firstAttribute="trailing" secondItem="go8-Gz-DQ3" secondAttribute="trailing" id="PXl-jg-72R"/>
+                            <constraint firstItem="go8-Gz-DQ3" firstAttribute="leading" secondItem="p9L-kR-ImF" secondAttribute="leading" id="RtO-44-9qh"/>
                             <constraint firstItem="iUe-VD-zL4" firstAttribute="leading" secondItem="p9L-kR-ImF" secondAttribute="leading" id="SjR-v0-j69"/>
                             <constraint firstAttribute="trailing" secondItem="iUe-VD-zL4" secondAttribute="trailing" id="YLS-lt-NBN"/>
                             <constraint firstItem="4GK-Vl-Adn" firstAttribute="top" secondItem="giY-wl-sLA" secondAttribute="bottom" id="cS3-2i-Tls"/>
                             <constraint firstAttribute="bottom" secondItem="iUe-VD-zL4" secondAttribute="bottom" id="iOd-Iw-mOu"/>
+                            <constraint firstItem="lKY-dc-z6T" firstAttribute="top" secondItem="go8-Gz-DQ3" secondAttribute="bottom" id="n66-FO-2DI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -5370,7 +5489,7 @@ project is waiting to be initiated.</string>
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-2x-Khf">
                                 <rect key="frame" x="88" y="60" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WG4-hL-ebb"/>
@@ -5461,6 +5580,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="DeG-kU-1r5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEx-Qm-XhD">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -5511,7 +5633,7 @@ project is waiting to be initiated.</string>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efk-pS-eeZ">
                                 <rect key="frame" x="10" y="155" width="355" height="512"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -5529,12 +5651,15 @@ project is waiting to be initiated.</string>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DKd-EK-Aoq" secondAttribute="trailing" constant="10" id="1A0-Ez-VMM"/>
                             <constraint firstItem="mEx-Qm-XhD" firstAttribute="top" secondItem="fyG-PF-ZYJ" secondAttribute="bottom" id="1rd-pZ-qSY"/>
+                            <constraint firstAttribute="trailing" secondItem="DeG-kU-1r5" secondAttribute="trailing" id="Faq-RT-9or"/>
                             <constraint firstItem="efk-pS-eeZ" firstAttribute="top" secondItem="DKd-EK-Aoq" secondAttribute="bottom" id="I3n-AA-ZXq"/>
                             <constraint firstItem="efk-pS-eeZ" firstAttribute="leading" secondItem="4lz-NM-3pd" secondAttribute="leading" constant="10" id="OAI-xd-GeR"/>
                             <constraint firstItem="XlU-j0-FDu" firstAttribute="leading" secondItem="MA5-ST-Tqo" secondAttribute="trailing" id="Rgn-35-GBt"/>
                             <constraint firstItem="DKd-EK-Aoq" firstAttribute="leading" secondItem="4lz-NM-3pd" secondAttribute="leading" constant="10" id="SFB-pJ-eve"/>
                             <constraint firstAttribute="trailing" secondItem="efk-pS-eeZ" secondAttribute="trailing" constant="10" id="VxH-u5-Jib"/>
+                            <constraint firstItem="WRs-7a-Get" firstAttribute="top" secondItem="DeG-kU-1r5" secondAttribute="bottom" id="bH7-9i-gVr"/>
                             <constraint firstItem="XlU-j0-FDu" firstAttribute="width" secondItem="MA5-ST-Tqo" secondAttribute="width" id="cAm-aV-wbZ"/>
+                            <constraint firstItem="DeG-kU-1r5" firstAttribute="leading" secondItem="4lz-NM-3pd" secondAttribute="leading" id="f3D-RI-tpi"/>
                             <constraint firstItem="XlU-j0-FDu" firstAttribute="top" secondItem="fyG-PF-ZYJ" secondAttribute="bottom" constant="45" id="gGH-eN-298"/>
                             <constraint firstItem="WRs-7a-Get" firstAttribute="top" secondItem="efk-pS-eeZ" secondAttribute="bottom" id="j5w-Cg-E5q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XlU-j0-FDu" secondAttribute="trailing" constant="-9" id="nhc-ay-vDu"/>
@@ -5542,6 +5667,7 @@ project is waiting to be initiated.</string>
                             <constraint firstAttribute="trailing" secondItem="mEx-Qm-XhD" secondAttribute="trailing" id="u2P-CV-1M5"/>
                             <constraint firstItem="MA5-ST-Tqo" firstAttribute="leading" secondItem="4lz-NM-3pd" secondAttribute="leadingMargin" constant="-10" id="wKM-o6-pWw"/>
                             <constraint firstItem="DKd-EK-Aoq" firstAttribute="top" secondItem="XlU-j0-FDu" secondAttribute="bottom" id="wo3-OA-vEJ"/>
+                            <constraint firstItem="DeG-kU-1r5" firstAttribute="top" secondItem="fyG-PF-ZYJ" secondAttribute="bottom" id="xYX-lO-k0o"/>
                             <constraint firstItem="MA5-ST-Tqo" firstAttribute="top" secondItem="fyG-PF-ZYJ" secondAttribute="bottom" constant="45" id="zMi-aS-3A6"/>
                         </constraints>
                     </view>
@@ -5607,7 +5733,7 @@ project is waiting to be initiated.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="86H-8H-NRP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -5773,6 +5899,9 @@ project is waiting to be initiated.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="vCF-Wt-ToI">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9o-eW-ZCc">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -5879,6 +6008,7 @@ project is waiting to be initiated.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Nd-Be-V3j" firstAttribute="leading" secondItem="SoD-EJ-dV6" secondAttribute="leading" constant="10" id="0IB-l6-AHQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vCF-Wt-ToI" secondAttribute="trailing" id="3MB-AE-cp5"/>
                             <constraint firstItem="eLB-Hg-o3e" firstAttribute="top" secondItem="Dq2-QS-H0Y" secondAttribute="bottom" constant="10" id="4Pj-O5-bJe"/>
                             <constraint firstItem="YtK-cN-pwQ" firstAttribute="top" secondItem="p9o-eW-ZCc" secondAttribute="bottom" constant="10" id="6Zu-Mz-nVa"/>
                             <constraint firstAttribute="trailing" secondItem="cog-q3-Wld" secondAttribute="trailing" constant="10" id="73d-A5-7g8"/>
@@ -5887,6 +6017,7 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="Dq2-QS-H0Y" firstAttribute="leading" secondItem="SoD-EJ-dV6" secondAttribute="leading" constant="10" id="CVF-NE-eYh"/>
                             <constraint firstItem="sub-j0-sbf" firstAttribute="top" secondItem="p9o-eW-ZCc" secondAttribute="bottom" constant="10" id="D2Y-rV-8aV"/>
                             <constraint firstAttribute="trailing" secondItem="yGL-Sf-j6n" secondAttribute="trailing" constant="10" id="E8b-Fk-229"/>
+                            <constraint firstItem="vCF-Wt-ToI" firstAttribute="top" secondItem="aDr-Tn-dEn" secondAttribute="bottom" id="EuH-yo-V9M"/>
                             <constraint firstAttribute="trailing" secondItem="8Xn-mZ-pmM" secondAttribute="trailing" constant="10" id="IOa-EQ-lG1"/>
                             <constraint firstItem="sub-j0-sbf" firstAttribute="leading" secondItem="SoD-EJ-dV6" secondAttribute="leading" constant="10" id="N5f-DB-mC2"/>
                             <constraint firstItem="yGL-Sf-j6n" firstAttribute="top" secondItem="YtK-cN-pwQ" secondAttribute="bottom" constant="15" id="P97-NY-9dZ"/>
@@ -5898,9 +6029,11 @@ project is waiting to be initiated.</string>
                             <constraint firstItem="8Xn-mZ-pmM" firstAttribute="top" secondItem="yGL-Sf-j6n" secondAttribute="bottom" constant="10" id="YdE-WC-HN9"/>
                             <constraint firstAttribute="trailing" secondItem="Dq2-QS-H0Y" secondAttribute="trailing" constant="10" id="aTt-wK-5j0"/>
                             <constraint firstAttribute="trailing" secondItem="YtK-cN-pwQ" secondAttribute="trailing" constant="10" id="eho-LQ-0zL"/>
+                            <constraint firstItem="vCF-Wt-ToI" firstAttribute="leading" secondItem="SoD-EJ-dV6" secondAttribute="leading" id="fek-36-pez"/>
                             <constraint firstAttribute="trailing" secondItem="2Nd-Be-V3j" secondAttribute="trailing" constant="10" id="iAi-bH-u2M"/>
                             <constraint firstItem="p9o-eW-ZCc" firstAttribute="top" secondItem="aDr-Tn-dEn" secondAttribute="bottom" id="lr1-UA-anM"/>
                             <constraint firstItem="cog-q3-Wld" firstAttribute="top" secondItem="2Nd-Be-V3j" secondAttribute="bottom" constant="10" id="rQx-ac-vZA"/>
+                            <constraint firstItem="eLB-Hg-o3e" firstAttribute="top" secondItem="vCF-Wt-ToI" secondAttribute="bottom" id="sgx-B6-tbh"/>
                             <constraint firstItem="2Nd-Be-V3j" firstAttribute="top" secondItem="8Xn-mZ-pmM" secondAttribute="bottom" constant="10" id="yYK-uZ-Rh4"/>
                         </constraints>
                     </view>
@@ -5959,7 +6092,7 @@ project is waiting to be initiated.</string>
         <image name="homebg.png" width="640" height="1136"/>
         <image name="linkedinshare.png" width="401" height="53"/>
         <image name="lock.png" width="28" height="28"/>
-        <image name="logo.png" width="260" height="58"/>
+        <image name="logo.png" width="340" height="88"/>
         <image name="mail.png" width="28" height="28"/>
         <image name="mapship.png" width="32" height="32"/>
         <image name="msg_icon1.png" width="24" height="24"/>

@@ -27,7 +27,6 @@
     [super viewDidLoad];
     NSLog(@"%@",PlaceOrder);
     NSLog(@"%@",inputDataDictionary);
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"gvkbg.png"]]];
     NSMutableArray *DataArray = [inputDataDictionary objectForKey:@"RequestedQuoteList"];
     LocalDataDictionary = [DataArray objectAtIndex:0];
     [self dataDisplaying];
