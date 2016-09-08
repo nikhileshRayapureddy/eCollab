@@ -11,10 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="G35-kq-4yZ">
-                    <rect key="frame" x="0.0" y="0.0" width="325" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gQ-r3-9wW">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
@@ -22,6 +18,10 @@
                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gvkbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="G35-kq-4yZ">
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwJ-Jt-FuL">
                     <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
                     <subviews>
