@@ -1608,7 +1608,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = eCollab;
-				PROVISIONING_PROFILE = "48e72a31-e9a3-4bde-99d5-ebc7b82703df";
+				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
 			};
 			name = Debug;
 		};
@@ -1624,7 +1624,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taya.Ecollab;
 				PRODUCT_NAME = eCollab;
-				PROVISIONING_PROFILE = "48e72a31-e9a3-4bde-99d5-ebc7b82703df";
+				PROVISIONING_PROFILE = "57d96e39-5714-45fd-ad29-b52cb8098f04";
 			};
 			name = Release;
 		};
