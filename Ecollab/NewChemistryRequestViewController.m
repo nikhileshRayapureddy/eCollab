@@ -114,6 +114,9 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.NewOrEditChemistryReqHeaderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT CHEMISTRY REQUEST"
                                                                               attributes:underlineAttribute];
+        [self designTabBar];
+        [self setSelected:0];
+
         [_btnBack setTitle:@"EDIT CHEMISTRY REQUEST" forState:UIControlStateNormal];
 
     }
@@ -567,7 +570,7 @@
 }
 -(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
 // show alert controller and navigare back
-NSArray *arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+NSArray *arr = [aregistrationDict objectForKey:@"UpdateChemistryRequestResult"];
 NSDictionary *dictResponse = [arr objectAtIndex:0];
 [EcollabLoader hideLoaderForView:self.view animated:YES];
 if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
@@ -807,13 +810,14 @@ else
     [vwCompundDBCustomView.clVwCompoundDb registerNib:myNib1 forCellWithReuseIdentifier:@"ImageCollectionViewCellID"];
     
     [imageTabelview reloadData];
+    
     NSDictionary *dic =[purityArray objectAtIndex:0];
     Purity = [NSString stringWithFormat:@" %@",[dic objectForKey:@"Purity"]];
     PurityID =[NSString stringWithFormat:@"%@",[dic objectForKey:@"RID"]];
     [PuritybtnOutlet setTitle:Purity forState:UIControlStateNormal];
     [PuritybtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
-    [vwCompundDBCustomView.btnSelectType setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:0] objectForKey:@"Category"]] forState:UIControlStateNormal];
+    if (CategoryMasterArray.count > 0)
+        [vwCompundDBCustomView.btnSelectType setTitle:[NSString stringWithFormat:@"%@",[[CategoryMasterArray objectAtIndex:0] objectForKey:@"Category"]] forState:UIControlStateNormal];
 
 }
 
