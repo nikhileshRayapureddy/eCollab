@@ -28,7 +28,8 @@
 }
 
 -(void)startWithURL:(NSURL *)url {
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];    
+    
+    NSLog(@"Request URL : %@",url.absoluteString);
     @try {
         NSURLSessionDataTask * dataTask = [[self createSession] dataTaskWithURL:url];
         [dataTask resume];
