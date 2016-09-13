@@ -23,10 +23,9 @@
     [self designTabBar];
     [self setSelected:3];
 
-    [ProfileImage.layer setBorderWidth: 1.0];
-    [ProfileImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
-
+    ProfileImage.layer.borderColor = [UIColor colorWithRed:150.0/255.0 green:150.0/255.0 blue:150.0/255.0 alpha:1.0].CGColor;
+    ProfileImage.layer.borderWidth = 4.0;
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
     [request requestForopGetUserDetailsService];

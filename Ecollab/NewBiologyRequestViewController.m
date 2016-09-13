@@ -42,8 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self designTabBar];
-    [self setSelected:0];
+//    [self designTabBar];
+//    [self setSelected:0];
     arrAssaysSelected = [[NSMutableArray alloc]init];
     [self designNavBar];
 
@@ -98,7 +98,9 @@
         NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
         self.lblRequestTitle.attributedText = [[NSAttributedString alloc] initWithString:@"EDIT BIOLOGY REQUEST"
                                                                  attributes:underlineAttribute];
-        
+        [self designTabBar];
+        [self setSelected:0];
+
         [_btnBack setTitle:@"EDIT BIOLOGY REQUEST" forState:UIControlStateNormal];
     }
     else if(isFromTracking == YES)

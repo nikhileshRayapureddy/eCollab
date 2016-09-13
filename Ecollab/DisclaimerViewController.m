@@ -65,7 +65,7 @@
     for (NSString *word in words) {
             NSRange range=[self.DiscTextview.text rangeOfString:word];
             [string addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
-            [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
+            [string addAttribute:NSFontAttributeName value:[UIFont fontWithName:DiscTextview.font.fontName size:14] range:range];
     }
     [self.DiscTextview setAttributedText:string];
 }
