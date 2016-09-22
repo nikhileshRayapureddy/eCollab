@@ -7,8 +7,8 @@
 //
 
 #import "FAQVCViewController.h"
-
-@interface FAQVCViewController () {
+#import <MessageUI/MessageUI.h>
+@interface FAQVCViewController ()<MFMailComposeViewControllerDelegate> {
     UITextView *popTextView;
     UIButton *button ;
     int flag;
@@ -427,11 +427,55 @@
 }
 -(void)btnDetailClicked:(UIButton*)sender
 {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"http://www.gvkbio.com"]])
+    if ([MFMailComposeViewController canSendMail])
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.gvkbio.com"]];
+       MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+       mail.mailComposeDelegate = self;
+//       [mail setSubject:@"Sample Subject"];
+//       [mail setMessageBody:@"Here is some main text in the email!" isHTML:NO];
+       [mail setToRecipients:@[@"mobilesupport@gvkbio.com"]];
+       
+       [self presentViewController:mail animated:YES completion:NULL];
     }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:@"This device cannot send E-Mail."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
 
+    }
+//    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"http://www.gvkbio.com"]])
+//    {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.gvkbio.com"]];
+//    }
+
+}
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result) {
+        case MFMailComposeResultSent:
+            NSLog(@"You sent the email.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"You saved a draft of this email");
+            break;
+        case MFMailComposeResultCancelled:
+            NSLog(@"You cancelled sending this email.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
+            break;
+        default:
+            NSLog(@"An error occurred when trying to compose this email");
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 -(void)btnHeaderClicked:(UIButton*)sender
 {
@@ -481,7 +525,6 @@
         [string addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
         
     }
-
     return string;
 }
 
