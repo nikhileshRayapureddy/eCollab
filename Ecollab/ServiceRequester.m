@@ -3,9 +3,7 @@
 #import "ServiceRequester.h"
 #define kApplicationBaseURL [[NSBundle mainBundle] objectForInfoDictionaryKey:@"ApplicationBaseURL"]
 //NSString *const kBase_URL = @"http://183.82.107.118:55666/eCollab/GvkWCF.svc";
-//NSString *const kBase_URL = @"http://ecollab.gvkbio.com/GvkWCF.svc";
-
-NSString *const kBase_URL = @"http://183.82.107.118:55666/eCollab/GvkWCF.svc";
+NSString *const kBase_URL = @"http://ecollab.gvkbio.com/GvkWCF.svc";
 
 //NSString *const kBase_URLWithHttps = @"https://115.119.121.188:8081/MobileService/services";
 NSString *const kBase_Content_Type = @"application/json; charset=utf-8";

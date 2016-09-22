@@ -485,32 +485,32 @@
 
 
 - (IBAction)SaveForLaterBtnAction:(id)sender {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     NSString *UID = [[DetailsManager sharedManager]rID];
-        [dict setObject:UID forKey:@"UID"];
-        [dict setValue:ProductType forKey:@"ProductType"];
-        if ([ProductType isEqualToString:@"1"])
-        {
-            [dict setValue:b64EncStr forKey:@"Image"];
-        }
-        else
-        {
-            [dict setValue:@"" forKey:@"Image"];
-        }
-        [dict setValue:ProductID forKey:@"ProductID"];
-        [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
-        [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
+    [dict setObject:UID forKey:@"UID"];
+    [dict setValue:ProductType forKey:@"ProductType"];
+    if ([ProductType isEqualToString:@"1"])
+    {
+        [dict setValue:b64EncStr forKey:@"Image"];
+    }
+    else
+    {
+        [dict setValue:@"" forKey:@"Image"];
+    }
+    [dict setValue:ProductID forKey:@"ProductID"];
+    [dict setValue:JournalReferenceTextField.text forKey:@"jonuralref"];
+    [dict setValue:[NSString stringWithFormat:@"%@",date] forKey:@"ExpDeliveryDate"];
     [dict setValue:QuantityTextField.text.length?QuantityTextField.text:@"0" forKey:@"Quantity"];
-        [dict setValue:QuantityID forKey:@"QuantityID"];
-        [dict setValue:Purity forKey:@"Purity"];
-
-        [dict setValue:PurityID forKey:@"PurityID"];
-        [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
-        [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
-        [dict setValue:@"0" forKey:@"ISSubmit"];
-        [dict setValue:@"1" forKey:@"Status"];
-        [dict setValue:CASTextField.text forKey:@"CAS"];
-        [dict setValue:MDLTextField.text forKey:@"MDL"];
+    [dict setValue:QuantityID forKey:@"QuantityID"];
+    [dict setValue:Purity forKey:@"Purity"];
+    
+    [dict setValue:PurityID forKey:@"PurityID"];
+    [dict setValue:[NSString stringWithFormat:@"%@",CharitybtnOutlet.text] forKey:@"Chirality"];
+    [dict setValue:[NSString stringWithFormat:@"%@",RemarksTextField.text] forKey:@"Comments"];
+    [dict setValue:@"0" forKey:@"ISSubmit"];
+    [dict setValue:@"1" forKey:@"Status"];
+    [dict setValue:CASTextField.text forKey:@"CAS"];
+    [dict setValue:MDLTextField.text forKey:@"MDL"];
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
@@ -569,38 +569,42 @@
     }
 }
 -(void)requestReceivedopSaveChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
-// show alert controller and navigare back
-NSArray *arr = [aregistrationDict objectForKey:@"UpdateChemistryRequestResult"];
-NSDictionary *dictResponse = [arr objectAtIndex:0];
-[EcollabLoader hideLoaderForView:self.view animated:YES];
-if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
-    
-    [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
-}
-else
-{
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                   message:[dictResponse objectForKey:@"SuccessString"]
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {
-                                                                       for (UIViewController *vc in self.navigationController.viewControllers) {
-                                                                           if ([vc isKindOfClass:[DashboardViewController class]])
-                                                                           {
-                                                                               [self.navigationController popToViewController:vc animated:YES];
+    // show alert controller and navigare back
+    NSArray *arr = [aregistrationDict objectForKey:@"UpdateChemistryRequestResult"];
+    if (arr == nil)
+    {
+        arr = [aregistrationDict objectForKey:@"ChemistryRequestResult"];
+    }
+    NSDictionary *dictResponse = [arr objectAtIndex:0];
+    [EcollabLoader hideLoaderForView:self.view animated:YES];
+    if ([[dictResponse objectForKey:@"SuccessCode"]intValue] != 200) {
+        
+        [self showAlertWithMessage:[dictResponse objectForKey:@"SuccessString"]];
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+                                                                       message:[dictResponse objectForKey:@"SuccessString"]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                                       handler:^(UIAlertAction * action) {
+                                                                           for (UIViewController *vc in self.navigationController.viewControllers) {
+                                                                               if ([vc isKindOfClass:[DashboardViewController class]])
+                                                                               {
+                                                                                   [self.navigationController popToViewController:vc animated:YES];
+                                                                               }
+                                                                               
+                                                                               
+                                                                               
                                                                            }
-                                                                           
-                                                                           
-                                                                           
-                                                                       }
-                                                                   }];
+                                                                       }];
+        
+        
+        [alert addAction:PhotoFromGalleryAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
     
-    
-    [alert addAction:PhotoFromGalleryAction];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 }
 
 -(void)requestReceivedopCreateChemistryRequestResponce:(NSMutableDictionary *)aregistrationDict{
@@ -615,7 +619,7 @@ else
     else
     {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
-                                                                       message:@"Chemistry request details updated successfully."
+                                                                       message:[dictResponse objectForKey:@"SuccessString"]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* PhotoFromGalleryAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
@@ -749,8 +753,14 @@ else
                 {
                     return NO;
                 }
+                else if ([string hasPrefix:@"."])
+                {
+                    textField.text = @"0";
+                    return YES;
+                }
+
             }
-            
+        
         if(textField.text.length == 10 && string.length != 0)
         {
             return NO;
@@ -761,11 +771,23 @@ else
             {
                 return NO;
             }
+            else if ([textField.text containsString:@"."])
+            {
+                
+                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+                
+                NSArray *sep = [newString componentsSeparatedByString:@"."];
+                if([sep count] >= 2)
+                {
+                    NSString *sepStr=[NSString stringWithFormat:@"%@",[sep objectAtIndex:1]];
+                    return !([sepStr length]>2);
+                }
+                return YES;
+            }
             else
             {
                 return YES;
             }
-            return YES;
         }
 //        if(range.length + range.location > textField.text.length)
 //        {
