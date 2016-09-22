@@ -44,14 +44,28 @@
     self.LabelSix.adjustsFontSizeToFitWidth = YES;
     self.LabelFour.adjustsFontSizeToFitWidth = YES;
     self.labelTwo.adjustsFontSizeToFitWidth = YES;
+    CGRect rect = [self.LabelEight.text boundingRectWithSize:CGSizeMake(self.LabelEight.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0]} context:nil];
+    float height = ceilf(rect.size.height);
+    NSLog(@"---%f",height);
     
+    self.LabelEight.numberOfLines = height/14;
+    
+    if (height/14 > 2)
+    {
+        
+        self.viewAssaysHeightConstraint.constant = (height/14) * 10;
+        
+    }
     if(!self.LabelEight.text.length)
     {
         self.viewAssays.hidden = YES;
+        self.viewAssaysHeightConstraint.constant = 0;
     }
     if(!self.LabelSix.text.length)
     {
         self.viewSubArea.hidden = YES;
+        self.viewSubAreaHeightConstraint.constant = 0;
+        self.viewAssays.backgroundColor = [UIColor clearColor];
     }
     if(placeOrder.intValue == 0)
     {

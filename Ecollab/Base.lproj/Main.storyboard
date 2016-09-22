@@ -3754,8 +3754,10 @@
                         <outlet property="labelTwo" destination="3fp-HJ-N7D" id="zGs-wZ-WoJ"/>
                         <outlet property="viewArea" destination="Hgg-Ib-ilx" id="73x-tk-Sxf"/>
                         <outlet property="viewAssays" destination="s0f-xc-osS" id="eYg-S3-HO1"/>
+                        <outlet property="viewAssaysHeightConstraint" destination="lAU-xU-Ytv" id="pY5-Dh-27M"/>
                         <outlet property="viewService" destination="tRH-52-w8M" id="l30-ec-6J3"/>
                         <outlet property="viewSubArea" destination="tFh-xd-WU6" id="fwc-e2-hzW"/>
+                        <outlet property="viewSubAreaHeightConstraint" destination="rRd-GE-jlJ" id="6Wh-8S-Mv1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5D-fO-DKk" userLabel="First Responder" sceneMemberID="firstResponder"/>

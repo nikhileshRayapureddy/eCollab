@@ -135,7 +135,7 @@ NSString *const kBase_Content_Type = @"application/json; charset=utf-8";
     }
     else
     {
-        service.theSuccessMethod = @selector(responseopCreateChemistryRequestService:);
+        service.theSuccessMethod = @selector(responseopSaveChemistryRequestService:);
     }
     service.theFailureMethod = @selector(requestFailedWithError:);
     [self addServiceInterfaceToServiceStack:service];

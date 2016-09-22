@@ -127,6 +127,7 @@
     {
         self.viewAssaysHeightConstraint.constant = 0;
         self.viewAssays.hidden = YES;
+        strMultipleModelIdIDFinal = @"";
     }
 }
 
@@ -141,9 +142,9 @@
     {
         self.viewSubAreaHeightConstraint.constant = 0;
         self.viewSubArea.hidden = YES;
+        strSubAreaIDFinal = @"";
     }
 }
-
 -(void)resetModelsAssaysConstraints
 {
     viewAssaysHeightConstraint.constant = 70;
@@ -253,12 +254,6 @@
         viewAssaysHeightConstraint.constant = (height/14) * 15 + 30;
         viewModelsButtonHeightConstraint.constant = (height/14) * 15;
     }
-    
-    
-    
-//    ModelsBtnOutlet.titleLabel.numberOfLines = 2;
-//    [ModelsBtnOutlet setTitle:modelIds forState:UIControlStateNormal];
-//    [ModelsBtnOutlet setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     isFromRequestAQuote = YES;
     
     strServiceIDFinal = [dict objectForKey:@"ServiceID"];
@@ -365,15 +360,19 @@
     [dictRequest setObject:@"1" forKey:@"ISSubmit"];
     [dictRequest setObject:@"1" forKey:@"Status"];
     [dictRequest setObject:strUserId forKey:@"CreatedBy"];
-    if(shouldUpdateRequest == YES)
-    {
-        [dictRequest setValue:strRIDForSavedRequest forKey:@"RID"];
-    }
-    
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     ServiceRequester *request = [ServiceRequester new];
     request.serviceRequesterDelegate =  self;
-    [request requestForopInsertBiologyRequestService:dictRequest];
+    
+    if(shouldUpdateRequest == YES)
+    {
+        [dictRequest setValue:strRIDForSavedRequest forKey:@"RID"];
+        [request requestForopUpdateBiologyRequestService:dictRequest];
+    }
+    else
+    {
+        [request requestForopInsertBiologyRequestService:dictRequest];
+    }
     request =  nil;
 }
 
@@ -466,6 +465,23 @@
                                                                            message:[aregistrationDict objectForKey:@"SuccessString"]
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                for (UIViewController *vc in self.navigationController.viewControllers) {
+                    if ([vc isKindOfClass:[DashboardViewController class]])
+                    {
+                        for (UIViewController *vc in self.navigationController.viewControllers) {
+                            if ([vc isKindOfClass:[DashboardViewController class]])
+                            {
+                                [self.navigationController popToViewController:vc animated:YES];
+                            }
+                            
+                            
+                            
+                        }
+                    }
+                    
+                    
+                    
+                }
             }];
             
             

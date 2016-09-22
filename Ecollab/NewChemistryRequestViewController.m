@@ -555,16 +555,19 @@
         [dict setValue:@"1" forKey:@"Status"];
         [dict setValue:CASTextField.text forKey:@"CAS"];
         [dict setValue:MDLTextField.text forKey:@"MDL"];
-        if(shouldUpdateRequest == YES)
-        {
-            [dict setValue:strRidForSavedRequest forKey:@"RID"];
-        }
-        
-
         [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
         ServiceRequester *request = [ServiceRequester new];
         request.serviceRequesterDelegate =  self;
-        [request requestForopCreateChemistryRequestService:dict];
+        if(shouldUpdateRequest == YES)
+        {
+            [dict setObject:strRidForSavedRequest forKey:@"RID"];
+            [request requestForopUpdateChemistryRequestService:dict];
+        }
+        else
+        {
+            [request requestForopCreateChemistryRequestService:dict];
+            
+        }
         request =  nil;
     }
 }
