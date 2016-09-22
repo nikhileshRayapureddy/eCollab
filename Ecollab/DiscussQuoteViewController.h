@@ -33,5 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewArea;
 @property (weak, nonatomic) IBOutlet UIView *viewSubArea;
 @property (weak, nonatomic) IBOutlet UIView *viewAssays;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewSubAreaHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewAssaysHeightConstraint;
 @end
