@@ -90,7 +90,7 @@
 
 
 - (IBAction)ChangePasswordAction:(id)sender {
-    
+    [self.view endEditing:YES];
     [oldPassword resignFirstResponder];
     [NewPassword resignFirstResponder];
     [confirmPassword resignFirstResponder];

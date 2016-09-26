@@ -69,6 +69,7 @@
 
 - (IBAction)SubmitBtnAction:(id)sender {
     
+    [self.view endEditing:YES];
     [currentTextField resignFirstResponder];
     if(Name.text.length == 0)
     {

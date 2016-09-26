@@ -56,4 +56,5 @@
 - (IBAction)btnBackClicked:(UIButton *)sender;
 @property (strong, nonatomic) NSString *strRequestRID;
 @property (assign, nonatomic) BOOL isRegrettedOrRejected;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewRemarksHeightConstraint;
 @end

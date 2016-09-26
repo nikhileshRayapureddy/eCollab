@@ -107,7 +107,7 @@
     {
         [_txtFldDesignation resignFirstResponder];
     }
-
+    [self.view endEditing:YES];
     NSMutableDictionary *dictUser = [[NSMutableDictionary alloc]init];
     if ([_txtFldFirstName.text isEqualToString:@""]) {
         [self showAlert:@"Please enter first name."];

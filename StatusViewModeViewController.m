@@ -12,6 +12,8 @@
 @interface StatusViewModeViewController (){
     NSMutableDictionary *LocalDataDictionary;
     NSDictionary *dictLocalDefaultAddress;
+    float commentsHeight;
+    
 }
 
 @end
@@ -26,6 +28,8 @@
 @synthesize isRegrettedOrRejected;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    commentsHeight = 0;
     NSLog(@"%@",PlaceOrder);
     NSLog(@"%@",inputDataDictionary);
     dictLocalDefaultAddress = [[NSDictionary alloc]init];
@@ -40,7 +44,15 @@
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    StatusScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 625);
+    if (commentsHeight > 40)
+    {
+        StatusScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 625 + (commentsHeight - 40));
+    }
+    else
+    {
+        StatusScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 625);
+    }
+    
 }
 
     
@@ -66,7 +78,19 @@
     LableThreeTwo.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"PurityValue"]];
 
     LabelSix.text= [NSMutableString stringWithFormat:@"REMARKS"];//[NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
-    Labelseven.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"Comments"]];
+    
+    NSString *strComments = [LocalDataDictionary objectForKey:@"Comments"];
+    
+    if (strComments.length)
+    {
+        CGRect rect = [strComments boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 26, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:Labelseven.font} context:nil];
+        
+        commentsHeight = ceilf(rect.size.height);
+        self.viewRemarksHeightConstraint.constant = commentsHeight;
+
+    }
+    
+    Labelseven.text= [strComments stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     LabelEight.text= [NSMutableString stringWithFormat:@"%@",[LocalDataDictionary objectForKey:@"jonuralref"]];
     if(!LabelEight.text.length)
     {
