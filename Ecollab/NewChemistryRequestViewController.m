@@ -906,6 +906,7 @@
             NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
             NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
             _imgVwReferenceComp.image = [UIImage imageWithData:data];
+            b64EncStr = [self encodeToBase64String:_imgVwReferenceComp.image];
             ChoseFromReferenceCompounDBBtnOutlet.selected = YES;
             TakeOrChoosePhotoBtnOutlet.selected = NO;
         }
@@ -917,6 +918,7 @@
             NSMutableString *base64String = [dictData objectForKey:@"ImageName"];
             NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
             _imgVwTakeOrChoose.image = [UIImage imageWithData:data];
+            b64EncStr = [self encodeToBase64String:_imgVwTakeOrChoose.image];
             ChoseFromReferenceCompounDBBtnOutlet.selected = NO;
             TakeOrChoosePhotoBtnOutlet.selected = YES;
         }
