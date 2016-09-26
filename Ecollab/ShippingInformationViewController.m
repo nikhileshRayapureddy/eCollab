@@ -212,10 +212,10 @@
     if (indexPath == nil) {
         NSLog(@"long press on table view but not on a row");
     } else {
-        if(isFromTracking == YES)
+//        if(isFromTracking == YES)
         {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
-                                                                           message:@"Do you want to add this address as your defaut address?"
+                                                                           message:@"Do you want to add this address as your default address?"
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
@@ -251,7 +251,7 @@
     if(isFromTracking == YES)
     {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
-                                                                       message:@"Do you want to add this address as your defaut address?"
+                                                                       message:@"Do you want to add this address as your default address?"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -287,11 +287,26 @@
 -(void)requestReceivedopUpdateShippingAddressDetailsResponce:(NSMutableDictionary *)aregistrationDict;
 {
     [EcollabLoader hideLoaderForView:self.view animated:YES];
-    SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
-    SAVCtrlObj.strRequestRID = strRequestRID;
-    SAVCtrlObj.dictDefaultAddress = dictDefaultAddressSelected;
-    [self.navigationController pushViewController:SAVCtrlObj animated:NO];
-//    [self.navigationController popViewControllerAnimated:YES];
+    if (isFromTracking == YES)
+    {
+        SelectAddressViewController *SAVCtrlObj = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAddressViewController"];
+        SAVCtrlObj.strRequestRID = strRequestRID;
+        SAVCtrlObj.dictDefaultAddress = dictDefaultAddressSelected;
+        [self.navigationController pushViewController:SAVCtrlObj animated:NO];
+        //    [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+                                                                       message:@"Address updated successfully."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
 }
 -(void)btnEditClicked:(UIButton*)sender
 {

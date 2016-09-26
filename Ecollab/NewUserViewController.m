@@ -90,6 +90,7 @@
 }
 
 - (void)btnBackClicked:(UIButton*)sender {
+    [self.view endEditing:YES];
     [FirstNameTextField resignFirstResponder];
     [LastNameTextField resignFirstResponder];
     [EmailAddressTextField resignFirstResponder];
@@ -141,6 +142,7 @@
 }
 
 - (IBAction)SignUpBtnAction:(id)sender {
+    [self.view endEditing:YES];
     [FirstNameTextField resignFirstResponder];
     [LastNameTextField resignFirstResponder];
     [EmailAddressTextField resignFirstResponder];

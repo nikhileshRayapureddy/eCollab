@@ -65,6 +65,7 @@
 }
 
 - (IBAction)SignInBtnAction:(id)sender {
+    [self.view endEditing:YES];
     [EmailTextField resignFirstResponder];
     [PasswordTextField resignFirstResponder];
 
@@ -126,6 +127,7 @@
 
 
 - (IBAction)NewUserBtnAction:(id)sender {
+    [self.view endEditing:YES];
     [EmailTextField resignFirstResponder];
     [PasswordTextField resignFirstResponder];
 
@@ -134,6 +136,7 @@
 }
 
 - (IBAction)ForgotPassworBtnAction:(id)sender {
+    [self.view endEditing:YES];
     [EmailTextField resignFirstResponder];
     [PasswordTextField resignFirstResponder];
 

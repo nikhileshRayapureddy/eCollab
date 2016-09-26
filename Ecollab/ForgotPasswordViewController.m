@@ -101,6 +101,7 @@
 }
 
 - (IBAction)SubmitBtnAction:(id)sender {
+    [self.view endEditing:YES];
     [ForgotPasswordTextField resignFirstResponder];
     if ([ForgotPasswordTextField.text isEqualToString:@""])
     {

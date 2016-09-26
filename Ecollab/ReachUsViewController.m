@@ -82,6 +82,7 @@
 }
 -(void)hideKeyBoard
 {
+    [self.view endEditing:YES];
     [CommentTf resignFirstResponder];
 }
 
