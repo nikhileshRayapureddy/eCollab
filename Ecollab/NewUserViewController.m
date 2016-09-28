@@ -210,7 +210,7 @@
     }
 }
 -(void)requestReceivedopCreatedUserResponce:(NSMutableDictionary *)aregistrationDict{
-            NSLog(@"%@",aregistrationDict);
+        NSLog(@"%@",aregistrationDict);
     NSMutableArray *arr = [aregistrationDict objectForKey:@"CreateUserList"];
     NSDictionary *dic = [arr objectAtIndex:0];
     NSLog(@"%@",[dic objectForKey:@"SuccessCode"]);
@@ -222,12 +222,13 @@
                                                                        message:[dic objectForKey:@"SuccessString"]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
+            PasswordTextField.text=@"";
+            ConfirmPasswordTextField.text=@"";
+
         }];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
 
-        PasswordTextField.text=@"";
     }else{
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
                                                                        message:@"Account created successfully. Please activate your account by following the link sent at your mail id."

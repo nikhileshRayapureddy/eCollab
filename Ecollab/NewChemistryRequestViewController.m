@@ -481,6 +481,7 @@
     imageTabelview.dataSource = self;
     imageTabelview.delegate = self;
     [vwCompundDBCustomView addSubview:imageTabelview];
+    selCell = -1;
 }
 
 
@@ -758,8 +759,7 @@
                 }
                 else if ([string hasPrefix:@"."])
                 {
-                    textField.text = @"0";
-                    return YES;
+                    return NO;
                 }
 
             }

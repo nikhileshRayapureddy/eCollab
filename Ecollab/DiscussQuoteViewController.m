@@ -24,10 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self displayData];
     [self designNavBar];
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self displayData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -40,21 +43,23 @@
     self.LabelSix.text = [DataDict objectForKey:@"SubArea"];
     self.LabelEight.text = [DataDict objectForKey:@"MultipleModelValues"];
     
-    self.LabelEight.adjustsFontSizeToFitWidth = YES;
+//    self.LabelEight.adjustsFontSizeToFitWidth = YES;
     self.LabelSix.adjustsFontSizeToFitWidth = YES;
     self.LabelFour.adjustsFontSizeToFitWidth = YES;
     self.labelTwo.adjustsFontSizeToFitWidth = YES;
-    CGRect rect = [self.LabelEight.text boundingRectWithSize:CGSizeMake(self.LabelEight.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0]} context:nil];
+    CGRect rect = [self.LabelEight.text boundingRectWithSize:CGSizeMake(self.LabelEight.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.LabelEight.font} context:nil];
     float height = ceilf(rect.size.height);
     NSLog(@"---%f",height);
     
-    self.LabelEight.numberOfLines = height/14;
-    
-    if (height/14 > 2)
+    self.LabelEight.numberOfLines = 0;
+    if (height > 100.00)
     {
-        
-        self.viewAssaysHeightConstraint.constant = (height/14) * 10;
-        
+        self.viewAssaysHeightConstraint.constant = height + 60;
+    }
+    else
+    {
+        self.viewAssaysHeightConstraint.constant = height + 40;
+
     }
     if(!self.LabelEight.text.length)
     {

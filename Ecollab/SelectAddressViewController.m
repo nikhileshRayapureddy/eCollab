@@ -120,7 +120,7 @@
     [dictRequest setObject:@"0" forKey:@"Type"];
     [dictRequest setObject:[dictDefaultAddress objectForKey:@"RID"] forKey:@"AddressID"];
     [dictRequest setObject:@"" forKey:@"RejectedComments"];
-    [dictRequest setObject:strRequestRID forKey:@"RID"];
+    [dictRequest setObject:[[NSUserDefaults standardUserDefaults]objectForKey:@"strRequestRID"] forKey:@"RID"];
     
     
     [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
