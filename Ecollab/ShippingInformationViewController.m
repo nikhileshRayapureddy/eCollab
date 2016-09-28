@@ -135,7 +135,7 @@
         } else {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
-                                                                           message:@"Do you want to delete?"
+                                                                           message:@"Do you want to delete this address?"
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSMutableDictionary *dict =[arrAddresses objectAtIndex:indexPath.row];
@@ -297,14 +297,14 @@
     }
     else
     {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
-                                                                       message:@"Address updated successfully."
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alert addAction:cancelAction];
-        [self presentViewController:alert animated:YES completion:nil];
+//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"eCollab"
+//                                                                       message:@"Address updated successfully."
+//                                                                preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        }];
+//        
+//        [alert addAction:cancelAction];
+//        [self presentViewController:alert animated:YES completion:nil];
     }
     
 }
