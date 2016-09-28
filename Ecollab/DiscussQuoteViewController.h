@@ -35,4 +35,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewAssays;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewSubAreaHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewAssaysHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewScrollHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrlView;
 @end

@@ -751,19 +751,19 @@
 {
     if (textField == QuantityTextField || textField == CharitybtnOutlet)
     {
-        if(range.location==0)
-            {
-                if ([string hasPrefix:@"0"])
-                {
-                    return NO;
-                }
-                else if ([string hasPrefix:@"."])
-                {
-                    return NO;
-                }
-
-            }
-        
+//        if(range.location==0)
+//            {
+//                if ([string hasPrefix:@"0"])
+//                {
+//                    return NO;
+//                }
+//                else if ([string hasPrefix:@"."])
+//                {
+//                    return NO;
+//                }
+//
+//            }
+//        
         if(textField.text.length == 10 && string.length != 0)
         {
             return NO;
@@ -777,14 +777,14 @@
             else if ([textField.text containsString:@"."])
             {
                 
-                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-                
-                NSArray *sep = [newString componentsSeparatedByString:@"."];
-                if([sep count] >= 2)
-                {
-                    NSString *sepStr=[NSString stringWithFormat:@"%@",[sep objectAtIndex:1]];
-                    return !([sepStr length]>2);
-                }
+//                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+//                
+//                NSArray *sep = [newString componentsSeparatedByString:@"."];
+//                if([sep count] >= 2)
+//                {
+//                    NSString *sepStr=[NSString stringWithFormat:@"%@",[sep objectAtIndex:1]];
+//                    return !([sepStr length]>2);
+//                }
                 return YES;
             }
             else
@@ -870,9 +870,9 @@
     
     
     
-    int quant = qty.intValue;
+    float quant = qty.floatValue;
     
-    QuantityTextField.text = [NSString stringWithFormat:@"%d",quant];
+    QuantityTextField.text = [NSString stringWithFormat:@"%.2f",quant];
     NSString *strQuantityUnit = [NSString stringWithFormat:@"%@",[dictData objectForKey:@"QuantityValue"]];
     MGBtnOutlet.selected = NO;
     GBtnOutlet.selected = NO;
@@ -923,6 +923,11 @@
             TakeOrChoosePhotoBtnOutlet.selected = YES;
         }
     }
+    NSNumber *productTypeNumber = [dictData objectForKey:@"ProductType"];
+    ProductType =  [NSMutableString stringWithString: productTypeNumber.stringValue];
+    
+    NSNumber *productIdNumber = [dictData objectForKey:@"ProductID"];
+    ProductID =  [NSMutableString stringWithString: productIdNumber.stringValue];
     //[dictData objectForKey:@"ImageName"];
 }
 
@@ -945,9 +950,9 @@
     
     
     
-    int quant = qty.intValue;
+    float quant = qty.floatValue;
     
-    QuantityTextField.text = [NSString stringWithFormat:@"%d",quant];
+    QuantityTextField.text = [NSString stringWithFormat:@"%.2f",quant];
     NSString *strQuantityUnit = [NSString stringWithFormat:@"%@",[dictData objectForKey:@"QuantityID"]];
     MGBtnOutlet.selected = NO;
     GBtnOutlet.selected = NO;
@@ -1021,9 +1026,30 @@
     RemarksTextField.editable = NO;
     SubmitBtnOutlet.hidden = YES;
     SaveForLaterBtnOutlet.hidden = YES;
-    
+    NSNumber *productTypeNumber = [dictData objectForKey:@"ProductType"];
+    ProductType =  [NSMutableString stringWithString: productTypeNumber.stringValue];
+
+    NSNumber *productIdNumber = [dictData objectForKey:@"ProductID"];
+    ProductID =  [NSMutableString stringWithString: productIdNumber.stringValue];
+
     //[dictData objectForKey:@"ImageName"];
 }
+
+-(BOOL)isTwoDigitDecimal:(NSString*)strDecimalValue
+{
+    NSArray *sep = [strDecimalValue componentsSeparatedByString:@"."];
+    if([sep count] >= 2)
+    {
+        NSString *sepStr=[NSString stringWithFormat:@"%@",[sep objectAtIndex:1]];
+        return !([sepStr length]>2);
+    }
+    else
+    {
+        return YES;
+    }
+
+}
+
 -(BOOL)validationFields
 {
     if ([CASTextField.text isEqualToString:@""] && [MDLTextField.text isEqualToString:@""] && b64EncStr == nil)
@@ -1042,7 +1068,7 @@
         [self showAlertWithMessage:@"Please enter quantity."];
         return false;
     }
-    else if ([QuantityTextField.text isEqualToString:@"0"])
+    else if (QuantityTextField.text.floatValue <= 0)
     {
         [self showAlertWithMessage:@"Please enter quantity."];
         return false;
@@ -1050,6 +1076,11 @@
     else if ([QuantityTextField.text isEqualToString:@"."])
     {
         [self showAlertWithMessage:@"Please enter quantity."];
+        return false;
+    }
+    else if([self isTwoDigitDecimal:QuantityTextField.text] == NO)
+    {
+        [self showAlertWithMessage:@"Only two places after decimal are allowed in quantity."];
         return false;
     }
     else if (QuantityTextField.text.length > 10)
@@ -1067,9 +1098,14 @@
         [self showAlertWithMessage:@"Please enter chirality."];
         return false;
     }
-    else if ([CharitybtnOutlet.text isEqualToString:@"0"])
+    else if (CharitybtnOutlet.text.floatValue <= 0)
     {
         [self showAlertWithMessage:@"Please enter chirality."];
+        return false;
+    }
+    else if([self isTwoDigitDecimal:CharitybtnOutlet.text] == NO)
+    {
+        [self showAlertWithMessage:@"Only two places after decimal are allowed in chirality."];
         return false;
     }
     else if (CharitybtnOutlet.text.length > 10)

@@ -25,7 +25,10 @@
     legaStr = @"No eCollab user is allowed to use the APP to submit any inquiries about any chemicals the use of which by such user is prohibited or unauthorized under the applicable laws. A user must be solely responsible for all his/her own conducts/acts under the registered account, including without limitation any contents such user submits as well as any subsequent consequences. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S CONDUCTS/ACTS UNDER HIS/HER REGISTERED ACCOUNT.\n\nAll compounds that GVK BIO provides to users are for research purposes only. All users acknowledge that their use of any and all compounds provided by GVK BIO is merely based on their own independent judgement, and they shall bear all the associated risks on their own in this connection. UNLESS OTHERWISE REQUIRED AT LAW, GVK BIO WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY ANY USER’S USE OF ANY COMPOUNDS PROVIDED BY GVK BIO.\n\nOnce users confirm the acceptance of product, GVK BIO’s obligation under the purchase order (“PO”) shall be deemed to be fulfilled completely, and users shall be responsible for the payment to GVK BIO according to payment term and amount of the PO.\n";
     [self designNavBar];
     DiscTextview.text = legaStr;
+    
+    
     [self LegalDisclaimerBtnAction:nil];
+    
 
 }
 
@@ -34,6 +37,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [DiscTextview layoutIfNeeded];
+    [DiscTextview scrollRangeToVisible:NSMakeRange(0, 0)];
+}
 
 - (IBAction)PrivacyAndTermsBtnAction:(id)sender {
     

@@ -10,7 +10,9 @@
 #import "RequestOrProjectTrackerViewController.h"
 
 @interface DiscussQuoteViewController ()
-
+{
+    float height;
+}
 @end
 
 @implementation DiscussQuoteViewController
@@ -23,7 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    height = 0.0;
     // Do any additional setup after loading the view.
+    [EcollabLoader showLoaderAddedTo:self.view animated:YES withAnimationType:kAnimationTypeNormal];
     [self designNavBar];
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -48,19 +52,11 @@
     self.LabelFour.adjustsFontSizeToFitWidth = YES;
     self.labelTwo.adjustsFontSizeToFitWidth = YES;
     CGRect rect = [self.LabelEight.text boundingRectWithSize:CGSizeMake(self.LabelEight.frame.size.width-10, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.LabelEight.font} context:nil];
-    float height = ceilf(rect.size.height);
+    height = ceilf(rect.size.height);
     NSLog(@"---%f",height);
     
     self.LabelEight.numberOfLines = 0;
-    if (height > 100.00)
-    {
-        self.viewAssaysHeightConstraint.constant = height + 60;
-    }
-    else
-    {
-        self.viewAssaysHeightConstraint.constant = height + 40;
-
-    }
+    self.viewAssaysHeightConstraint.constant = height + 10;
     if(!self.LabelEight.text.length)
     {
         self.viewAssays.hidden = YES;
@@ -84,7 +80,8 @@
     {
         _DiscussBtnOutlet.hidden = YES;
     }
-    
+    [EcollabLoader hideLoaderForView:self.view animated:NO];
+    self.viewScrollHeightConstraint.constant = 290-50+height+30;
 }
 
 - (IBAction)DiscussBtnAction:(id)sender
