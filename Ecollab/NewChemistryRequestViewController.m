@@ -1080,7 +1080,7 @@
     }
     else if([self isTwoDigitDecimal:QuantityTextField.text] == NO)
     {
-        [self showAlertWithMessage:@"Only two places after decimal are allowed in quantity."];
+        [self showAlertWithMessage:@"Only two places after decimal are allowed."];
         return false;
     }
     else if (QuantityTextField.text.length > 10)
@@ -1105,7 +1105,7 @@
     }
     else if([self isTwoDigitDecimal:CharitybtnOutlet.text] == NO)
     {
-        [self showAlertWithMessage:@"Only two places after decimal are allowed in chirality."];
+        [self showAlertWithMessage:@"Only two places after decimal are allowed."];
         return false;
     }
     else if (CharitybtnOutlet.text.length > 10)
